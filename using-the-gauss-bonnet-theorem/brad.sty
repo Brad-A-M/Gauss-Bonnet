@@ -1,0 +1,125 @@
+\NeedsTeXFormat{LaTeX2e}[1994/06/01]
+\ProvidesPackage{tda}[2020/07/01 TDA Package]
+%%% ... from header
+
+
+\usepackage[dvipsnames,usenames]{xcolor}
+\definecolor{darkorchid}{rgb}{0.6,0.196,0.8}
+
+%\usepackage[T1]{fontenc}
+\usepackage{mathtools}
+\let\circledS\undefined
+%\usepackage{amsmath,amssymb}
+%\usepackage[table,xcdraw]{xcolor}
+\usepackage{amsthm}
+\usepackage{setspace}
+\usepackage{mathrsfs}
+%\usepackage{enumerate}
+% \usepackage{courier}
+\usepackage{algorithmicx}
+\usepackage{algpseudocode}
+\usepackage{graphicx}
+% \usepackage{url}
+% \usepackage{hyperref}
+ %\usepackage{newproof}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{tikz-cd}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Sp}{\mathbb{S}}
+\newcommand{\rat}{{\mathbb Q}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\CC}{\mathbb{C}}
+\renewcommand{\O}{\mathcal{O}}
+\newcommand{\mah}{minimum area homotopy}
+\newcommand{\mha}{MHA}
+\newcommand{\curve}{\gamma}
+\newcommand{\word}{W_\gamma}
+\newcommand{\depth}[1]{$\textrm{depth}{#1}$}
+%\newcommand{\bdry}{\partial\!}
+\newcommand{\bdry}{\partial}
+\newcommand{\good}{\gamma_g}
+
+\newcommand{\score}[1]{|#1|}
+
+\usepackage{float}
+\usepackage{listings}
+
+% The following are included in ltexpprt.sty
+% they are the same but first letter is cap.
+%\theoremstyle{plain}
+% \newtheorem{prob}{Problem}
+% \newtheorem{introtheorem}{Theorem}
+%\newtheorem{lemma}{Lemma}[section]
+%\newtheorem{theorem}[lemma]{Theorem}
+%\newtheorem{corollary}[lemma]{Corollary}
+%\newtheorem{observation}[lemma]{Observation}
+%\newtheorem{claim}[lemma]{Claim}
+%\newtheorem{definition}[lemma]{Definition}
+%\newtheorem{assumption}[lemma]{Assumption}
+\numberwithin{figure}{section}
+
+\newtheorem{question}{Question}
+
+%\usepackage{amsthm}
+
+%\theoremstyle{definition}
+%\newtheorem{definition}{Definition}[section]
+%\newtheorem{example}[theorem]{Example}
+%\newtheorem{assumption}[theorem]{Assumption}
+
+%\theoremstyle{remark}
+%\newtheorem{remark}[section]{Remarks}
+%\newtheorem{discussion}[theorem]{Discussion}
+%.... for algorithms
+
+\renewcommand{\algorithmicrequire}{\textbf{Input:}}
+\renewcommand{\algorithmicensure}{\textbf{Output:}}
+\newcommand{\algoname}[1]{\textsc{#1}}
+\newcommand{\convert}{\algoname{Covert}}
+% ... for referencing
+\renewcommand{\algref}[1]{Algorithm~\ref{alg:#1}}
+\renewcommand{\eqref}[1]{(\ref{eq:#1})}
+\newcommand{\shortalgref}[1]{Alg.~\ref{alg:#1}}
+\newcommand{\appendref}[1]{Appendix~\ref{append:#1}}
+\newcommand{\corref}[1]{Corollary~\ref{cor:#1}}
+\newcommand{\defref}[1]{Definition~\ref{def:#1}}
+\newcommand{\figref}[1]{Figure~\ref{fig:#1}}
+\newcommand{\lemref}[1]{Lemma~\ref{lem:#1}}
+\newcommand{\shortlemref}[1]{Lem.~\ref{lem:#1}}
+% \newcommand{\lineref}[2]{Line~\ref{line:#2-#1} of \algref{#2}}
+% \newcommand{\shortlineref}[2]{Line~\ref{line:#2-#1}}
+% \newcommand{\shortlinerangeref}[3]{Lines~\ref{line:#3-#1}-\ref{line:#3-#2}}
+% \newcommand{\partref}[2]{\thmref{#1}(\ref{part:#1-#2})}
+% \newcommand{\partinref}[2]{(\ref{part:#1-#2})}
+% \newcommand{\partdefref}[2]{Part (\ref{def:#1-#2}) of \defref{#1}}
+\newcommand{\secref}[1]{Section~\ref{sec:#1}}
+\newcommand{\thmref}[1]{Theorem~\ref{thm:#1}}
+\newcommand{\queref}[1]{Question~\ref{q:#1}}
+
+\graphicspath{{./}{images/}}
+\DeclareGraphicsExtensions{.pdf,.png,.jpg}
+
+
+\newcommand{\todo}[1]{{\color{red}[[\textbf{XXX TODO: }#1]]}}
+\newcommand{\brad}[1]{{\color{darkorchid}[[\textbf{Brad Says: }#1]]}}
+\newcommand{\brittany}[1]{{\color{blue}[[\textbf{Brittany Says: }#1]]}}
+\newcommand{\dave}[1]{{\color{blue}[[\textbf{David Says: }#1]]}}
+\newcommand{\carola}[1]{{\color{blue}[[\textbf{Carola Says: }#1]]}}
+\newcommand{\hsien}[1]{{\color{blue}[[\textbf{Hsien Says: }#1]]}}
+
+%%% ... Macros Needed:
+\newcommand{\dgms}{\mathcal{D}}
+\def\Area{\operatorname{Area}}
+\def\wind{\operatorname{wind}}
+\def\depth{\operatorname{depth}}
+\def\whit{\operatorname{whit}}
+
+
+\def\str#1{{\color{BrickRed} \mathtt{#1}}}
+\def\strp#1{{\color{Green} \mathtt{#1}}}
+\def\strb#1{{\color{Blue} \mathtt{#1}}}
+
