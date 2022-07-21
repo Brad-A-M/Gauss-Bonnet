@@ -1,4 +1,6 @@
 build
+*.toc
+*.DS_Store
 .DS_Store
 *.bbl
 *.blg
@@ -16,15 +18,8 @@ build
 *MakeFile
 *CMakeFiles
 code/curve-class/CMakeCache.txt
-code/curve-class/CMakeFiles/
-papers/geometric-interpretation/geometric-interpretation.pdf
-papers/homotopy_summer_19/homotopy_summer_19.pdf
-papers/brad-qual20/five-papers/five-papers.pdf
-papers/eurocg21/eurocg2021.pdf
-papers/cccg21/cccg21.pdf
-papers/sosa2022/sosa22.pdf
-papers/stacs22/stacs22.pdf
-papers/esa2022/esa22.pdf
+using-the-gauss-bonnet-theorem/main.pdf
+
 
 # Atom
 *.yaml
