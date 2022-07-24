@@ -1,5 +1,5 @@
 
-\section{Manifolds and Curvature}
+\section{Manifolds, Curvature, and the Euler Characteristic}
 \label{sec:cast}
 
 
@@ -9,19 +9,23 @@ That is, if one has geometric information one can deduce topological information
 if one has topological information one can deduce geometric information.
 In symbols, the theorem can be stated as follows
 
-$$\int_M K dA + \int_{\partial M} k_g ds = 2\pi \chi(M).$$
+\begin{equation} \label{eqn:g-b}
+\int_M K dA + \int_{\partial M} k_g ds = 2\pi \chi(M).
+\end{equation}
 In this section, we define these symbols.
+
+\subsection{Preliminaries}
 
 We begin with some definitions a that may already be familiar to the reader,
 \begin{definition}[Topological Space \cite{munkres}]
 A \EMPH{topology} is a pair $(X,\tau)$, where $X$ is a set and
  $\tau$ is a collection of subsets $X$
 satisfying:
-	\begin{enumerate}
+	\begin{itemize}
 		\item $\emptyset$ and $X$ are in $\tau.$
 		\item the union of \emph{any} subcollection of elements in $\tau$ is  in $\tau.$
 		\item the intersection of any \emph{finite} subcollection of elements in the $\tau$ is in $\tau.$
-	\end{enumerate}
+	\end{itemize}
 A set $X$ with a specified topology $\tau$ is called a \EMPH{topological space}.
 \end{definition}
 
@@ -36,16 +40,58 @@ We will work with a special type of topological spaces called manfiolds.
 A \EMPH{manifold} is a Hausdorff, second countable, locally Euclidean space.
 \end{definition}
 
+The symbol $M$ in \eqnref{g-b} is a manifold. For the most part, we will consider two dimensional manifolds are called \emph{surfaces}.
+We will consider both continuous and discrete objects.
+For computational purposes, we often want a combinatorial structure on our manifolds.
+This structure will often come in the form a triangulation, which we now define.
 
 
+\begin{definition}[Independent Points]
+Let $v_0,v_1,\ldots,v_k$ be points in $\R^n$. We call them \EMPH{affinely dependent}
+if there are real numbers $\alpha_0,\alpha_1,\ldots,\alpha_k$, not all 0, such that
+$\Sigma_{i=0}^k \alpha_iv_i=0$ and $\Sigma_{i=0}^k \alpha_i=0.$
+Otherwise,  $v_0,v_1,\ldots,v_k$ are \EMPH{affinely independent}.
+
+\end{definition}
+
+\begin{definition}[Simplices]
+A \EMPH{simplex} $\sigma$ is the convex hull of a finite affinely independent
+set $A$ in $\R^n$. The points in  $A$ are  called vertices, the dimension
+of  $\sigma$ is $|A|-1$.  The convex hull of a subset of vertices of a simplex
+$\sigma$ is a \EMPH{face} of $\sigma$.
+\end{definition}
+
+\begin{definition}[Simplicial Complex]
+A nonempty family $C$ of simplices is a \EMPH{simplicial complex} if the following
+are satisfied:
+\begin{itemize}
+\item  Each face of any simplex is a simplex.
+\item The intersection of $\sigma_1 \cap \sigma_2$ is a face of both $\sigma_1$ and 
+$\sigma_2$.
+\end{itemize}
 
 
+\end{definition}
+
+For many of our applications we will consider a special type of manifold called
+a triangular mesh. Meshes are used extensively in graphics.
 
 
+\begin{definition}[Homeomorphism]
+A  \EMPH{homeomorphism}  of topological spaces $(X_1,\tau_1$ and $(X_2,\tau_2)$
+is a bijection $\phi:X_1\to X_2$ such that for every $\phi$ and $\phi^{-1}$ are continuous.
+\end{definition}
+For two topological spaces $X$ and $Y$ if there exists a  homeomorphism between
+$X$ and $Y$ we say $X$ and $Y$ are topologically  equivalent and write  $X\cong Y.$
 
+\begin{definition}[Triangulation]
+For a topological space $X$ and simplicial complex $C$ if $X\cong C$,
+then $C$  is a \EMPH{triangulation} of $X$.
+\end{definition}
 
+In graphics, it is often useful to approximate smooth surfaces with fine triangulations called
+a \emph{mesh}. We will see meshes in many of our applications.
 
+\subsection{Curvature}
 
-
-
-
+\subsection{The Euler Characteristic}
