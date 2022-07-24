@@ -12,9 +12,10 @@
 %\usepackage{amsmath,amssymb}
 %\usepackage[table,xcdraw]{xcolor}
 \usepackage{amsthm}
+
 \usepackage{setspace}
 \usepackage{mathrsfs}
-%\usepackage{enumerate}
+\usepackage{enumerate}
 % \usepackage{courier}
 \usepackage{algorithmicx}
 \usepackage{algpseudocode}
@@ -39,6 +40,7 @@
 \newcommand{\curve}{\gamma}
 \newcommand{\word}{W_\gamma}
 \newcommand{\depth}[1]{$\textrm{depth}{#1}$}
+ \def\EMPH#1{\textcolor{BrickRed}{{\emph{#1}}}}
 %\newcommand{\bdry}{\partial\!}
 \newcommand{\bdry}{\partial}
 \newcommand{\good}{\gamma_g}
@@ -60,6 +62,8 @@
 %\newtheorem{claim}[lemma]{Claim}
 %\newtheorem{definition}[lemma]{Definition}
 %\newtheorem{assumption}[lemma]{Assumption}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
 \numberwithin{figure}{section}
 
 \newtheorem{question}{Question}

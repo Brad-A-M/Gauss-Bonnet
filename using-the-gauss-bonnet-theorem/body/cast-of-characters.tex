@@ -1,23 +1,40 @@
 
-\section{Cast of Characters}
+\section{Manifolds and Curvature}
 \label{sec:cast}
 
 
 The Gauss-Bonnet theorem is a bridge. On one shore is topology and
-on the other shore geometry. This bridge can be traveled in both directions.
+on the opposite shore geometry. This bridge can be traveled in both directions.
 That is, if one has geometric information one can deduce topological information and
 if one has topological information one can deduce geometric information.
 In symbols, the theorem can be stated as follows
 
 $$\int_M K dA + \int_{\partial M} k_g ds = 2\pi \chi(M).$$
-
 In this section, we define these symbols.
 
+We begin with some definitions a that may already be familiar to the reader,
+\begin{definition}[Topological Space \cite{munkres}]
+A \EMPH{topology} is a pair $(X,\tau)$, where $X$ is a set and
+ $\tau$ is a collection of subsets $X$
+satisfying:
+	\begin{enumerate}
+		\item $\emptyset$ and $X$ are in $\tau.$
+		\item the union of \emph{any} subcollection of elements in $\tau$ is  in $\tau.$
+		\item the intersection of any \emph{finite} subcollection of elements in the $\tau$ is in $\tau.$
+	\end{enumerate}
+A set $X$ with a specified topology $\tau$ is called a \EMPH{topological space}.
+\end{definition}
 
+We will work with a special type of topological spaces called manfiolds.
 
-
-
-
+\begin{definition}[Manifold  \cite{tu2011}]
+	A topological space $M$ is \EMPH{locally Euclidean of dimension $n$}
+	if every point $p$ in $M$has a neighborhood $U$ such that there is  a
+	homeomorphism  $\phi$ from $U$ into and open  subset of $\R^n$.
+	We call the pair $(U,\phi: U\to \R^n)$ a \EMPH{chart}, $U$ a \EMPH{coordinate neighborhood}
+	and  $\phi$ a \EMPH{coordinate map}. 
+A \EMPH{manifold} is a Hausdorff, second countable, locally Euclidean space.
+\end{definition}
 
 
 
