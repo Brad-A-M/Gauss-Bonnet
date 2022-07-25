@@ -95,3 +95,34 @@ a \emph{mesh}. We will see meshes in many of our applications.
 \subsection{Curvature}
 
 \subsection{The Euler Characteristic}
+
+Properties of topological spaces that remain unchanged by homeomorphisms are called
+\EMPH{topological invariants}. One such invariant is the Euler characteristic.
+Originally defined for polyhedra, the \EMPH{Euler Characteristic} $\chi$ is the 
+the number of vertices minus the number of edges plus  the number of faces, $\chi=V-E+F.$
+In higher dimensions, for a triangulated space $X$ the Euler characteristic is 
+$\chi(X)=k_0-k_1+k_2-k_3+\ldots$ where $k_n$ is the number of simplices of dimension $n.$
+A  graph  is \EMPH{planar} if it can be drawn in the plane with intersections only occuring
+at vertices.
+For a planar graphs $V-E+F=2$, Eppstein maintains a collection of proofs of this \cite{eppstein-proofs}.
+We include the the following proof from Eppstein's listattributed to Thurston
+ \cite{thurston}. For any planar graph we can map the graph on to the two sphere
+ using stereographic projection.
+ 
+\begin{theorem}[Euler Characteristic for the Sphere]\label{thm:euler}
+For any planar  graph on the 2-sphere we have $V-E+F=2.$
+\end{theorem}
+
+\begin{proof}
+If needed, perturb the triangulation so that the north and south poles are 
+inside of a two faces and there are no vertical edges. At each vertex place a unit positive
+charge, at the center of each edge place a unit negative charge and put a unit positive
+charge in the middle of each face. Slam the sphere on the ground so that all charges
+on the edges and vertices are moved into the face below them. For faces that do not contain a pole
+the net charge will be zero, either a single negative charge moves into a face, or two edges
+contribute negative charges and the connecting vertex contributes a positive charge. 
+The face containing the north pole has a unit positive charge, and the face containing the south
+pole contains positive four units of charge and negative three units of charge.
+Thus, the total charge is two.
+
+\end{proof}
