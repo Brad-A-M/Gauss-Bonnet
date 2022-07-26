@@ -93,24 +93,67 @@ In graphics, it is often useful to approximate smooth surfaces with fine triangu
 a \emph{mesh}. We will see meshes in many of our applications.
 
 \subsection{Curvature}
+Continuous:
+
+Discrete:
+
+Recall that the sum of the interior angles of a triangle is $\pi$,
+see \figref{angles} for proof. By induction, the sum of the interior angles
+of a convex polygon with $n$ edges is  $(n-2)\pi$, see \figref{angles}
+for an example.
+
+\begin{figure}[htb]
+\centering
+\includegraphics[width=.3\textwidth]{curvature/convex-angles}
+\caption{Top row: the sum of  the interior angles of a triangle is $\pi$.
+Bottom row: the sum of the interior angles of a convex polygon on $n$ edges is $(n-2)\pi$.}
+\label{fig:angles}
+\end{figure}
+
+
+There are several ways to define curvature in the discrete setting \cite{Crane:2013},
+this definition will be used in the poof of the discrete Gauss-Bonnet in \secref{proof}.
+
+''For a discrete planar curve we can define the curvature at a vertex as the distance on the unit circle between the two adjacent normals'' \cite{Crane:2013}.
+
+\begin{definition}[Discrete Gaussian curvature \cite{upadhyay2015}]\label{def:discrete-curvature-vertex}
+
+The discrete \EMPH{Gaussian curvature} at a vertex $v$ is the area on the unit sphere bounded by a spherical polygon whose vertices are the unit normals of the faces around $v$.
+
+\end{definition}
+
+
+\begin{figure}[htb]
+\centering
+\includegraphics[width=.3\textwidth]{curvature/discrete-curvature}
+\caption{The discrete curvature at vertex $v$ is the area drawn on the sphere.}
+\label{fig:discrete-curvature}
+\end{figure}
+
+The \EMPH{angle defect} at a vertex $d(v)$ is the difference between $2\pi$ and
+the sum of the incident angles.  Let $F_v$ denote the faces containing $v$  
+and let $\alpha_f$  denote the interior  angle of face $f$ at $v$, then
+$$d(v):=2\pi -\sum_{f\in F_v}\alpha_f.$$
+
+The angle defect is equal to the discrete curvature in \defref{discrete-curvature-vertex}.
 
 \subsection{The Euler Characteristic}
 
 Properties of topological spaces that remain unchanged by homeomorphisms are called
 \EMPH{topological invariants}. One such invariant is the Euler characteristic.
-Originally defined for polyhedra, the \EMPH{Euler Characteristic} $\chi$ is the 
+Originally defined for polyhedra, the \EMPH{Euler Characteristic} for surfaces $\chi$ is the 
 the number of vertices minus the number of edges plus  the number of faces, $\chi=V-E+F.$
 In higher dimensions, for a triangulated space $X$ the Euler characteristic is 
 $\chi(X)=k_0-k_1+k_2-k_3+\ldots$ where $k_n$ is the number of simplices of dimension $n.$
 A  graph  is \EMPH{planar} if it can be drawn in the plane with intersections only occuring
 at vertices.
 For a planar graphs $V-E+F=2$, Eppstein maintains a collection of proofs of this \cite{eppstein-proofs}.
-We include the the following proof from Eppstein's listattributed to Thurston
+We include the the following proof from Eppstein's list attributed to Thurston
  \cite{thurston}. For any planar graph we can map the graph on to the two sphere
  using stereographic projection.
  
-\begin{theorem}[Euler Characteristic for the Sphere]\label{thm:euler}
-For any planar  graph on the 2-sphere we have $V-E+F=2.$
+\begin{theorem}[Euler Characteristic for Planar Graphs]\label{thm:euler}
+For any planar graph on the 2-sphere we have $V-E+F=2.$
 \end{theorem}
 
 \begin{proof}
@@ -119,8 +162,8 @@ inside of a two faces and there are no vertical edges. At each vertex place a un
 charge, at the center of each edge place a unit negative charge and put a unit positive
 charge in the middle of each face. Slam the sphere on the ground so that all charges
 on the edges and vertices are moved into the face below them. For faces that do not contain a pole
-the net charge will be zero, either a single negative charge moves into a face, or two edges
-contribute negative charges and the connecting vertex contributes a positive charge. 
+the net charge will be zero, the northern boundary consists of an alternating sequence
+of edges and vertices  beginning  and ending with an edge.
 The face containing the north pole has a unit positive charge, and the face containing the south
 pole contains positive four units of charge and negative three units of charge.
 Thus, the total charge is two.
