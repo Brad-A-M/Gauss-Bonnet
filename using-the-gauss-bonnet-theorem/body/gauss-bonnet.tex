@@ -7,7 +7,7 @@ In this section, we prove the theorem.
 \subsection{Discrete 1}
 Nice discrete proof from \cite{upadhyay2015} and \cite{Crane:2013}.
 
-\begin{theorem}[Discrete surfaces without boundary]\label{thm:g-b-simple}
+\begin{theorem}[Discrete surfaces without boundary]\label{thm:g-b-discete-bdy}
 For a combinatorial surface $S$ with no boundary
 
 $$\sum_{v\in V} d(v)=2\pi \chi(S)$$
@@ -32,4 +32,42 @@ $$ \sum_{v\in V}\sum_{i=1}^n \beta_i=\sum_F\sum_{v\in F}(\pi-\alpha_f).$$
 Since we have a combinatorial surface, each face is a triangle,
 so $\sum_{v\in F}(\pi-\alpha_f)=3\pi-\pi=2\pi.$
 Thus, $\sum_{v\in V} d(v)=2\pi v-2\pi E+2\pi F=2\pi \chi(S)$ as desired.
+\end{proof}
+
+The above proof can be extended to the case where $S$ has a boundary
+by gluing a copy of $S$ to itself along the boundary.
+
+\begin{theorem}[Discrete surfaces without boundary]\label{thm:g-b-discete}
+For a combinatorial surface $S$ with no boundary
+
+$$\sum_{v\in V_{\text{int}}} d(v)+\sum_{v\in\partial S}k_g(v)=2\pi \chi(S)$$
+where $k_g(v)$ is the exterior angle at $v$ 
+$k_g(v)=\pi-\sum_i\alpha_i$ for $\alpha_i$ incident to $v$.
+\end{theorem}
+
+\begin{proof}
+Take a copy of $S$ and attach it to itself along the boundary.
+This creates the surface $2S$ without boundary. Notice,
+when we copy $S$ we create two copies of the boundary, and when
+we glue we remove one copy of the boundary.
+Thus, $\chi(2S)=2\chi(S)-\chi(\partial S).$
+Since, $\partial S$ is piecewise linear the number of vertices and
+edges are equal and there are no faces, so $\chi(\partial S)=0$
+and 
+
+\begin{equation} \label{eqn:glue}
+\chi(2S)=2\chi(S).
+\end{equation}
+
+For $v$ a vertex on the boundary, by definition $k_g(v)$ is half
+the discrete gaussian curvature of $v$ in $2S.$
+
+Thus,
+
+$$\sum_{v\in 2S}d(v)=2\left(\sum_{v\in S_{\text{int}}}d(v)+\sum_{v\in \partial S} k_g(v)\right) =2\pi  \chi(2S).$$
+Applying \eqnref{glue},
+
+$$\sum_{v\in S}d(v)+\sum_{v\in \partial S} k_g(v)=2\pi  \chi(S)$$
+as desired.
+
 \end{proof}
