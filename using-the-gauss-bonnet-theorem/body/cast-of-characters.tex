@@ -93,7 +93,35 @@ Often, it is useful to approximate smooth surfaces with fine triangulations call
 a \emph{mesh}. We will see meshes in many of our applications.
 
 \subsection{Curvature}
+
 Continuous:
+
+For a curve in $\R^3$ how can we quantify the curvature at a point on the curve?
+Let $\gamma$ denote a curve and let $p$ be a point on $\gamma$.
+We traverse $\gamma$ at unit speed, $\gamma(t)=(x(t),y(t),z(t))$.  
+Let $\vec{T}$ denote the unit tangent vector of $\gamma$ at $p$. 
+We are interested in how much $\vec{T}=(x'(t),y'(t),z'(t))$ is rotating. 
+This is exactly the second derivative $\gamma''$. Since we traverse $\gamma$
+at unit speed, $\gamma'(t)^2=1,$ and by the chain rule, $\gamma'\cdot \gamma''=0,$
+so  the second derivative is orthogonal to $\gamma'$. The norm of the second
+derivative is the curvature $k.$
+
+The curvature $k$ of a curve in $\R^3$ is equivalent to the inverse of the radius
+of the circle that best approximates the curve at a point. This circle is called
+the osculating circle. 
+For example, the unit circle in the $xy$-plane, parameterized by $\gamma(t)=(\cos(t),\sin(t),0)$
+we have $\gamma'(t)=(-\sin(t),\cos(t),0)$ and $\gamma''(t)=(-\cos(t),-\sin(t),0)$ and $||\gamma''||=1$
+which agrees with the inverse of the radius of the osculating circle.
+Another example is a straight line,
+the curvature is zero and the radius of the osculating circle is infinite.
+
+We will consider one-dimensional curves that are the boundary of two-dimensional
+surfaces $S$ in $\R^3.$ In a surface, a \EMPH{geodesic} is a curve that is a shortest path
+between two points in the surface. For example, on $\Sp^2$, the equator is a geodesic
+and a inhabitant would view a geodesic as a straight line. 
+The \EMPH{geodesic curvature} $k_g$ at a point $p$ is defined to be the norm of the projection
+of $k$ onto the tangent space of $S$ at $p$. the geodesic curvature can be computed
+by $k_g(t)=<\gamma''(t),p>$.
 
 Discrete:
 
