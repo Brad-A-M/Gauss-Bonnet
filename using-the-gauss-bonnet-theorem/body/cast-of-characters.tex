@@ -97,14 +97,18 @@ a \emph{mesh}. We will see meshes in many of our applications.
 Continuous:
 
 For a curve in $\R^3$ how can we quantify the curvature at a point on the curve?
-Let $\gamma$ denote a curve and let $p$ be a point on $\gamma$.
+Let $\gamma$ denote a curve in $\R^3$ and let $p$ be a point on $\gamma$.
 We traverse $\gamma$ at unit speed, $\gamma(t)=(x(t),y(t),z(t))$.  
 Let $\vec{T}$ denote the unit tangent vector of $\gamma$ at $p$. 
-We are interested in how much $\vec{T}=(x'(t),y'(t),z'(t))$ is rotating. 
-This is exactly the second derivative $\gamma''$. Since we traverse $\gamma$
+The curvature is how much $\vec{T}=(x'(t),y'(t),z'(t))$ is rotating. 
+This is exactly the second derivative $B=\gamma''$. Since we traverse $\gamma$
 at unit speed, $\gamma'(t)^2=1,$ and by the chain rule, $\gamma'\cdot \gamma''=0,$
 so  the second derivative is orthogonal to $\gamma'$. The norm of the second
-derivative is the curvature $k.$
+derivative is the curvature $k$.
+Let $n$ denote a normal vector parallel to $\gamma''$, that is $\gamma''=k n$.
+By taking the cross product of $N$ and $T$ we obtain a vector $B$.
+The vectors $T,N$ and $B$ form the \emph{Fernet frame} of $\gamma$ a $p.$
+
 
 The curvature $k$ of a curve in $\R^3$ is equivalent to the inverse of the radius
 of the circle that best approximates the curve at a point. This circle is called
@@ -118,10 +122,15 @@ the curvature is zero and the radius of the osculating circle is infinite.
 We will consider one-dimensional curves that are the boundary of two-dimensional
 surfaces $S$ in $\R^3.$ In a surface, a \EMPH{geodesic} is a curve that is a shortest path
 between two points in the surface. For example, on $\Sp^2$, the equator is a geodesic
-and a inhabitant would view a geodesic as a straight line. 
+and an inhabitant would view a geodesic as a straight line. 
+Then, since $S$ is a manifold, each point has a local chart with a normal vector $N$.
+We want to compute the rate of rotation of $\gamma$ about $N$.
+We project $\gamma'$ onto the tangent plane to $S$ at $p$.
+If $T$ is a unit length tangent vector at p, then the vector $U=N\times T$
+is orthogonal to both $N$ and $T$.
 The \EMPH{geodesic curvature} $k_g$ at a point $p$ is defined to be the norm of the projection
-of $k$ onto the tangent space of $S$ at $p$. the geodesic curvature can be computed
-by $k_g(t)=<\gamma''(t),p>$.
+of $k$ onto the tangent space of $S$ at $p$. The geodesic curvature can be computed
+by the formula $k_g(t)=||(\gamma''\cdot U)\cdot U||.$
 
 Discrete:
 
