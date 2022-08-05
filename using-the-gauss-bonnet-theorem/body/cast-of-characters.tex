@@ -100,12 +100,12 @@ For a curve in $\R^3$ how can we quantify the curvature at a point on the curve?
 Let $\gamma$ denote a curve in $\R^3$ and let $p$ be a point on $\gamma$.
 We traverse $\gamma$ at unit speed, $\gamma(t)=(x(t),y(t),z(t))$.  
 Let $\vec{T}$ denote the unit tangent vector of $\gamma$ at $p$. 
-The curvature is how much $\vec{T}=(x'(t),y'(t),z'(t))$ is rotating. 
-This is exactly the second derivative $B=\gamma''$. Since we traverse $\gamma$
+The curvature is how much the tangent vector $\vec{T}=(x'(t),y'(t),z'(t))$ is rotating. 
+This is exactly the second derivative $\gamma''$. Since we traverse $\gamma$
 at unit speed, $\gamma'(t)^2=1,$ and by the chain rule, $\gamma'\cdot \gamma''=0,$
 so  the second derivative is orthogonal to $\gamma'$. The norm of the second
 derivative is the curvature $k$.
-Let $n$ denote a normal vector parallel to $\gamma''$, that is $\gamma''=k n$.
+Let $n$ denote a unit vector parallel to $\gamma''$, then $\gamma''=k n$.
 By taking the cross product of $N$ and $T$ we obtain a vector $B$.
 The vectors $T,N$ and $B$ form the \emph{Fernet frame} of $\gamma$ a $p.$
 
@@ -131,6 +131,27 @@ is orthogonal to both $N$ and $T$.
 The \EMPH{geodesic curvature} $k_g$ at a point $p$ is defined to be the norm of the projection
 of $k$ onto the tangent space of $S$ at $p$. The geodesic curvature can be computed
 by the formula $k_g(t)=||(\gamma''\cdot U)\cdot U||.$
+
+In two-dimensions, we wish to calculate the rate at which the surface
+pulls away from the tangent plane.  There are several equivalent ways 
+to calculate curvature of a surface.
+We can generalize the concept of an osculating circle to an
+osculating sphere or we can compute the rate of change of
+a normal vector at a point $p$.
+
+Given a surface, we can define a normal vector on the surface at  a point
+by considering a local coordinate chart at $p$ with axis $u$ and $v$.
+Once we choose a chart we define a clockwise orientation. If the clockwise
+orientation can be consistently extended to the entire surface, we say
+the surface is \EMPH{orientable}.
+
+For an orientable surface $S$, the map that  $N:S\to \Sp^2$ that sends each
+normal in $S$ to the corresponding point on $\Sp^2$ is
+the \EMPH{Gauss map}.
+The derivative of the Gauss map, $dN(p)$ quantifies the rate of change of
+the normal vector ($dN$ is often called the \emph{Weingarten map} \cite{Crane:2013}).
+Thus, $dN_p:T_p(S)\to T_{N(p)}(\Sp^2)$, but since $T_p(S)$ and $T_{N(p)}(\Sp^2)$
+are parallel we can define $dN_p$ to be a linear map on $T_p(S)$.
 
 Discrete:
 
