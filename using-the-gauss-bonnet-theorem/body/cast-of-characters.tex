@@ -15,7 +15,7 @@ if one has topological information one can deduce geometric information.
 In symbols, the theorem can be stated as follows
 
 \begin{equation} \label{eqn:g-b}
-\int_{v\in V_{int}} k_{int} dA + \int_{v\in V_{bdy}} k_{bdy} ds = 2\pi \chi(S).
+\int_{v\in V_{int}} K dA + \int_{v\in V_{\partial S}} k_g ds = 2\pi \chi(S).
 \end{equation}
 In this section, we define these symbols.
 
@@ -199,3 +199,17 @@ pole contains positive four units of charge and negative three units of charge.
 Thus, the total charge is two.
 
 \end{proof}
+
+The \EMPH{genus} of a surface is the maximum  number of closed simple
+non-intersecting curves that can be drawn in the surface without separating
+the surface.
+By the classification of surfaces, the Euler characteristic or an orientable surface
+is determined by its genus with $\chi=2-2g$.
+
+Putting all of these variables together gives \eqnref{g-b}.
+The  Gauss-Bonnet theorem is  telling us, if we add up curvature
+at each vertex the sum will be $2\pi$ times to Euler characteristic.
+If we can compute the curvature at every vertex then we can use the theorem
+to learn global topological information.
+Conversely, if we know the Euler characteristic we can learn about the curvature
+at individual points.
