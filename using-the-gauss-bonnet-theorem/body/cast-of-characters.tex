@@ -2,18 +2,30 @@
 \section{Manifolds, Curvature, and the Euler Characteristic}
 \label{sec:cast}
 
-Several applications are given in do Carmo \cite{doc76}.
 
-The Gauss-Bonnet theorem is a bridge. On one shore is topology and
-on the opposite shore geometry. This bridge can be traveled in both directions.
+
+Given a shape $S$, a topological property of $S$  is a property that does
+not change when $S$ is stretched or bent.
+A geometric  property of $S$, is a property that can computed at each point in
+$S$, such as how much is $S$ curving at a point.
+The Discrete Gauss-Bonnet theorem is a bridge between topological
+and geometric information, see \figref{bridge}. This bridge can be traveled in both directions.
 That is, if one has geometric information one can deduce topological information and
 if one has topological information one can deduce geometric information.
 In symbols, the theorem can be stated as follows
 
 \begin{equation} \label{eqn:g-b}
-\int_M K dA + \int_{\partial M} k_g ds = 2\pi \chi(M).
+\int_{v\in V_{int}} k_{int} dA + \int_{v\in V_{bdy}} k_{bdy} ds = 2\pi \chi(S).
 \end{equation}
 In this section, we define these symbols.
+
+\begin{figure}[htb]
+\centering
+\includegraphics[width=.3\textwidth]{curvature/bridge}
+\caption{The Gauss-Bonnet theorem allowing bi-directional traffic
+between geometry and topology.}
+\label{fig:bridge}
+\end{figure}
 
 \subsection{Preliminaries}
 
@@ -41,10 +53,12 @@ We will work with a special type of topological spaces called manfiolds.
 A \EMPH{manifold} is a Hausdorff, second countable, locally Euclidean space.
 \end{definition}
 
-The symbol $M$ in \eqnref{g-b} is a manifold. For the most part, we will consider two dimensional manifolds that are called \emph{surfaces}.
-We will consider both continuous and discrete objects.
+For the most part, we will consider two dimensional manifolds that are called \emph{surfaces}.
+The symbol $S$ in \eqnref{g-b} is a surface.
 For computational purposes, we often want a combinatorial structure on our manifolds.
 This structure will often come in the form a triangulation, which we now define.
+Manifolds can have a boundary denoted $\partial(S)$.
+The boundary of a surface is a one-dimensional manifold.
 
 
 \begin{definition}[Independent Points]
@@ -74,8 +88,7 @@ $\sigma_2$.
 
 \end{definition}
 
-For many of our applications we will consider a special type of manifold called
-a triangular mesh. Meshes are used extensively in graphics.
+Some simplicial complexes are very similar to others.
 
 
 \begin{definition}[Homeomorphism]
@@ -85,22 +98,35 @@ is a bijection $\phi:X_1\to X_2$ such that for every $\phi$ and $\phi^{-1}$ are 
 For two topological spaces $X$ and $Y$ if there exists a  homeomorphism between
 $X$ and $Y$ we say $X$ and $Y$ are topologically  equivalent and write  $X\cong Y.$
 
+We are ready to define a triangulation.
+
 \begin{definition}[Triangulation]
 For a topological space $X$ and simplicial complex $C$ if $X\cong C$,
 then $C$  is a \EMPH{triangulation} of $X$.
 \end{definition}
 
+We denote the vertices, edges and faces of a triangulated surface as $V, E$and $F$ respectively.
+Let $V_{bdy}$ denote vertices on the boundary of a surface and let $V_{int}$ 
+denote vertices that are not on the boundary.
+See \figref{triangulated-torus} for an example of a triangulated surface.
 Often, it is useful to approximate smooth surfaces with fine triangulations called
 a \emph{mesh}. We will see meshes in many of our applications.
+
+
+\begin{figure}[htb]
+\centering
+\includegraphics[width=.3\textwidth]{curvature/triangulated-torus}
+\caption{The Gauss-Bonnet theorem allowing bi-directional traffic
+between geometry and topology.}
+\label{fig:triangulated-torus}
+\end{figure}
 
 \subsection{Curvature}
 
 
 
-
-
 There are several ways to define curvature in the discrete setting \cite{Crane:2013},
-this definition will be used in the poof of the discrete Gauss-Bonnet in \secref{proof}.
+the  definition will be used in the poof of the discrete Gauss-Bonnet in \secref{proof}.
 
 ''For a discrete planar curve we can define the curvature at a vertex as the distance on the unit circle between the two adjacent normals'' \cite{Crane:2013}.
 
@@ -124,6 +150,22 @@ and let $\alpha_f$  denote the interior  angle of face $f$ at $v$, then
 $$d(v):=2\pi -\sum_{f\in F_v}\alpha_f.$$
 
 The angle defect is equal to the discrete curvature in \defref{discrete-curvature-vertex}.
+
+
+For a vertex $v$ on the boundary of a surface, we define the the curvature
+of $v$  to be $k_{bdy}(v)= \pi-\sum_{i}\alpha_f$.
+Notice that if $v$ lies on a straight line, then $\sum_{i}\alpha_f=\pi$
+and the curvature is $0$ as we would expect.
+For historical reasons,  we write $k_g(v)=k_{bdy}(v)$.
+
+Curvature is defined more naturally in the continuous setting,
+discrete curvature is an oxymoron.  See do Carmo \cite{doc76} for an introduction.
+The juxtaposition between the continuous and discrete versions of the theorem
+is pleasing.
+
+
+
+
 
 \subsection{The Euler Characteristic}
 
