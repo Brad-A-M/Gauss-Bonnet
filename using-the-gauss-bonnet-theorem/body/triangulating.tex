@@ -1,32 +1,46 @@
 \section{Triangulating Noncovex Polytopes}
 \label{sec:triangulating}
 
+A triangulation of a three-manifold is a decomposition
+of the manifold into tetrahedra.
+Often, we wish to represent the three-manifold
+with as few tetrahedra as possible \cite{simplify-mesh-1999}.
 
-Often, the mesh representing
-an object contains more triangles than is necessary. One then wishes to
-discard triangles without altering the geometry of the object \cite{simplify-mesh-1999}.
-In three dimensions, meshes consist of tetrahedra. 
-In \cite{triangulating-polytope-1990}, Chazell and Palios give an
-algorithm to triangulate a nonconvex three-dimensional polytope.
-The algorithm runs in $O(n+r^2)$ tetrahedra where $n$ is the number
-of vertices and $r$ is the number of reflex edges.
-
-A  \EMPH{polyhedron of genus $g$} is a combinatorial three-manifold with 
-boundary homeomorphic to a $g$ holed torus.
-For a genus $g$ polyhedron, it is natural to ask if one can 
-triangulate the manifold with fewer than $O(n+r^2)$ tetrahedra.
-
-
-Chazelle and Shouraboura us the 
- Gauss-Bonnet theorem shows that, any polyhedron
-can be triangulated with $O(n+r^2)$ tetrahedra, regardless  of 
-the genus! Moreover, this bound is tight \cite{tetra-bounds-c-s-1994}.
-Here is their application.
-
+A discrete tree-manifold is a called a simple polytope.
 Let $P$ be a a simple polytope. An edge $e$ in $P$ is
 \EMPH{reflex} the interior angle formed by its two incident faces
 is greater than $\pi$.
 A vertex is reflex is it is incident to a reflex edge.
+
+
+Chazelle and Shouraboura us the 
+ Gauss-Bonnet theorem shows that, any polytope
+can be triangulated with $O(n+r^2)$ tetrahedra, regardless  of 
+the genus! Moreover, this bound is tight \cite{tetra-bounds-c-s-1994}.
+
+
+Chazell and Palios give an
+algorithm to triangulate a nonconvex three-dimensional polyhedra with genus
+zero \cite{triangulating-polytope-1990}.
+Let $n$ be the number of vertices and $r$ the number of reflex edges,
+then their algorithm creates a triangulation with $O(n+r^2)$ tetrahedra 
+in $O(n\log r +r^2\log r)$ time using $O(n+r^2)$ space.
+Their algorithm first removes $n-4r$ non-reflex or flat vertices
+The create a polyhedron with $O(r)$ vertices.
+Then, vertical planes decompose the reduced polyhedra in to
+$O(r^2)$ convex cells.
+In \cite{7}, the authors give a polyhedra on $n$ vertices that requires
+$O(n^2)$ tetrahedra. Showing that, \emph{for genus zero} polyhedra
+the algorithm is tight.
+
+
+For a genus $g$ polyhedron, it is natural to ask if one can 
+triangulate the manifold with fewer than $O(n+r^2)$ tetrahedra.
+We now show how Gauss-Bonnet theorem is used to give a negative answer 
+ \cite{tetra-bounds-c-s-1994}.
+We first show a bound on the number of reflex edges
+in a surface of genus $g$.
+
 
 \begin{theorem}[Reflex Angles]\label{thm:reflex}
 
