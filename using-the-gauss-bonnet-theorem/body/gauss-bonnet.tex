@@ -5,7 +5,9 @@
 In this section, we prove the theorem.
 
 \subsection{Discrete 1}
-Nice discrete proof from \cite{upadhyay2015} and \cite{Crane:2013}.
+Nice discrete proof from \cite{upadhyay2015}.
+
+
 
 \begin{theorem}[Discrete surfaces without boundary]\label{thm:g-b-discete-bdy}
 For a combinatorial surface $S$ with no boundary
@@ -15,12 +17,15 @@ where $d(v)$ is the angle defect.
 \end{theorem}
 
 \begin{proof}
+
 For each vertex $v$ in $S$,
 let $\beta_1,\beta_2,\ldots,\beta_n$ denote the interior angles
 containing $v$.
-The angle defect equals the curvature which is also
-equal to the difference between $\sum_i \beta_i $ and $(n-2)\pi$. 
-So, $$d(v)=(2-n)\pi +\sum_{i=1}^n \beta_i.$$
+The curvature at vertex equals $(2-n)\pi +\sum_{i=1}^n \beta_i$.
+\todo{explain}
+
+The defect  at a vertex is equal to the curvature so,
+ $$d(v)=(2-n)\pi +\sum_{i=1}^n \beta_i.$$
 
 Let $n(v)$ denote the number of interior angles incident to $v$, the summing over all vertices gives
 $$\sum_{v\in V} d(v)=\sum_{v\in V}2\pi - \sum_{v\in V}n(v)\pi+\sum_{v\in V}\sum_{i=1}^n \beta_i.$$
@@ -31,7 +36,7 @@ We rearrange the angles in the third term,
 $$ \sum_{v\in V}\sum_{i=1}^n \beta_i=\sum_F\sum_{v\in F}(\pi-\alpha_f).$$
 Since we have a combinatorial surface, each face is a triangle,
 so $\sum_{v\in F}(\pi-\alpha_f)=3\pi-\pi=2\pi.$
-Thus, $\sum_{v\in V} d(v)=2\pi v-2\pi E+2\pi F=2\pi \chi(S)$ as desired.
+Thus, $$\sum_{v\in V} d(v)=2\pi V-2\pi E+2\pi F=2\pi \chi(S)$$ as desired.
 \end{proof}
 
 The above proof can be extended to the case where $S$ has a boundary

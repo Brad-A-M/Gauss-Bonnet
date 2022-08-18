@@ -152,11 +152,12 @@ The angle defect is equal to the discrete curvature in \defref{discrete-curvatur
 
 
 For a vertex $v$ on the boundary of a surface, we define the the curvature
-of $v$  to be $k_{bdy}(v)= \pi-\sum_{i}\alpha_f$.
+of $v$  to be 
+$$k_{bdy}(v)= \pi-\sum_{f\in F_vi}\alpha_f.$$
 Notice that if $v$ lies on a straight line, then $\sum_{i}\alpha_f=\pi$
 and the curvature is $0$ as we would expect.
-For historical reasons,  we write $k_g(v)=k_{bdy}(v)$.
-
+For historical reasons,  we write $k_g(v)=k_{bdy}(v)$
+where the subscript $g$ refers to geodesic curature.
 Curvature is defined more naturally in the continuous setting,
 discrete curvature is an oxymoron.  See do Carmo \cite{doc76} for an introduction.
 The juxtaposition between the continuous and discrete versions of the theorem
@@ -202,7 +203,7 @@ Thus, the total charge is two.
 The \EMPH{genus} of a surface is the maximum  number of closed simple
 non-intersecting curves that can be drawn in the surface without separating
 the surface.
-The torus in \figref{triangulated-torus} has genus one.
+The torus in \figref{triangulated-torus} has genus two.
 By the classification of surfaces, the Euler characteristic or an orientable surface
 is determined by its genus with $\chi=2-2g$.
 
