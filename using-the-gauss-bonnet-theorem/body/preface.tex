@@ -3,13 +3,13 @@
 
 This work contains a collection of applications of the 
 Discrete Gauss-Bonnet theorem.
-I hope that the list continues to grow.
-Please share any applications of the theorem that you feel
-ought to  be included.
+I hope that the number of applications continues to grow,
+please share any that you feel
+ought to  be included\footnote{\text{bradleymccoy@montana.edu}}.
 
 
-To begin, let's consider a familiar special case of the Gauss-Bonnet
-theorem.
+To get a sense of the types of problems we will encounter,
+let's consider a simple special case of the Gauss-Bonnet theorem.
 \begin{theorem}\label{thm:triangle}
 In the plane, the sum of the interior angles of a triangle is $\pi$.
 \end{theorem}
@@ -23,20 +23,19 @@ See \figref{angles} for an illustration.
 
 \begin{figure}[htb]
 \centering
-\includegraphics[width=.3\textwidth]{curvature/plane-case}
+\includegraphics[width=.3\textwidth]{sec-1-and-2/interior-angles-triangle}
 \caption{A proof that, in the plane, the sum of the angles of a triangle is $\pi$.}
 \label{fig:angles}
 \end{figure}
 
 \end{proof}
 
-This is remarkable because the sum of the angles of a triangle does not
+Note the sum of the angles of a triangle does not
 depend on certain properties of the  triangle, such as the orientation in the plane or
 the scale factor of the triangle.
-We will see that more general versions of the Gauss-Bonnet theorem allow us 
-to compute measurements independent of stretching and rotating.
 
-But even this simple version of the theorem is useful.
+
+Even this simple version of the theorem is useful.
 Consider any simple polygon $P$ on $n$ vertices. 
 What is the sum of the interior angles of $P$?
 One could measure each angle, but if $n$ is large they would eventually
@@ -52,10 +51,16 @@ the sum of the interior angles of $P$ is $(n-2)\pi$.
 
 \end{corollary}
 
-Now we do not need to measure any angles to find
+Now, we do not need to measure any angles to find
 the sum of  the interior angles of a polygon. We can simply
 count the vertices. What savings!
 
-
+This paper is organized as follows:
+in \secref{cast} we introduce definitions and notation that will be used
+throughout the paper and state the theorem,
+in \secref{proof}, we present a proof of the theorem, and in each of the remaining $n$
+sections we present an application of the theorem.
+In general, the sections containing applications are ordered from simpler to more technical,
+and are independent of each other.
 
 
