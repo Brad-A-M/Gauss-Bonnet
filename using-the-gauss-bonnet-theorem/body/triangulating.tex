@@ -6,8 +6,9 @@ of the manifold into tetrahedra.
 Often, we wish to represent the three-manifold
 with as few tetrahedra as possible \cite{simplify-mesh-1999}.
 
-A discrete tree-manifold is a called a simple polytope.
-Let $P$ be a a simple polytope. An edge $e$ in $P$ is
+A discrete tree-manifold is a called a \EMPH{polyhedron}. 
+A polyhedron is \EMPH{simple} if it does not intersect itself and is homeomorphic to the sphere.
+Let $P$ be a a simple polyhedron. An edge $e$ in $P$ is
 \EMPH{reflex} the interior angle formed by its two incident faces
 is greater than $\pi$.
 A vertex is reflex is it is incident to a reflex edge.
@@ -21,18 +22,20 @@ See \figref{reflex} for an example.
 \end{figure}
 
 
-Chazelle and Shouraboura us the 
- Gauss-Bonnet theorem shows that, any polytope
+Chazelle and Shouraboura use the 
+ Gauss-Bonnet theorem to show that, any polyhedron
+ of genus $g$ must have at least $g-1$ reflex edges.
+ This implies that any polyhedron
 can be triangulated with $O(n+r^2)$ tetrahedra, regardless  of 
-the genus! Moreover, this bound is tight \cite{tetra-bounds-c-s-1994}.
+the genus! Moreover, the bound is tight \cite{tetra-bounds-c-s-1994}.
 
 
 Chazell and Palios give an
 algorithm to triangulate a nonconvex three-dimensional polyhedra with genus
 zero \cite{triangulating-polytope-1990}.
 Let $n$ be the number of vertices and $r$ the number of reflex edges,
-then their algorithm creates a triangulation with $O(n+r^2)$ tetrahedra 
-in $O(n\log r +r^2\log r)$ time using $O(n+r^2)$ space.
+ their algorithm creates a triangulation with $O(n+r^2)$ tetrahedra 
+in $O(n\log r +r^2\log r)$ time and $O(n+r^2)$ space.
 Their algorithm first removes $n-4r$ non-reflex or flat vertices
 The create a polyhedron with $O(r)$ vertices.
 Then, vertical planes decompose the reduced polyhedra in to
