@@ -1,4 +1,4 @@
-\section{Triangulating Noncovex Polytopes}
+\section{Triangulating Noncovex Polyhedra}
 \label{sec:triangulating}
 
 A triangulation of a three-manifold is a decomposition
@@ -6,7 +6,7 @@ of the manifold into tetrahedra.
 Often, we wish to represent the three-manifold
 with as few tetrahedra as possible \cite{simplify-mesh-1999}.
 
-A discrete tree-manifold is a called a \EMPH{polyhedron}. 
+A discrete three-manifold is a called a \EMPH{polyhedron}. 
 A polyhedron is \EMPH{simple} if it does not intersect itself and is homeomorphic to the sphere.
 Let $P$ be a a simple polyhedron. An edge $e$ in $P$ is
 \EMPH{reflex} the interior angle formed by its two incident faces
@@ -40,9 +40,10 @@ Their algorithm first removes $n-4r$ non-reflex or flat vertices
 The create a polyhedron with $O(r)$ vertices.
 Then, vertical planes decompose the reduced polyhedra in to
 $O(r^2)$ convex cells.
-In \cite{7}, the authors give a polyhedra on $n$ vertices that requires
-$O(n^2)$ tetrahedra. Showing that, \emph{for genus zero} polyhedra
-the algorithm is tight.
+In the worst case, decomposing a polyhedron of genus
+zero into convex parts requires $\Omega(n^2)$ convex pieces
+\cite{chazelle-lower-1984}.
+Thus, the algorithm summarized above is tight.
 
 
 For a genus $g$ polyhedron, it is natural to ask if one can 
