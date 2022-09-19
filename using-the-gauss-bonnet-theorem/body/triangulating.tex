@@ -22,64 +22,29 @@ edge are reflex vertices.}
 \label{fig:reflex}
 \end{figure}
 
+Let $n$ be the number of vertices and $r$ the number of reflex edges.
+In the worst case, decomposing a polyhedron of genus
+zero into convex parts requires $\Omega(n^2)$ convex pieces
+\cite{chazelle-lower-1984}.
+Chazell and Palios give an
+algorithm to triangulate a nonconvex polyhedra with genus
+zero \cite{triangulating-polytope-1990}.
+ Their algorithm creates a refinement with $O(n+r^2)$ convex parts
+in $O(n\log r +r^2\log r)$ time and $O(n+r^2)$ space.
+The algorithm first removes $n-4r$ non-reflex or flat vertices
+to create a representation of the polyhedra with $O(r)$ vertices.
+Then, vertical planes decompose the reduced polyhedra in to
+$O(r^2)$ convex cells.
 
 Chazelle and Shouraboura use the 
  Gauss-Bonnet theorem to show that, any polyhedron
  of genus $g$ must have at least $g-1$ reflex edges.
  This implies that any polyhedron
-can be triangulated with $O(n+r^2)$ tetrahedra, regardless  of 
+can be decomposed with $O(n+r^2)$ convex parts, regardless  of 
 the genus! Moreover, the bound is tight \cite{tetra-bounds-c-s-1994}.
 
 
-Chazell and Palios give an
-algorithm to triangulate a nonconvex three-dimensional polyhedra with genus
-zero \cite{triangulating-polytope-1990}.
-Let $n$ be the number of vertices and $r$ the number of reflex edges,
- their algorithm creates a triangulation with $O(n+r^2)$ tetrahedra 
-in $O(n\log r +r^2\log r)$ time and $O(n+r^2)$ space.
-Their algorithm first removes $n-4r$ non-reflex or flat vertices
-The create a polyhedron with $O(r)$ vertices.
-Then, vertical planes decompose the reduced polyhedra in to
-$O(r^2)$ convex cells.
-In the worst case, decomposing a polyhedron of genus
-zero into convex parts requires $\Omega(n^2)$ convex pieces
-\cite{chazelle-lower-1984}.
-Thus, the algorithm summarized above is tight.
-
-
-For a genus $g$ polyhedron, it is natural to ask if one can 
-triangulate the manifold with fewer than $O(n+r^2)$ tetrahedra.
-We now show how Gauss-Bonnet theorem is used to give a negative answer 
- \cite{tetra-bounds-c-s-1994}.
-We first show a bound on the number of reflex edges
-in a surface of genus $g$.
-
-
-\begin{theorem}[Reflex Angles]\label{thm:reflex}
-
-Any polyhedron of genus $g$ must have 
-at least $g-1$ reflex dihedral angles. 
-
-\end{theorem}
-
-From \thmref{reflex}, it follows that any polyhedron
-with $n$ vertices and $r$ reflex angles
-can be triangulated with $O(n+r^2)$ tetrahedra 
-and the bound is tight. Notice that this result is independent
-of the genus.
-
-Let $T$ be a tetrahedra, here, the curvature at a vertex $k_v$ is defined to
-be the sum of the angle defect.
-The Euler characteristic of a polyhedron is determined by the genus,
-$\chi=2-2g$.
-Polyhedra do not have a 1-dimensional boundary, 
-so, the Gauss-Bonnet theorem,
-$$\sum_vk_v=2\pi (2-2g).$$
-
-We show that
-$$g\leq r+1.$$ 
-Then, \thmref{reflex} will be a consequence of the following
-lemma,
+First, we show 
 
 \begin{lemma}\label{lem:reflex-edge}
 The number of reflex edges  incident to a vertex $v$  is at least $-k_v.$
@@ -87,24 +52,29 @@ The number of reflex edges  incident to a vertex $v$  is at least $-k_v.$
 
 \begin{proof}
 
-Project the faces incident to $v$ onto a 2-sphere centered at $v$
-to obtain a ``polygon" $P$on the sphere made  of great circles.
-An edge in $T$ is reflex if and only if it gives  a reflex angle on $P$.
+For each vertex, center a 2-sphere at the vertex,
+see  \label{fig:sphere-on-vert} for an illustration.
+The intersection of the polyhedron and the sphere
+gives a `polygon' $P$ with boundary $L$ the sphere consisting of great
+circles. 
+Scale the sphere to be unit. Then, the length of each arc
+in $L$ is equal the the angle incident to $v$, so the total length of $L$ is
+the sum of the angles incident to $v$, see \figref{sphere}.
 
-Let $L$ be the length of the curve and $R$ is  number of reflex  angles.
-Then
+Let $r$ be the number of reflex edges incident to $v$.
+If $r$ is zero, then $P$ is convex and has non-negative curvature
+so $L\leq 2\pi$. If $r>0,$
+reflex edges incident to $v$ correspond to reflex angles in $P$.
+If we have a reflex angle in $P$, bisect it and reduce the 
+number of reflex angles and obtain a decomposition
+of the sphere into at most $R+1$ convex regions,
+thus $L\leq 2\pi(r+1)$.
 
-\begin{equation} \label{eqn:length-reflex}
-L\leq 2\pi (R+1)
-\end{equation}
-Note, if $R$ is zero then \eqnref{length-reflex}
-tells us that the curvature at a convex point is non-negative.
+Thus, we have $L=\sum \alpha_f$ and the curvature 
+$k_v=2\pi-\sum \alpha_f$ giving
+$L=2\pi(1-k_v)$. Combining this with $L\leq 2\pi(r+1)$
+gives $-k_v\leq r.$
 
-If $R\neq 0$, we draw arcs of great circles from each reflex point
-along the bisector of its reflex angle, and thus decompose the unit sphere
-into at most $R+1$ convex regions. (Convex here means
-great circles are contained in the region).
-Apply the $R=0$ case $R+1$ times.
 
 \end{proof}
 
@@ -121,9 +91,36 @@ Apply the $R=0$ case $R+1$ times.
         \caption{}
         \label{fig:sphere}
         \end{subfigure}\\
-		\caption{(a) A sphere around a reflex vertex. (b) The surface
-		intersecting the sphere.
+		\caption{(a) A sphere around a reflex vertex. (b) Where the polyhedron
+		intersects the sphere.
 		\label{fig:sphere}}
 \end{figure}
 
+
+Next, we show
+\begin{theorem}[Reflex Angles]\label{thm:reflex}
+
+Any polyhedron of genus $g$ must have 
+at least $g-1$ reflex dihedral angles. 
+
+\end{theorem}
+\begin{proof}
+Let $R$ be the total number of reflex edges in a polyhedra.
+By the classification of oriented surfaces, the Euler characteristic 
+ is determined by the genus, $\chi=2-2g$.
+By \lemref{reflex-edge}, $\sum_v -k_v\leq 2 R$ since each
+reflex edge is incident to two vertices.
+By the Gauss-Bonnet theorem $\sum_vk_v= 2-2g,$
+so $-2R\leq 2-2g$ and $g\leq R+1$ as desired.
+
+\end{proof}
+
+Given a polyhedron of genus $g$, we can temporally 
+insert a disk in each essential cycle, creating a polyhedron
+of genus zero, we can apply the algorithm to
+decompose genus zero polyhedra given in \cite{triangulating-polytope-1990}.
+Since we added $g$ disks the algorithm decomposes
+the polyhedron into $O(n+ (r+g)^2)$ tetrahedra.
+By \thmref{reflex}, $g\leq r+1$ showing that the bound
+is still $O(n+r^2)$ regardless of the genus.
 
