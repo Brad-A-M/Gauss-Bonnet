@@ -1,6 +1,8 @@
 \section{Triangulating Noncovex Polyhedra}
 \label{sec:triangulating}
 
+\todo{make sure $2\pi$ factor accounted for.}
+
 A triangulation of a three-manifold is a decomposition
 of the manifold into tetrahedra.
 Often, we wish to represent the three-manifold
@@ -36,12 +38,12 @@ to create a representation of the polyhedra with $O(r)$ vertices.
 Then, vertical planes decompose the reduced polyhedra in to
 $O(r^2)$ convex cells.
 
-Chazelle and Shouraboura use the 
- Gauss-Bonnet theorem to show that, any polyhedron
- of genus $g$ must have at least $g-1$ reflex edges.
+We share an application of the Gauss-Bonnet theorem
+given by Chazelle and Shouraboura to show any polyhedron
+ of genus $g$ must have at least $g-1$ reflex edges~\cite{tetra-bounds-c-s-1994}.
  This implies that any polyhedron
 can be decomposed with $O(n+r^2)$ convex parts, regardless  of 
-the genus! Moreover, the bound is tight \cite{tetra-bounds-c-s-1994}.
+the genus! Moreover, the bound is tight .
 
 
 First, we show 
@@ -52,7 +54,7 @@ The number of reflex edges  incident to a vertex $v$  is at least $-k_v.$
 
 \begin{proof}
 
-For each vertex, center a 2-sphere at the vertex,
+For each vertex, center a sphere at the vertex,
 see  \label{fig:sphere-on-vert} for an illustration.
 The intersection of the polyhedron and the sphere
 gives a `polygon' $P$ with boundary $L$ the sphere consisting of great
@@ -61,18 +63,18 @@ Scale the sphere to be unit. Then, the length of each arc
 in $L$ is equal the the angle incident to $v$, so the total length of $L$ is
 the sum of the angles incident to $v$, see \figref{sphere}.
 
-Let $r$ be the number of reflex edges incident to $v$.
-If $r$ is zero, then $P$ is convex and has non-negative curvature
-so $L\leq 2\pi$. If $r>0,$
+Let $R$ be the number of reflex edges incident to $v$.
+If $R$ is zero, then $P$ is convex and has non-negative curvature
+so $L\leq 2\pi$. If $R>0,$
 reflex edges incident to $v$ correspond to reflex angles in $P$.
 If we have a reflex angle in $P$, bisect it and reduce the 
 number of reflex angles and obtain a decomposition
 of the sphere into at most $R+1$ convex regions,
-thus $L\leq 2\pi(r+1)$.
+thus $L\leq 2\pi(R+1)$.
 
 Thus, we have $L=\sum \alpha_f$ and the curvature 
 $k_v=2\pi-\sum \alpha_f$ giving
-$L=2\pi(1-k_v)$. Combining this with $L\leq 2\pi(r+1)$
+$L=2\pi(1-k_v)$. Combining this with $L\leq 2\pi(R+1)$
 gives $-k_v\leq r.$
 
 
@@ -105,13 +107,13 @@ at least $g-1$ reflex dihedral angles.
 
 \end{theorem}
 \begin{proof}
-Let $R$ be the total number of reflex edges in a polyhedra.
+Let $r$ be the total number of reflex edges in a polyhedra.
 By the classification of oriented surfaces, the Euler characteristic 
  is determined by the genus, $\chi=2-2g$.
-By \lemref{reflex-edge}, $\sum_v -k_v\leq 2 R$ since each
+By \lemref{reflex-edge}, $\sum_v -k_v\leq 2 r$ since each
 reflex edge is incident to two vertices.
 By the Gauss-Bonnet theorem $\sum_vk_v= 2-2g,$
-so $-2R\leq 2-2g$ and $g\leq R+1$ as desired.
+so $-2r\leq 2-2g$ and $g\leq r+1$ as desired.
 
 \end{proof}
 
