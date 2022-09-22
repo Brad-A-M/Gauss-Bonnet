@@ -1,19 +1,24 @@
 \section{Triangulating Noncovex Polyhedra}
 \label{sec:triangulating}
 
-\todo{make sure $2\pi$ factor accounted for.}
-
+Discrete three-manifolds are called \EMPH{polyhedra}. 
+A polyhedron is \EMPH{simple} if it is homeomorphic to the sphere 
+and the faces are all polygons.
+Let $P$ be a a simple polyhedron.
 A triangulation of a three-manifold is a decomposition
-of the manifold into tetrahedra.
+of $P$ into tetrahedra.
 Often, we wish to represent the three-manifold
 with as few tetrahedra as possible \cite{simplify-mesh-1999}.
+Let $n$ be the number of vertices in a simple polyhedron,
+in the worst case, decomposing the $P$
+ into tetrahedra requires $\Omega(n^2)$ tetrahedra
+\cite{chazelle-lower-1984}.
 
-Discrete three-manifolds are called a \EMPH{polyhedra}. 
-A polyhedron is \EMPH{simple} if it does not intersect itself and is homeomorphic to the sphere.
-Let $P$ be a a simple polyhedron. An edge $e$ in $P$ is
-\EMPH{reflex} the interior angle formed by its two incident faces
+ An edge $e$ in $P$ is
+\EMPH{reflex} if the interior angle formed by its two incident faces
 is greater than $\pi$.
 A vertex is reflex is it is incident to a reflex edge.
+Let $r$ denote the number of reflex edges.
 See \figref{reflex} for an example.
 
 \begin{figure}[htb]
@@ -23,29 +28,23 @@ See \figref{reflex} for an example.
 edge are reflex vertices.}
 \label{fig:reflex}
 \end{figure}
-
-Let $n$ be the number of vertices and $r$ the number of reflex edges.
-In the worst case, decomposing a polyhedron of genus
-zero into convex parts requires $\Omega(n^2)$ convex pieces
-\cite{chazelle-lower-1984}.
 Chazell and Palios give an
-algorithm to triangulate a nonconvex polyhedra with genus
-zero \cite{triangulating-polytope-1990}.
- Their algorithm creates a refinement with $O(n+r^2)$ convex parts
+algorithm to triangulate a nonconvex simple polyhedra \cite{triangulating-polytope-1990}.
+ Their algorithm creates a refinement with $O(n+r^2)$ tetrahedra
 in $O(n\log r +r^2\log r)$ time and $O(n+r^2)$ space.
 The algorithm first removes $n-4r$ non-reflex or flat vertices
 to create a representation of the polyhedra with $O(r)$ vertices.
 Then, vertical planes decompose the reduced polyhedra in to
 $O(r^2)$ convex cells.
 
-We share an application of the Gauss-Bonnet theorem
-given by Chazelle and Shouraboura to show any polyhedron
+Chazelle and Shouraboura use the Gauss-Bonnet theorem to show any polyhedron
  of genus $g$ must have at least $g-1$ reflex edges~\cite{tetra-bounds-c-s-1994}.
  This implies that any polyhedron
-can be decomposed with $O(n+r^2)$ convex parts, regardless  of 
-the genus! Moreover, the bound is tight .
+can be decomposed with $O(n+r^2)$ tetrahedra, regardless  of 
+the genus!  We present their application.
 
-
+In this application, to simplify computation we scale the curvature of a vertex
+by $\frac{1}{2\pi}$, so be $k_v=\frac{1}{2\pi}\left(2\pi-\sum_i \alpha_i\right)$,
 First, we show 
 
 \begin{lemma}\label{lem:reflex-edge}
@@ -55,11 +54,11 @@ The number of reflex edges  incident to a vertex $v$  is at least $-k_v.$
 \begin{proof}
 
 For each vertex, center a sphere at the vertex,
-see  \label{fig:sphere-on-vert} for an illustration.
+see \figref{sphere-on-vert}.
 The intersection of the polyhedron and the sphere
-gives a `polygon' $P$ with boundary $L$ the sphere consisting of great
+gives a `polygon' on the sphere with boundary $L$ consisting of great
 circles. 
-Scale the sphere to be unit. Then, the length of each arc
+Scale the sphere to have unit radius. Then, the length of each arc
 in $L$ is equal the the angle incident to $v$, so the total length of $L$ is
 the sum of the angles incident to $v$, see \figref{sphere}.
 
@@ -93,8 +92,8 @@ gives $-k_v\leq r.$
         \caption{}
         \label{fig:sphere}
         \end{subfigure}\\
-		\caption{(a) A sphere around a reflex vertex. (b) Where the polyhedron
-		intersects the sphere.
+		\caption{(a) A sphere centered at a reflex vertex. (b) The `polygon'
+		of great circles where the polyhedron intersects the sphere. 
 		\label{fig:sphere}}
 \end{figure}
 
@@ -118,11 +117,13 @@ so $-2r\leq 2-2g$ and $g\leq r+1$ as desired.
 \end{proof}
 
 Given a polyhedron of genus $g$, we can temporally 
-insert a disk in each essential cycle, creating a polyhedron
-of genus zero, we can apply the algorithm to
+duplicate the vertices around each essential cycle and insert disks,
+ creating a polyhedron of genus zero, we theb apply the algorithm to
 decompose genus zero polyhedra given in \cite{triangulating-polytope-1990}.
+Then remove the added disks.
 Since we added $g$ disks the algorithm decomposes
 the polyhedron into $O(n+ (r+g)^2)$ tetrahedra.
-By \thmref{reflex}, $g\leq r+1$ showing that the bound
-is still $O(n+r^2)$ regardless of the genus.
+By \thmref{reflex}, $g\leq r+1$ showing that the upper bound
+on the number of tetrahedra in a triangulation
+of a polyhedra is $O(n+r^2)$ regardless of the genus.
 
