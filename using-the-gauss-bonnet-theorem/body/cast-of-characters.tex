@@ -5,7 +5,7 @@
 
 
 Given a shape $S$, a topological property of $S$ is a global property that does
-not change when $S$ is stretched or bent
+not change when $S$ is stretched or bent.
 A geometric property of $S$, is a local property that can computed at each point in $S$.
 The Discrete Gauss-Bonnet theorem is a bridge between topological
 and geometric information, see \figref{bridge}. This bridge can be traversed in both directions.
@@ -124,10 +124,35 @@ a \emph{mesh}. We will see meshes in many of our applications.
 
 \subsection{Curvature}
 
-
-
 There are several ways to define curvature in the discrete setting \cite{Crane:2013}.
-For a discrete planar curve we can define the curvature at a vertex as the distance on the unit circle between the two adjacent normals'' \cite{Crane:2013}.
+We present two of them here. 
+A spherical \EMPH{lune} is the area on a sphere bounded by two half great circles.
+
+
+\begin{lemma}[Area of Spherical Triangle]\label{lem:spherical-triangle}
+On the unit sphere, the area of a triangle with interior angles $\alpha_1, \alpha_2, \alpha_3$
+is $A=(\alpha_1+\alpha_2+\alpha_3-\pi)$
+\end{lemma}
+
+\begin{proof}
+Any two edges of the the triangle form a lune. The collection of 
+all three lunes covers the entire sphere with triangle and the antipodal triangle
+are covered three times. The surface area of the unit sphere is $4\pi$.
+On the unit sphere, the area of a lune is proportional to the angle formed
+by the great circles, $A_\alpha=2\alpha$.
+Thus, $4\pi=2(2\alpha_1+2\alpha_2+2\alpha_3)-6A+2A$
+and $A=(\alpha_1+\alpha_2+\alpha_3-\pi)$.
+\end{proof}
+
+As in the plane, any polygon on the sphere with $n$ vertices can be decomposed
+into $n-2$ triangles. This gives a formula for the area of a polygon
+
+\begin{corollary}\label{cor:sphere-area}
+On the unit sphere, the area of a polygon with interior angles
+$\beta_1,\beta_2,\ldots, \beta_n$
+is $$A=(2-n)\pi +\sum_{i=1}^n \beta_i.$$
+
+\end{corollary}
 
 \begin{definition}[Discrete Gaussian curvature \cite{upadhyay2015}]\label{def:discrete-curvature-vertex}
 
@@ -142,6 +167,8 @@ The discrete \EMPH{Gaussian curvature} at a vertex $v$ is the area on the unit s
 \caption{The discrete curvature at vertex $v$ is the area drawn on the sphere.}
 \label{fig:discrete-curvature}
 \end{figure}
+
+
 
 The \EMPH{angle defect} at a vertex $d(v)$ is the difference between $2\pi$ and
 the sum of the incident angles.  Let $F_v$ denote the faces containing $v$  
