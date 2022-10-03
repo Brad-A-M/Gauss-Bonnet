@@ -5,10 +5,7 @@ Homotopy classes of curves are important  because...
 In this section, we share applications
 where the Gauss-Bonnet theorem is used to determine
 if curve on a surface is contractible.
-
-
-
-A beautiful explanation of this algorithm is given in a video lecture 
+An explanation of this algorithm is given in a video lecture 
 by Jeff Erickson \cite{erickson-lecture}.
 
 \begin{figure}[htb]
@@ -18,10 +15,26 @@ by Jeff Erickson \cite{erickson-lecture}.
 \label{fig:contractable}
 \end{figure}
 
+In this application, we will use a modified version
+of the Gauss-Bonnet theorem. Given a combinatorial surface
+$S$ define the curvature of a face to be $k(f)=1-\sum \beta_f$,
+$k(v)=1-\frac{1}{2}\deg(v)+\sum_{v\in V} \alpha_v$.
+Summing over all faces and vertices in $S$ gives,
+\begin{theorem}[Modified Gauss-Bonnet]\label{thm:modify-g-b}
+For a combinatorial surface $S$,
+$\sum_{f\in F} k(f)+\sum_{v\in V}k(v)=\chi(S).$
+\end{theorem}
+
+\begin{proof}
+
+$$\sum_{f\in F} k(f)+\sum_{v\in V}k(v)=|F|-\sum_{v\in V}\alpha_v + |V|-|E|+\sum_{v\in V}\alpha_v=\chi(S).$$
+\end{proof}
+
+
 Here, a we have a combinatorial surface that we call a map denoted $S$
 with genus $g\geq 2.$ The case $g=0$ is the sphere where every curve
 is contractible and when $g=1$ contractibility can be determined by a counting
-argument.
+argument\todo{explain}.
 A curve is a closed walk, given as alternating sequence of vertices
 and edges in $S$.
 A \EMPH{homotopy} between two closed curves $\gamma_1$ and $\gamma_2$ that 
@@ -71,13 +84,11 @@ If $g\geq 2,$ then any nontirival closed walk has either a spur
 or $4g-2$ consecutive edges on the boundary of a face.
 \end{lemma}
 \begin{proof}
-Sketch: Gauss-Bonnet Theorem.
-Define curvature $k(f)=1-\sum \alpha{a}$,
-$k(v)=1-\frac{1}{2}\deg(v)+\sum_{v\in V} \alpha(\epsilon)$.
-Since we are on the disk, by the Gauss-Bonnet theorem
+Sketch: 
+Any nontrival closed walk bounds a disk $D$ with $\chi(D)=1$, by the Gauss-Bonnet theorem
 $$\sum_v k(v)+\sum_f k(f) =1.$$
 
-Each face has $4g$ edges, each internal  vertex has degree $4g$
+Each face has $4g$ edges, each internal vertex has degree $4g$
 and each  boundary vertex  has degree less than $4g$.
 The angle of each angle on a face  is $\frac{1}{4}$,
 thus, $k(f)=1-g<0,$ for internal vertices  $k(v)=1-g<0$ and for all
@@ -87,9 +98,11 @@ flats,  where $k(v)=0$  and concave where $k(v)<0$.
 
 By G-B, $$|F|(1-g)+|v_{convex}|\frac{1}{4}\geq 1$$
 and 
-$$|v_{convex}|\geq (4g-4)|F|+1.$$
-Thus, the expected number of convex vertices is at least
-$4g-4$, some face must have  $4g-3$ consecutive edges in the walk.
+$$|v_{convex}|\geq (4g-4)|F|+4.$$
+
+We divide by $|F|$ to determine the average number
+of convex vertices per face to be greater than $4g-4$.
+Thus, there exists some face that has $4g-3$ consecutive edges in the walk.
 \end{proof}
 
 This gives an algorithm for determining if a walk is closed in the universal
