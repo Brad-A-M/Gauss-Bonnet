@@ -174,10 +174,8 @@ The discrete \EMPH{Gaussian curvature} at a vertex $v$ is the area on the unit s
 
 \corref{sphere-area} gives a formula for computing the curvature at a vertex, provided
 we know the interior angles of the polygon on the sphere.
-These angles can be computed from the angles incident to $v$ to
-obtain an even more convenient formula for computing curvature.
-The interior angles of of the polygon $\beta_i$ is supplementary to
-the angle $\alpha_i$ incident to $v$.
+The interior angles of the polygon $\beta_i$ on the sphere are supplementary to
+the angle $\alpha_i$ incident to $v$ in the surface.
 See \figref{switcheroo} for a visual proof.
 
 
@@ -189,13 +187,17 @@ the interior angles of the area polygon on the sphere.}
 \label{fig:switcheroo}
 \end{figure}
 
-
+This gives a convenient formula for computing the curvature at a vertex.
 The \EMPH{angle defect} at a vertex $d(v)$ is the difference between $2\pi$ and
 the sum of the incident angles.  Let $F_v$ denote the faces containing $v$  
 and let $\alpha_f$  denote the interior  angle of face $f$ at $v$, then
 $$d(v):=2\pi -\sum_{f\in F_v}\alpha_f.$$
 
-The angle defect is equal to the discrete curvature in \defref{discrete-curvature-vertex}.
+Since $\beta_i=\pi-\alpha_i$, we have the Gaussian curvature at $v$
+is 
+$$k(v)=2\pi -n\pi+\sum_{i}^n \beta_i=2\pi-n\pi +n\pi -\sum_i^n\alpha_i=d(v)$$
+ and the
+ angle defect is equal to the discrete curvature in \defref{discrete-curvature-vertex}.
 
 
 For a vertex $v$ on the boundary of a surface, we define the the curvature
