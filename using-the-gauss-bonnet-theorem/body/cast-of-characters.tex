@@ -1,28 +1,17 @@
 
 \label{sec:cast}
-\input{body/warm-up}
-
-Given a shape $S$, a topological property of $S$ is a global property that does
-not change when $S$ is stretched or bent.
-A geometric property of $S$, is a local property that can computed at each point in $S$.
-The Discrete Gauss-Bonnet theorem is a bridge between topological
-and geometric information, see \figref{bridge}. This bridge can be traversed in both directions.
-That is, if one has geometric information one can deduce topological information and
-if one has topological information one can deduce geometric information.
-In symbols, the theorem can be stated as follows
+The Gauss-Bonnet Theorem states
 
 \begin{equation} \label{eqn:g-b}
-\int_{v\in V_{int}} K dA + \int_{v\in V_{\partial S}} k_g ds = 2\pi \chi(S).
+\sum_{v\in V_{int}} K(v) + \sum_{v\in V_{\partial S}} k_g(v) = 2\pi \chi(S).
 \end{equation}
 In this section, we define these symbols.
 
-\begin{figure}[htb]
-\centering
-\includegraphics[width=.3\textwidth]{curvature/bridge}
-\caption{The Gauss-Bonnet theorem allowing bi-directional traffic
-between geometry and topology.}
-\label{fig:bridge}
-\end{figure}
+
+\input{body/warm-up}
+
+
+
 
 \subsection{Preliminaries}
 

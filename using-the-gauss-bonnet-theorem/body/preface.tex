@@ -12,9 +12,33 @@ Several applications of the continuous version of the theorem
 are given in \cite{doc76}.
 For applications of the Gauss-Bonnet theorem in physics see \cite{tirado-physics-apps}.
 
+
+Given a shape $S$, a topological property of $S$ is a global property that does
+not change when $S$ is stretched or bent.
+A geometric property of $S$, is a local property that can computed at each point in $S$.
+The Discrete Gauss-Bonnet theorem is a bridge between topological
+and geometric information, see \figref{bridge}. This bridge can be traversed in both directions.
+That is, if one has geometric information one can deduce topological information and
+if one has topological information one can deduce geometric information.
+In symbols, the theorem can be stated as follows
+
+\begin{equation} \label{eqn:g-b}
+\sum_{v\in V_{int}} K(v) + \sum_{v\in V_{\partial S}} k_g(v) = 2\pi \chi(S).
+\end{equation}
+We define these symbols in \secref{cast}.
+
+
+\begin{figure}[htb]
+\centering
+\includegraphics[width=.3\textwidth]{curvature/bridge}
+\caption{The Gauss-Bonnet theorem allowing bi-directional traffic
+between geometry and topology.}
+\label{fig:bridge}
+\end{figure}
+
 This work is inspired by Matou\v{s}ek's book \emph{Using the Borsuk-Ulam Theorem}
 \cite{jm08}.
-In the book Matou\v{s}ek' states that a theorem is a great theorem if there are
+Matou\v{s}ek states that a theorem is a great theorem if there are
 \begin{enumerate}[(1)]
 \item several different equivalent versions,
 \item many different proofs,
@@ -25,8 +49,8 @@ In the book Matou\v{s}ek' states that a theorem is a great theorem if there are
 By this standard, the Gauss-Bonnet theorem is a great theorem.
 For (1), will state several different versions of the theorem throughout this paper.
 As for (2), several proofs exist.
-For (3), on example of a generlization is the celebrated Atiyah–Singer index 
-theorem is a celebrated example \cite{atiyah_index_1963}.
+For (3), one example of a generalization is the celebrated Atiyah–Singer index 
+theorem \cite{atiyah_index_1963}.
 This work is dedicated to (4).
 
 This paper is organized as follows:
