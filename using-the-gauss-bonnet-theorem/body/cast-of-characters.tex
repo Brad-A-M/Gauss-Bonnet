@@ -157,7 +157,7 @@ is $$A=(2-n)\pi +\sum_{i=1}^n \beta_i.$$
 For a vertex in a discrete surface, the Gaussian curvature is defined as
 follows
 
-\begin{definition}[Discrete Gaussian curvature \cite{upadhyay2015}]\label{def:discrete-curvature-vertex}
+\begin{definition}[Discrete Gaussian curvature]\label{def:discrete-curvature-vertex}
 
 The discrete \EMPH{Gaussian curvature} at a vertex $v$ is the area on the unit sphere bounded by a spherical polygon whose vertices are the unit normals of the faces around $v$.
 
@@ -175,8 +175,14 @@ The discrete \EMPH{Gaussian curvature} at a vertex $v$ is the area on the unit s
 \corref{sphere-area} gives a formula for computing the curvature at a vertex, provided
 we know the interior angles of the polygon on the sphere.
 The interior angles of the polygon $\beta_i$ on the sphere are supplementary to
-the angle $\alpha_i$ incident to $v$ in the surface.
-See \figref{switcheroo} for a visual proof.
+the angle $\alpha_i$ incident to $v$ in the surface
+
+\begin{equation} \label{eqn:switcheroo}
+\beta=\pi-\alpha.
+\end{equation}
+See \figref{switcheroo} for an example.
+
+
 
 
 \begin{figure}[htb]
@@ -186,6 +192,9 @@ See \figref{switcheroo} for a visual proof.
 the interior angles of the area polygon on the sphere.}
 \label{fig:switcheroo}
 \end{figure}
+
+
+
 
 This gives a convenient formula for computing the curvature at a vertex.
 The \EMPH{angle defect} at a vertex $d(v)$ is the difference between $2\pi$ and
