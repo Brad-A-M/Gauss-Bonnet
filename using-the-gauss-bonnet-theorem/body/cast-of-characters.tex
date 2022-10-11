@@ -2,106 +2,55 @@
 \label{sec:cast}
 The Gauss-Bonnet Theorem states
 
-\begin{equation} \label{eqn:g-b}
-\sum_{v\in V_{int}} K(v) + \sum_{v\in V_{\partial S}} k_g(v) = 2\pi \chi(S).
-\end{equation}
+\begin{theorem}[The Gauss-Bonnet Theorem] \label{thm:g-b}
+
+$$\sum_{v\in V_{int}} K(v) + \sum_{v\in V_{\partial S}} k_g(v) = 2\pi \chi(S)$$
+where $S$ is a triangulation, $K(v)$ is the discrete Gaussian curvature
+of a vertex, $k_g(g)$ is the discrete geodesic curvature and
+$\chi$ is the Euler characteristic.
+\end{theorem}
 In this section, we define these symbols.
 
 
 \input{body/warm-up}
 
 
+\subsection{Triangulations and The Euler Characteristic}
 
-
-\subsection{Triangulations}
-
-Here we define simplicial complexes and triangulations.
+We assume the reader is familiar with the notions
+of topological spaces, manifolds and simplicial complexes.
 Most introductory topology texts has contain these definitions \cite{munkres,jm08}.
-
-\begin{definition}[Topological Space \cite{munkres}]
-A \EMPH{topology} is a pair $(X,\tau)$, where $X$ is a set and
- $\tau$ is a collection of subsets $X$
-satisfying:
-	\begin{itemize}
-		\item $\emptyset$ and $X$ are in $\tau.$
-		\item the union of \emph{any} subcollection of elements in $\tau$ is  in $\tau.$
-		\item the intersection of any \emph{finite} subcollection of elements in the $\tau$ is in $\tau.$
-	\end{itemize}
-A set $X$ with a specified topology $\tau$ is called a \EMPH{topological space}.
-\end{definition}
-
-We will work with a special type of topological spaces called manfiolds.
-
-\begin{definition}[Manifold  \cite{tu2011}]
-	A topological space $M$ is \EMPH{locally Euclidean of dimension $n$}
-	if every point $p$ in $M$ has a neighborhood $U$ such that there is  a
-	homeomorphism  $\phi$ from $U$ into and open  subset of $\R^n$.
-	We call the pair $(U,\phi: U\to \R^n)$ a \EMPH{chart}, $U$ a \EMPH{coordinate neighborhood}
-	and  $\phi$ a \EMPH{coordinate map}. 
-A \EMPH{manifold} is a Hausdorff, second countable, locally Euclidean space.
-\end{definition}
-
-We will  consider two and three dimensional manifolds. Two dimensional
-manifolds are called \emph{surfaces}.
-The symbol $S$ in \eqnref{g-b} is a surface.
-In order to perform computations on our manifolds, 
-we often want a triangulation of our manifolds.
-To define triangulations we need some preliminary definitions.
+The applications we will encounter will be a triangulated surfaces
+called a \emph{meshs}, in one application the surface will contain its interior.
 
 
-
-\begin{definition}[Independent Points]
-Let $v_0,v_1,\ldots,v_k$ be points in $\R^n$. We call them \EMPH{affinely dependent}
-if there are real numbers $\alpha_0,\alpha_1,\ldots,\alpha_k$, not all 0, such that
-$\Sigma_{i=0}^k \alpha_iv_i=0$ and $\Sigma_{i=0}^k \alpha_i=0.$
-Otherwise,  $v_0,v_1,\ldots,v_k$ are \EMPH{affinely independent}.
-
-\end{definition}
-
-\begin{definition}[Simplices]
-A \EMPH{simplex} $\sigma$ is the convex hull of a finite affinely independent
-set $A$ in $\R^n$. The points in  $A$ are  called vertices, the dimension
-of  $\sigma$ is $|A|-1$.  The convex hull of a subset of vertices of a simplex
-$\sigma$ is a \EMPH{face} of $\sigma$.
-\end{definition}
-
-\begin{definition}[Simplicial Complex]
-A nonempty family $C$ of simplices is a \EMPH{simplicial complex} if the following
-are satisfied:
-\begin{itemize}
-\item  Each face of any simplex is a simplex.
-\item The intersection of $\sigma_1 \cap \sigma_2$ is a face of both $\sigma_1$ and 
-$\sigma_2$.
-\end{itemize}
-
-
-\end{definition}
-
-Some simplicial complexes are very similar to others.
-
-
-\begin{definition}[Homeomorphism]
-A  \EMPH{homeomorphism}  of topological spaces $(X_1,\tau_1$ and $(X_2,\tau_2)$
-is a bijection $\phi:X_1\to X_2$ such that for every $\phi$ and $\phi^{-1}$ are continuous.
-\end{definition}
-For two topological spaces $X$ and $Y$ if there exists a  homeomorphism between
-$X$ and $Y$ we say $X$ and $Y$ are topologically  equivalent and write  $X\cong Y.$
-
-Manifolds can have a boundary denoted $\partial(M)$.
-The dimension of $\partial(M)$ is one less than the dimension of $M$ .
-We are ready to define a triangulation.
-
-\begin{definition}[Triangulation]
-For a topological space $X$ and simplicial complex $C$ if $X\cong C$,
-then $C$  is a \EMPH{triangulation} of $X$.
-\end{definition}
-
-We denote the vertices, edges and faces of a triangulated surface as $V, E$ and $F$ respectively.
-Let $V_{\partial}$ denote vertices on the boundary of a surface and let $V_{int}$ 
+We denote the set of vertices, edges and faces in a triangulated surface as 
+$V, E$ and $F$ respectively.
+Let $\partial(V)$ denote vertices on the boundary of a surface and let $V_{int}$ 
 denote vertices that are not on the boundary.
 See \figref{triangulated-torus} for an example of a triangulated surface.
-Often, it is useful to approximate smooth surfaces with fine triangulations called
-a \emph{mesh}. We will see meshes in many of our applications.
+
+
+
+The \EMPH{Euler Characteristic} for surfaces $\chi$ is the 
+the number of vertices minus the number of edges plus  the number of faces, $\chi=V-E+F.$
+In higher dimensions, for a triangulated space $X$ the Euler characteristic is 
+$\chi(X)=k_0-k_1+k_2-k_3+\ldots$ where $k_n$ is the number of simplices of dimension $n.$
+Our applications will use the Euler characteristic of triangulated two spheres and disks.
+The Euler characteristic of a disk is one, a filled in triangle has three vertices three
+edges and one face.
+The Euler characteristic of a triangulated sphere is $2$, Eppstein maintains a 
+collection of proofs of this \cite{eppstein-proofs}. 
+
+
+
+The \EMPH{genus} of a surface is the maximum number of closed simple
+non-intersecting curves that can be drawn in the surface without separating
+the surface.
+The torus in \figref{triangulated-torus} has genus one.
+By the classification of surfaces \cite{munkres}, the Euler characteristic or an orientable surface
+is determined by its genus with $\chi=2-2g$.
+
 
 
 \begin{figure}[htb]
@@ -117,8 +66,6 @@ There are several ways to define curvature in the discrete setting \cite{Crane:2
 We present two of them here. 
 
 
-
-
 For a vertex in a discrete surface, the Gaussian curvature is defined as
 follows
 
@@ -132,7 +79,9 @@ The discrete \EMPH{Gaussian curvature} at a vertex $v$ is the area on the unit s
 \begin{figure}[htb]
 \centering
 \includegraphics[width=.5\textwidth]{curvature/discrete-curvature}
-\caption{The discrete curvature at vertex $v$ is the area drawn on the sphere.}
+\caption{Consider the vertex $v$ on the left. The curvature of $v$
+is the area on the sphere shown on the right. We rotated the sphere
+in order to see the entire polygon.}
 \label{fig:discrete-curvature}
 \end{figure}
 
@@ -188,49 +137,7 @@ is pleasing.
 
 
 
-
-
-\subsection{The Euler Characteristic}
-
-Properties of topological spaces that remain unchanged by homeomorphisms are called
-\EMPH{topological invariants}. One such invariant is the Euler characteristic.
-Originally defined for polyhedra, the \EMPH{Euler Characteristic} for surfaces $\chi$ is the 
-the number of vertices minus the number of edges plus  the number of faces, $\chi=V-E+F.$
-In higher dimensions, for a triangulated space $X$ the Euler characteristic is 
-$\chi(X)=k_0-k_1+k_2-k_3+\ldots$ where $k_n$ is the number of simplices of dimension $n.$
-A  graph  is \EMPH{planar} if it can be drawn in the plane with intersections only occuring
-at vertices.
-For a planar graphs $V-E+F=2$, Eppstein maintains a collection of proofs of this \cite{eppstein-proofs}.
-We include the the following proof from Eppstein's list attributed to Thurston
- \cite{thurston}. For any planar graph we can map the graph on to the two sphere
- using stereographic projection.
- 
-\begin{theorem}[Euler Characteristic for Planar Graphs]\label{thm:euler}
-For any planar graph on the 2-sphere we have $V-E+F=2.$
-\end{theorem}
-
-\begin{proof}
-If needed, perturb the triangulation so that the north and south poles are 
-inside of a two faces and there are no vertical edges. At each vertex place a unit positive
-charge, at the center of each edge place a unit negative charge and put a unit positive
-charge in the middle of each face. Slam the sphere on the ground so that all charges
-on the edges and vertices are moved into the face below them. For faces that do not contain a pole
-the net charge will be zero, the northern boundary consists of an alternating sequence
-of edges and vertices  beginning  and ending with an edge.
-The face containing the north pole has a unit positive charge, and the face containing the south
-pole contains positive four units of charge and negative three units of charge.
-Thus, the total charge is two.
-
-\end{proof}
-
-The \EMPH{genus} of a surface is the maximum  number of closed simple
-non-intersecting curves that can be drawn in the surface without separating
-the surface.
-The torus in \figref{triangulated-torus} has genus two.
-By the classification of surfaces, the Euler characteristic or an orientable surface
-is determined by its genus with $\chi=2-2g$.
-
-Putting all of these variables together gives \eqnref{g-b}.
+Putting all of these variables together gives \thmref{g-b}.
 The  Gauss-Bonnet theorem is  telling us, if we add up curvature
 at each vertex the sum will be $2\pi$ times to Euler characteristic.
 If we can compute the curvature at every vertex then we can use the theorem

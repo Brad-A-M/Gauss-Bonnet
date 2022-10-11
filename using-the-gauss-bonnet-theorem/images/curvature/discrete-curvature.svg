@@ -18,7 +18,7 @@
    version="1.1"><metadata
      id="metadata839"><rdf:RDF><cc:Work
          rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
-           rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title /></cc:Work></rdf:RDF></metadata><defs
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title></dc:title></cc:Work></rdf:RDF></metadata><defs
      id="defs837"><inkscape:path-effect
        only_selected="false"
        apply_with_weight="true"
@@ -233,23 +233,23 @@
        id="path1871"
        style="fill:none;fill-opacity:0.991202;fill-rule:evenodd;stroke:#000000;stroke-width:2.8367;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0" /><path
        sodipodi:nodetypes="cccccscsc"
-       inkscape:original-d="m 505.60623,206.34423 c 0,0 6.84605,21.59361 10.51196,33.16104 -1.93241,11.91652 -5.54213,34.16593 -5.54213,34.16593 0,0 -33.79378,8.70815 -50.69225,13.06344 -17.22838,-4.69025 -51.68622,-14.06832 -51.68622,-14.06832 0,0 -3.64383,-22.44304 -5.46681,-33.66349 3.14827,-10.88691 9.44268,-32.6586 9.44268,-32.6586 0,0 31.8076,-6.02999 47.71035,-9.04392 15.24151,3.01393 45.72242,9.04392 45.72242,9.04392 z"
+       inkscape:original-d="m 511.60623,192.84423 c 0,0 2.93892,30.38474 4.51196,46.66104 -1.93241,11.91652 -5.54213,34.16593 -5.54213,34.16593 0,0 -33.79378,8.70815 -50.69225,13.06344 -17.22838,-4.69025 -51.68622,-14.06832 -51.68622,-14.06832 0,0 -3.64383,-22.44304 -5.46681,-33.66349 1.6483,-15.88688 4.94268,-47.6586 4.94268,-47.6586 0,0 34.8077,-6.03004 52.21035,-9.04392 17.24151,3.51388 51.72242,10.54392 51.72242,10.54392 z"
        inkscape:path-effect="#path-effect1915"
        id="path1913"
-       d="m 505.60623,206.34423 c 3.50399,11.05368 6.8452,21.59388 7.71209,33.33567 0.86688,11.7418 -0.89488,22.60266 -2.74226,33.9913 -16.89742,4.35448 -33.79365,8.70866 -50.85725,8.54135 -17.06361,-0.16731 -34.29248,-4.85679 -51.52122,-9.54623 -1.82227,-11.22116 -3.64463,-22.44291 -2.98182,-33.49672 0.66281,-11.05381 3.81013,-21.93917 6.95769,-32.82537 15.90345,-3.01464 31.80771,-6.02943 47.3797,-6.0293 15.572,1.3e-4 30.81226,3.01466 46.05307,6.0293 z"
+       d="m 511.60623,192.84423 c 1.50399,15.55368 2.93811,30.38482 2.75854,44.48114 -0.17957,14.09633 -1.94133,24.95719 -3.78871,36.34583 -16.89742,4.35448 -33.79365,8.70866 -50.85725,8.54135 -17.06361,-0.16731 -34.29248,-4.85679 -51.52122,-9.54623 -1.82227,-11.22116 -3.64463,-22.44291 -3.7319,-35.99667 -0.0873,-13.55377 1.56021,-29.43922 3.20777,-45.32542 17.40345,-3.01464 34.8078,-6.02944 52.12974,-5.7793 17.32194,0.25013 34.56222,3.76466 51.80303,7.2793 z"
        style="fill:#050480;fill-opacity:0.16;stroke:#000000;stroke-width:2.68986;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" /><ellipse
        transform="scale(1,-1)"
        style="fill:#050403;fill-opacity:0.991202;fill-rule:evenodd;stroke:#000000;stroke-width:1.81793;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0"
        id="path1158-4"
-       cx="412.08994"
-       cy="-206.59573"
+       cx="407.68546"
+       cy="-193.35088"
        rx="4.7160344"
        ry="4.7160339" /><ellipse
        transform="scale(1,-1)"
        style="fill:#050403;fill-opacity:0.991202;fill-rule:evenodd;stroke:#000000;stroke-width:1.81793;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0"
        id="path1158-5"
-       cx="504.77188"
-       cy="-206.14893"
+       cx="512.27191"
+       cy="-195.64893"
        rx="4.7160344"
        ry="4.7160339" /><ellipse
        transform="scale(1,-1)"
@@ -339,7 +339,7 @@
       </g></g>
   </g>
 </g><g
-       transform="matrix(3.06254,0,0,-3.06254,406.45295,190.26428)"
+       transform="matrix(3.06254,0,0,-3.06254,401.95295,179.76428)"
        ns2:version="1.0.0"
        ns2:texconverter="pdflatex"
        ns2:pdfconverter="inkscape"
@@ -678,7 +678,7 @@
       </g></g>
   </g>
 </g><g
-       transform="matrix(3.06254,0,0,-3.06254,494.55495,192.21069)"
+       transform="matrix(3.06254,0,0,-3.06254,491.55495,181.71069)"
        ns2:version="1.0.0"
        ns2:texconverter="pdflatex"
        ns2:pdfconverter="inkscape"

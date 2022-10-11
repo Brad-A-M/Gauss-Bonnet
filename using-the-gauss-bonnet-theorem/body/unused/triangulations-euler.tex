@@ -1,0 +1,108 @@
+\subsection{Triangulations}
+
+Here we define simplicial complexes and triangulations.
+
+
+\begin{definition}[Topological Space \cite{munkres}]
+A \EMPH{topology} is a pair $(X,\tau)$, where $X$ is a set and
+ $\tau$ is a collection of subsets $X$
+satisfying:
+	\begin{itemize}
+		\item $\emptyset$ and $X$ are in $\tau.$
+		\item the union of \emph{any} subcollection of elements in $\tau$ is  in $\tau.$
+		\item the intersection of any \emph{finite} subcollection of elements in the $\tau$ is in $\tau.$
+	\end{itemize}
+A set $X$ with a specified topology $\tau$ is called a \EMPH{topological space}.
+\end{definition}
+
+We will work with a special type of topological spaces called manfiolds.
+
+\begin{definition}[Manifold  \cite{tu2011}]
+	A topological space $M$ is \EMPH{locally Euclidean of dimension $n$}
+	if every point $p$ in $M$ has a neighborhood $U$ such that there is  a
+	homeomorphism  $\phi$ from $U$ into and open  subset of $\R^n$.
+	We call the pair $(U,\phi: U\to \R^n)$ a \EMPH{chart}, $U$ a \EMPH{coordinate neighborhood}
+	and  $\phi$ a \EMPH{coordinate map}. 
+A \EMPH{manifold} is a Hausdorff, second countable, locally Euclidean space.
+\end{definition}
+
+We will  consider two and three dimensional manifolds. Two dimensional
+manifolds are called \emph{surfaces}.
+The symbol $S$ in \eqnref{g-b} is a surface.
+In order to perform computations on our manifolds, 
+we often want a triangulation of our manifolds.
+To define triangulations we need some preliminary definitions.
+
+
+
+\begin{definition}[Independent Points]
+Let $v_0,v_1,\ldots,v_k$ be points in $\R^n$. We call them \EMPH{affinely dependent}
+if there are real numbers $\alpha_0,\alpha_1,\ldots,\alpha_k$, not all 0, such that
+$\Sigma_{i=0}^k \alpha_iv_i=0$ and $\Sigma_{i=0}^k \alpha_i=0.$
+Otherwise,  $v_0,v_1,\ldots,v_k$ are \EMPH{affinely independent}.
+
+\end{definition}
+
+\begin{definition}[Simplices]
+A \EMPH{simplex} $\sigma$ is the convex hull of a finite affinely independent
+set $A$ in $\R^n$. The points in  $A$ are  called vertices, the dimension
+of  $\sigma$ is $|A|-1$.  The convex hull of a subset of vertices of a simplex
+$\sigma$ is a \EMPH{face} of $\sigma$.
+\end{definition}
+
+\begin{definition}[Simplicial Complex]
+A nonempty family $C$ of simplices is a \EMPH{simplicial complex} if the following
+are satisfied:
+\begin{itemize}
+\item  Each face of any simplex is a simplex.
+\item The intersection of $\sigma_1 \cap \sigma_2$ is a face of both $\sigma_1$ and 
+$\sigma_2$.
+\end{itemize}
+
+
+\end{definition}
+
+Some simplicial complexes are very similar to others.
+
+
+\begin{definition}[Homeomorphism]
+A  \EMPH{homeomorphism}  of topological spaces $(X_1,\tau_1$ and $(X_2,\tau_2)$
+is a bijection $\phi:X_1\to X_2$ such that for every $\phi$ and $\phi^{-1}$ are continuous.
+\end{definition}
+For two topological spaces $X$ and $Y$ if there exists a  homeomorphism between
+$X$ and $Y$ we say $X$ and $Y$ are topologically  equivalent and write  $X\cong Y.$
+
+Manifolds can have a boundary denoted $\partial(M)$.
+The dimension of $\partial(M)$ is one less than the dimension of $M$.
+We are ready to define a triangulation.
+
+\begin{definition}[Triangulation]
+For a topological space $X$ and simplicial complex $C$ if $X\cong C$,
+then $C$  is a \EMPH{triangulation} of $X$.
+\end{definition}
+
+ A  graph  is \EMPH{planar} if it can be drawn in the plane with intersections only occuring
+at vertices.
+
+We include the the following proof from Eppstein's list attributed to Thurston
+ \cite{thurston}. For any planar graph we can map the graph on to the two sphere
+ using stereographic projection.
+ 
+
+\begin{theorem}[Euler Characteristic for Planar Graphs]\label{thm:euler}
+For any planar graph on the 2-sphere we have $V-E+F=2.$
+\end{theorem}
+
+\begin{proof}
+If needed, perturb the triangulation so that the north and south poles are 
+inside of a two faces and there are no vertical edges. At each vertex place a unit positive
+charge, at the center of each edge place a unit negative charge and put a unit positive
+charge in the middle of each face. Slam the sphere on the ground so that all charges
+on the edges and vertices are moved into the face below them. For faces that do not contain a pole
+the net charge will be zero, the northern boundary consists of an alternating sequence
+of edges and vertices  beginning  and ending with an edge.
+The face containing the north pole has a unit positive charge, and the face containing the south
+pole contains positive four units of charge and negative three units of charge.
+Thus, the total charge is two.
+
+\end{proof}
