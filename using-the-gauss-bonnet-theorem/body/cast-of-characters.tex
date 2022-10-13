@@ -36,13 +36,16 @@ The \EMPH{Euler Characteristic} for surfaces $\chi$ is the
 the number of vertices minus the number of edges plus  the number of faces, $\chi=|V|-|E|+|F|.$
 In higher dimensions, for a triangulated space $X$ the Euler characteristic is 
 $\chi(X)=k_0-k_1+k_2-k_3+\ldots$ where $k_n$ is the number of simplices of dimension $n.$
-Our applications will use the Euler characteristic of triangulated two spheres and two 
-dimensional
-disks.
-The Euler characteristic of a disk is one, a filled in triangle has three vertices, three
-edges and one face.
-The Euler characteristic of a triangulated sphere is two, Eppstein maintains a 
-collection of proofs of this \cite{eppstein-proofs}. 
+The Euler characteristic is a topological invariant of a space
+and does not depend on the choice of triangulation.
+
+
+Two dimensional spheres $\Sp^2$ and two dimensional disk $D^2$ 
+will be used in our applications.
+For the sphere, we have $\chi(\Sp^2)=2$ 
+several proofs of this can be found on David Eppstein's website \cite{eppstein-proofs}.
+For the disk, $\chi(D^2)=1$. The disk can be triangulated by
+a single solid triangle with three vertices, three edges and one face.
 
 
 
@@ -64,8 +67,27 @@ is determined by its genus with $\chi=2-2g$.
 
 \subsection{Curvature}
 
+
+
+
 There are several ways to define curvature in the discrete setting \cite{Crane:2013}.
-We present two of them here. 
+For a piecewise linear curve in $\R^2$, what properties should we
+require of our definition of curvature at a vertex?
+If two segments are colinear, the curvature should be zero.
+There are two possible angles we could use to describe the
+curvature and they are supplementary, see \figref{2d-curvature}.
+
+\begin{figure}[htb]
+\centering
+\includegraphics[width=.3\textwidth]{background/2d-curvature}
+\caption{A vertex $v$ in a piecewise linear curve.
+We can measure the curvature at $v$ in terms the angle
+$\alpha$ or $\beta$. We want straight lines to have
+zero curvature and the curvature to decrease as $\alpha$
+increases, so, we define the curvature to be $\pi-\alpha$.
+}
+\label{fig:2d-curvature}
+\end{figure}
 
 
 For a vertex in a discrete surface, the Gaussian curvature is defined as
