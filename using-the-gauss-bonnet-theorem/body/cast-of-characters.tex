@@ -9,7 +9,7 @@ where $S$ is a triangulation, $K(v)$ is the discrete Gaussian curvature
 of a vertex, $k_g(g)$ is the discrete geodesic curvature and
 $\chi$ is the Euler characteristic.
 \end{theorem}
-In this section, we define these symbols.
+In this section, we discuss the objects involved in the theorem.
 
 
 \input{body/warm-up}
@@ -19,9 +19,11 @@ In this section, we define these symbols.
 
 We assume the reader is familiar with the notions
 of topological spaces, manifolds and simplicial complexes.
-Most introductory topology texts has contain these definitions \cite{jm08,munkres}.
-The applications we will encounter will be a triangulated surfaces
+Most introductory topology texts describe these objects \cite{jm08,munkres}.
+The applications we will encounter will refer to triangulated surfaces in $\R^3$
 called a \emph{meshs}, in one application the surface will contain its interior.
+Each triangle in a mesh is isomorphic to a triangle in the plane and the sum
+of the interior angles is $\pi$.
 
 
 We denote the set of vertices, edges and faces in a triangulated surface as 
@@ -32,7 +34,7 @@ See \figref{triangulated-torus} for an example of a triangulated surface.
 
 
 
-The \EMPH{Euler Characteristic} for surfaces $\chi$ is the 
+The \EMPH{Euler Characteristic} of a surface $\chi$ is the 
 the number of vertices minus the number of edges plus  the number of faces, $\chi=|V|-|E|+|F|.$
 In higher dimensions, for a triangulated space $X$ the Euler characteristic is 
 $\chi(X)=k_0-k_1+k_2-k_3+\ldots$ where $k_n$ is the number of simplices of dimension $n.$
@@ -67,30 +69,34 @@ is determined by its genus with $\chi=2-2g$.
 
 \subsection{Curvature}
 
-
-
-
 There are several ways to define curvature in the discrete setting \cite{Crane:2013}.
-For a piecewise linear curve in $\R^2$, what properties should we
-require of our definition of curvature at a vertex?
-If two segments are colinear, the curvature should be zero.
-There are two possible angles we could use to describe the
-curvature and they are supplementary, see \figref{2d-curvature}.
+For a piecewise linear curve in $\R^2$, 
+if two segments are co-linear, the curvature should be zero.
+The curvature should signed, there are two ways we can turn in
+the plane.
+The exterior angle described above has these properties.
+We can express the exterior angle as $\pi$ minus the interior angle.
 
-\begin{figure}[htb]
-\centering
-\includegraphics[width=.3\textwidth]{background/2d-curvature}
-\caption{A vertex $v$ in a piecewise linear curve.
-We can measure the curvature at $v$ in terms the angle
-$\alpha$ or $\beta$. We want straight lines to have
-zero curvature and the curvature to decrease as $\alpha$
-increases, so, we define the curvature to be $\pi-\alpha$.
-}
-\label{fig:2d-curvature}
-\end{figure}
+The one dimensional curves we encounter will be the boundaries
+of two dimensional surfaces in $\R^3.$
+In a triangulated surface, the interior angle might consist of many triangles.
+For a vertex $v$ on the boundary of a surface, 
+let $F_v$  denote the set of incident faces and let
+$\alpha_f$ denote the angle in face $f$ at $v$.
+The \EMPH{discrete geodesic curvature}
+of $v$  is
+$$k_{\partial}(v)= \pi-\sum_{f\in F_v}\alpha_f.$$
+Notice that if $v$ lies on a straight line, then $\sum_{i}\alpha_f=\pi$
+and the curvature is zero as we would expect.
+The word geodesic refers to measuring how close
+a curve is to being straight with respect to the surface we are on.
+This idea can be defined rigoursly in the continuous setting \cite{doc76},
+in some sense discrete curvature is an oxymoron. 
 
 
-For a vertex in a discrete surface, the Gaussian curvature is defined as
+
+Next, we consider a vertex in a discrete surface that is not on the boundary.
+The Gaussian curvature is defined as
 follows
 
 \begin{definition}[Discrete Gaussian curvature]\label{def:discrete-curvature-vertex}
@@ -147,17 +153,8 @@ $$k(v)=2\pi -n\pi+\sum_{i}^n \beta_i=2\pi-n\pi +n\pi -\sum_i^n\alpha_i=d(v)$$
  angle defect is equal to the discrete curvature in \defref{discrete-curvature-vertex}.
 
 
-For a vertex $v$ on the boundary of a surface, we define the the curvature
-of $v$  to be 
-$$k_{\partial}(v)= \pi-\sum_{f\in F_vi}\alpha_f.$$
-Notice that if $v$ lies on a straight line, then $\sum_{i}\alpha_f=\pi$
-and the curvature is $0$ as we would expect.
-For historical reasons,  we write $k_g(v)=k_{\partial}(v)$
-where the subscript $g$ refers to geodesic curature.
-Curvature is defined more naturally in the continuous setting,
-discrete curvature is an oxymoron.  See do Carmo \cite{doc76} for an introduction.
-The juxtaposition between the continuous and discrete versions of the theorem
-is pleasing.
+
+
 
 
 
