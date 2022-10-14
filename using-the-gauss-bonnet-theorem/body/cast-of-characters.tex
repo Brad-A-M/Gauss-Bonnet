@@ -62,8 +62,8 @@ is determined by its genus with $\chi=2-2g$.
 
 \begin{figure}[htb]
 \centering
-\includegraphics[width=.3\textwidth]{curvature/triangulated-torus}
-\caption{A triangulation of the torus.}
+\includegraphics[width=.3\textwidth]{background/Torus-triang}
+\caption{A triangulation of the torus. Image from wikipedia.}
 \label{fig:triangulated-torus}
 \end{figure}
 
@@ -90,21 +90,25 @@ Notice that if $v$ lies on a straight line, then $\sum_{i}\alpha_f=\pi$
 and the curvature is zero as we would expect.
 The word geodesic refers to measuring how close
 a curve is to being straight with respect to the surface we are on.
-This idea can be defined rigoursly in the continuous setting \cite{doc76},
+This idea can be defined rigorously in the continuous setting \cite{doc76},
 in some sense discrete curvature is an oxymoron. 
 
 
 
 Next, we consider a vertex in a discrete surface that is not on the boundary.
-The Gaussian curvature is defined as
-follows
+Again, we require that a vertex on a flat surface has zero curvature.
+One definition of Gaussian curvature is the following
 
 \begin{definition}[Discrete Gaussian curvature]\label{def:discrete-curvature-vertex}
 
-The discrete \EMPH{Gaussian curvature} at a vertex $v$ is the area on the unit sphere bounded by a spherical polygon whose vertices are the unit normals of the faces around $v$.
+The discrete \EMPH{Gaussian curvature} at a vertex $v$ is the area on the unit 
+sphere bounded by a spherical polygon whose vertices are the unit normals of 
+the faces around $v$.
 
 \end{definition}
 
+If a vertex is on a flat surface, then the unit normals are all pointed
+in the same direction and the  Gaussian curvature is zero.
 
 \begin{figure}[htb]
 \centering
@@ -124,9 +128,15 @@ the angle $\alpha_i$ incident to $v$ in the surface
 \begin{equation} \label{eqn:switcheroo}
 \beta=\pi-\alpha.
 \end{equation}
-See \figref{switcheroo} for an example.
+To see this, notice that the edge between two faces
+is perpendicular to the normal vectors of the faces.
+vectors is perpendicular to both normal vectors. 
 
+two normal vectors will intersect the edge between the vectors 
+at right angles. 
 
+We can then consider the triangles show in
+ \figref{switcheroo}.
 
 
 \begin{figure}[htb]
@@ -139,16 +149,14 @@ the interior angles of the area polygon on the sphere.}
 
 
 
-
-This gives a convenient formula for computing the curvature at a vertex.
+This gives a convenient formula for computing the curvature at an interior vertex.
 The \EMPH{angle defect} at a vertex $d(v)$ is the difference between $2\pi$ and
 the sum of the incident angles.  Let $F_v$ denote the faces containing $v$  
 and let $\alpha_f$  denote the interior  angle of face $f$ at $v$, then
 $$d(v):=2\pi -\sum_{f\in F_v}\alpha_f.$$
-
 Since $\beta_i=\pi-\alpha_i$, we have the Gaussian curvature at $v$
 is 
-$$k(v)=2\pi -n\pi+\sum_{i}^n \beta_i=2\pi-n\pi +n\pi -\sum_i^n\alpha_i=d(v)$$
+$$k(v)=2\pi -n\pi+\sum_{i}^n \beta_i=2\pi-n\pi +\sum_{i}^n (\pi-\alpha_i) =2\pi-\sum_i^n\alpha_i=d(v)$$
  and the
  angle defect is equal to the discrete curvature in \defref{discrete-curvature-vertex}.
 
