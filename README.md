@@ -1,3 +1,3 @@
 # Survey
 
-* Draft of Gauss-Bonnet book
+* Draft of Using the Gauss-Bonnet Theorem: Algorithmic Applicaitons
