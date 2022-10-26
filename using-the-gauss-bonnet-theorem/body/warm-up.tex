@@ -11,17 +11,30 @@ In the plane, the sum of the interior angles of a triangle is $\pi$.
 \begin{proof}
 Draw a line parallel to one edge through the opposite vertex.
 By alternating interior angles in the plane, the sum of the angles
-in the triangle equal  a straight line.
-See \figref{angles} for an illustration. 
-
-\begin{figure}[htb]
-\centering
-\includegraphics[width=.3\textwidth]{background/interior-angles-triangles}
-\caption{In the plane, the sum of the angles of a triangle is $\pi$.}
-\label{fig:angles}
-\end{figure}
-
+in the triangle equal a straight line.
+See \figref{interior-angles} for an illustration. 
 \end{proof}
+
+
+ \begin{figure}[htb]
+         \centering
+        \begin{subfigure}[b]{0.35\textwidth}
+         \includegraphics[width=\textwidth]{background/interior-triangle}
+         \caption{Interior angles.}
+ 	 \label{fig:interior-angles}
+       \end{subfigure}
+         \hspace{1cm}
+         \begin{subfigure}[b]{0.25\textwidth}
+         \includegraphics[width=\textwidth]{background/exterior-angles-polygon}
+         \caption{Exterior angles.}
+          \label{fig:exterior-angles}
+         \end{subfigure}
+		\caption{(a) In the plane, the sum of the interior angles of a triangle is $\pi$.
+ 		(b) In the plane, the sum of the exterior angles of a simple
+		polygon is $2\pi$. In this example 
+		$\alpha_1+\alpha_2+\alpha_3+\alpha_4+\alpha_5=2\pi$.
+ 		\label{fig:simple-polygon}}
+ \end{figure}
 
 Consider any simple polygon in the plane $P$ with $n$ vertices. 
 Then $P$ can be triangulated with $n-2$ triangles \cite{orourke_computational_1994}.
@@ -35,7 +48,8 @@ the sum of the interior angles of $P$ is $(n-2)\pi$.
 \end{corollary}
 
 If we extend one of the sides of a triangle in the plane
-an \EMPH{exterior angle} is created.
+an \EMPH{exterior angle} is created. See \figref{exterior-angles}
+for an illustration.
 The exterior angle at a vertex can be positive or negative.
 If we traverse a polygon and add up the exterior angles
 we get $2\pi$ because we perform one revolution.
