@@ -1,12 +1,22 @@
 \section{Background}\label{sec:background}
 \label{sec:cast}
-The Gauss-Bonnet Theorem states
+The discrete Gauss-Bonnet Theorem states
 
-\begin{theorem}[The Gauss-Bonnet Theorem] \label{thm:g-b}
+\begin{theorem}[The Discrete Gauss-Bonnet Theorem] \label{thm:g-b-d}
 
 $$\sum_{v\in V_{int}} K(v) + \sum_{v\in V_{\partial S}} k_g(v) = 2\pi \chi(S)$$
 where $S$ is a triangulation, $K(v)$ is the discrete Gaussian curvature
 of a vertex, $k_g(g)$ is the discrete geodesic curvature and
+$\chi$ is the Euler characteristic.
+\end{theorem}
+
+The continuous version of the theorem is the following
+
+\begin{theorem}[The Continuous Gauss-Bonnet Theorem] \label{thm:g-b-d}
+
+$$\int_{M} K dA+ \int_{\partial M} k_g ds = 2\pi \chi(M)$$
+where $M$ is a smooth manifold, $K$ is the continuous Gaussian curvature,
+ $k_g$ is the continuous geodesic curvature and
 $\chi$ is the Euler characteristic.
 \end{theorem}
 In this section, we discuss the objects involved in the theorem.
