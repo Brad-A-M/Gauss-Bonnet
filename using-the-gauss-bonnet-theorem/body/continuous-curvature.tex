@@ -1,0 +1,66 @@
+
+Discrete curvature is an oxymoron.
+We will use an informal definition of continuous curvature to guide
+us to a reasonable definition of discrete curvature. 
+
+
+For a one dimensional curve in the plane,
+ how can we quantify the continuous curvature at a point on the curve?
+Our definition should agree with our intuition. A straight line
+should have zero curvature, the curvature of the unit circle to be one.
+
+One way to define curvature is to approximate the curve at a point with a circle,
+ then define the curvature to be the inverse of the radius of this circle $k=\frac{1}{r}$.
+Such a circle is called the \EMPH{osculating circle}.
+See \figref{osculating-circle} for an example.
+For a straight line the curvature is zero and the unit circle has curvature of one
+at every point.
+
+For a surface in $\R^3$ we can define the \EMPH{osculating sphere}
+to be the sphere that best approximates the surface at a point.
+The \EMPH{Gaussian curvature} at a point on a surface is the
+reciprocal of the radius of the osculating sphere $K=\frac{1}{r}.$
+See \figref{osculating-sphere} for an example.
+
+For saddle points on a surface it is not clear which sphere
+best approximates the surface.
+Given a point on a smooth surface, we can define a normal vector at the point.
+by considering a local coordinate chart at $p$ with axis $u$ and $v$.
+Once we choose a chart we define a clockwise orientation. If the clockwise
+orientation can be consistently extended to the entire surface, we say
+the surface is \EMPH{orientable}.
+
+
+
+We will consider one-dimensional curves that are the boundary of two-dimensional
+surfaces $S$ in $\R^3.$ In a surface, a \EMPH{geodesic} is a curve that is a shortest path
+between two points in the surface. For example, on $\Sp^2$, the equator is a geodesic
+and an inhabitant would view a geodesic as a straight line. 
+Then, since $S$ is a manifold, each point has a local chart with a normal vector $N$.
+We want to compute the rate of rotation of $\gamma$ about $N$.
+We project $\gamma'$ onto the tangent plane to $S$ at $p$.
+If $T$ is a unit length tangent vector at p, then the vector $U=N\times T$
+is orthogonal to both $N$ and $T$.
+The \EMPH{geodesic curvature} $k_g$ at a point $p$ is defined to be the norm of the projection
+of $k$ onto the tangent space of $S$ at $p$. The geodesic curvature can be computed
+by the formula $k_g(t)=||(\gamma''\cdot U)\cdot U||.$
+
+
+
+
+For an orientable surface $S$, the map that  $N:S\to \Sp^2$ that sends each
+normal in $S$ to the corresponding point on $\Sp^2$ is
+the \EMPH{Gauss map}.
+The derivative of the Gauss map, $dN(p)$ quantifies the rate of change of
+the normal vector ($dN$ is often called the \emph{Weingarten map} \cite{Crane:2013}).
+Thus, $dN_p:T_p(S)\to T_{N(p)}(\Sp^2)$, but since $T_p(S)$ and $T_{N(p)}(\Sp^2)$
+are parallel we can define $dN_p$ to be a linear map on $T_p(S)$.
+
+
+
+
+
+
+
+
+
