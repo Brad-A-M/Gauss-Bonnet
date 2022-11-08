@@ -96,7 +96,7 @@ let $F_v$  denote the set of incident faces and let
 $\alpha_f$ denote the angle in face $f$ at $v$.
 The \EMPH{discrete geodesic curvature}
 of $v$  is
-$$k_{\partial}(v)= \pi-\sum_{f\in F_v}\alpha_f.$$
+$$k_{g}(v)= \pi-\sum_{f\in F_v}\alpha_f.$$
 Notice that if $v$ lies on a straight line, then $\sum_{i}\alpha_f=\pi$
 and the curvature is zero as we would expect.
 The word geodesic refers to measuring how close
@@ -164,10 +164,12 @@ This gives a convenient formula for computing the curvature at an interior verte
 The \EMPH{angle defect} at a vertex $d(v)$ is the difference between $2\pi$ and
 the sum of the incident angles.  Let $F_v$ denote the faces containing $v$  
 and let $\alpha_f$  denote the interior  angle of face $f$ at $v$, then
-$$d(v):=2\pi -\sum_{f\in F_v}\alpha_f.$$
+\begin{equation} \label{eqn:defect}
+d(v):=2\pi -\sum_{f\in F_v}\alpha_f.
+\end{equation}
 Since $\beta_i=\pi-\alpha_i$, we have the Gaussian curvature at $v$
 is 
-$$k(v)=2\pi -n\pi+\sum_{i}^n \beta_i=2\pi-n\pi +\sum_{i}^n (\pi-\alpha_i) =2\pi-\sum_i^n\alpha_i=d(v)$$
+$$K(v)=2\pi -n\pi+\sum_{i}^n \beta_i=2\pi-n\pi +\sum_{i}^n (\pi-\alpha_i) =2\pi-\sum_i^n\alpha_i=d(v)$$
  and the
  angle defect is equal to the discrete curvature in \defref{discrete-curvature-vertex}.
 
