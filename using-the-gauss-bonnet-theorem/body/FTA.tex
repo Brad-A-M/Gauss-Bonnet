@@ -1,4 +1,63 @@
 \subsection{The Fundamental Theorem of Algebra}
 \label{sec:fta}
 
-\cite{almira_yet_2007}
+In this section, we share a proof due to Almira and Romero that
+the continuous Gauss-Bonnet theorem implies the
+Fundamental Theorem of Algebra \cite{almira_yet_2007}.
+
+The theorem is the following.
+\begin{theorem}[Fundamental Theorem of Algebra]\label{thm:fta}
+	Let $f:\CC \to \CC$ be a non-constant single-variable polynomial with complex coefficients,
+	then $f$ has a least one complex root.
+\end{theorem}
+
+We now include some basic ideas and definitions from complex analysis that are used
+in the proof. A complex number can be separated into its real and imaginary parts $z=x+iy$
+A continuous function $f:\CC\to \CC$ is a map $f(z)=f(x,y)=u(x,y)+iv(x,y)$ where $u$ and $v$ are continuous.
+A function $f$ is \EMPH{analytic} at a point $z_0$ if there exists a neighborhood around $z_0$ 
+such that $f$ is differentiable at each point in the neighborhood.
+The \EMPH{Laplacian} of a function is the sum of the second order partial derivatives, denoted $\Delta f$
+or just $\Delta$ if the function is clear,
+in our case, $\Delta f=\frac{\partial^2 f}{\partial x^2}+\frac{\partial^2 f}{\partial y^2}$.
+If $\Delta f=0$ then the function $f$ is said to be \EMPH{harmonic}.
+
+We prove a lemma
+\begin{lemma}[Analytic Implies Real Part is Harmonic]\label{lem:anal-harmonic}
+	The real part of an analytic function is harmonic.
+\end{lemma}
+\begin{proof}
+	Analytic complex functions satisfy the Cauchy-Riemann equations meaning
+	$$\frac{\partial u}{\partial x}=\frac{\partial v}{\partial y} \textrm{ and } \frac{\partial u}{\partial y}=- \frac{\partial v}		{\partial x}.$$
+	Differentiating again and using the fact that the mixed partial derivatives are equal
+	we have
+	$$\frac{\partial^2 u}{\partial y^2}=-\frac{\partial}{\partial y}\left(\frac{\partial v}{\partial x}\right)
+	=-\frac{\partial}{\partial x}\left(\frac{\partial v}{\partial y}\right)=-\frac{\partial^2 u}{\partial x^2}.$$
+
+	And $\Delta \textbf{Re}f=\frac{\partial^2 u}{\partial x^2}+\frac{\partial^2 u}{\partial y^2}=0$.
+\end{proof}
+
+We now present the proof of \thmref{fta}.
+
+\begin{proof}
+ Let $p(z)=a_0+a_1z+\ldots + a_nz^n$ and, for the sake of contradiction,
+ assume that $p(z)\neq 0$ for all $z\in \CC$ and $a_0a_n\neq 0.$
+ We can define two new functions using $p(z)$.
+ Set $p_*(z)=a_n+a_{n-1}z+\ldots + a_0z^n$ and note that $p_*(z)=z^np(1/z)$ for $z\in \CC\setminus\{0\}$.
+ Then let $f(z)=p(z)p_*(z)$ for all $z\in \CC.$
+ Then $f$ has the property that
+ $$|f\left(\frac{1}{z}\right)|=\frac{1}{|z|^{2n}}|f(z)|,$$ for $z\in \CC\setminus\{0\}.$
+ The above property gives a well-defined Riemannian metric $g$ on $\widehat{\CC}$
+ where 
+ $$g=\frac{1}{|f(z)|^{\frac{2}{n}}}|dz|^2, \textrm{ for } z\in \CC \textrm{ and}$$
+ $$g=\frac{1}{|f(1/z)|^{\frac{2}{n}}}|d(1/z)|^2 \textrm{ for } z\in \widehat{\CC}\setminus\{0\}.$$
+ 
+ Now, we have the Gaussian curvature $K$ of $g$ implies that for all $z\in \widehat{\CC}$
+ $$\frac{1}{|f(z)|^{\frac{2}{n}}} K =\frac{1}{n}\Delta(\log |f(z)|)=\frac{1}{n}\Delta \textbf{Re} \log(f(z))=0,$$
+ for all $z\in \CC.$ 
+ 
+Thus, the Gaussian curvature at every point is zero. However, the Gauss-Bonnet
+ theorem states that the sum of the curvature over all $z\in \CC$ is $4\pi$, meaning there is at least
+ one point where the curvature must be positive. This is a contradiction.
+\end{proof}
+
+
