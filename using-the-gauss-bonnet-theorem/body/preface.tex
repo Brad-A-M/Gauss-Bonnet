@@ -3,7 +3,7 @@
 
 
 The Gauss-Bonnet theorem states that the sum of the curvature
-at each point on a manifold is $2\pi$ times the Euler characteristic.
+at each point on a surface is $2\pi$ times the Euler characteristic.
 The theorem is a bridge between topological
 and geometric information, see \figref{bridge}. 
 This bridge can be traversed in both directions.
@@ -30,12 +30,16 @@ Matou\v{s}ek states that a theorem is a great theorem if there are
 \end{enumerate}
 
 By this criteria, the Gauss-Bonnet theorem is a great theorem.
-For (1), we highlight a discrete version and continuous version of the theorem.
-\todo{find reference with many versions}
-As for (2), we will give an elementary proof of a discrete version of the theorem.
-\todo{Find two fundamentally different proofs}
-The history is of the theorem is discussed in \cite{wu_historical_2008}.
-A proof based on the calculus of
+For (1), six\todo{verify} different versions of the theorem are discussed
+in \cite{wu_historical_2008}. 
+We highlight a discrete version version of the theorem that leads to several
+results in algorithms.
+
+As for (2), the most common proof is to first prove the theorem for simply connected domains
+with boundary, then triangulate a surface and add up the contribution from each triangle.
+We will give an elementary proof of a version of the theorem using this strategy.
+Several fundamentally different proofs exist, for example 
+a proof based on the calculus of
 moving surfaces is given in \cite{grinfeld_introduction_2013}.
 For (3), several generalizations exist. Two examples include
 the Chern-Gauss-Bonnet theorem \cite{chern_simple_1944} and the celebrated Atiyah–Singer index 
@@ -57,3 +61,4 @@ Most of our applications are related to algorithms.
 Several applications of the continuous version of the theorem
 are given in \cite{doc76,pressley_elementary_2010}, for applications of the Gauss-Bonnet 
 theorem in physics see \cite{tirado-physics-apps,gibbons_applications_2008}.
+For a historical survey of the theorem from Gauss to Chern see  \cite{wu_historical_2008}.
