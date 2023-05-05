@@ -1,10 +1,22 @@
 \subsection{Simple Polygons}
 \label{sec:warm-up}
 
-We begin by deriving a formula for the area
-of a simple polygon on the sphere in terms of the 
-interior angles. Along the way we will see a special case
-of the Gauss-Bonnet theorem.
+Some of us may remember the following special case
+of the Gauss-Bonnet theorem from middle school geometry.
+An \EMPH{exterior angle} is created when we extend one of the sides of a polygon.
+See \figref{exterior-angles} for an example.
+The exterior angle at a vertex can be positive or negative.
+If we traverse a polygon and add up the exterior angles
+we get $2\pi$ because we perform one revolution.
+This is a special case of the Gauss-Bonnet theorem.
+No matter how we bend or stretch our polygon,
+if the boundary of the polygon stays closed and simple,
+the sum the exterior angles will be $2\pi$.
+
+We can also derive a formula for the sum of the angles
+of the interior angles.
+The proof provides intuition for other proofs we will encounter.
+We have
 \begin{theorem}\label{thm:triangle}
 In the plane, the sum of the interior angles of a triangle is $\pi$.
 \end{theorem}
@@ -12,7 +24,7 @@ In the plane, the sum of the interior angles of a triangle is $\pi$.
 Draw a line parallel to one edge through the opposite vertex.
 By alternating interior angles in the plane, the sum of the angles
 in the triangle equal a straight line.
-See \figref{interior-angles} for an illustration. 
+See \figref{interior-angles} for an example. 
 \end{proof}
 
 
@@ -29,41 +41,35 @@ See \figref{interior-angles} for an illustration.
          \caption{Exterior angles.}
           \label{fig:exterior-angles}
          \end{subfigure}
-		\caption{(a) In the plane, the sum of the interior angles of a triangle is $\pi$.
- 		(b) In the plane, the sum of the exterior angles of a simple
-		polygon is $2\pi$. In this example 
+		\caption{(a) In the plane, the sum of the interior angles of a triangle is $\pi$
+ 		and (b) the sum of the exterior angles of a simple
+		polygon is $2\pi$. Here
 		$\alpha_1+\alpha_2+\alpha_3+\alpha_4+\alpha_5=2\pi$.
  		\label{fig:simple-polygon}}
  \end{figure}
 
-Consider any simple polygon in the plane $P$ with $n$ vertices. 
-Then $P$ can be triangulated with $n-2$ triangles \cite{orourke_computational_1994}.
-Thus, when we traverse $P$ we go around $n-2$ triangles each contributing
-$\pi$.
-We have
+And we have
 \begin{corollary}\label{cor:angles}
 In the plane, any simple polygon $P$ with $n$ vertices,
 the sum of the interior angles of $P$ is $(n-2)\pi$.
-
 \end{corollary}
 
-If we extend one of the sides of a triangle in the plane
-an \EMPH{exterior angle} is created. See \figref{exterior-angles}
-for an illustration.
-The exterior angle at a vertex can be positive or negative.
-If we traverse a polygon and add up the exterior angles
-we get $2\pi$ because we perform one revolution.
-This is a special case of the Gauss-Bonnet theorem.
-No matter how we bend or stretch our polygon,
-if the boundary of the polygon stays closed and simple,
-the sum the exterior angles will be $2\pi$.
+\begin{proof}
+	Consider any simple polygon in the plane $P$ with $n$ vertices. 
+	Then $P$ can be triangulated with $n-2$ triangles \cite{orourke_computational_1994}.
+	Thus, when we traverse $P$ we go around $n-2$ triangles each contributing
+	$\pi$.
+\end{proof}
+
+ 
 
 
 
 
 
 
-Now let's consider polygons on the unit sphere.
+We have formulas for the angles on simple polygons in the plane.
+Now let's consider the angles of polygons on a surface that is curved, the unit sphere.
 A triangle on the sphere is shown in \figref{sphere-triangle}.
 
 
