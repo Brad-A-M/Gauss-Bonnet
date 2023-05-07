@@ -1,14 +1,13 @@
 
 
-For a one dimensional curve in the plane,
-how can we quantify the continuous curvature at a point on the curve?
-Our definition should agree with our intuition. A straight line
-should have zero curvature and the curvature of the unit circle to be one.
+At a point on a parametrized curve  in $\RR^3$,
+how should we quantify the curvature?
+A straight line should have zero curvature and the curvature of the unit circle ought to be one.
 We would also like a way to differentiate
 between turning left and turning right, that is we want curvature to be a signed quantity.
 
-One way to define curvature is to approximate the curve at a point with a circle,
- then define the curvature to be the inverse of the radius of this circle $k=\frac{1}{r}$.
+One way to think curvature is to approximate the curve at a point with a circle,
+then define the curvature to be the inverse of the radius of this circle $k=\frac{1}{r}$.
 Such a circle is called the \EMPH{osculating circle}.
 See \figref{osculating-circle} for an example.
 For a straight line the curvature is zero, 
@@ -16,31 +15,83 @@ every point on the unit circle has curvature one
 and we can distinguish between
 which way we are turning by which side of the curve the osculating circle is on,
  and as we hoped.
- 
- \todo{second derivative here}
-
-This osculating-circle view is nice because we can extend it
+ This osculating-circle idea can be extend
 to  surfaces in $\R^3$, by considering the \EMPH{osculating sphere},
  the sphere that best approximates the surface at a point.
 However, for saddle points on a surface it is not clear which sphere
-best approximates the surface.
+best approximates the surface. Moreover, we would like a formula to compute the curvature.
 
+A curve $\gamma(t)$ in $\RR^3$ is \EMPH{smooth} on an open interval $I$
+if $\gamma'$ is continuous and $\gamma'(t)\neq 0$ on $I$. 
+If $\gamma$ is smooth it has a well-defined unit tangent vector $T(t)=\frac{\gamma'(t)}{|\gamma'(t)|}.$
+The \EMPH{curvature} at a point is the magnitude of the rate of change of the unit tangent vector with 
+respect to arc length
 
-\todo{insert tangent space here}
-Given a point on a smooth surface, we can define a normal vector at the point.
+\begin{equation} \label{eqn:kappa}
+\kappa=\bigg  | \frac{T'(t)}{\gamma'(t)}\bigg |.
+\end{equation}
+where $s$ is arc length.
+
+For example, take a circle of radius $r$, parameterized by $C(t)=\left(r\cos(t),r\sin(t)\right)$.
+We have $\frac{dC}{dt}=C'(t)=\left(-r\sin(t),r\cos(t)\right)$ and $|C'(t)|=r$.
+Then $T(t)=\left(-\sin(t),\cos(t)\right)$ and $T'(t)=\left(-\cos(t),-\sin(t)\right)$.
+So, $\kappa(t)=\frac{1}{r}$ and our definition of curvature agrees with the
+osculating circle intuition above. 
+\eqnref{kappa} can be rewritten in the following more computational friendly form 
+\begin{equation} \label{eqn:kappa1}
+\kappa(t)=\frac{|\gamma'(t)\times \gamma''(t)|}{|\gamma'(t)|^3}.
+\end{equation}
+
+Since we traverse $\gamma$
+at unit speed, $\gamma'(t)^2=1,$ and by the chain rule, $\gamma'\cdot \gamma''=0,$
+so  the second derivative is orthogonal to $\gamma'$. Thus, the
+vector $\gamma''=N$ is normal to the $\gamma$. 
+By taking the cross product of $N$ and $T$ we obtain a vector $B$.
+The vectors $T,N$ and $B$ form the \emph{Fernet frame} of $\gamma$ a $p.$
+
+Now we consider the curvature of a point on a surface. In one dimension we are
+able parameterize our curve. Similarly, we require the ability to parameterize a surface.
+A \EMPH{parameterized surface} is a map $\phi:U\subset \RR^2 \to \RR^3$ that
+is differentiable. The set $\phi(U)\subset \RR^3$ is called the \EMPH{trace} of $\phi$.
+If the differential $d\phi_q:\RR^2\to \RR^3$ is one-to-one for all $q\in U$ then
+we say $\phi$ is \EMPH{regular}. In other words, let $(u,v)$ be coordinates of $U\subset \RR^2,$
+a surface is regular if $\frac{\partial\phi}{\partial u}$
+and $\frac{\partial\phi}{\partial v}$ are linearly independent for all $q\in U$.
+
+Let $S$ be a regular surface, then at each point $p\in S$ the set of tangent vectors
+to parameterized curves in $S$ through $p$ forms a plane.
+A \EMPH{tangent vector} to $S$ at $p$ is a map $\xi:(-\epsilon,\epsilon)\to S$ with $\xi(0)=p$.
+The set of all tangent vectors is the \EMPH{tangent plane} and it corresponds to the image
+of the differential map $d\phi_q(\RR^2)\subset \RR^3$ (prop. 1 \cite{doc76}).
+Let $S_1$ and $S_2$ be two surfaces with $\sigma:V\subset S_1\to S_2$ a differentiable map.
+At $p\in S_1$ the map $d\sigma_p:T_p(S_1)\to T_{\sigma(p)}(S_2)$ is called the
+\EMPH{differential} of $\sigma$ at $p$.
+
+By choosing two linearly independent paths through $p\in S$ we can obtain the explicit tangent
+plane and define a normal vector $N$ at $p$.
 Every plane containing the normal vector will intersect the surface.
-The intersection of the surface and each normal plane is a curve. 
+The intersection of the surface and each normal plane is a curve in $\RR^3$. 
 Let $\kappa_1$ denote the maximum curvature over all normal planes
 and let $\kappa_2$ denote the minimum curvature over all normal planes.
 The \EMPH{Gaussian curvature} of a point on a surface is
 $K=\kappa_1\kappa_2.$
-This definition also satisfies the three properties that we require of a definition of
-curvature.
 
+There are several equivalent ways to calculate curvature of a surface.
+Once we choose a chart we define a clockwise orientation. If the clockwise
+orientation can be consistently extended to the entire surface, we say
+the surface is \EMPH{orientable}.
+For an orientable surface $S$, the map that  $N:S\to \Sp^2$ that sends each
+normal in $S$ to the corresponding point on $\Sp^2$ is
+the \EMPH{Gauss map}.
+The derivative of the Gauss map, $dN(p)$ quantifies the rate of change of
+the normal vector ($dN$ is often called the \emph{Weingarten map} \cite{Crane:2013}).
+Thus, $dN_p:T_p(S)\to T_{N(p)}(\Sp^2)$, but since $T_p(S)$ and $T_{N(p)}(\Sp^2)$
+are parallel we can define $dN_p$ to be a linear map on $T_p(S)$.
+Remarkably, the determinant of $dN(p)$ is equal to the Gaussian curvature.
 
 
 We will consider one-dimensional curves that are the boundary of two-dimensional
-surfaces in $\R^3.$ Let $\gamma$ denote such a curve parametrized by arclength.
+surfaces in $\R^3.$ Let $\gamma$ denote such a curve parametrized by arc length.
 In a surface, a \EMPH{geodesic} is a curve that is a shortest path
 between two points in the surface. 
 For example, on $\Sp^2$, the equator is a geodesic
