@@ -78,18 +78,26 @@ $\chi$ is the Euler characteristic.
 	What proof do we want here?
 \end{proof}
 
-\subsection{A Discrete Version}
-There are several ways to define curvature in the discrete setting \cite{Crane:2013}.
-For a piecewise linear curve in $\R^2$, 
-if two segments are co-linear, the curvature should be zero.
-The curvature should signed, there are two ways we can turn in
-the plane.
-The exterior angle described above has these properties.
-We can express the exterior angle as $\pi$ minus the interior angle.
+The  Gauss-Bonnet theorem is  telling us, if we add up curvature
+at each vertex the sum will be $2\pi$ times to Euler characteristic.
+If we can compute the curvature at every vertex then we can use the theorem
+to learn global topological information.
+Conversely, if we know the Euler characteristic we can learn about the curvature
+at individual points.
 
-The one dimensional curves we encounter will be the boundaries
-of two dimensional surfaces in $\R^3.$
-In a triangulated surface, the interior angle might consist of many triangles.
+\subsection{A Discrete Version}
+
+Discrete curvature is an oxymoron. In a triangulated surface,
+the curvature is zero or we are on a vertex where tangent vectors are not defined.
+Our first application of the Gauss-Bonnet Theorem will be to derive a reasonable definition of discrete curvature \cite{Crane:2013}.
+We would like our definition of discrete curvature to agree with
+our intuition, that is if two segments co-linear, the curvature should be zero
+and the curvature should signed.
+The one dimensional piecewise linear curves we encounter will be the boundaries
+of triangulated two dimensional surfaces in $\R^3.$
+At each vertex on the boundary we have an exterior angle and a complementary interior angle.
+The exterior angle has the desired properties of a curvature definition mentioned above.
+The interior angle might consist of many triangles.
 For a vertex $v$ on the boundary of a surface, 
 let $F_v$  denote the set of incident faces and let
 $\alpha_f$ denote the angle in face $f$ at $v$.
@@ -100,14 +108,26 @@ Notice that if $v$ lies on a straight line, then $\sum_{i}\alpha_f=\pi$
 and the curvature is zero as we would expect.
 The word geodesic refers to measuring how close
 a curve is to being straight with respect to the surface we are on.
-This idea can be defined rigorously in the continuous setting \cite{doc76},
-in some sense discrete curvature is an oxymoron. 
 
+We can combine our definition of discrete geodesic curvature
+with the Gauss-Bonnet Theorem to obtain a formula for the discrete
+curvature at a vertex.
+To this end, consider a vertex in a triangulated surface.
+We cut out this vertex, so that we obtain a topological disk containing
+only the one vertex call this subsurface $M$. We have
+$$\int_{\partial M}k_g=\sum_i\pi -(\gamma_i+\beta_{i+1})=\sum_i\alpha_i.$$
+We now apply the Gauss-Bonnet Theorem.
+The Euler characteristic of the disk is one and we know the geodesic curvature.
+Thus, the discrete curvature at a vertex is given by
+$\int_M K dA=2\pi-\sum_i\alpha_i$ and we define
+the \EMPH{discrete Gaussian curvature} at a vertex $v$ to be
 
+\begin{equation} \label{eqn:discrete-gaussian}
+d(v):=2\pi -\sum_{f\in F_v}\alpha_f.
+\end{equation}
+\todo{make fig}
 
-Next, we consider a vertex in a discrete surface that is not on the boundary.
-Again, we require that a vertex on a flat surface has zero curvature.
-One definition of Gaussian curvature is the following
+An alternative geometric definition of Gaussian curvature is the following
 
 \begin{definition}[Discrete Gaussian curvature]\label{def:discrete-curvature-vertex}
 
@@ -118,7 +138,7 @@ the faces around $v$.
 \end{definition}
 
 If a vertex is on a flat surface, then the unit normals are all pointed
-in the same direction and the  Gaussian curvature is zero.
+in the same direction and the Gaussian curvature is zero.
 
 \begin{figure}[htb]
 \centering
@@ -130,8 +150,8 @@ in order to see the entire polygon.}
 \end{figure}
 
 
-\eqnref{sphere-area} gives a formula for computing the curvature at a vertex, provided
-we know the interior angles of the polygon on the sphere.
+We can verify that \defref{discrete-curvature-vertex} agrees with the formula we derived using
+the Gauss-Bonnet.
 The interior angles of the polygon $\beta_i$ on the sphere are supplementary to
 the angle $\alpha_i$ incident to $v$ in the surface
 
@@ -139,14 +159,10 @@ the angle $\alpha_i$ incident to $v$ in the surface
 \beta=\pi-\alpha.
 \end{equation}
 To see this, notice that the edge between two faces
+on a triangulated surface
 is perpendicular to the normal vectors of the faces.
-vectors is perpendicular to both normal vectors. 
-
-two normal vectors will intersect the edge between the vectors 
-at right angles. 
-
-We can then consider the triangles show in
- \figref{switcheroo}.
+So, the line connecting two normal vectors will intersect the edge between the vectors 
+at right angles. See \figref{switcheroo}.
 
 
 \begin{figure}[htb]
@@ -159,18 +175,21 @@ the interior angles of the area polygon on the sphere.}
 
 
 
-This gives a convenient formula for computing the curvature at an interior vertex.
+This gives a  formula for computing the curvature at an interior vertex.
 The \EMPH{angle defect} at a vertex $d(v)$ is the difference between $2\pi$ and
 the sum of the incident angles.  Let $F_v$ denote the faces containing $v$  
 and let $\alpha_f$  denote the interior  angle of face $f$ at $v$, then
 \begin{equation} \label{eqn:defect}
 d(v):=2\pi -\sum_{f\in F_v}\alpha_f.
 \end{equation}
-Since $\beta_i=\pi-\alpha_i$, we have the Gaussian curvature at $v$
-is 
+Since $\beta_i=\pi-\alpha_i$, we 
+we can use our formula for the area of a polygon on the sphere,
+\eqnref{sphere-area}, to compute the Gaussian curvature at $v$
+by
 $$K(v)=2\pi -n\pi+\sum_{i}^n \beta_i=2\pi-n\pi +\sum_{i}^n (\pi-\alpha_i) =2\pi-\sum_i^n\alpha_i=d(v)$$
  and the
- angle defect is equal to the discrete curvature in \defref{discrete-curvature-vertex}.
+ angle defect is equal to the discrete curvature in \defref{discrete-curvature-vertex}
+ and in \eqnref{discrete-gaussian}.
 
 
 
@@ -188,10 +207,5 @@ of a vertex, $k_g(g)$ is the discrete geodesic curvature and
 $\chi$ is the Euler characteristic.
 \end{theorem}
 
-The  Gauss-Bonnet theorem is  telling us, if we add up curvature
-at each vertex the sum will be $2\pi$ times to Euler characteristic.
-If we can compute the curvature at every vertex then we can use the theorem
-to learn global topological information.
-Conversely, if we know the Euler characteristic we can learn about the curvature
-at individual points.
+
 
