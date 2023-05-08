@@ -52,7 +52,9 @@ The vectors $T,N$ and $B$ form the \emph{Fernet frame} of $\gamma$ a $p.$
 Now we consider the curvature of a point on a surface. In one dimension we are
 able parameterize our curve. Similarly, we require the ability to parameterize a surface.
 A \EMPH{parameterized surface} is a map $\phi:U\subset \RR^2 \to \RR^3$ that
-is differentiable. The set $\phi(U)\subset \RR^3$ is called the \EMPH{trace} of $\phi$.
+is differentiable, where every point in $S$ is contained in the domain of at least one map.
+These maps are called \EMPH{charts}.
+ The set $\phi(U)\subset \RR^3$ is called the \EMPH{trace} of $\phi$.
 If the differential $d\phi_q:\RR^2\to \RR^3$ is one-to-one for all $q\in U$ then
 we say $\phi$ is \EMPH{regular}. In other words, let $(u,v)$ be coordinates of $U\subset \RR^2,$
 a surface is regular if $\frac{\partial\phi}{\partial u}$
@@ -88,6 +90,24 @@ the normal vector ($dN$ is often called the \emph{Weingarten map} \cite{Crane:20
 Thus, $dN_p:T_p(S)\to T_{N(p)}(\Sp^2)$, but since $T_p(S)$ and $T_{N(p)}(\Sp^2)$
 are parallel we can define $dN_p$ to be a linear map on $T_p(S)$.
 Remarkably, the determinant of $dN(p)$ is equal to the Gaussian curvature.
+
+Given a regular surface we can define an inner product on tangent vectors.
+Consider a curve $u=u(t), v=v(t)$ on a regular surface $\psi=\psi(u,v)$, let
+$s$ denote the arc length, then 
+$$ds=\bigg | \frac{d\psi}{dt}\bigg | dt = \bigg | \psi_u\frac{du}{dt}+\psi_v\frac{dv}{dt}\bigg |dt
+=\sqrt{(\psi_u^2 du^2+2\psi_u\psi_v du dv + \psi_v^2dv^2)}.$$
+Let $E=\psi_u\cdot \psi_u, F=\psi_u\cdot \psi_v$ and  $G=\psi_v\cdot \psi_v$
+Then $I=ds^2=Edu^2+2Fdudv +Gdv^2$ is called the \EMPH{first fundamental form}.
+If $x$ and $y$ are two tangent vectors
+then $I(x,y)=x^T\begin{bmatrix}
+E & F \\
+F & G 
+\end{bmatrix}y.$
+Consider a 'small' parallelogram on $S$ with corners $\psi(u,v),\psi(u+\epsilon u, v), \psi(u,v+\epsilon v)$ 
+and $\psi(u+\epsilon u, v+\epsilon v)$ then the area of the parallelogram is
+$dA=\sqrt{EG-F^2}dudv.$
+
+\todo{second fundamental form}
 
 
 We will consider one-dimensional curves that are the boundary of two-dimensional
