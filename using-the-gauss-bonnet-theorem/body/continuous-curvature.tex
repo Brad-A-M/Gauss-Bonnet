@@ -108,15 +108,21 @@ Consider a 'small' parallelogram on $S$ with corners $\psi(u,v),\psi(u+\epsilon 
 and $\psi(u+\epsilon u, v+\epsilon v)$ then the area of the parallelogram is
 $dA=\sqrt{EG-F^2}dudv.$
 
-\todo{revisit second fundamental form}
+
 A quadratic form is a polynomial of degree two, for example $5x^2+2xy-7y^2$.
 Suppose $r=r(u,v)$ is a parametrization of a regular surface $S$.
 Then $r_u$ and $r_v$ are linearly independent and span the tangent plane at each point
 on $S$. We can then define the unit normal vector $n=\frac{r_u\times r_v}{|r_u\times r_v|}$.
-Then let $L=r_{uu}\cdot n, M=r_{uv}\cdot n$ and $N=r_{vv}\cdot n$.
-Then \EMPH{second fundamental form} is $II=Ldu^2+2Mdudv+Ndv^2$.
-The second fundamental form can be written in terms of the Weingarten map,
-$II(x,y)=-<dN(x),y>N?$.
+Then let $L=r_{uu}\cdot n, M=r_{uv}\cdot n$ and $N=r_{vv}\cdot n$ the
+\EMPH{second fundamental form} is $\mathrm{I\!I}=Ldu^2+2Mdudv+Ndv^2$.
+If $x$ and $y$ are two tangent vectors
+then $I(x,y)=x^T\begin{bmatrix}
+L & M \\
+M & N 
+\end{bmatrix}y.$
+Then the Gaussian curvature of a surface is also given by
+$K=\frac{\det(\mathrm{I\!I})}{\det(I)}.$
+
 
 
 We will consider one-dimensional curves that are the boundary of two-dimensional

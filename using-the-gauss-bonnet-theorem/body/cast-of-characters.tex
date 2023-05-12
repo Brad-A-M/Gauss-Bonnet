@@ -74,9 +74,6 @@ where $M$ is a regular surface, $K$ is the continuous Gaussian curvature,
 $\chi$ is the Euler characteristic.
 \end{theorem}
 
-\begin{proof}
-	What proof do we want here?
-\end{proof}
 
 The  Gauss-Bonnet theorem is  telling us, if we add up curvature
 at each vertex the sum will be $2\pi$ times to Euler characteristic.
@@ -89,7 +86,8 @@ at individual points.
 
 Discrete curvature is an oxymoron. In a triangulated surface,
 the curvature is zero or we are on a vertex where tangent vectors are not defined.
-Our first application of the Gauss-Bonnet Theorem will be to derive a reasonable definition of discrete curvature \cite{Crane:2013}.
+Our first application of the Gauss-Bonnet Theorem will be to confirm that the definition of discrete curvature 
+given below is reasonable.
 We would like our definition of discrete curvature to agree with
 our intuition, that is if two segments co-linear, the curvature should be zero
 and the curvature should signed.
@@ -109,25 +107,8 @@ and the curvature is zero as we would expect.
 The word geodesic refers to measuring how close
 a curve is to being straight with respect to the surface we are on.
 
-We can combine our definition of discrete geodesic curvature
-with the Gauss-Bonnet Theorem to obtain a formula for the discrete
-curvature at a vertex.
-To this end, consider a vertex in a triangulated surface.
-We cut out this vertex, so that we obtain a topological disk containing
-only the one vertex call this subsurface $M$. We have
-$$\int_{\partial M}k_g=\sum_i\pi -(\gamma_i+\beta_{i+1})=\sum_i\alpha_i.$$
-We now apply the Gauss-Bonnet Theorem.
-The Euler characteristic of the disk is one and we know the geodesic curvature.
-Thus, the discrete curvature at a vertex is given by
-$\int_M K dA=2\pi-\sum_i\alpha_i$ and we define
-the \EMPH{discrete Gaussian curvature} at a vertex $v$ to be
 
-\begin{equation} \label{eqn:discrete-gaussian}
-K(v):=2\pi -\sum_{f\in F_v}\alpha_f.
-\end{equation}
-\todo{make fig}
-
-An alternative geometric definition of Gaussian curvature is the following
+A geometric definition of Gaussian curvature is the following:
 
 \begin{definition}[Discrete Gaussian curvature]\label{def:discrete-curvature-vertex}
 

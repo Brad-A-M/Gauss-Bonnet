@@ -16,6 +16,26 @@ any other vertices. Then, use the Gauss-Bonnet
 to estimate the curvature in the removed
 disk is occurs at the vertex of interest.
 
+\todo{patch this in better}
+We can combine our definition of discrete geodesic curvature
+with the Gauss-Bonnet Theorem to obtain a formula for the discrete
+curvature at a vertex.
+To this end, consider a vertex in a triangulated surface.
+We cut out this vertex, so that we obtain a topological disk containing
+only the one vertex call this subsurface $M$. We have
+$$\int_{\partial M}k_g=\sum_i\pi -(\gamma_i+\beta_{i+1})=\sum_i\alpha_i.$$
+We now apply the Gauss-Bonnet Theorem.
+The Euler characteristic of the disk is one and we know the geodesic curvature.
+Thus, the discrete curvature at a vertex is given by
+$\int_M K dA=2\pi-\sum_i\alpha_i$ and we define
+the \EMPH{discrete Gaussian curvature} at a vertex $v$ to be
+
+\begin{equation} \label{eqn:discrete-gaussian}
+K(v):=2\pi -\sum_{f\in F_v}\alpha_f.
+\end{equation}
+\todo{make fig}
+
+
 We associate an area around each vertex $v$. 
 For each triangle incident to $v$, if the interior 
 angle at $v$ is non-obtuse, mark the circumcenter of the triangle
