@@ -7,7 +7,9 @@ A straight line should have zero curvature and the curvature of the unit circle 
 We would also like a way to differentiate
 between turning left and turning right, that is we want curvature to be a signed quantity.
 
-
+As we will see, there are many definitions for curvature.
+Some lend themselves to computations and others provide
+more geometric intuition.
 One way to think curvature is to approximate the curve at a point with a circle,
 then define the curvature to be the inverse of the radius of this circle $k=\frac{1}{r}$.
 Such a circle is called the \EMPH{osculating circle}.
@@ -32,7 +34,7 @@ respect to arc length
 \begin{equation} \label{eqn:kappa}
 \kappa=\bigg  | \frac{T'(t)}{\gamma'(t)}\bigg |.
 \end{equation}
-where $s$ is arc length.
+where $t$ is arc length.
 
 For example, take a circle of radius $r$, parameterized by $C(t)=\left(r\cos(t),r\sin(t)\right)$.
 We have $\frac{dC}{dt}=C'(t)=\left(-r\sin(t),r\cos(t)\right)$ and $|C'(t)|=r$.
@@ -48,7 +50,8 @@ Since we traverse $\gamma$
 at unit speed, $\gamma'(t)^2=1,$ and by the chain rule, $\gamma'\cdot \gamma''=0,$
 so  the second derivative is orthogonal to $\gamma'$. Thus, the
 vector $\gamma''=N$ is normal to the $\gamma$. 
-By taking the cross product of $N$ and $T$ we obtain a vector $B$.
+By taking the cross product of $N$ and $T$ we obtain a vector $B$ called
+the binormal vector.
 The vectors $T,N$ and $B$ form the \emph{Fernet frame} of $\gamma$ a $p.$
 
 Now we consider the curvature of a point on a surface. In one dimension we are
@@ -132,11 +135,23 @@ We will consider one-dimensional curves that are the boundary of two-dimensional
 surfaces in $\R^3.$ Let $\gamma$ denote such a curve parametrized by arc length.
 In a surface, a \EMPH{geodesic} is a curve that is a shortest path
 between two points in the surface. 
-For example, on $\Sp^2$, the equator is a geodesic
-and an inhabitant would view a geodesic as a straight line. 
-The \EMPH{geodesic curvature} quantifies how close $\gamma$ is to being a geodesic.
-Geodesics have zero geodesic curvature. 
-For a formal definition see \cite{doc76}.
+For example, on $\Sp^2$ great circles are geodesic.
+We would like to define the curvature as it would be seen from
+someone living on a surface.
+
+Let $U$ be a parameterized chart on a surface $S$ with vector $n(u,v)$ normal
+to the surface
+and let $\gamma(t)$ be a curve in $U$, with Frenet frame $T,N,B$.
+Then $V=n(\gamma(t)\times T$ is in the tangent plane of the surface since
+it is perpendicular to $n$. We now have a new orthonormal basis at a point on $\gamma$
+namely, $T,V,n$. 
+We would like to measure how the rate of change of the tangent vector $T$ with respect to $V$.
+The \EMPH{geodesic curvature} is  
+\begin{equation} \label{eqn:geodesic}
+	k_g=\langle \gamma''(t),V(t)\rangle
+\end{equation}
+For an alternative equivalent definition see \cite{doc76}.
+\todo{non great circle on sphere image}
 
 
 

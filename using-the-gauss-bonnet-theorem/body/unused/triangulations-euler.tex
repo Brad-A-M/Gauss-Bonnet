@@ -81,28 +81,4 @@ For a topological space $X$ and simplicial complex $C$ if $X\cong C$,
 then $C$  is a \EMPH{triangulation} of $X$.
 \end{definition}
 
- A  graph  is \EMPH{planar} if it can be drawn in the plane with intersections only occuring
-at vertices.
-
-We include the the following proof from Eppstein's list attributed to Thurston
- \cite{thurston}. For any planar graph we can map the graph on to the two sphere
- using stereographic projection.
  
-
-\begin{theorem}[Euler Characteristic for Planar Graphs]\label{thm:euler}
-For any planar graph on the 2-sphere we have $V-E+F=2.$
-\end{theorem}
-
-\begin{proof}
-If needed, perturb the triangulation so that the north and south poles are 
-inside of a two faces and there are no vertical edges. At each vertex place a unit positive
-charge, at the center of each edge place a unit negative charge and put a unit positive
-charge in the middle of each face. Slam the sphere on the ground so that all charges
-on the edges and vertices are moved into the face below them. For faces that do not contain a pole
-the net charge will be zero, the northern boundary consists of an alternating sequence
-of edges and vertices  beginning  and ending with an edge.
-The face containing the north pole has a unit positive charge, and the face containing the south
-pole contains positive four units of charge and negative three units of charge.
-Thus, the total charge is two.
-
-\end{proof}
