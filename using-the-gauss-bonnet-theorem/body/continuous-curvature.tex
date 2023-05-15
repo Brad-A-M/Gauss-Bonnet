@@ -7,6 +7,7 @@ A straight line should have zero curvature and the curvature of the unit circle 
 We would also like a way to differentiate
 between turning left and turning right, that is we want curvature to be a signed quantity.
 
+
 One way to think curvature is to approximate the curve at a point with a circle,
 then define the curvature to be the inverse of the radius of this circle $k=\frac{1}{r}$.
 Such a circle is called the \EMPH{osculating circle}.
@@ -60,6 +61,8 @@ If the differential $d\phi_q:\RR^2\to \RR^3$ is one-to-one for all $q\in U$ then
 we say $\phi$ is \EMPH{regular}. In other words, let $(u,v)$ be coordinates of $U\subset \RR^2,$
 a surface is regular if $\frac{\partial\phi}{\partial u}$
 and $\frac{\partial\phi}{\partial v}$ are linearly independent for all $q\in U$.
+There are a number of equivalent ways to define the curvature of a surface at a point,
+we now share three of them.
 
 Let $S$ be a regular surface, then at each point $p\in S$ the set of tangent vectors
 to parameterized curves in $S$ through $p$ forms a plane.
@@ -98,9 +101,9 @@ $s$ denote the arc length, then
 $$ds=\bigg | \frac{d\psi}{dt}\bigg | dt = \bigg | \psi_u\frac{du}{dt}+\psi_v\frac{dv}{dt}\bigg |dt
 =\sqrt{(\psi_u^2 du^2+2\psi_u\psi_v du dv + \psi_v^2dv^2)}.$$
 Let $E=\psi_u\cdot \psi_u, F=\psi_u\cdot \psi_v$ and  $G=\psi_v\cdot \psi_v$
-Then $I=ds^2=Edu^2+2Fdudv +Gdv^2$ is called the \EMPH{first fundamental form}.
+Then $\mathrm{I}=ds^2=Edu^2+2Fdudv +Gdv^2$ is called the \EMPH{first fundamental form}.
 If $x$ and $y$ are two tangent vectors
-then $I(x,y)=x^T\begin{bmatrix}
+then $\mathrm{I}(x,y)=x^T\begin{bmatrix}
 E & F \\
 F & G 
 \end{bmatrix}y.$
@@ -116,12 +119,12 @@ on $S$. We can then define the unit normal vector $n=\frac{r_u\times r_v}{|r_u\t
 Then let $L=r_{uu}\cdot n, M=r_{uv}\cdot n$ and $N=r_{vv}\cdot n$ the
 \EMPH{second fundamental form} is $\mathrm{I\!I}=Ldu^2+2Mdudv+Ndv^2$.
 If $x$ and $y$ are two tangent vectors
-then $I(x,y)=x^T\begin{bmatrix}
+then $\mathrm{I\!I}(x,y)=x^T\begin{bmatrix}
 L & M \\
 M & N 
 \end{bmatrix}y.$
 Then the Gaussian curvature of a surface is also given by
-$K=\frac{\det(\mathrm{I\!I})}{\det(I)}.$
+$K=\frac{\det(\mathrm{I\!I})}{\det(\mathrm{I})}.$
 
 
 

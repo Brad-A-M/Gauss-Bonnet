@@ -2,16 +2,16 @@
 \label{sec:fta}
 
 In this section, we share a proof due to Almira and Romero that
-the continuous Gauss-Bonnet theorem implies the
+the Gauss-Bonnet theorem implies the
 Fundamental Theorem of Algebra \cite{almira_yet_2007}.
 
-The theorem is the following.
+The theorem is the following:
 \begin{theorem}[Fundamental Theorem of Algebra]\label{thm:fta}
 	Let $f:\CC \to \CC$ be a non-constant single-variable polynomial with complex coefficients,
 	then $f$ has a least one complex root.
 \end{theorem}
 
-We now include some basic ideas and definitions from complex analysis that are used
+We now include ideas and definitions from complex analysis that are used
 in the proof. A complex number can be separated into its real and imaginary parts $z=x+iy$
 A continuous function $f:\CC\to \CC$ is a map $f(z)=f(x,y)=u(x,y)+iv(x,y)$ where $u$ and $v$ are continuous.
 A function $f$ is \EMPH{analytic} at a point $z_0$ if there exists a neighborhood around $z_0$ 
@@ -38,9 +38,32 @@ We prove a lemma
 
 
 
-We express the curvature using the Laplacian.
+Let $f:S_1\to S$ be a differentiable map from a surface to itself.
+Such maps do not preserve geometric measurements (curvature or area), but the change
+can be accounted for. We compute geometric quantities using the tangent plane and
+a vector normal to the surface.
+Let $S$ be a regular manifold with tangent space at a point $p$ $T_pS.$
+The local parameterization on charts $(u,v):U\to \R^2$ form a basis for
+$T_pS$.
 
-13.1.3 \cite{dubrovin_modern_1984}.
+Let $g$ be a smooth map on the charts $(U, (u,v))$ of a regular surface
+$g(\frac{\partial}{\partial u},\frac{\partial}{\partial v}):U\to \R.$
+A \EMPH{Riemannian metric} assigns to each $p$ a positive-definite inner product
+$g_p:T_pS\times T_pS \to \R$ and we get a norm on $T_pS$ given by
+$|v|_p=\sqrt{g_p(v,v)}$.
+Since we have a Riemannian metric we get a map between the two inner products,
+$Df_p:T_pS\to T_{f(p)}S$. Moreover, the inner product in the preimage is equal
+to $|\det(Df_p)|$ times the inner product in the image.
+
+
+We express the curvature using the Laplacian.
+\begin{lemma}[Curvature and the Laplacian (13.1.3 \cite{dubrovin_modern_1984})]\label{lem:lapa-curve}
+	If $u,v$ are conformal\todo{define} coordinates on a surface
+	embedded in $\R^3$ with metric $d\ell^2=g(u,v)(du^2+dv^2),$
+	then the Gaussian curvature is given by
+	$$K=-\frac{1}{2g(u,v)}\Delta \ln g(u,v).$$
+\end{lemma}
+
 
 
 And now the proof of \thmref{fta}.
