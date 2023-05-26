@@ -62,17 +62,14 @@ If the differential $d\phi_q:\RR^2\to \RR^3$ is one-to-one for all $q\in U$ then
 we say $\phi$ is \EMPH{regular}. In other words, let $(u,v)$ be coordinates of $U\subset \RR^2,$
 a surface is regular if $\frac{\partial\phi}{\partial u}$
 and $\frac{\partial\phi}{\partial v}$ are linearly independent for all $q\in U$.
-There are a number of equivalent ways to define the curvature of a surface at a point,
-we now share three of them.
+
 
 Let $S$ be a regular surface, then at each point $p\in S$ the set of tangent vectors
 to parameterized curves in $S$ through $p$ forms a plane.
 A \EMPH{tangent vector} to $S$ at $p$ is a map $\xi:(-\epsilon,\epsilon)\to S$ with $\xi(0)=p$.
 The set of all tangent vectors is the \EMPH{tangent plane} and it corresponds to the image
 of the differential map $d\phi_q(\RR^2)\subset \RR^3$ (prop. 1 \cite{doc76}).
-Let $S_1$ and $S_2$ be two surfaces with $\sigma:V\subset S_1\to S_2$ a differentiable map.
-At $p\in S_1$ the map $d\sigma_p:T_p(S_1)\to T_{\sigma(p)}(S_2)$ is called the
-\EMPH{differential} of $\sigma$ at $p$.
+
 
 By choosing two linearly independent paths through $p\in S$ we can obtain the explicit tangent
 plane and define a normal vector $N$ at $p$.
@@ -83,6 +80,7 @@ Let $\kappa_1$ denote the maximum curvature of all normal sections
 and let $\kappa_2$ denote the minimum. 
 The \EMPH{Gaussian curvature} of a point on a surface is
 $K=\kappa_1\kappa_2.$
+
 
 
 Once we choose a chart we define a clockwise orientation to be positive.
@@ -98,34 +96,50 @@ The determinant of the derivative of the Gauss map, $dN(p)$ quantifies the rate 
 the normal vector ($dN$ is often called the \emph{Weingarten map} \cite{Crane:2013}).
 Thus, $dN_p:T_p(S)\to T_{N(p)}(\Sp^2)$, but since $T_p(S)$ and $T_{N(p)}(\Sp^2)$
 are parallel we can define $dN_p$ to be a linear map on $T_p(S)$.
-The determinant of $dN(p)$ is equal to the Gaussian curvature.
+The determinant of $dN(p)$ is equal to \EMPH{Gaussian curvature}.
 
-Given a regular surface we can define an inner product on tangent vectors.
-Consider a curve $u=u(t), v=v(t)$ on a regular surface $\psi=\psi(u,v)$, let
+
+
+Regular surfaces are often presented as a function as $r(u,v)=(u,v,r(u,v))$
+with $u,v\in(-1,1)$.
+The curvature of a surface can be thought of as a the inverse of
+the radius of the osculating sphere. Spheres can be expressed
+as quadratic equations.  A
+ \EMPH{quadratic form} to be polynomial of degree two, of the form $p(u,v)=c_1u^2+c_2uv+c_3v^2$ 
+where $c_i\in R$.
+We define quadratic forms using $r(u,v)$ in order to compute the curvature.
+
+
+Consider a `small' parallelogram $M$ on $S$ with corners $r(u,v),r(u+\epsilon u, v), r(u,v+\epsilon v)$ 
+and $r(u+\epsilon u, v+\epsilon v)$ we consider the area of this parallelogram.
+A curve $u=u(t), v=v(t)$ on a regular surface, let
 $s$ denote the arc length, then 
-$$ds=\bigg | \frac{d\psi}{dt}\bigg | dt = \bigg | \psi_u\frac{du}{dt}+\psi_v\frac{dv}{dt}\bigg |dt
-=\sqrt{(\psi_u^2 du^2+2\psi_u\psi_v du dv + \psi_v^2dv^2)}.$$
-Let $E=\psi_u\cdot \psi_u, F=\psi_u\cdot \psi_v$ and  $G=\psi_v\cdot \psi_v$
+$$ds=\bigg | \frac{dr}{dt}\bigg | dt = \bigg | r_u\frac{du}{dt}+r_v\frac{dv}{dt}\bigg |dt
+=\sqrt{(r_u^2 du^2+2r_ur_v du dv + r_v^2dv^2)}.$$
+Let $E=r_u\cdot r_u, F=r_u\cdot r_v$ and  $G=r_v\cdot r_v$.
 Then $\mathrm{I}=ds^2=Edu^2+2Fdudv +Gdv^2$ is called the \EMPH{first fundamental form}.
+The rate of change of the area of $M$ is 
+$dA=\sqrt{EG-F^2}dudv.$
+We define an inner product on $Tp(S)$.
 If $x$ and $y$ are two tangent vectors
 then $\mathrm{I}(x,y)=x^T\begin{bmatrix}
 E & F \\
 F & G 
 \end{bmatrix}y.$
-Consider a 'small' parallelogram on $S$ with corners $\psi(u,v),\psi(u+\epsilon u, v), \psi(u,v+\epsilon v)$ 
-and $\psi(u+\epsilon u, v+\epsilon v)$ then the area of the parallelogram is
-$dA=\sqrt{EG-F^2}dudv.$
 
 
-A quadratic form is a polynomial of degree two, for example $p(x,y)=c_1x^2+c_2xy+c_3y^2$ 
-where $c_i\in R$.
-Suppose $r=r(u,v)$ is a parametrization of a regular surface $S$.
-Then $r_u$ and $r_v$ are linearly independent and span the tangent plane at each point
-on $S$. We can then define the unit normal vector $n=\frac{r_u\times r_v}{|r_u\times r_v|}$.
+
+
+
+
+\todo{Do we need this? Let $S_1$ and $S_2$ be two surfaces with $\sigma:V\subset S_1\to S_2$ a differentiable map.
+At $p\in S_1$ the map $d\sigma_p:T_p(S_1)\to T_{\sigma(p)}(S_2)$ is called the
+\EMPH{differential} of $\sigma$ at $p$.}
+
+The unit normal vector $n=\frac{r_u\times r_v}{|r_u\times r_v|}$.
 Then let $L=r_{uu}\cdot n, M=r_{uv}\cdot n$ and $N=r_{vv}\cdot n$ the
 \EMPH{second fundamental form} is $\mathrm{I\!I}=Ldu^2+2Mdudv+Ndv^2$.
-If $x$ and $y$ are two tangent vectors
-then $\mathrm{I\!I}(x,y)=x^T\begin{bmatrix}
+Another inner product is given by $\mathrm{I\!I}(x,y)=x^T\begin{bmatrix}
 L & M \\
 M & N 
 \end{bmatrix}y.$
@@ -133,9 +147,21 @@ Then the Gaussian curvature of a surface is also given by
 $K=\frac{\det(\mathrm{I\!I})}{\det(\mathrm{I})}.$
 
 
+We now give a useful formula for computing curvature.
 
-We will consider one-dimensional curves that are the boundary of two-dimensional
-surfaces in $\R^3.$ Let $\gamma$ denote such a curve parametrized by arc length.
+\begin{theorem}[Gaussian Curvature]\label{thm:log-curve}
+	Let $f:U\in\R^2\to S$ be an isothermal parameterization of a regular surface.
+	The Gaussian curvature, $K,$ of $S$ is 
+		\begin{equation}\label{eqn:log-curve}
+			K=\frac{-1}{2\lambda}\delta(\log \lambda)
+		\end{equation}
+\end{theorem}
+\begin{proof}
+\end{proof}
+
+\subsubsection{Geodesics Curvature}
+
+Shortest paths play an important role in many computational problems.
 In a surface, a \EMPH{geodesic} is a curve that is a shortest path
 between two points in the surface. 
 For example, on $\Sp^2$ great circles are geodesic.
