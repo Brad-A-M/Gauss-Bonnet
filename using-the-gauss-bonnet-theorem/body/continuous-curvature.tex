@@ -1,35 +1,33 @@
 
 The Gauss-Bonnet theorem relates local curvature calculations
 to global topology. 
-At a point on a parametrized curve  in $\RR^3$,
-how should we measure the curvature?
-A straight line should have zero curvature and the curvature of the unit circle ought to be one.
-We would also like a way to differentiate
-between turning left and turning right, that is we want curvature to be a signed quantity.
-
-As we will see, there are many definitions for curvature.
-Some lend themselves to computations and others provide
+We will see several definitions of curvature.
+Some definitions lend themselves to computations and others provide
 more geometric intuition.
-One way to think curvature is to approximate the curve at a point with a circle,
-then define the curvature to be the inverse of the radius of this circle $k=\frac{1}{r}$.
-Such a circle is called the \EMPH{osculating circle}.
+Intuitively, a straight line should have zero curvature and
+ large circles should have smaller curvature than smaller circles.
+ We would also like to differentiate
+curving to the left and curving to the right..
+
+In one dimension, for any point on a curve
+we can approximate the curve with a circle.
+The best approximating circle is the  \EMPH{osculating circle}.
+ We can define the \EMPH{curvature} to be the inverse of the radius of this circle $k=\frac{1}{r}$.
 See \figref{osculating-circle} for an example.
-For a straight line the curvature is zero, 
-every point on the unit circle has curvature one 
-and we can distinguish between
-which way we are turning by which side of the curve the osculating circle is on,
- and as we hoped.
+In the plane, we determine the sign by which side of the curve the osculating circle is on.
  This osculating-circle idea can be extend
 to  surfaces in $\R^3$, by considering the \EMPH{osculating sphere},
- the sphere that best approximates the surface at a point.
-However, for saddle points on a surface it is not clear which sphere
-best approximates the surface. Moreover, we would like a formula to compute the curvature.
+But notice that at saddle points on a surface it is not clear which sphere
+best approximates the surface.
+The above definition provides great intuition for the curvature of curves
+and surfaces but in many applications we would like a formula to compute
+the curvature of a curve or surface.
 
-A curve $\gamma(t)=(x(t),y(t),z(t))$ in $\RR^3$ is \EMPH{smooth} on an open interval $I$
-if $\gamma'$ is continuous and $\gamma'(t)\neq 0$ on $I$. 
+A curve in $\RR^3$ is often presented as a function
+$\gamma(t)=(x(t),y(t),z(t))$ that  is \EMPH{smooth} on an open interval $I$
+if $\gamma'$ is continuous and $\gamma'(t)\neq (0,0,0)$ on $I$. 
 If $\gamma$ is smooth it has a well-defined unit tangent vector $T(t)=\frac{\gamma'(t)}{|\gamma'(t)|}.$
-The \EMPH{curvature} at a point is the magnitude of the rate of change of the unit tangent vector with 
-respect to arc length
+A second way to define the  \EMPH{curvature} at a point is as the magnitude of the rate of change of the unit tangent vector with respect to arc length
 
 \begin{equation} \label{eqn:kappa}
 \kappa=\bigg  | \frac{T'(t)}{\gamma'(t)}\bigg |.
@@ -39,8 +37,8 @@ where $t$ is arc length.
 For example, take a circle of radius $r$, parameterized by $C(t)=\left(r\cos(t),r\sin(t)\right)$.
 We have $\frac{dC}{dt}=C'(t)=\left(-r\sin(t),r\cos(t)\right)$ and $|C'(t)|=r$.
 Then $T(t)=\left(-\sin(t),\cos(t)\right)$ and $T'(t)=\left(-\cos(t),-\sin(t)\right)$.
-So, $\kappa(t)=\frac{1}{r}$ and our definition of curvature agrees with the
-osculating circle intuition above. 
+So, $\kappa(t)=\frac{1}{r}$ and, in this case, our definition of curvature agrees with the
+osculating circle intuition given above. 
 \eqnref{kappa} can be rewritten in the following more computational friendly form 
 \begin{equation} \label{eqn:kappa1}
 \kappa(t)=\frac{|\gamma'(t)\times \gamma''(t)|}{|\gamma'(t)|^3}.
@@ -79,24 +77,28 @@ At $p\in S_1$ the map $d\sigma_p:T_p(S_1)\to T_{\sigma(p)}(S_2)$ is called the
 By choosing two linearly independent paths through $p\in S$ we can obtain the explicit tangent
 plane and define a normal vector $N$ at $p$.
 Every plane containing the normal vector will intersect the surface.
-The intersection of the surface and each normal plane is a curve in $\RR^3$. 
-Let $\kappa_1$ denote the maximum curvature over all normal planes
-and let $\kappa_2$ denote the minimum curvature over all normal planes.
+The intersection of the surface and each normal plane is a curve in $\RR^3$
+gives a one dimensional curve called the \EMPH{normal section}. 
+Let $\kappa_1$ denote the maximum curvature of all normal sections 
+and let $\kappa_2$ denote the minimum. 
 The \EMPH{Gaussian curvature} of a point on a surface is
 $K=\kappa_1\kappa_2.$
 
-There are several equivalent ways to calculate curvature of a surface.
-Once we choose a chart we define a clockwise orientation. If the clockwise
+
+Once we choose a chart we define a clockwise orientation to be positive.
+ If the clockwise
 orientation can be consistently extended to the entire surface, we say
 the surface is \EMPH{orientable}.
-For an orientable surface $S$, the map that  $N:S\to \Sp^2$ that sends each
+In one dimension, the curvature is the rate of change of the tangent vector.
+For an orientable surface $S$, we consider the rate of change of the normal vector.
+This vector is given by the map  $N:S\to \Sp^2$ that sends each
 normal in $S$ to the corresponding point on $\Sp^2$ is
 the \EMPH{Gauss map}.
-The derivative of the Gauss map, $dN(p)$ quantifies the rate of change of
+The determinant of the derivative of the Gauss map, $dN(p)$ quantifies the rate of change of
 the normal vector ($dN$ is often called the \emph{Weingarten map} \cite{Crane:2013}).
 Thus, $dN_p:T_p(S)\to T_{N(p)}(\Sp^2)$, but since $T_p(S)$ and $T_{N(p)}(\Sp^2)$
 are parallel we can define $dN_p$ to be a linear map on $T_p(S)$.
-Remarkably, the determinant of $dN(p)$ is equal to the Gaussian curvature.
+The determinant of $dN(p)$ is equal to the Gaussian curvature.
 
 Given a regular surface we can define an inner product on tangent vectors.
 Consider a curve $u=u(t), v=v(t)$ on a regular surface $\psi=\psi(u,v)$, let
@@ -115,7 +117,8 @@ and $\psi(u+\epsilon u, v+\epsilon v)$ then the area of the parallelogram is
 $dA=\sqrt{EG-F^2}dudv.$
 
 
-A quadratic form is a polynomial of degree two, for example $5x^2+2xy-7y^2$.
+A quadratic form is a polynomial of degree two, for example $p(x,y)=c_1x^2+c_2xy+c_3y^2$ 
+where $c_i\in R$.
 Suppose $r=r(u,v)$ is a parametrization of a regular surface $S$.
 Then $r_u$ and $r_v$ are linearly independent and span the tangent plane at each point
 on $S$. We can then define the unit normal vector $n=\frac{r_u\times r_v}{|r_u\times r_v|}$.
