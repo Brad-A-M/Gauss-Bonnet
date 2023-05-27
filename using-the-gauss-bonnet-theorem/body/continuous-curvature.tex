@@ -23,6 +23,15 @@ The above definition provides great intuition for the curvature of curves
 and surfaces but in many applications we would like a formula to compute
 the curvature of a curve or surface.
 
+
+\begin{figure}[htb]
+	\centering
+	\includegraphics[width=.3\textwidth]{curvature/osculating}
+	\caption{A curve with two osculating circles. The curvature at these points
+	have opposite sign.}
+	\label{fig:osculating-circle}
+\end{figure}
+
 A curve in $\RR^3$ is often presented as a function
 $\gamma(t)=(x(t),y(t),z(t))$ that  is \EMPH{smooth} on an open interval $I$
 if $\gamma'$ is continuous and $\gamma'(t)\neq (0,0,0)$ on $I$. 
@@ -112,15 +121,17 @@ We define quadratic forms using $r(u,v)$ in order to compute the curvature.
 
 Consider a `small' parallelogram $M$ on $S$ with corners $r(u,v),r(u+\epsilon u, v), r(u,v+\epsilon v)$ 
 and $r(u+\epsilon u, v+\epsilon v)$ we consider the area of this parallelogram.
+The unit normal vector at $p$ $$n(p)=\frac{r_u\times r_v}{|r_u\times r_v|}.$$
 A curve $u=u(t), v=v(t)$ on a regular surface, let
 $s$ denote the arc length, then 
 $$ds=\bigg | \frac{dr}{dt}\bigg | dt = \bigg | r_u\frac{du}{dt}+r_v\frac{dv}{dt}\bigg |dt
 =\sqrt{(r_u^2 du^2+2r_ur_v du dv + r_v^2dv^2)}.$$
 Let $E=r_u\cdot r_u, F=r_u\cdot r_v$ and  $G=r_v\cdot r_v$.
-Then $\mathrm{I}=ds^2=Edu^2+2Fdudv +Gdv^2$ is called the \EMPH{first fundamental form}.
 The rate of change of the area of $M$ is 
 $dA=\sqrt{EG-F^2}dudv.$
-We define an inner product on $Tp(S)$.
+
+Then $\mathrm{I}=ds^2=Edu^2+2Fdudv +Gdv^2$ is called the \EMPH{first fundamental form}.
+And we get an notion of length in the tangent space, an inner product on $Tp(S)$.
 If $x$ and $y$ are two tangent vectors
 then $\mathrm{I}(x,y)=x^T\begin{bmatrix}
 E & F \\
@@ -129,14 +140,12 @@ F & G
 
 
 
-
-
-
 \todo{Do we need this? Let $S_1$ and $S_2$ be two surfaces with $\sigma:V\subset S_1\to S_2$ a differentiable map.
 At $p\in S_1$ the map $d\sigma_p:T_p(S_1)\to T_{\sigma(p)}(S_2)$ is called the
 \EMPH{differential} of $\sigma$ at $p$.}
 
-The unit normal vector $n=\frac{r_u\times r_v}{|r_u\times r_v|}$.
+
+The curvature needs the information of the second derivative.
 Then let $L=r_{uu}\cdot n, M=r_{uv}\cdot n$ and $N=r_{vv}\cdot n$ the
 \EMPH{second fundamental form} is $\mathrm{I\!I}=Ldu^2+2Mdudv+Ndv^2$.
 Another inner product is given by $\mathrm{I\!I}(x,y)=x^T\begin{bmatrix}
@@ -147,7 +156,13 @@ Then the Gaussian curvature of a surface is also given by
 $K=\frac{\det(\mathrm{I\!I})}{\det(\mathrm{I})}.$
 
 
-We now give a useful formula for computing curvature.
+A few of our applications use the following
+formula for Gaussian curvature.
+\todo{define conformal}
+We can always choose a parameterization of a regular surface 
+such that the first fundamental form has the form
+$E=f(u,v), F(u,v)=0,$ and $G=f(u,v)$ where $f(u,v)>0$
+
 
 \begin{theorem}[Gaussian Curvature]\label{thm:log-curve}
 	Let $f:U\in\R^2\to S$ be an isothermal parameterization of a regular surface.
