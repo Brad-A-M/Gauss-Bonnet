@@ -43,8 +43,10 @@ A second way to define the  \EMPH{curvature} at a point is as the magnitude of t
 \end{equation}
 where $t$ is arc length.
 
-For example, take a circle of radius $r$, parameterized by $C(t)=\left(r\cos(t),r\sin(t)\right)$.
-We have $\frac{dC}{dt}=C'(t)=\left(-r\sin(t),r\cos(t)\right)$ and $|C'(t)|=r$.
+For example, take a circle of radius $r$, parameterized by 
+$$C(t)=\left(r\cos(t),r\sin(t)\right).$$
+We have 
+$$\frac{dC}{dt}=C'(t)=\left(-r\sin(t),r\cos(t)\right)$$ and $|C'(t)|=r.$
 Then $T(t)=\left(-\sin(t),\cos(t)\right)$ and $T'(t)=\left(-\cos(t),-\sin(t)\right)$.
 So, $\kappa(t)=\frac{1}{r}$ and, in this case, our definition of curvature agrees with the
 osculating circle intuition given above. 
@@ -161,22 +163,61 @@ $K=\frac{\det(\mathrm{I\!I})}{\det(\mathrm{I})}.$
 
 \begin{example}[Stereographic Projection \cite{christian-notes}]\label{ex:stereo}
 Consider the two sphere with the north pole removed $\Sp^2 \setminus (0,0,1)$,
-stereographic projection is a bijection between the points on $\SS^2 \setminus (0,0,1)$ to the $\R^2$.
+stereographic projection is a bijection between the points on $\Sp^2 \setminus (0,0,1)$ to the $\R^2$.
 Consider a line from the north pole $(0,0,1)$ that intersects $(x,y,z)\in \Sp^2$ parametrized by 
 $(1-t)(0,0,1)+t(x,y,z)$. By considering the $z$ coordinate we determine the $t$ value where this line
 intersects $\R^2$, namely $t=\frac{1}{1-z}.$
-This gives the desired map $p(x,y,z)\to \left(\frac{x}{1-z},\frac{y}{1-z}\right).$
+This gives the desired map 
+
+
+			$$p(x,y,z)\to \left(\frac{x}{1-z},\frac{y}{1-z}\right).$$
+	
 The inverse is given by $p^{-1}:\R^2\to \R^3$
-$$p^{-1}(u,v)=\left(\frac{2u}{u^2+v^2+1},\frac{2v}{u^2+v^2+1},\frac{u^2+v^2-1}{u^2+v^2+1}\right).$$
+
+	\begin{equation}\label{eqn:stereo}
+		p^{-1}(u,v)=\left(\frac{2u}{u^2+v^2+1},\frac{2v}{u^2+v^2+1},\frac{u^2+v^2-1}{u^2+v^2+1}\right).	
+	\end{equation}
 To compute the first fundamental form of $p^{-1}(u,v)$ we take the partial derivatives
 
 $$p^{-1}_u=\left(\frac{2v^2-2u^2+2}{(u^2+v^2+1)^2},\frac{-4uv}{(u^2+v^2+1)^2},\frac{4v}{(u^2+v^2+1)^2}\right)$$
 and 
 $$p^{-1}_v=\left(\frac{-4uv}{(u^2+v^2+1)^2},\frac{2v^2-2u^2+2}{(u^2+v^2+1)^2},\frac{4v}{(u^2+v^2+1)^2}\right).$$
-Then $$E=p^{-1}_u\cdot p^{-1}_u=\frac{4}{(u^2+v^2+1)^2}$$
+Then, after some algebra,
+$$E=p^{-1}_u\cdot p^{-1}_u=\frac{4}{(u^2+v^2+1)^2}$$
 $$F=p^{-1}_v\cdot p^{-1}_v=\frac{4}{(u^2+v^2+1)^2}$$
 and
 $$M=p^{-1}_u\cdot p^{-1}_v=0.$$
+
+We can use the first fundamental form to compute
+the  arc length of circles on the sphere parallel to the $xy$ plane with fixed height $z=c$ for $-1<c<1$.
+Use the map $p$ to map such a circle to the plane.
+Using \eqnref{stereo}, our circle on the sphere maps 
+to a circle in the plane because
+	$$p^{-1}(u,v)=\frac{u^2+v^2-1}{u^2+v^2+1}=c$$
+and we can compute the radius in terms of $c$
+	$$u^2+v^2=\frac{1+c}{1-c}=k^2.$$
+	
+In the plane, $u^2+v^2=k^2$ can be parameterized
+as $$\gamma(t)=(k\cos(t),k\sin(t))$$ with $0\leq t\leq 2\pi.$
+So our curve becomes $p^{-1}\circ \gamma(t)$ on the sphere.
+Computing the partial derivatives of $\gamma(t)$ gives
+$$\gamma_u'=-k\sin(t)\hspace{2cm}  \gamma_v'=k\cos(t).$$
+Now we use the first fundamental form
+
+$$\int_{p^{-1}}\gamma ds=\int_{0}^{2\pi} ||(p^{-1}\circ \gamma)'(t)dt=\int_0^{2\pi}\sqrt{E(\gamma_u'(t))^2+2M\gamma_u'\gamma_v'+
+F(\gamma_v'(t))^2}dt.$$
+Substituting and simplifying using $E=F$ we obtain
+$$\int_0^{2\pi}\frac{2k}{k^2+1}dt=\frac{4\pi k}{k^2+1}.$$
+Simplifying further tells us our arc length is
+$$2\pi\sqrt{1-c^2}.$$
+
+
+	
+
+
+
+
+
 \end{example}
 
 \todo{Do we need this? Let $S_1$ and $S_2$ be two surfaces with $\sigma:V\subset S_1\to S_2$ a differentiable map.
