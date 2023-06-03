@@ -1,5 +1,38 @@
 \subsection{The Harry Ball Theorem}
 \label{sec:harry-ball}
 
+Functions on surfaces are called vector fields.
+In this section, the Gauss-Bonnet theorem is used
+to related the zeros of a vector field to the topology of a surface.
+We will prove that harry ball theorem which shows that 
+given a harry ball, one
+can not comb the ball without creating a cowlick.
+
 \cite{rotskoff2010}
+
+
+\begin{definition}[Vector Field]\label{def:vector-field}
+	A vector field $v$  in an open set $U\subset S$ of a regular surface $S$
+	is a correspondence which assigns to each $p\in U$ and a vector $w(p)\in T_p(S)$.
+	Moreover, $v$ is differentiable at $p$ if, for some parametrization $r(u,v)$ at $p$,
+	the functions $a(u,v)$ and $b(u,v)$ given by
+		$$v(p)=a(u,v)r_u + b(u,v)r_v$$
+	are both differentiable at $p$.
+\end{definition}
+
+Given a vector field point $p\in S$ is a \EMPH{singular point} if $v(p)=0$
+and a singular point is \EMPH{isolated} if there is an open neighborhood
+containing $p$ and no other singular points.
+
+
+
+\begin{definition}[Index]\label{def:index}
+Let $r$ be an orthogonal parametrization with $r(0,0)=p.$
+Let $\alpha:[0,\ell]\to S$ be a closed simple regular parametrized curve with a 
+simple boundary $R$.
+Consider the function $\phi(t)$ with $t\in [0,\ell],$ such that records that angle 
+
+$$2\pi I=\phi(\ell)-\phi(0)=\int_0^\ell \frac{d\phi}{dt}dt.$$
+	The index $I$ of $v$.
+\end{definition}
 
