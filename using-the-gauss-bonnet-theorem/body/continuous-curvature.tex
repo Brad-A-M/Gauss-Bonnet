@@ -165,12 +165,17 @@ $K=\frac{\det(\mathrm{I\!I})}{\det(\mathrm{I})}.$
 Consider the two sphere with the north pole removed $\Sp^2 \setminus (0,0,1)$,
 stereographic projection is a bijection between the points on $\Sp^2 \setminus (0,0,1)$ to the $\R^2$.
 Consider a line from the north pole $(0,0,1)$ that intersects $(x,y,z)\in \Sp^2$ parametrized by 
-$(1-t)(0,0,1)+t(x,y,z)$. By considering the $z$ coordinate we determine the $t$ value where this line
+$p(t)=(1-t)(0,0,1)+t(x,y,z)$. By considering the $z$ coordinate we determine the $t$ value where this line
 intersects $\R^2$, namely $t=\frac{1}{1-z}.$
-This gives the desired map 
+This gives the desired map shown in \figref{stereo} and in equation form
+$$p(x,y,z)\to \left(\frac{x}{1-z},\frac{y}{1-z}\right).$$
 
-
-			$$p(x,y,z)\to \left(\frac{x}{1-z},\frac{y}{1-z}\right).$$
+\begin{figure}[htb]
+	\centering
+	\includegraphics[width=.3\textwidth]{curvature/stereo}
+	\caption{A point on the sphere is mapped to a point on the plane by stereographic projection.}
+	\label{fig:stereo}
+\end{figure}
 	
 The inverse is given by $p^{-1}:\R^2\to \R^3$
 
@@ -190,33 +195,31 @@ $$M=p^{-1}_u\cdot p^{-1}_v=0.$$
 
 We can use the first fundamental form to compute
 the  arc length of circles on the sphere parallel to the $xy$ plane with fixed height $z=c$ for $-1<c<1$.
-Use the map $p$ to map such a circle to the plane.
+One can compute this length using
+the pythagorean theorem. We will see that using stereographic projection
+and the first fundamental form we get the same answer.
+First, use the map $p$ to map such a circle to the plane.
 Using \eqnref{stereo}, our circle on the sphere maps 
 to a circle in the plane because
 	$$p^{-1}(u,v)=\frac{u^2+v^2-1}{u^2+v^2+1}=c$$
 and we can compute the radius in terms of $c$
-	$$u^2+v^2=\frac{1+c}{1-c}=k^2.$$
+\begin{equation}\label{eqn:radius}
+	u^2+v^2=\frac{1+c}{1-c}=k^2.
+\end{equation}
 	
 In the plane, $u^2+v^2=k^2$ can be parameterized
 as $$\gamma(t)=(k\cos(t),k\sin(t))$$ with $0\leq t\leq 2\pi.$
 So our curve becomes $p^{-1}\circ \gamma(t)$ on the sphere.
 Computing the partial derivatives of $\gamma(t)$ gives
-$$\gamma_u'=-k\sin(t)\hspace{2cm}  \gamma_v'=k\cos(t).$$
+$$\gamma_u'=-k\sin(t)\hspace{1.3cm}  \gamma_v'=k\cos(t).$$
 Now we use the first fundamental form
 
 $$\int_{p^{-1}}\gamma ds=\int_{0}^{2\pi} ||(p^{-1}\circ \gamma)'(t)dt=\int_0^{2\pi}\sqrt{E(\gamma_u'(t))^2+2M\gamma_u'\gamma_v'+
 F(\gamma_v'(t))^2}dt.$$
 Substituting and simplifying using $E=F$ we obtain
 $$\int_0^{2\pi}\frac{2k}{k^2+1}dt=\frac{4\pi k}{k^2+1}.$$
-Simplifying further tells us our arc length is
+Simplifying further using \eqnref{radius}  our arc length is
 $$2\pi\sqrt{1-c^2}.$$
-
-
-	
-
-
-
-
 
 \end{example}
 
@@ -224,9 +227,14 @@ $$2\pi\sqrt{1-c^2}.$$
 At $p\in S_1$ the map $d\sigma_p:T_p(S_1)\to T_{\sigma(p)}(S_2)$ is called the
 \EMPH{differential} of $\sigma$ at $p$.}
 
+
+Stereographic projection has preserves angles and circle.
+\todo{define conformal}
+We can use conformal maps to obtain a formula
+for curvature in terms of the Lapalican?
 A few of our applications use the following
 formula for Gaussian curvature.
-\todo{define conformal}
+
 We can always choose a parameterization of a regular surface 
 such that the first fundamental form has the form
 $E=f(u,v), F(u,v)=0,$ and $G=f(u,v)$ where $f(u,v)>0$
