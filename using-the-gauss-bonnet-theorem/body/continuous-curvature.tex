@@ -74,6 +74,12 @@ we say $\phi$ is \EMPH{regular}. In other words, let $(u,v)$ be coordinates of $
 a surface is regular if $\frac{\partial\phi}{\partial u}$
 and $\frac{\partial\phi}{\partial v}$ are linearly independent for all $q\in U$.
 
+Often, we consider surfaces with a map $\phi:U\subset \R^2\to S$ with $\phi(u,v)=(u,v,f(u,v))$ for
+a smooth function $f$. Then taking partial derivatives we have
+$\frac{\partial\phi}{\partial u}=\left(1,0,\frac{\partial f(u,v)}{\partial u}\right)$ and 
+$\frac{\partial\phi}{\partial v}=\left(1,0,\frac{\partial f(u,v)}{\partial v}\right)$
+which are linearly independent.
+
 
 Let $S$ be a regular surface, then at each point $p\in S$ the set of tangent vectors
 to parameterized curves in $S$ through $p$ forms a plane.
@@ -82,7 +88,7 @@ The set of all tangent vectors is the \EMPH{tangent plane} and it corresponds to
 of the differential map $d\phi_q(\RR^2)\subset \RR^3$ (prop. 1 \cite{doc76}).
 
 
-By choosing two linearly independent paths through $p\in S$ we can obtain the explicit tangent
+By choosing two linearly independent paths through $p\in S$ we can obtain the tangent
 plane and define a normal vector $N$ at $p$.
 Every plane containing the normal vector will intersect the surface.
 The intersection of the surface and each normal plane is a curve in $\RR^3$
@@ -158,7 +164,9 @@ L & M \\
 M & N 
 \end{bmatrix}y.$
 Then the Gaussian curvature of a surface is also given by
-$K=\frac{\det(\mathrm{I\!I})}{\det(\mathrm{I})}.$
+\begin{equation}\label{eqn:curve-dets}
+ 	K=\frac{\det(\mathrm{I\!I})}{\det(\mathrm{I})}.
+\end{equation}
 
 
 \begin{example}[Stereographic Projection \cite{christian-notes}]\label{ex:stereo}
@@ -228,26 +236,82 @@ At $p\in S_1$ the map $d\sigma_p:T_p(S_1)\to T_{\sigma(p)}(S_2)$ is called the
 \EMPH{differential} of $\sigma$ at $p$.}
 
 
-Stereographic projection has preserves angles and circle.
-\todo{define conformal}
-We can use conformal maps to obtain a formula
-for curvature in terms of the Lapalican?
-A few of our applications use the following
-formula for Gaussian curvature.
+Given two curves on the sphere that intersect linearly independently at a point $p$, 
+stereographic projection preserves the angle between the curves.
+Maps that preserve angles in this way are called \EMPH{conformal}.
+We can use conformal maps to obtain a useful formula for curvature.
+We follow the derivation given in $\S$ 13.1.3 of \cite{dubrovin_modern_1984}.
 
-We can always choose a parameterization of a regular surface 
-such that the first fundamental form has the form
-$E=f(u,v), F(u,v)=0,$ and $G=f(u,v)$ where $f(u,v)>0$
+Let $S$ be a surface in $\R^3$ parameterized by
+$$x=x(p,q), \hspace{1cm}  y=y(p,q)  \hspace{1cm} z=z(p,q).$$
+Then, using the  first fundamental form, we have a metric on the surface in $\R^3$
+$$d\ell^2=E(du)^2+2Fdudv + G(dv)^2$$
+with $g=EG-F^2>0.$ 
+We omit the proof of the following, there exists local coordinates $u,v$ for the surface with a metric of the form
+$$d\ell^2=f(u,v)(du^2+dv^2).$$ 
+
+We can then compute the curvature using this metric
 
 
 \begin{theorem}[Gaussian Curvature]\label{thm:log-curve}
-	Let $f:U\in\R^2\to S$ be an isothermal parameterization of a regular surface.
-	The Gaussian curvature, $K,$ of $S$ is 
+	Let $u,v$ be conformal coordinates of a surface $S\subset \R^3$ with
+	induced metric 
+	$$d\ell^2=g(u,v)(du^2+dv^2),$$
+	then Gaussian curvature,  is 
 		\begin{equation}\label{eqn:log-curve}
-			K=\frac{-1}{2\lambda}\delta(\log \lambda)
+			K=\frac{-1}{2g(u,v)}\Delta(\log g(u,v))
 		\end{equation}
+		where $\Delta=\frac{\partial^2}{\partial u^2}+\frac{\partial^2}{\partial v^2}$
+		is the Laplacian.
 \end{theorem}
 \begin{proof}
+	Let the surface be given by local conformal coordinates $u,v$
+	with $r=r(u,v)$ and $r=(x,y,z)$ in $\R^3$ coordinates.
+	Our metric is given by $d\ell^2=g(u,v)(du^2+dv^2)$
+	we have 
+	
+	\begin{equation}\label{eqn:log-curve-proof-inners}
+		\langle r_u,r_u\rangle = \langle r_v,r_v\rangle=g(u,v), \hspace{1cm} \langle r_u,r_v\rangle 0.
+	\end{equation}
+	Differentiating with respect to $u$ and $v$ we have
+	\begin{equation}\label{eqn:log-curve-proof-firsts}
+		\frac{ \partial g(u,v)}{2\partial u}=\langle r_{uu}, r_u\rangle =\langle r_{uv}, r_v\rangle,
+		\frac{ \partial g(u,v)}{2\partial v}=\langle r_{vv}, r_u\rangle =\langle r_{uv}, r_u\rangle
+		\end{equation}
+		and
+		\begin{equation}\label{eqn:log-curve-proof-firsts-1}
+		\langle r_{uu},r_v\rangle + \langle r_u, r_{uv}\rangle=0=\langle r_{uv},r_v\rangle + \langle r_u, r_{vv}\rangle.
+		\end{equation}
+	
+	
+	By \eqnref{log-curve-proof-inners} we can now define an orthonormal set of vectors
+	\begin{equation}\label{eqn:log-curve-proof-orthog}
+		e_1=\frac{r_u}{\sqrt{g(u,v}}, e_2=\frac{r_v}{\sqrt{g(u,v}}, n=[e_1,e_2].
+	\end{equation}
+	with $e_1$ and $e_2$ tangent to the surface.
+	
+	Then using the second fundamental form we have
+	$$L=\langle r_{uu},n\rangle , M=\langle r_{uv},n\rangle, N=\langle r_{vv},n\rangle.$$
+	Relative to $e_1, e_2$ and $n$ we have
+	
+	\begin{equation}\label{eqn:log-curve-proof-seconds}
+		r_{uu}=\left(\frac{1}{2\sqrt{g}}\frac{\partial g}{\partial u},\frac{-1}{2\sqrt{g}}\frac{\partial g}{\partial v},L\right),\\
+		r_{uv}=\left(\frac{1}{2\sqrt{g}}\frac{\partial g}{\partial v},\frac{1}{2\sqrt{g}}\frac{\partial g}{\partial u},M\right),\\
+		r_{uv}=\left(\frac{-1}{2\sqrt{g}}\frac{\partial g}{\partial u},\frac{1}{2\sqrt{g}}\frac{\partial g}{\partial v},N\right).
+	\end{equation}
+	Then
+	$$\langle r_{uu},r_{vv}\rangle -\langle r_{uv},r_{uv}\rangle=LN-M^2-\frac{1}{2g}\left[\left(\frac{\partial g}{\partial v}\right)^2+
+	\left(\frac{\partial g}{\partial u}\right)^2\right]$$
+	and by \eqnref{log-curve-proof-firsts-1}, we have
+	$$\frac{\partial^2 g}{2\partial u^2}=\langle r_{uuv},r_{v}\rangle+\langle r_{uv},r_{uv}\rangle$$
+	$$=\frac{\partial}{\partial v}\langle r_{uu},r_{v}\rangle - \langle r_{uu},r_{vv}\rangle+\langle r_{uv},r_{uv}\rangle$$
+	$$=-\frac{1}{2}\frac{\partial^2 g}{\partial v^2}-(LN-M^2)+\frac{1}{2g}\left[\left(\frac{\partial g}{\partial v}\right)^2+
+	\left(\frac{\partial g}{\partial u}\right)^2\right].$$
+	
+	Then using the definition of curvature in terms of the first and second fundamental, \eqnref{curve-dets},
+	we have
+	$$K=\frac{LN-M^2}{g(u,v)^2}=\frac{-1}{2g(u,v)}\Delta \ln g(u,v)$$
+	as desired.
 \end{proof}
 
 \subsubsection{Geodesics Curvature}
