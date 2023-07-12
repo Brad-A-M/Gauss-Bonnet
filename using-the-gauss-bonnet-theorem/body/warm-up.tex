@@ -3,17 +3,17 @@
 
 Some of us may remember the following special case
 of the Gauss-Bonnet theorem from middle school geometry.
-An \EMPH{exterior angle} is created when we extend one of the sides of a polygon.
+Given a simple polygon, a \EMPH{exterior angle} is created when we extend one of the sides.
 See \figref{exterior-angles} for an example.
 The exterior angle at a vertex can be positive or negative.
 If we traverse a polygon and add up the exterior angles
-we get $2\pi$ because we perform one revolution.
+we get $2\pi$ because we perform exactly one revolution.
 This is a special case of the Gauss-Bonnet theorem.
 No matter how we bend or stretch our polygon,
 if the boundary of the polygon stays closed and simple,
 the sum the exterior angles will be $2\pi$.
 
-We can also derive a formula for the sum of the angles
+We next derive a formula for the sum of the angles
 of the interior angles.
 The proof provides intuition for other proofs we will encounter.
 We have
@@ -41,10 +41,10 @@ See \figref{interior-angles} for an example.
          \caption{Exterior angles.}
           \label{fig:exterior-angles}
          \end{subfigure}
-		\caption{(a) In the plane, the sum of the interior angles of a triangle is $\pi$
- 		and (b) the sum of the exterior angles of a simple
+		\caption{(\subref{fig:interior-angles}) In the plane, the sum of the interior angles of a triangle is $\pi$.
+ 		 (\subref{fig:exterior-angles}) The sum of the exterior angles of a simple
 		polygon is $2\pi$. Here
-		$\alpha_1+\alpha_2+\alpha_3+\alpha_4+\alpha_5=2\pi$.
+		$\alpha_1+\alpha_2+\alpha_3+\alpha_4+\alpha_5=2\pi$ note that $\alpha_4$ is negative.
  		\label{fig:simple-polygon}}
  \end{figure}
 
@@ -56,7 +56,8 @@ the sum of the interior angles of $P$ is $(n-2)\pi$.
 
 \begin{proof}
 	Consider any simple polygon in the plane $P$ with $n$ vertices. 
-	Then $P$ can be triangulated with $n-2$ triangles \cite{orourke_computational_1994}.
+	Then $P$ can be triangulated with $n-2$ triangles using only the vertices
+	of $P$ \cite{orourke_computational_1994}.
 	Thus, when we traverse $P$ we go around $n-2$ triangles each contributing
 	$\pi$.
 \end{proof}
@@ -90,7 +91,7 @@ A triangle on the sphere is shown in \figref{sphere-triangle}.
  		\label{fig:sphere-lune}}
  \end{figure}
 A spherical \EMPH{lune} is the region on a sphere bounded by two half great circles
-with angle $\alpha$ the area of a lune is denoted $A(\alpha)$,
+with angle $\alpha$. The area of a lune is denoted $A(\alpha)$,
  see \figref{lune}.
 On the unit sphere, the area of a lune is proportional to $\alpha$. 
 If $\alpha=0$ the area is zero and if $\alpha=\pi$ the area is $4\pi$.
@@ -101,7 +102,7 @@ and  $A(\alpha)=4\alpha.$
 
 
 
-The area of a triangle on the sphere is related to the angles.
+The following relates the area of a triangle on the sphere to the angles.
 
 \begin{lemma}[Area of Spherical Triangle]\label{lem:spherical-triangle}
 On the unit sphere, the area of a triangle with interior angles $\alpha_1, \alpha_2, \alpha_3$
@@ -109,12 +110,11 @@ is $A=\alpha_1+\alpha_2+\alpha_3-\pi$.
 \end{lemma}
 
 \begin{proof}
-Any two edges of the the triangle form a lune. The collection of 
-all three lunes covers the entire sphere with triangle and the antipodal triangle
-are covered three times. The surface area of the unit sphere is $4\pi$.
-
-Thus, $4\pi=2(2\alpha_1+2\alpha_2+2\alpha_3)-6A+2A$
-and $A=\alpha_1+\alpha_2+\alpha_3-\pi$.
+	Any two edges of the the triangle form a lune. The collection of 
+	all three lunes covers the entire sphere with triangle and the antipodal triangle covered three times.
+ 	The surface area of the unit sphere is $4\pi$.
+	Thus, $4\pi=2(2\alpha_1+2\alpha_2+2\alpha_3)-6A+2A$
+	and $A=\alpha_1+\alpha_2+\alpha_3-\pi$.
 \end{proof}
 
 As in the plane, any polygon on the sphere with $n$ vertices can be decomposed
@@ -122,7 +122,7 @@ into $n-2$ triangles. This gives a formula for the area of a simple polygon
 on the sphere with interior angles $\beta_1,\beta_2,\ldots, \beta_n$.
 
 \begin{equation} \label{eqn:sphere-area}
-A=(2-n)\pi +\sum_{i=1}^n \beta_i.
+	A=(2-n)\pi +\sum_{i=1}^n \beta_i.
 \end{equation}
 
 
