@@ -1,3 +1,56 @@
+We next derive a formula for the sum of the angles
+of the interior angles.
+The proof provides intuition for other proofs we will encounter.
+We have
+\begin{theorem}\label{thm:triangle}
+In the plane, the sum of the interior angles of a triangle is $\pi$.
+\end{theorem}
+\begin{proof}
+Draw a line parallel to one edge through the opposite vertex.
+By alternating interior angles in the plane, the sum of the angles
+in the triangle equal a straight line.
+See \figref{interior-angles} for an example. 
+\end{proof}
+
+
+ \begin{figure}[htb]
+         \centering
+        \begin{subfigure}[b]{0.35\textwidth}
+         \includegraphics[width=\textwidth]{background/interior-triangle}
+         \caption{Interior angles.}
+ 	 \label{fig:interior-angles}
+       \end{subfigure}
+         \hspace{1cm}
+         \begin{subfigure}[b]{0.25\textwidth}
+         \includegraphics[width=\textwidth]{background/exterior-angles-polygon}
+         \caption{Exterior angles.}
+          \label{fig:exterior-angles}
+         \end{subfigure}
+		\caption{(\subref{fig:interior-angles}) In the plane, the sum of the interior angles of a triangle is $\pi$.
+ 		 (\subref{fig:exterior-angles}) The sum of the exterior angles of a simple
+		polygon is $2\pi$. Here
+		$\alpha_1+\alpha_2+\alpha_3+\alpha_4+\alpha_5=2\pi$ note that $\alpha_4$ is negative.
+ 		\label{fig:simple-polygon}}
+ \end{figure}
+
+And we have
+\begin{corollary}\label{cor:angles}
+In the plane, any simple polygon $P$ with $n$ vertices,
+the sum of the interior angles of $P$ is $(n-2)\pi$.
+\end{corollary}
+
+\begin{proof}
+	Consider any simple polygon in the plane $P$ with $n$ vertices. 
+	Then $P$ can be triangulated with $n-2$ triangles using only the vertices
+	of $P$ \cite{orourke_computational_1994}.
+	Thus, when we traverse $P$ we go around $n-2$ triangles each contributing
+	$\pi$.
+\end{proof}
+
+
+
+
+
 \subsection{Triangulations}
 
 Here we define simplicial complexes and triangulations.

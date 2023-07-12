@@ -1,27 +1,27 @@
 
-The Gauss-Bonnet theorem relates local curvature calculations
+For a given surface, the Gauss-Bonnet theorem relates local curvature
 to global topology. 
 We will see several definitions of curvature.
 Some definitions lend themselves to computations and others provide
 more geometric intuition.
-Intuitively, a straight line should have zero curvature and
+A straight line should have zero curvature and
  large circles should have smaller curvature than smaller circles.
- We would also like to differentiate
+We need to differentiate between
 curving to the left and curving to the right..
 
-In one dimension, for any point on a curve
+For any point on a one dimensional curve
 we can approximate the curve with a circle.
 The best approximating circle is the  \EMPH{osculating circle}.
- We can define the \EMPH{curvature} to be the inverse of the radius of this circle $k=\frac{1}{r}$.
+A natural definition of the \EMPH{curvature} is the inverse of the radius of this circle $k=\frac{1}{r}$.
 See \figref{osculating-circle} for an example.
-In the plane, we determine the sign by which side of the curve the osculating circle is on.
+In the plane, we determine the sign of the curvature by which side of the curve the osculating circle is on.
  This osculating-circle idea can be extend
 to  surfaces in $\R^3$, by considering the \EMPH{osculating sphere},
 But notice that at saddle points on a surface it is not clear which sphere
 best approximates the surface.
 The above definition provides great intuition for the curvature of curves
 and surfaces but in many applications we would like a formula to compute
-the curvature of a curve or surface.
+the curvature.
 
 
 \begin{figure}[htb]
@@ -33,10 +33,11 @@ the curvature of a curve or surface.
 \end{figure}
 
 A curve in $\RR^3$ is often presented as a function
-$\gamma(t)=(x(t),y(t),z(t))$ that  is \EMPH{smooth} on an open interval $I$
-if $\gamma'$ is continuous and $\gamma'(t)\neq (0,0,0)$ on $I$. 
+$\gamma(t)=(x(t),y(t),z(t))$ we say that a curve is \EMPH{smooth} on an open interval $I$
+if $\gamma'$ it is continuous and $\gamma'(t)\neq (0,0,0)$ on $I$. 
 If $\gamma$ is smooth it has a well-defined unit tangent vector $T(t)=\frac{\gamma'(t)}{|\gamma'(t)|}.$
-A second way to define the  \EMPH{curvature} at a point is as the magnitude of the rate of change of the unit tangent vector with respect to arc length
+A second way to define the  \EMPH{curvature} at a point is as the magnitude of the rate of change of the 
+unit tangent vector
 
 \begin{equation} \label{eqn:kappa}
 \kappa=\bigg  | \frac{T'(t)}{\gamma'(t)}\bigg |.
@@ -47,7 +48,7 @@ For example, take a circle of radius $r$, parameterized by
 $$C(t)=\left(r\cos(t),r\sin(t)\right).$$
 We have 
 $$\frac{dC}{dt}=C'(t)=\left(-r\sin(t),r\cos(t)\right)$$ and $|C'(t)|=r.$
-Then $T(t)=\left(-\sin(t),\cos(t)\right)$ and $T'(t)=\left(-\cos(t),-\sin(t)\right)$.
+Then $T'(t)=\left(-\cos(t),-\sin(t)\right)$ and $T(t)=\left(-\sin(t),\cos(t)\right)$.
 So, $\kappa(t)=\frac{1}{r}$ and, in this case, our definition of curvature agrees with the
 osculating circle intuition given above. 
 \eqnref{kappa} can be rewritten in the following more computational friendly form 
@@ -61,7 +62,9 @@ so  the second derivative is orthogonal to $\gamma'$. Thus, the
 vector $\gamma''=N$ is normal to the $\gamma$. 
 By taking the cross product of $N$ and $T$ we obtain a vector $B$ called
 the binormal vector.
-The vectors $T,N$ and $B$ form the \emph{Fernet frame} of $\gamma$ a $p.$
+The vectors $T,N$ and $B$ form the \EMPH{Fernet frame} of $\gamma$ a $p.$
+
+\subsubsection{Surfaces}
 
 Now we consider the curvature of a point on a surface. In one dimension we are
 able parameterize our curve. Similarly, we require the ability to parameterize a surface.
@@ -320,8 +323,8 @@ Shortest paths play an important role in many computational problems.
 In a surface, a \EMPH{geodesic} is a curve that is a shortest path
 between two points in the surface. 
 For example, on $\Sp^2$ great circles are geodesic.
-We would like to define the curvature as it would be seen from
-someone living on a surface.
+We would like to define the curvature of a one dimensional curve as it would
+ be seen from someone living on a surface.
 
 Let $U$ be a parameterized chart on a surface $S$ with vector $n(u,v)$ normal
 to the surface

@@ -3,66 +3,67 @@
 
 Some of us may remember the following special case
 of the Gauss-Bonnet theorem from middle school geometry.
-Given a simple polygon, a \EMPH{exterior angle} is created when we extend one of the sides.
-See \figref{exterior-angles} for an example.
-The exterior angle at a vertex can be positive or negative.
-If we traverse a polygon and add up the exterior angles
-we get $2\pi$ because we perform exactly one revolution.
-This is a special case of the Gauss-Bonnet theorem.
-No matter how we bend or stretch our polygon,
-if the boundary of the polygon stays closed and simple,
-the sum the exterior angles will be $2\pi$.
-
-We next derive a formula for the sum of the angles
-of the interior angles.
-The proof provides intuition for other proofs we will encounter.
-We have
-\begin{theorem}\label{thm:triangle}
-In the plane, the sum of the interior angles of a triangle is $\pi$.
-\end{theorem}
-\begin{proof}
-Draw a line parallel to one edge through the opposite vertex.
-By alternating interior angles in the plane, the sum of the angles
-in the triangle equal a straight line.
-See \figref{interior-angles} for an example. 
-\end{proof}
-
+Consider a simple polygon $P$.
+An example is shown in \figref{polygon}.
 
  \begin{figure}[htb]
          \centering
-        \begin{subfigure}[b]{0.35\textwidth}
-         \includegraphics[width=\textwidth]{background/interior-triangle}
-         \caption{Interior angles.}
- 	 \label{fig:interior-angles}
+          \begin{subfigure}[b]{0.30\textwidth}
+      		   \includegraphics[width=\textwidth]{background/blank-polygon}
+    		    \caption{A simple polygon.}
+ 		 \label{fig:polygon}
+	 \end{subfigure}
+	 \hspace{.5cm}
+	 \begin{subfigure}[b]{0.25\textwidth}
+       		  \includegraphics[width=\textwidth]{background/interior-exterior}
+     		    \caption{Angles}
+ 		 \label{fig:interior-exterior}
        \end{subfigure}
-         \hspace{1cm}
-         \begin{subfigure}[b]{0.25\textwidth}
-         \includegraphics[width=\textwidth]{background/exterior-angles-polygon}
-         \caption{Exterior angles.}
-          \label{fig:exterior-angles}
+        \hspace{.5cm}
+     \begin{subfigure}[b]{0.27\textwidth}
+       		  \includegraphics[width=\textwidth]{background/exterior-angles-polygon}
+       		  \caption{Exterior angles.}
+       		   \label{fig:exterior-angles}
          \end{subfigure}
-		\caption{(\subref{fig:interior-angles}) In the plane, the sum of the interior angles of a triangle is $\pi$.
+		\caption{(\subref{fig:polygon}) A simple polygon $P.$
+		(\subref{fig:interior-exterior}) The interior and exterior angles formed at a vertex.
  		 (\subref{fig:exterior-angles}) The sum of the exterior angles of a simple
 		polygon is $2\pi$. Here
-		$\alpha_1+\alpha_2+\alpha_3+\alpha_4+\alpha_5=2\pi$ note that $\alpha_4$ is negative.
+		$\beta_1+\beta_2+\beta_3+\beta_4+\beta_5=2\pi$ note that $\beta_4$ is negative.
  		\label{fig:simple-polygon}}
  \end{figure}
 
-And we have
-\begin{corollary}\label{cor:angles}
-In the plane, any simple polygon $P$ with $n$ vertices,
-the sum of the interior angles of $P$ is $(n-2)\pi$.
-\end{corollary}
+If we extend one of the sides of $P$ two complementary angles appear.
+The angle inside of $P$ is the \EMPH{interior} angle and the complement 
+is the  \EMPH{exterior angle}. An example is shown in \figref{interior-exterior}.
+The exterior angle at a vertex can be positive or negative, see \figref{exterior-angles}.
+
+We now state our first version of the Gauss-Bonnet theorem
+
+\begin{theorem}[Gauss-Bonnet for Simple Polygons]\label{thm:simple-bonnet}
+Let $P$ be a simple polygon in the plane with interior angles $\{\alpha_1,\alpha_2,\ldots,\alpha_n\}$
+and exterior angles $\{\beta_1,\beta_2,\ldots,\beta_n\}$
+$$\sum_{i=1}^n\beta_i=\sum_{i=1}^n(\pi-\alpha_i)=2\pi.$$
+\end{theorem}
+
 
 \begin{proof}
-	Consider any simple polygon in the plane $P$ with $n$ vertices. 
-	Then $P$ can be triangulated with $n-2$ triangles using only the vertices
-	of $P$ \cite{orourke_computational_1994}.
-	Thus, when we traverse $P$ we go around $n-2$ triangles each contributing
-	$\pi$.
+
+	We traverse a polygon and rotate $\beta_i$ at each vertex
+	when we get back to where we started we will have preformed 
+	one complete revolution so $\sum_{i=1}^n\beta_i=2\pi.$
+	The exterior angles are complementary to the interior angles
+	so for each $i$ we have $\beta_i=\pi-\alpha_i$.
+
 \end{proof}
 
- 
+
+No matter how we bend or stretch our polygon,
+if the boundary of the polygon stays closed and simple,
+the sum the exterior angles will be $2\pi$.
+Even this simple version of the Gauss-Bonnet theorem has powerful
+consequences. See \secref{pick} for a proof of Pick's Theorem
+using this version.
 
 
 
