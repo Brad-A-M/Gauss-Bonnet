@@ -3,8 +3,7 @@
 
 Some of us may remember the following special case
 of the Gauss-Bonnet theorem from middle school geometry.
-Consider a simple polygon $P$.
-An example is shown in \figref{polygon}.
+Consider a simple polygon $P$, an example is shown in \figref{polygon}.
 
  \begin{figure}[htb]
          \centering
@@ -34,16 +33,22 @@ An example is shown in \figref{polygon}.
  \end{figure}
 
 If we extend one of the sides of $P$ two complementary angles appear.
-The angle inside of $P$ is the \EMPH{interior} angle and the complement 
+The angle inside $P$ is the \EMPH{interior} angle and the complement 
 is the  \EMPH{exterior angle}. An example is shown in \figref{interior-exterior}.
-The exterior angle at a vertex can be positive or negative, see \figref{exterior-angles}.
+Vertices with interior angles  greater than $\pi$ are called \EMPH{reflex}, see \figref{exterior-angles}. 
+At reflex vertices exterior angle is negative.
+
+
 
 We now state our first version of the Gauss-Bonnet theorem
 
 \begin{theorem}[Gauss-Bonnet for Simple Polygons]\label{thm:simple-bonnet}
-Let $P$ be a simple polygon in the plane with interior angles $\{\alpha_1,\alpha_2,\ldots,\alpha_n\}$
-and exterior angles $\{\beta_1,\beta_2,\ldots,\beta_n\}$
-$$\sum_{i=1}^n\beta_i=\sum_{i=1}^n(\pi-\alpha_i)=2\pi.$$
+Let $P$ be a simple polygon in the plane with $n$  vertices and 
+interior angles $\{\alpha_1,\alpha_2,\ldots,\alpha_n\}$
+and exterior angles $\{\beta_1,\beta_2,\ldots,\beta_n\}$ then
+$$\sum_{i=1}^n\beta_i=2\pi$$
+and 
+$$\sum_{i=1}^n\alpha_i=\pi(n-2).$$
 \end{theorem}
 
 
@@ -53,7 +58,9 @@ $$\sum_{i=1}^n\beta_i=\sum_{i=1}^n(\pi-\alpha_i)=2\pi.$$
 	when we get back to where we started we will have preformed 
 	one complete revolution so $\sum_{i=1}^n\beta_i=2\pi.$
 	The exterior angles are complementary to the interior angles
-	so for each $i$ we have $\beta_i=\pi-\alpha_i$.
+	so for each $i$ we have $\beta_i=\pi-\alpha_i$  and
+	$\sum_{i=1}^n(\pi-\alpha_i)=n\pi -\sum_{i=1}^n\alpha_i=2\pi$. 
+	Solving for $\sum_{i=1}^n\alpha_i$ gives the second part of the theorem.
 
 \end{proof}
 
@@ -119,11 +126,11 @@ is $A=\alpha_1+\alpha_2+\alpha_3-\pi$.
 \end{proof}
 
 As in the plane, any polygon on the sphere with $n$ vertices can be decomposed
-into $n-2$ triangles. This gives a formula for the area of a simple polygon
-on the sphere with interior angles $\beta_1,\beta_2,\ldots, \beta_n$.
+into $n-2$ triangles \cite{orourke_computational_1994}. This gives a formula for the area of a simple polygon
+on the sphere with interior angles $\alpha_1,\alpha_2,\ldots, \alpha_n$.
 
 \begin{equation} \label{eqn:sphere-area}
-	A=(2-n)\pi +\sum_{i=1}^n \beta_i.
+	A=(2-n)\pi +\sum_{i=1}^n \alpha_i.
 \end{equation}
 
 
