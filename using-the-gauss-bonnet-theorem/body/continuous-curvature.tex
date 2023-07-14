@@ -40,7 +40,7 @@ A second way to define the  \EMPH{curvature} at a point is as the magnitude of t
 unit tangent vector
 
 \begin{equation} \label{eqn:kappa}
-\kappa=\bigg  | \frac{T'(t)}{\gamma'(t)}\bigg |.
+\kappa= | T'(t)|.
 \end{equation}
 where $t$ is arc length.
 
@@ -67,32 +67,25 @@ The vectors $T,N$ and $B$ form the \EMPH{Fernet frame} of $\gamma$ a $p.$
 
 \subsubsection{Surfaces}
 
-Now we consider the curvature of a point on a surface. In one dimension we are
-able parameterize our curve. Similarly, we require the ability to parameterize a surface.
-A \EMPH{parameterized surface} is a map $\phi:U\subset \RR^2 \to \RR^3$ that
-is differentiable, where every point in $S$ is contained in the domain of at least one map.
+
+One dimensional curves are represented by differentiable 
+parameterized functions $\gamma:I\subset \RR\to \RR^3$,
+we would now like to parameterize a surface.
+Similarly, a \EMPH{parameterized surface} $S$ is a differentiable map $\phi:U\subset \RR^2 \to \RR^3$,
+ where every point in $S$ is contained in the domain of at least one map.
 These maps are called \EMPH{charts}.
- The set $\phi(U)\subset \RR^3$ is called the \EMPH{trace} of $\phi$.
+% The set $\phi(U)\subset \RR^3$ is called the \EMPH{trace} of $\phi$.
 If the differential $d\phi_q:\RR^2\to \RR^3$ is one-to-one for all $q\in U$ then
 we say $\phi$ is \EMPH{regular}. In other words, let $(u,v)$ be coordinates of $U\subset \RR^2,$
 a surface is regular if $\frac{\partial\phi}{\partial u}$
-and $\frac{\partial\phi}{\partial v}$ are linearly independent for all $q\in U$.
-
-Often, we consider surfaces with a map $\phi:U\subset \R^2\to S$ with $\phi(u,v)=(u,v,f(u,v))$ for
-a smooth function $f$. Then taking partial derivatives we have
-$\frac{\partial\phi}{\partial u}=\left(1,0,\frac{\partial f(u,v)}{\partial u}\right)$ and 
-$\frac{\partial\phi}{\partial v}=\left(1,0,\frac{\partial f(u,v)}{\partial v}\right)$
-which are linearly independent.
+and $\frac{\partial\phi}{\partial v}$ are linearly independent for all $p\in U$.
 
 
-Let $S$ be a regular surface, then at each point $p\in S$ the set of tangent vectors
-to parameterized curves in $S$ through $p$ forms a plane.
 A \EMPH{tangent vector} to $S$ at $p$ is a map $\xi:(-\epsilon,\epsilon)\to S$ with $\xi(0)=p$.
 The set of all tangent vectors is the \EMPH{tangent plane} and it corresponds to the image
 of the differential map $d\phi_q(\RR^2)\subset \RR^3$ (prop. 1 \cite{doc76}).
-
-
-By choosing two linearly independent paths through $p\in S$ we can obtain the tangent
+By choosing two linearly independent paths through $p\in S$ we obtain a basis 
+for the tangent
 plane and define a normal vector $N$ at $p$.
 Every plane containing the normal vector will intersect the surface.
 The intersection of the surface and each normal plane is a curve in $\RR^3$
@@ -101,8 +94,8 @@ Let $\kappa_1$ denote the maximum curvature of all normal sections
 and let $\kappa_2$ denote the minimum. 
 The \EMPH{Gaussian curvature} of a point on a surface is
 $K=\kappa_1\kappa_2.$
-
-
+One can check that the Gaussian curvature of the plane is zero and
+that larger circles have less curvature than smaller ones.
 
 Once we choose a chart we define a clockwise orientation to be positive.
  If the clockwise
@@ -124,25 +117,24 @@ The determinant of $dN(p)$ is equal to \EMPH{Gaussian curvature}.
 Regular surfaces are often presented as a function as $r(u,v)=(u,v,r(u,v))$
 with $u,v\in(-1,1)$.
 The curvature of a surface can be thought of as a the inverse of
-the radius of the osculating sphere. Spheres can be expressed
-as quadratic equations.  A
+the radius of the osculating sphere. For example, the two sphere can be expressed
+as quadratic equations $\Sp^2=(u,v,\pm\sqrt{1-u^2-v^2})$.  In general
  \EMPH{quadratic form} to be polynomial of degree two, of the form $p(u,v)=c_1u^2+c_2uv+c_3v^2$ 
 where $c_i\in R$.
-We define quadratic forms using $r(u,v)$ in order to compute the curvature.
+We define a quadratic form using $r(u,v)$ in order to compute the Gaussian curvature.
 
 
-Consider a `small' parallelogram $M$ on $S$ with corners $r(u,v),r(u+\epsilon u, v), r(u,v+\epsilon v)$ 
+Given a `small' parallelogram $G$ on $S$ with corners $r(u,v),r(u+\epsilon u, v), r(u,v+\epsilon v)$ 
 and $r(u+\epsilon u, v+\epsilon v)$ we consider the area of this parallelogram.
-The unit normal vector at $p$ $$n(p)=\frac{r_u\times r_v}{|r_u\times r_v|}.$$
-A curve $u=u(t), v=v(t)$ on a regular surface, let
+The unit normal vector at $p$ is given by $$n(p)=\frac{r_u\times r_v}{|r_u\times r_v|}.$$
+Given a parameterized curve $u=u(t), v=v(t)$ on a regular surface, let
 $s$ denote the arc length, then 
 $$ds=\bigg | \frac{dr}{dt}\bigg | dt = \bigg | r_u\frac{du}{dt}+r_v\frac{dv}{dt}\bigg |dt
 =\sqrt{(r_u^2 du^2+2r_ur_v du dv + r_v^2dv^2)}.$$
 Let $E=r_u\cdot r_u, F=r_u\cdot r_v$ and  $G=r_v\cdot r_v$.
-The rate of change of the area of $M$ is 
-$dA=\sqrt{EG-F^2}dudv.$
-
-Then $\mathrm{I}=ds^2=Edu^2+2Fdudv +Gdv^2$ is called the \EMPH{first fundamental form}.
+The rate of change of the area of $G$ is 
+$$dA=\sqrt{EG-F^2}dudv.$$
+And $\mathrm{I}=ds^2=Edu^2+2Fdudv +Gdv^2$ is called the \EMPH{first fundamental form}.
 We summerize the first fundamental form as a matrix $\mathrm{I}=\begin{bmatrix}
 E & F \\
 F & G 
@@ -155,8 +147,8 @@ F & G
 \end{bmatrix}y.$
 
 
-
-The curvature is related to the second derivative.
+In order to compute the Gaussian curvature, we
+need the second derivative.
 Let $L=r_{uu}\cdot n, M=r_{uv}\cdot n$ and $N=r_{vv}\cdot n$ the
 \EMPH{second fundamental form} is $\mathrm{I\!I}=Ldu^2+2Mdudv+Ndv^2$,
 in matrix form $\mathrm{I\!I}=\begin{bmatrix}
