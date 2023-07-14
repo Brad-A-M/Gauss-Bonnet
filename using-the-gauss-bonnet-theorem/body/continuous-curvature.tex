@@ -1,13 +1,13 @@
 
-For a given surface, the Gauss-Bonnet theorem relates local curvature
-to global topology. 
-We will see several definitions of curvature.
+
+We will see several definitions for the  curvature of a curve or surface at a point.
 Some definitions lend themselves to computations and others provide
 more geometric intuition.
+What  do we require of a definition of curvature?
 A straight line should have zero curvature and
- large circles should have smaller curvature than smaller circles.
-We need to differentiate between
-curving to the left and curving to the right..
+ large circles should have less curvature than smaller circles.
+Differentiaing between
+curving to the left and curving to the right will also be useful.
 
 For any point on a one dimensional curve
 we can approximate the curve with a circle.
@@ -20,9 +20,8 @@ to  surfaces in $\R^3$, by considering the \EMPH{osculating sphere},
 But notice that at saddle points on a surface it is not clear which sphere
 best approximates the surface.
 The above definition provides great intuition for the curvature of curves
-and surfaces but in many applications we would like a formula to compute
-the curvature.
-
+and surfaces.
+Computing this value depends on how a curve or surface is represented. 
 
 \begin{figure}[htb]
 	\centering
@@ -33,7 +32,7 @@ the curvature.
 \end{figure}
 
 A curve in $\RR^3$ is often presented as a function
-$\gamma(t)=(x(t),y(t),z(t))$ we say that a curve is \EMPH{smooth} on an open interval $I$
+$\gamma(t)=(x(t),y(t),z(t))$. We say that a curve is \EMPH{smooth} on an open interval $I$
 if $\gamma'$ it is continuous and $\gamma'(t)\neq (0,0,0)$ on $I$. 
 If $\gamma$ is smooth it has a well-defined unit tangent vector $T(t)=\frac{\gamma'(t)}{|\gamma'(t)|}.$
 A second way to define the  \EMPH{curvature} at a point is as the magnitude of the rate of change of the 
