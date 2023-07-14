@@ -12,7 +12,8 @@ curving to the left and curving to the right will also be useful.
 For any point on a one dimensional curve
 we can approximate the curve with a circle.
 The best approximating circle is the  \EMPH{osculating circle}.
-A natural definition of the \EMPH{curvature} is the inverse of the radius of this circle $k=\frac{1}{r}$.
+A natural definition of the \EMPH{curvature} is the inverse of the radius of the osculating
+ circle $k=\frac{1}{r}$.
 See \figref{osculating-circle} for an example.
 In the plane, we determine the sign of the curvature by which side of the curve the osculating circle is on.
  This osculating-circle idea can be extend
@@ -44,10 +45,11 @@ unit tangent vector
 where $t$ is arc length.
 
 For example, take a circle of radius $r$, parameterized by 
-$$C(t)=\left(r\cos(t),r\sin(t)\right).$$
+$$C(t)=\left(r\cos(t),r\sin(t),0\right).$$
 We have 
-$$\frac{dC}{dt}=C'(t)=\left(-r\sin(t),r\cos(t)\right)$$ and $|C'(t)|=r.$
-Then $T'(t)=\left(-\cos(t),-\sin(t)\right)$ and $T(t)=\left(-\sin(t),\cos(t)\right)$.
+$$\frac{dC}{dt}=C'(t)=\left(-r\sin(t),r\cos(t),0\right)$$ and $|C'(t)|=r.$
+Then $T(t)=\left(-\sin(t),\cos(t),0\right)$ and
+$T'(t)=\left(-\cos(t),-\sin(t),0\right)$.
 So, $\kappa(t)=\frac{1}{r}$ and, in this case, our definition of curvature agrees with the
 osculating circle intuition given above. 
 \eqnref{kappa} can be rewritten in the following more computational friendly form 
