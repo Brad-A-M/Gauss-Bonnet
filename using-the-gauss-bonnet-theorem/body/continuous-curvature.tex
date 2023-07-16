@@ -71,14 +71,44 @@ The vectors $T,N$ and $B$ form the \EMPH{Fernet frame} of $\gamma$ a $p.$
 One dimensional curves are represented by differentiable 
 parameterized functions $\gamma:I\subset \RR\to \RR^3$,
 we would now like to parameterize a surface.
-Similarly, a \EMPH{parameterized surface} $S$ is a differentiable map $\phi:U\subset \RR^2 \to \RR^3$,
- where every point in $S$ is contained in the domain of at least one map.
-These maps are called \EMPH{charts}.
-% The set $\phi(U)\subset \RR^3$ is called the \EMPH{trace} of $\phi$.
-If the differential $d\phi_q:\RR^2\to \RR^3$ is one-to-one for all $q\in U$ then
-we say $\phi$ is \EMPH{regular}. In other words, let $(u,v)$ be coordinates of $U\subset \RR^2,$
-a surface is regular if $\frac{\partial\phi}{\partial u}$
-and $\frac{\partial\phi}{\partial v}$ are linearly independent for all $p\in U$.
+Similarly, a \EMPH{parameterized surface} $S$ is a collection of maps such that
+ for each point $p\in S$ we have a neighborhood $X\subset S$
+ and a map $r:U\subset \RR^2 \to X\subset \RR^3$, $r(u,v)=(x(u,v),y(u,v),z(u,v))$
+ where
+ \begin{itemize}
+ \item  $r$ is a homeomorphism
+ \item $r$ has derivatives of all orders
+ \item every point in $S$ is contained in the domain of at least one map.
+
+\end{itemize}
+The maps in the third item are called \EMPH{charts}.
+If the differential $dr_q:\RR^2\to \RR^3$ is one-to-one for all $q\in U$ then
+we say $r$ is \EMPH{regular}. In other words, let $(u,v)$ be coordinates of $U\subset \RR^2,$
+a surface is regular if $\frac{\partial r}{\partial u}$
+and $\frac{\partial r}{\partial v}$ are linearly independent for all $p\in U$.
+
+
+\begin{example}[The Sphere]\label{ex:sphere-charts}
+
+The unit two sphere $\Sp^2\subset \RR^3$ is the set $\{(x,y,z)\in \RR^3 | x^2+y^2+z^2=1\}.$
+We can define six charts to parameterize $\Sp^2$.
+For $u,v\in[-1,1]$, we have
+$$r_{z}(u,v)=(u,v,\sqrt{1-u^2-v^2}) \hspace{.5cm}  r_{-z}(u,v)=(u,v,-\sqrt{1-u^2-v^2}) \hspace{.5cm}  r_{x}(u,v)=(\sqrt{1-u^2-v^2},u,v) $$
+$$r_{-x}(u,v)=(-\sqrt{1-u^2-v^2},u,v) \hspace{.5cm}  r_{y}(u,v)=(u,\sqrt{1-u^2-v^2},v) \hspace{.5cm}   r_{-y}(u,v)=(u,-\sqrt{1-u^2-v^2},v). $$
+
+The chart $r_{z}$ is shown in \figref{sphere-chart}
+
+\begin{figure}[htb]
+	\centering
+	\includegraphics[width=.3\textwidth]{curvature/sphere-chart}
+	\caption{A chart of $\Sp^2$.}
+	\label{fig:sphere-chart}
+\end{figure}
+
+One can verify that these parameterizations fullfil the requirements
+for the sphere to be a regular surface.
+
+\end{example}
 
 
 A \EMPH{tangent vector} to $S$ at $p$ is a map $\xi:(-\epsilon,\epsilon)\to S$ with $\xi(0)=p$.
@@ -112,57 +142,80 @@ Thus, $dN_p:T_p(S)\to T_{N(p)}(\Sp^2)$, but since $T_p(S)$ and $T_{N(p)}(\Sp^2)$
 are parallel we can define $dN_p$ to be a linear map on $T_p(S)$.
 The determinant of $dN(p)$ is equal to \EMPH{Gaussian curvature}.
 
-
-
-Regular surfaces are often presented as a function as $r(u,v)=(u,v,r(u,v))$
-with $u,v\in(-1,1)$.
-The curvature of a surface can be thought of as a the inverse of
-the radius of the osculating sphere. For example, the two sphere can be expressed
-as quadratic equations $\Sp^2=(u,v,\pm\sqrt{1-u^2-v^2})$.  In general
- \EMPH{quadratic form} to be polynomial of degree two, of the form $p(u,v)=c_1u^2+c_2uv+c_3v^2$ 
+The previous two definitions provide geometric intuition for Gaussian curvature.
+We next define Gaussian curvature in a way that lends itself to computations.
+A \EMPH{quadratic form} to be polynomial of degree two, of the form $p(u,v)=c_1u^2+c_2uv+c_3v^2$ 
 where $c_i\in R$.
-We define a quadratic form using $r(u,v)$ in order to compute the Gaussian curvature.
+We define a quadratic form, the first fundamental form, using $r(u,v)$.
+The first fundamental form encodes information about arc length, angles between curves,
+and area on a surface.
 
-
-Given a `small' parallelogram $G$ on $S$ with corners $r(u,v),r(u+\epsilon u, v), r(u,v+\epsilon v)$ 
-and $r(u+\epsilon u, v+\epsilon v)$ we consider the area of this parallelogram.
-The unit normal vector at $p$ is given by $$n(p)=\frac{r_u\times r_v}{|r_u\times r_v|}.$$
-Given a parameterized curve $u=u(t), v=v(t)$ on a regular surface, let
-$s$ denote the arc length, then 
-$$ds=\bigg | \frac{dr}{dt}\bigg | dt = \bigg | r_u\frac{du}{dt}+r_v\frac{dv}{dt}\bigg |dt
-=\sqrt{(r_u^2 du^2+2r_ur_v du dv + r_v^2dv^2)}.$$
+Let $r(u,v)$ be a parameterized surface.
 Let $E=r_u\cdot r_u, F=r_u\cdot r_v$ and  $G=r_v\cdot r_v$.
-The rate of change of the area of $G$ is 
-$$dA=\sqrt{EG-F^2}dudv.$$
-And $\mathrm{I}=ds^2=Edu^2+2Fdudv +Gdv^2$ is called the \EMPH{first fundamental form}.
-We summerize the first fundamental form as a matrix $\mathrm{I}=\begin{bmatrix}
+The \EMPH{first fundamental form}
+is the quadratic form $\mathrm{I}=Edu^2+2Fdudv +Gdv^2$.
+We summerize the first fundamental form as a matrix $$\mathrm{I}=\begin{bmatrix}
 E & F \\
 F & G 
-\end{bmatrix}.$
+\end{bmatrix}.$$
 We get a notion of length in the tangent space, an inner product on $Tp(S)$.
 If $x$ and $y$ are two tangent vectors
-then $\mathrm{I}(x,y)=x^T\begin{bmatrix}
+then $$\mathrm{I}(x,y)=x^T\begin{bmatrix}
 E & F \\
 F & G 
-\end{bmatrix}y.$
+\end{bmatrix}y.$$
 
+The first fundamental form enables us to  compute many interesting
+things about our surface.
+For example,
+given a `small' parallelogram $M$ on $S$ with corners $r(u,v),r(u+\epsilon u, v), r(u,v+\epsilon v)$ 
+and $r(u+\epsilon u, v+\epsilon v)$ the rate of change of the area of $M$ is 
+$$dA=\sqrt{EG-F^2}dudv.$$
+In \exref{stereo}, we will use the first fundamental form to compute the arclength of some curves.
+Gauss's Egregious (remarkable) Theorem states that the Gaussian curvature only depends
+of the first fundamental form. However, the second fundamental form is convenient for 
+computations.
 
-In order to compute the Gaussian curvature, we
-need the second derivative.
+To this end, the unit normal vector at $p$ is given by $$n(p)=\frac{r_u\times r_v}{|r_u\times r_v|}.$$
 Let $L=r_{uu}\cdot n, M=r_{uv}\cdot n$ and $N=r_{vv}\cdot n$ the
 \EMPH{second fundamental form} is $\mathrm{I\!I}=Ldu^2+2Mdudv+Ndv^2$,
-in matrix form $\mathrm{I\!I}=\begin{bmatrix}
+in matrix form $$\mathrm{I\!I}=\begin{bmatrix}
 L & M \\
 M & N 
-\end{bmatrix}.$
-Another inner product is given by $\mathrm{I\!I}(x,y)=x^T\begin{bmatrix}
+\end{bmatrix}.$$
+Another inner product is given by $$\mathrm{I\!I}(x,y)=x^T\begin{bmatrix}
 L & M \\
 M & N 
-\end{bmatrix}y.$
-Then the Gaussian curvature of a surface is also given by
+\end{bmatrix}y.$$
+Combining the first and second fundamental forms we have
+the \EMPH{Gaussian curvature} of a surface is
 \begin{equation}\label{eqn:curve-dets}
  	K=\frac{\det(\mathrm{I\!I})}{\det(\mathrm{I})}.
 \end{equation}
+
+\begin{example}[Curvature of a Surface]\label{ex:compute-surface-curvature}
+Consider the northern hemisphere of the unit sphere parameterized
+by $r(u,v)=(u,v,\sqrt{1-u^2-v^2})$ and we wish to compute the Gaussian curvature at
+the north poll $p=(0,0,1)$.
+
+We have $r_u|_p=(1,0,\frac{-u}{\sqrt{1-u^2-v^2}})|_p=(1,0,0)$ and
+$r_v|_p=(0,1,\frac{-v}{\sqrt{1-u^2-v^2}})|_p=(0,1,0)$.
+We have $E=1, F=0,$ and $G=1$ so our first fundamental form is
+$\mathrm{I}=\begin{bmatrix}
+1 & 0 \\
+0 & 1 
+\end{bmatrix}.$
+Our normal vector is $n(p)=(0,0,1)$ $r_{uu}|_p=(0,0,\frac{1-2u^2}{(1-u^2)^{\frac{3}{2}})})|_p=(0,0,1),
+r_{uv}|_p=(0,0,0)$ and $r_{vv}|_p=(0,0,\frac{1-2v^2}{(1-v^2)^{\frac{3}{2}})})|_p=(0,0,1).$
+Thus, $L=1, M=0$ and $N=1$ and our second fundamental form is
+
+$\mathrm{I\!I}=\begin{bmatrix}
+1 & 0 \\
+0 & 1 
+\end{bmatrix}$
+and our Gaussian curvature is $K=\frac{1}{1}=1$ as expected.
+
+\end{example}
 
 
 \begin{example}[Stereographic Projection \cite{christian-notes}]\label{ex:stereo}
@@ -202,6 +255,12 @@ the  arc length of circles on the sphere parallel to the $xy$ plane with fixed h
 This length can be computed using
 the pythagorean theorem. We will see that using stereographic projection
 and the first fundamental form we get the same answer.
+
+
+Given a parameterized curve $u=u(t), v=v(t)$ on a regular surface, let
+$s$ denote the arc length, then 
+$$ds=\bigg | \frac{dr}{dt}\bigg | dt = \bigg | r_u\frac{du}{dt}+r_v\frac{dv}{dt}\bigg |dt
+=\sqrt{(r_u^2 du^2+2r_ur_v du dv + r_v^2dv^2)}.$$
 First, use the map $p$ to map such a circle to the plane.
 Using \eqnref{stereo}, our circle on the sphere maps 
 to a circle in the plane because
