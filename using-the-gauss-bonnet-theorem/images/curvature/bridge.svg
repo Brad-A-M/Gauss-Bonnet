@@ -413,7 +413,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -1867,7 +1867,7 @@
       </g>
     </g>
     <g
-       transform="matrix(1.1261242,0,0,1.4778468,16.933616,98.014852)"
+       transform="matrix(1.1261242,0,0,1.1295056,16.933616,99.07323)"
        ns22:version="1.0.0"
        ns22:texconverter="pdflatex"
        ns22:pdfconverter="inkscape"
