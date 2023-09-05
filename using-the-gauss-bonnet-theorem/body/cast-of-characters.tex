@@ -92,12 +92,12 @@ is determined by its genus with $\chi=2-2g$.
 
 Using these definitions we can state a continuous version of
 the Gauss-Bonnet Theorem for regular surfaces
-\begin{theorem}[The Continuous Gauss-Bonnet Theorem] \label{thm:g-b-c}
 
-$$\int_{M} K dA+ \int_{\partial M} k_g ds = 2\pi \chi(M)$$
-where $M$ is a regular surface, $K$ is the continuous Gaussian curvature,
- $k_g$ is the continuous geodesic curvature and
-$\chi$ is the Euler characteristic.
+\begin{theorem}[The Continuous Gauss-Bonnet Theorem] \label{thm:g-b-c}
+	$$\int_{M} K dA+ \int_{\partial M} k_g ds = 2\pi \chi(M)$$
+	where $M$ is a regular surface, $K$ is the continuous Gaussian curvature,
+	 $k_g$ is the continuous geodesic curvature and
+	$\chi$ is the Euler characteristic.
 \end{theorem}
 
 
@@ -108,34 +108,34 @@ to learn global topological information.
 Conversely, if we know the Euler characteristic we can learn about the curvature
 at individual points.
 
-\subsection{A Discrete Version}
+\subsection{The Discrete Gauss-Bonnet}
 
 Discrete curvature is an oxymoron. In a triangulated surface,
 the curvature is zero or we are on a vertex where tangent vectors are not defined.
-Our first application of the Gauss-Bonnet Theorem will be to confirm that the definition of discrete curvature 
+One application of the Gauss-Bonnet Theorem will be to confirm that the definition of discrete curvature 
 given below is reasonable.
 We would like our definition of discrete curvature to agree with
 our intuition, that is if two segments co-linear, the curvature should be zero
 and the curvature should signed.
-The one dimensional piecewise linear curves we encounter will be the boundaries
-of triangulated two dimensional surfaces in $\R^3.$
-At each vertex on the boundary we have an exterior angle and a complementary interior angle.
+
+Consider a triangulated regular surface $S$ with boundary $\partial(S)$.
+The boundary is a one dimensional piecewise linear curve in $\R^3.$
+As with simple polygons in the plane, at each vertex $v\in \partial(S)$ 
+we have an exterior angle and a complementary interior angle.
 The exterior angle has the desired properties of a curvature definition mentioned above.
 The interior angle might consist of many triangles.
-For a vertex $v$ on the boundary of a surface, 
-let $F_v$  denote the set of incident faces and let
+Let $F_v$  denote the set of faces incident to $v$ and let
 $\alpha_f$ denote the angle in face $f$ at $v$.
 The \EMPH{discrete geodesic curvature}
 of $v$  is
 $$k_{g}(v)= \pi-\sum_{f\in F_v}\alpha_f.$$
 Notice that if $v$ lies on a straight line, then $\sum_{i}\alpha_f=\pi$
 and the curvature is zero as we would expect.
-The word geodesic refers to measuring how close
+The word geodesic is used because we are measuring how close
 a curve is to being straight with respect to the surface we are on.
 
 
-A geometric definition of Gaussian curvature is the following:
-
+A geometric definition of discrete Gaussian curvature is the following:
 \begin{definition}[Discrete Gaussian curvature]\label{def:discrete-curvature-vertex}
 
 The discrete \EMPH{Gaussian curvature} at a vertex $v$ is the area on the unit 
@@ -150,22 +150,21 @@ in the same direction and the Gaussian curvature is zero.
 \begin{figure}[htb]
 \centering
 \includegraphics[width=.5\textwidth]{curvature/discrete-curvature}
-\caption{Consider the vertex $v$ on the left. The curvature of $v$
+\caption{Consider the vertex $v$ in the figure on the left. The curvature of $v$
 is the area on the sphere shown on the right. We rotated the sphere
 in order to see the entire polygon.}
 \label{fig:discrete-curvature}
 \end{figure}
 
 
-We can verify that \defref{discrete-curvature-vertex} agrees with the formula we derived using
-the Gauss-Bonnet.
-The interior angles of the polygon $\beta_i$ on the sphere are supplementary to
-the angle $\alpha_i$ incident to $v$ in the surface
+Let $\alpha_i$ denote the angle of a triangle incident to $v$, 
+we next show that the interior angle of the polygon $\beta_i$ on the 
+sphere is supplementary $\alpha_i$.
 
 \begin{equation} \label{eqn:switcheroo}
 \beta=\pi-\alpha.
 \end{equation}
-To see this, notice that the edge between two faces
+Notice that the edge between two faces
 on a triangulated surface
 is perpendicular to the normal vectors of the faces.
 So, the line connecting two normal vectors will intersect the edge between the vectors 
@@ -174,7 +173,7 @@ at right angles. See \figref{switcheroo}.
 
 \begin{figure}[htb]
 \centering
-\includegraphics[width=.3\textwidth]{background/switch-angles}
+\includegraphics[width=.25\textwidth]{background/switch-angles}
 \caption{The relationship between the angles incident to a vertex and
 the interior angles of the area polygon on the sphere.}
 \label{fig:switcheroo}
@@ -204,7 +203,7 @@ $$K(v)=2\pi -n\pi+\sum_{i}^n \beta_i=2\pi-n\pi +\sum_{i}^n (\pi-\alpha_i) =2\pi-
 
 
 
-Putting all of these variables together gives
+Combining the above definitions  we have
 
 \begin{theorem}[The Discrete Gauss-Bonnet Theorem] \label{thm:g-b-d}
 

@@ -3,7 +3,7 @@
 
 Functions on surfaces are called vector fields.
 In this section, the Gauss-Bonnet theorem is used
-to related the zeros of a vector field to the topology of a surface.
+to relate the zeros of a vector field to the topology of a surface.
 We will prove that harry ball theorem which shows that 
 given a harry ball, one
 can not comb the ball without creating a cowlick.
@@ -12,29 +12,33 @@ can not comb the ball without creating a cowlick.
 
 
 \begin{definition}[Vector Field]\label{def:vector-field}
-	A vector field $v$  in an open set $U\subset S$ of a regular surface $S$
-	is a correspondence which assigns to each $p\in U$ and a vector $w(p)\in T_p(S)$.
+	A vector field $v$  on an open set $U\subset S$ of a regular surface $S$
+	is a correspondence which assigns a vector $w(p)\in T_p(S)$ to each $p\in U$.
 	Moreover, $v$ is differentiable at $p$ if, for some parametrization $r(u,v)$ at $p$,
 	the functions $a(u,v)$ and $b(u,v)$ given by
 		$$v(p)=a(u,v)r_u + b(u,v)r_v$$
 	are both differentiable at $p$.
 \end{definition}
 
-Given a vector field point $p\in S$ is a \EMPH{singular point} if $v(p)=0$
-and a singular point is \EMPH{isolated} if there is an open neighborhood
-containing $p$ and no other singular points.
+A point $p\in S$ in vector field is a \EMPH{singular point} if $v(p)=0$
+moreover, a singular point is \EMPH{isolated} if there is an open neighborhood
+containing $p$ and no other singular points. These, and the following definition,
+extend to higher dimensions.
+
+Let $f:\Sp^n\to \Sp^n$ be a continuous map. Let $H_n(\cdot)$ dentote  
+the $n$th  homology group, then $f$ induces a homomorphism
+$f_*:H_n(\Sp^n)\to  H_n(\Sp^n)$ and  $H_n(\Sp^n)\cong \ZZ$.
+ Every homomorphism from $\ZZ$ to itself is of the form $f_*:n\mapsto kn$ for some 
+$k\in \ZZ$ the integer $k$ is the \EMPH{degree} of the map $f$.
+
+Isolated singular points give a map from the circle to itself.
+Let $\sigma$ be a circle surrounding a singular point $p$.
+Since $v(p)$ is isolated we can choose the radius of $\sigma$ to be 
+small enough so that $v|_\sigma\neq 0$. 
+The \EMPH{index} of a isolated critical point $p$ of $v$ is the degree
+of the map $f:\sigma\to \Sp^1$ where$f(p)=v(p)/||v(p)||$.
 
 
-
-\begin{definition}[Index]\label{def:index}
-Let $r$ be an orthogonal parametrization with $r(0,0)=p.$
-Let $\alpha:[0,\ell]\to S$ be a closed simple regular parametrized curve with a 
-simple boundary $R$.
-Consider the function $\phi(t)$ with $t\in [0,\ell],$ such that records that angle 
-
-$$2\pi I=\phi(\ell)-\phi(0)=\int_0^\ell \frac{d\phi}{dt}dt.$$
-	The index $I$ of $v$.
-\end{definition}
 
 
 
@@ -46,4 +50,21 @@ $$2\pi I=\phi(\ell)-\phi(0)=\int_0^\ell \frac{d\phi}{dt}dt.$$
 	where $v_i$ denotes the set of isolated zeros.
 	
 \end{theorem}
+
+We now prove that given a ball with a hair attached to each point, you can not
+comb the ball without creating a cowlick.
+
+\begin{theorem}[The Harry Ball Theorem]\label{thm:harry-ball}
+	Let $v$ be a vector field on the sphere $\Sp^2$.
+	Then there is a $p\in \Sp^2$ such that $v(p)=\vec{0}$.
+\end{theorem}
+
+\begin{proof}
+	For a contradiction, assume that $v(p)\neq 0$ for all  $p\in \Sp^2$,
+	this would give a vector field on $\Sp^2$ with no singular points.
+	However, the Euler characteristic of $\Sp^2$ is two and
+	\thmref{poincare-hopf} implies that any vector field on $\Sp^2$ has at
+	least two isolated singular points.
+	
+\end{proof} 
 \cite{rotskoff2010}
