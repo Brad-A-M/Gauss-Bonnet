@@ -94,9 +94,12 @@ Using these definitions we can state a continuous version of
 the Gauss-Bonnet Theorem for regular surfaces
 
 \begin{theorem}[The Continuous Gauss-Bonnet Theorem] \label{thm:g-b-c}
-	$$\int_{M} K dA+ \int_{\partial M} k_g ds = 2\pi \chi(M)$$
-	where $M$ is a regular surface, $K$ is the continuous Gaussian curvature,
-	 $k_g$ is the continuous geodesic curvature and
+
+If $M$ is a regular surface with boundary $\partial M$ then
+	$$\int_{M} K dA+ \int_{\partial M} k_g ds + \sum_i \beta_i= 2\pi \chi(M)$$
+	where  $K$ is the continuous Gaussian curvature,
+	 $k_g$ is the continuous geodesic curvature,
+	 each $\beta_i$  is an exterior angle at a vertex of the boundary and
 	$\chi$ is the Euler characteristic.
 \end{theorem}
 
@@ -207,9 +210,11 @@ Combining the above definitions  we have
 
 \begin{theorem}[The Discrete Gauss-Bonnet Theorem] \label{thm:g-b-d}
 
+If $S$ is a triangulated surface with  boundary $\partial S$ then
+
 $$\sum_{v\in V_{int}} K(v) + \sum_{v\in V_{\partial S}} k_g(v) = 2\pi \chi(S)$$
-where $S$ is a triangulation, $K(v)$ is the discrete Gaussian curvature
-of a vertex, $k_g(g)$ is the discrete geodesic curvature and
+where $K(v)$ is the discrete Gaussian curvature
+of a vertex, $k_g(g)$ is the discrete geodesic curvature,  and
 $\chi$ is the Euler characteristic.
 \end{theorem}
 
