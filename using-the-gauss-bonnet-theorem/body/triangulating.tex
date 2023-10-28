@@ -1,33 +1,35 @@
 \subsection{Triangulating Noncovex Polyhedra}
 \label{sec:triangulating}
 
-Discrete three-manifolds are called \EMPH{polyhedra}. 
+A three-dimensional solid with polygonal faces and straight edges is called a \EMPH{polyhedra}. 
+We often wish to decompose a polyhedra into tetrahedra much like
+we decompose polygons into triangles.
+Moreover, we would like to represent a polyhedra
+with as few tetrahedra as possible \cite{simplify-mesh-1999}.
+
 A polyhedron is \EMPH{simple} if it is homeomorphic to the sphere 
 and the faces are all polygons.
-Let $P$ be a a simple polyhedron.
-A triangulation of a three-manifold is a decomposition
-of $P$ into tetrahedra.
-Often, we wish to represent the three-manifold
-with as few tetrahedra as possible \cite{simplify-mesh-1999}.
-Let $n$ be the number of vertices in a simple polyhedron,
+Let $P$ be a a simple polyhedron with $n$  vertices.
+In \cite{chazelle-lower-1984}, Chazell uses the Gauss-Bonnet
+theorem to show that,
 in the worst case, decomposing the $P$
- into tetrahedra requires $\Omega(n^2)$ tetrahedra
-\cite{chazelle-lower-1984}.
+ into tetrahedra requires $\Omega(n^2)$ tetrahedra.
 
  An edge $e$ in $P$ is
 \EMPH{reflex} if the interior angle formed by its two incident faces
-is greater than $\pi$.
+is greater than $\pi$. See \figref{reflex} for an example.
 A vertex is reflex is it is incident to a reflex edge.
 Let $r$ denote the number of reflex edges.
-See \figref{reflex} for an example.
+
 
 \begin{figure}[htb]
 \centering
-\includegraphics[width=.3\textwidth]{meshes/reflex}
-\caption{A polyhedron with one reflex edge (blue), the two vertices incident to the blue
-edge are reflex vertices.}
+	\includegraphics[width=.3\textwidth]{meshes/reflex}
+	\caption{A polyhedron with one reflex edge (blue), the two vertices incident to the blue
+	edge are reflex vertices.}
 \label{fig:reflex}
 \end{figure}
+
 Chazell and Palios give an
 algorithm to triangulate a nonconvex simple polyhedra \cite{triangulating-polytope-1990}.
  Their algorithm creates a refinement with $O(n+r^2)$ tetrahedra
@@ -44,11 +46,11 @@ can be decomposed with $O(n+r^2)$ tetrahedra, regardless  of
 the genus!  We present their application.
 
 In this application, to simplify computation, we scale the curvature of a vertex
-by $\frac{1}{2\pi}$, so $k_v=\frac{1}{2\pi}\left(2\pi-\sum_i \alpha_i\right)$,
-We relate the number of reflex edges incident to a vertex $v$ to $k_v$.
+by $\frac{1}{2\pi}$, so $K(v)=\frac{1}{2\pi}\left(2\pi-\sum_i \alpha_i\right)$,
+We relate the number of reflex edges incident to a vertex $v$ to $K(v)$.
 
 \begin{lemma}\label{lem:reflex-edge}
-The number of reflex edges  incident to a vertex $v$  is at least $-k_v.$
+The number of reflex edges  incident to a vertex $v$  is at least $-K(v).$
 \end{lemma}
 
 \begin{proof}
@@ -63,18 +65,18 @@ in $L$ is equal the the angle incident to $v$, so the total length of $L$ is
 the sum of the angles incident to $v$, see \figref{sphere}.
 
 Let $R$ be the number of reflex edges incident to $v$.
-If $R$ is zero, then $P$ is convex and has non-negative curvature
-so $L\leq 2\pi$. If $R>0,$
-reflex edges incident to $v$ correspond to reflex angles in $P$.
-If we have a reflex angle in $P$, bisect it and reduce the 
+If $R$ is zero, then $P$ is convex at $v$ and has non-negative curvature
+so $0>-K(v).$ If $R>0,$
+reflex edges incident to $v$ correspond to reflex angles on $L$.
+For each reflex angle, bisect it and reduce the 
 number of reflex angles and obtain a decomposition
 of the sphere into at most $R+1$ convex regions,
 thus $L\leq 2\pi(R+1)$.
 
 Thus, we have $L=\sum \alpha_f$ and the curvature 
-$k_v=2\pi-\sum \alpha_f$ giving
-$L=2\pi(1-k_v)$. Combining this with $L\leq 2\pi(R+1)$
-gives $-k_v\leq r.$
+$K(v)=1-\frac{1}{2\pi}\sum \alpha_f$ giving
+$L=2\pi(1-K(v))$. Combining this with $L\leq 2\pi(R+1)$
+gives $-K(v)\leq R.$
 
 
 \end{proof}
@@ -109,16 +111,16 @@ at least $g-1$ reflex dihedral angles.
 Let $r$ be the total number of reflex edges in a polyhedra.
 By the classification of oriented surfaces, the Euler characteristic 
  is determined by the genus, $\chi=2-2g$.
-By \lemref{reflex-edge}, $\sum_v -k_v\leq 2 r$ since each
+By \lemref{reflex-edge}, $\sum_v -K(v)\leq 2 r$ since each
 reflex edge is incident to two vertices.
-By the Gauss-Bonnet theorem $\sum_vk_v= 2-2g,$
+By the Gauss-Bonnet theorem $\sum_vK(v)= 2-2g,$
 so $-2r\leq 2-2g$ and $g\leq r+1$ as desired.
 
 \end{proof}
 
 Given a polyhedron of genus $g$, we can temporally 
 duplicate the vertices around each essential cycle and insert disks,
- creating a polyhedron of genus zero, we theb apply the algorithm to
+ creating a polyhedron of genus zero, we then apply the algorithm to
 decompose genus zero polyhedra given in \cite{triangulating-polytope-1990}.
 Then remove the added disks.
 Since we added $g$ disks the algorithm decomposes

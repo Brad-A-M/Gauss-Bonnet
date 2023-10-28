@@ -11,7 +11,7 @@ The theorem is the following:
 	then $f$ has a least one complex root.
 \end{theorem}
 
-We now include ideas and definitions from complex analysis that are used
+We now include basic ideas and definitions from complex analysis that are used
 in the proof. A complex number can be separated into its real and imaginary parts $z=x+iy$
 A continuous function $f:\CC\to \CC$ is a map $f(z)=f(x,y)=u(x,y)+iv(x,y)$ where $u$ and $v$ are continuous.
 A function $f$ is \EMPH{analytic} at a point $z_0$ if there exists a neighborhood around $z_0$ 
@@ -28,7 +28,7 @@ We prove a lemma
 \begin{proof}
 	Analytic complex functions satisfy the Cauchy-Riemann equations meaning
 	$$\frac{\partial u}{\partial x}=\frac{\partial v}{\partial y} \textrm{ and } \frac{\partial u}{\partial y}=- \frac{\partial v}		{\partial x}.$$
-	Differentiating again and using the fact that the mixed partial derivatives are equal
+	Differentiating again and using the fact that the mixed partial derivatives are equal,
 	we have
 	$$\frac{\partial^2 u}{\partial y^2}=-\frac{\partial}{\partial y}\left(\frac{\partial v}{\partial x}\right)
 	=-\frac{\partial}{\partial x}\left(\frac{\partial v}{\partial y}\right)=-\frac{\partial^2 u}{\partial x^2}.$$
@@ -39,10 +39,10 @@ We prove a lemma
 
 
 Let $f:S_1\to S$ be a differentiable map from a surface to itself.
-Such maps do not preserve geometric measurements (curvature or area), but the change
-can be accounted for. We compute geometric quantities using the tangent plane and
+Such maps do not necessarily preserve geometric measurements (curvature or area), but the change
+can be accounted for. We compute geometric quantities by using the tangent plane and
 a vector normal to the surface.
-Let $S$ be a regular manifold with tangent space at a point $p$ $T_pS.$
+Let $S$ be a regular manifold with tangent space at a point $p\in T_pS.$
 The local parameterization on charts $(u,v):U\to \R^2$ form a basis for
 $T_pS$.
 

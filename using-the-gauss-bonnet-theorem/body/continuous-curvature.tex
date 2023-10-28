@@ -1,25 +1,24 @@
 
 
-We will see several definitions for the  curvature of a curve or surface at a point.
-Some definitions lend themselves to computations and others provide
-more geometric intuition.
+
 What  do we require of a definition of curvature?
 A straight line should have zero curvature and
  large circles should have less curvature than smaller circles.
-Differentiaing between
-curving to the left and curving to the right will also be useful.
+We also need to differentiate between
+curving to the left and curving to the right.
 
-For any point on a one dimensional curve
+For any point on a smooth one dimensional curve in the plane,
 we can approximate the curve with a circle.
 The best approximating circle is the  \EMPH{osculating circle}.
 A natural definition of the \EMPH{curvature} is the inverse of the radius of the osculating
  circle $k=\frac{1}{r}$.
 See \figref{osculating-circle} for an example.
-In the plane, we determine the sign of the curvature by which side of the curve the osculating circle is on.
- This osculating-circle idea can be extend
-to  surfaces in $\R^3$, by considering the \EMPH{osculating sphere},
-But notice that at saddle points on a surface it is not clear which sphere
-best approximates the surface.
+The osculating circle meets the requirements for a definition of curvature.
+We determine the sign of the curvature by which side of the curve the osculating circle is on.
+
+
+
+
 The above definition provides great intuition for the curvature of curves
 and surfaces.
 Computing this value depends on how a curve or surface is represented. 
@@ -36,11 +35,11 @@ A curve in $\RR^3$ is often presented as a function
 $\gamma(t)=(x(t),y(t),z(t))$. We say that a curve is \EMPH{smooth} on an open interval $I$
 if $\gamma'$ it is continuous and $\gamma'(t)\neq (0,0,0)$ on $I$. 
 If $\gamma$ is smooth it has a well-defined unit tangent vector $T(t)=\frac{\gamma'(t)}{|\gamma'(t)|}.$
-A second way to define the  \EMPH{curvature} at a point is as the magnitude of the rate of change of the 
+A second way to define the  \EMPH{curvature} at a point is as the signed magnitude of the rate of change of the 
 unit tangent vector
 
 \begin{equation} \label{eqn:kappa}
-\kappa= | T'(t)|.
+\kappa= \pm | T'(t)|.
 \end{equation}
 where $t$ is arc length.
 
@@ -64,6 +63,32 @@ vector $\gamma''=N$ is normal to the $\gamma$.
 By taking the cross product of $N$ and $T$ we obtain a vector $B$ called
 the binormal vector.
 The vectors $T,N$ and $B$ form the \EMPH{Fernet frame} of $\gamma$ a $p.$
+
+ This osculating-circle idea can be extend
+to  surfaces in $\R^3$, by considering the \EMPH{osculating sphere},
+But notice that at saddle points on a surface it is not clear which sphere
+best approximates the surface. See \figref{osculating-sphere} for two
+equally reasonable ways to approximate a saddle with a sphere.
+
+\begin{figure}[htb]
+    \captionsetup[subfigure]{justification=centering}
+    \centering
+    \begin{subfigure}[b]{0.25\textwidth}
+        \includegraphics[width=\textwidth]{curvature/sphere-above-saddle}
+       \subcaption{}\label{fig:sphere-above-saddle}
+    \end{subfigure}
+        \hspace{1cm}
+        \begin{subfigure}[b]{0.25\textwidth}
+        \includegraphics[width=\textwidth]{curvature/sphere-below-saddle}
+        \subcaption{}\label{fig:sphere-below-saddle}
+        \end{subfigure}
+    \caption{(\subref{fig:sphere-above-saddle}) The osculating sphere above the saddle.
+        (\subref{fig:sphere-below-saddle}) The osculating sphere above the saddle.
+    }
+    \label{fig:osculating-sphere}
+\end{figure}
+
+
 
 \subsubsection{Surfaces}
 
