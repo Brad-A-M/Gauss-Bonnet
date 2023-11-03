@@ -35,14 +35,15 @@ Consider a simple polygon $P$, an example is shown in \figref{polygon}.
 If we extend one of the sides of $P$ two complementary angles appear.
 The angle inside $P$ is the \EMPH{interior} angle and the complement 
 is the  \EMPH{exterior angle}. An example is shown in \figref{interior-exterior}.
+We differentiate between turning left and right.
 Vertices with interior angles  greater than $\pi$ are called \EMPH{reflex}, see \figref{exterior-angles}. 
 At reflex vertices exterior angle is negative.
 
 
 
-We now state our first version of the Gauss-Bonnet theorem
+We now state a simple version of the Gauss-Bonnet theorem
 
-\begin{theorem}[Gauss-Bonnet for Simple Polygons]\label{thm:simple-bonnet}
+\begin{theorem}[Gauss-Bonnet for Polygons in the Plane]\label{thm:simple-bonnet}
 Let $P$ be a simple polygon in the plane with $n$  vertices,
 interior angles $\{\alpha_1,\alpha_2,\ldots,\alpha_n\}$
 and exterior angles $\{\beta_1,\beta_2,\ldots,\beta_n\}$ then
@@ -58,7 +59,8 @@ $$\sum_{i=1}^n\alpha_i=\pi(n-2).$$
 	when we get back to where we started we will have preformed 
 	one complete revolution so $\sum_{i=1}^n\beta_i=2\pi.$
 	The exterior angles are complementary to the interior angles
-	so for each $i$ we have $\beta_i=\pi-\alpha_i$  and
+	so for each $i$ we have $\beta_i=\pi-\alpha_i$  and using the first
+	part of the theorem,  we have
 	$\sum_{i=1}^n(\pi-\alpha_i)=n\pi -\sum_{i=1}^n\alpha_i=2\pi$. 
 	Solving for $\sum_{i=1}^n\alpha_i$ gives the second part of the theorem.
 
@@ -69,68 +71,9 @@ No matter how we position the vertices of our polygon,
 if the boundary of the polygon stays closed and simple,
 the sum the exterior angles will be $2\pi$.
 Even this simple version of the Gauss-Bonnet theorem has powerful
-consequences, see \secref{pick} for a proof of Pick's Theorem.
+consequences, as we now see in our first application, a proof of Pick's Theorem.
 
 
-
-
-\subsection{The Sphere}
-On the unit sphere, we can relate the area of a simple polygon 
-to the angles. This is because the sphere is curved.
-A triangle on the sphere is shown in \figref{sphere-triangle}.
-
-
- \begin{figure}[htb]
-         \centering
-        \begin{subfigure}[b]{0.35\textwidth}
-         \includegraphics[width=\textwidth]{background/sphere-triangle}
-         \caption{Spherical triangle.}
- 	 \label{fig:sphere-triangle}
-       \end{subfigure}
-         \hspace{1cm}
-         \begin{subfigure}[b]{0.35\textwidth}
-         \includegraphics[width=\textwidth]{background/lune}
-         \caption{A lune.}
-          \label{fig:lune}
-         \end{subfigure}
-		\caption{(a) A triangle on the sphere.
- 		(b) A lune with angle $\alpha$.
- 		\label{fig:sphere-lune}}
- \end{figure}
-A spherical \EMPH{lune} is the region on a sphere bounded by two half great circles
-with angle $\alpha$. The area of a lune is denoted $A(\alpha)$,
- see \figref{lune}.
-On the unit sphere, the area of a lune is proportional to $\alpha$. 
-If $\alpha=0$ the area is zero and if $\alpha=\pi$ the area is $4\pi$.
-We can add the area of two lunes in terms of their angles, 
-$A(\alpha_1+\alpha_2)=A(\alpha_1)+A(\alpha_2)$ so $A$ is linear
-and  $A(\alpha)=4\alpha.$
-
-
-
-
-The following relates the area of a triangle on the sphere to the angles.
-
-\begin{lemma}[Area of Spherical Triangle]\label{lem:spherical-triangle}
-On the unit sphere, the area of a triangle with interior angles $\alpha_1, \alpha_2, \alpha_3$
-is $A=\alpha_1+\alpha_2+\alpha_3-\pi$.
-\end{lemma}
-
-\begin{proof}
-	Any two edges of the the triangle form a lune. The collection of 
-	all three lunes covers the entire sphere with triangle and the antipodal triangle covered three times.
- 	The surface area of the unit sphere is $4\pi$.
-	Thus, $4\pi=4\alpha_1+4\alpha_2+4\alpha_3-4A$
-	and $A=\alpha_1+\alpha_2+\alpha_3-\pi$.
-\end{proof}
-
-As in the plane, any polygon on the sphere with $n$ vertices can be decomposed
-into $n-2$ triangles \cite{orourke_computational_1994}. This gives a formula for the area of a simple polygon
-on the sphere with interior angles $\alpha_1,\alpha_2,\ldots, \alpha_n$.
-
-\begin{equation} \label{eqn:sphere-area}
-	A=(2-n)\pi +\sum_{i=1}^n \alpha_i.
-\end{equation}
 
 
 
