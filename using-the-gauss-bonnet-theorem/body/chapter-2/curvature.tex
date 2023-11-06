@@ -1,7 +1,7 @@
 \section{Curvature}
 
 In the plane, if one scales a polygon, the area of the polygon changes
-but the angles of the polygon do not change.
+but the angles of the polygon do not.
 On the unit sphere, we can relate the area of a simple polygon 
 to the angles. This is because the sphere is curved.
 A triangle on the sphere is shown in \figref{sphere-triangle}.
@@ -155,7 +155,7 @@ equally reasonable ways to approximate a saddle with a sphere.
 
 
 
-\subsubsection{Surfaces}
+\subsection{Surfaces}
 
 
 One dimensional curves are represented by differentiable 
@@ -306,18 +306,20 @@ the \EMPH{Gaussian curvature} of a surface is
 
 \begin{example}[Curvature of the Sphere]\label{ex:compute-surface-curvature}
 Consider the northern hemisphere of the unit sphere parameterized
-by $r(u,v)=(u,v,\sqrt{1-u^2-v^2})$ and we wish to compute the Gaussian curvature at
+by $$r(u,v)=(u,v,\sqrt{1-u^2-v^2})$$ and we wish to compute the Gaussian curvature at
 the north poll $p=(0,0,1)$.
 
-We have $r_u|_p=(1,0,\frac{-u}{\sqrt{1-u^2-v^2}})|_p=(1,0,0)$ and
-$r_v|_p=(0,1,\frac{-v}{\sqrt{1-u^2-v^2}})|_p=(0,1,0)$.
+We have $$r_u|_p=(1,0,\frac{-u}{\sqrt{1-u^2-v^2}})|_p=(1,0,0)$$ and
+$$r_v|_p=(0,1,\frac{-v}{\sqrt{1-u^2-v^2}})|_p=(0,1,0).$$
 We have $E=1, F=0,$ and $G=1$ so our first fundamental form is
 $\mathrm{I}=\begin{bmatrix}
 1 & 0 \\
 0 & 1 
 \end{bmatrix}.$
-Our normal vector is $n(p)=(0,0,1)$ $r_{uu}|_p=(0,0,\frac{1-2u^2}{(1-u^2)^{\frac{3}{2}})})|_p=(0,0,1),
-r_{uv}|_p=(0,0,0)$ and $r_{vv}|_p=(0,0,\frac{1-2v^2}{(1-v^2)^{\frac{3}{2}})})|_p=(0,0,1).$
+Our normal vector is $n(p)=(0,0,1)$ with 
+$$r_{uu}|_p=(0,0,\frac{1-2u^2}{(1-u^2)^{\frac{3}{2}})})|_p=(0,0,1),
+r_{uv}|_p=(0,0,0)$$ and 
+$$r_{vv}|_p=(0,0,\frac{1-2v^2}{(1-v^2)^{\frac{3}{2}})})|_p=(0,0,1).$$
 Thus, $L=1, M=0$ and $N=1$ and our second fundamental form is
 
 $\mathrm{I\!I}=\begin{bmatrix}
@@ -407,28 +409,48 @@ Given two curves on the sphere that intersect linearly independently at a point 
 stereographic projection preserves the angle between the curves.
 Maps that preserve angles in this way are called \EMPH{conformal}.
 
-\subsubsection{Geodesics Curvature}
+\subsection{Geodesics Curvature}
 
 Shortest paths play an important role in many computational problems.
-In a surface, a \EMPH{geodesic} is a curve that is a shortest path
+On a surface, a \EMPH{geodesic} is a curve that is a shortest path
 between two points in the surface. 
 For example, on $\Sp^2$ great circles are geodesic.
-We would like to define the curvature of a one dimensional curve as it would
- be seen from someone living on a surface.
+Intuitively, the geodesic curvature of a one dimensional curve on a surface
+is the curvature as it would be seen from someone living on the surface.
 
-Let $U$ be a parameterized chart on a surface $S$ with vector $n(u,v)$ normal
+
+Given a parameterized surface and a point on parameterized curve on the surface,
+we can compute the geodesic curvature as follows.
+First, find the tangent plane to the surface at the point and the unit normal vector.
+Let $U:\mathcal{U}\to \RR^3$ be a parameterized chart on a surface $S$ with vector $n(u,v)$ normal
 to the surface
-and let $\gamma(t)$ be a curve in $U$, with Frenet frame $T,N,B$.
-Then $V=n(\gamma(t)\times T$ is in the tangent plane of the surface since
-it is perpendicular to $n$. We now have a new orthonormal basis at a point on $\gamma$
-namely, $T,V,n$. 
-We would like to measure how the rate of change of the tangent vector $T$ with respect to $V$.
+and let $\gamma(\theta)$ be a curve in $U$.
+Then $V=n(\gamma(\theta))\times T$ is in the tangent plane of the surface since
+it is perpendicular to $n$. Moreover, $V(\theta)$ is normal to $\gamma$ 
+from the perspective of someone living on the surface.
+The geodesic curvature tells us the rate of change of $\gamma'$ with respect 
+to $V(\theta)$.
 The \EMPH{geodesic curvature} is  
 \begin{equation} \label{eqn:geodesic}
-	k_g=\langle \gamma''(t),V(t)\rangle
+	k_g=\langle \gamma''(\theta),V(\theta)\rangle
 \end{equation}
-For an alternative equivalent definition see \cite{doc76}.
-\todo{non great circle on sphere image}
 
+\begin{example}[Circles on the Sphere]\label{eqn:circles-on-sphere}
+	We can rotate the sphere so that the circle is parallel to the $xy$-plane.
+	Then the radius of the circle $r$ is related to the height $h$ of the circle above the $xy$-plane
+	by $h^2+r^2=1$.
+	A parameterization by arc length is given by
+	$$\gamma(\theta)=\left(r\cos\left(\frac{\theta}{r}\right),r\sin\left(\frac{\theta}{r}\right),\sqrt{1-r^2}\right),$$
+	so
+	$$\gamma'(\theta)=\left(-\sin\left(\frac{\theta}{r}\right),\cos\left(\frac{\theta}{r}\right),0\right)$$
+	and
+	$$\gamma''(\theta)=\left(-\frac{1}{r}\cos\left(\frac{\theta}{r}\right),-\frac{1}{r}\sin\left(\frac{\theta}{r}\right),0\right).$$
+	Since we are on the sphere, the normal vector is equal to the point on the sphere
+	so $$n(\theta)=\left(r\cos\left(\frac{\theta}{r}\right),r\sin\left(\frac{\theta}{r}\right),\sqrt{1-r^2}\right).$$
+	
+	Then 
+	$$k_g=\gamma''\cdot V(\theta)=\frac{\sqrt{1-r^2}}{r}$$.
+	Notice that if $h=0$ then $r=1$ and the geodesic curvature is zero on the equator.
+\end{example}
 
 
