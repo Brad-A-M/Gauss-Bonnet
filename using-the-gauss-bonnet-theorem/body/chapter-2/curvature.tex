@@ -1,4 +1,4 @@
-\subsection{The Plan and The Sphere}
+\section{Curvature}
 
 In the plane, if one scales a polygon, the area of the polygon changes
 but the angles of the polygon do not change.
@@ -62,7 +62,8 @@ on the sphere with interior angles $\alpha_1,\alpha_2,\ldots, \alpha_n$.
 
 
 
-
+This difference between the plane and the sphere illustrates
+the need to quantify how much a surface is curving.
 What  do we require of a definition of curvature?
 A straight line should have zero curvature and
  large circles should have less curvature than smaller circles.
@@ -75,7 +76,8 @@ The best approximating circle is the  \EMPH{osculating circle}.
 A natural definition of the \EMPH{curvature} is the inverse of the radius of the osculating
  circle $k=\frac{1}{r}$.
 See \figref{osculating-circle} for an example.
-The osculating circle meets the requirements for a definition of curvature.
+The osculating circle meets the requirements for a definition of curvature as long
+as we allow the straight line to have an osculating circle with infinite radius.
 We determine the sign of the curvature by which side of the curve the osculating circle is on.
 
 
@@ -118,13 +120,14 @@ osculating circle intuition given above.
 \kappa(t)=\frac{|\gamma'(t)\times \gamma''(t)|}{|\gamma'(t)|^3}.
 \end{equation}
 
-Since we traverse $\gamma$
-at unit speed, $\gamma'(t)^2=1,$ and by the chain rule, $\gamma'\cdot \gamma''=0,$
-so  the second derivative is orthogonal to $\gamma'$. Thus, the
+We traverse $\gamma$
+at unit speed so that the length of the velocity vector is one, $\gamma'(t)^2=1,$ and by the chain rule, $\gamma'\cdot \gamma''=0$.
+This implies $\gamma'$ and $\gamma''$ are orthogonal.
+Thus, the
 vector $\gamma''=N$ is normal to the $\gamma$. 
 By taking the cross product of $N$ and $T$ we obtain a vector $B$ called
 the binormal vector.
-The vectors $T,N$ and $B$ form the \EMPH{Fernet frame} of $\gamma$ a $p.$
+%The vectors $T,N$ and $B$ form the \EMPH{Fernet frame} of $\gamma$ a $p.$
 
  This osculating-circle idea can be extend
 to  surfaces in $\R^3$, by considering the \EMPH{osculating sphere},
@@ -152,6 +155,7 @@ equally reasonable ways to approximate a saddle with a sphere.
 
 
 
+\subsubsection{Surfaces}
 
 
 One dimensional curves are represented by differentiable 
@@ -191,7 +195,7 @@ The chart $r_{z}$ is shown in \figref{sphere-chart}
 	\label{fig:sphere-chart}
 \end{figure}
 
-One can verify that these parameterizations fullfil the requirements
+One can verify that these parameterizations fullfill the requirements
 for the sphere to be a regular surface.
 
 \end{example}
@@ -205,7 +209,8 @@ for the tangent
 plane and define a normal vector $N$ at $p$.
 Every plane containing the normal vector will intersect the surface.
 The intersection of the surface and each normal plane is a curve in $\RR^3$
-gives a one dimensional curve called the \EMPH{normal section}.
+gives a one dimensional curve called the \EMPH{normal section}, see  \figref{normal-sections}
+for an example.
 Let $\kappa_1$ denote the maximum curvature of all normal sections 
 and let $\kappa_2$ denote the minimum. 
 The \EMPH{Gaussian curvature} of a point on a surface is
@@ -215,6 +220,23 @@ that larger circles have less curvature than smaller ones.
 
 
 
+\begin{figure}[htb]
+    \captionsetup[subfigure]{justification=centering}
+    \centering
+    \begin{subfigure}[b]{0.25\textwidth}
+        \includegraphics[width=\textwidth]{curvature/normal-section-max}
+       \subcaption{}\label{fig:normal-section-max}
+    \end{subfigure}
+        \hspace{1cm}
+        \begin{subfigure}[b]{0.25\textwidth}
+        \includegraphics[width=\textwidth]{curvature/normal-section-min}
+        \subcaption{}\label{fig:normal-section-min}
+        \end{subfigure}
+    \caption{(\subref{fig:normal-section-max}) The osculating sphere above the saddle.
+        (\subref{fig:normal-section-min}) The osculating sphere above the saddle.
+    }
+    \label{fig:normal-sections}
+\end{figure}
 
 Once we choose a chart we define a clockwise orientation to be positive.
  If the clockwise
