@@ -253,8 +253,7 @@ Thus, $dN_p:T_p(S)\to T_{N(p)}(\Sp^2)$, but since $T_p(S)$ and $T_{N(p)}(\Sp^2)$
 are parallel we can define $dN_p$ to be a linear map on $T_p(S)$.
 The determinant of $dN(p)$ is equal to \EMPH{Gaussian curvature}.
 
-The previous two definitions provide geometric intuition for Gaussian curvature.
-We next define Gaussian curvature in a way that lends itself to computations.
+We now consider computing the Gaussian curvature.
 A \EMPH{quadratic form} to be polynomial of degree two, of the form $p(u,v)=c_1u^2+c_2uv+c_3v^2$ 
 where $c_i\in R$.
 We define a quadratic form, the first fundamental form, using $r(u,v)$.
@@ -307,8 +306,7 @@ the \EMPH{Gaussian curvature} of a surface is
 \begin{example}[Curvature of the Sphere]\label{ex:compute-surface-curvature}
 Consider the northern hemisphere of the unit sphere parameterized
 by $$r(u,v)=(u,v,\sqrt{1-u^2-v^2})$$ and we wish to compute the Gaussian curvature at
-the north poll $p=(0,0,1)$.
-
+the north pole $p=(0,0,1)$.
 We have $$r_u|_p=(1,0,\frac{-u}{\sqrt{1-u^2-v^2}})|_p=(1,0,0)$$ and
 $$r_v|_p=(0,1,\frac{-v}{\sqrt{1-u^2-v^2}})|_p=(0,1,0).$$
 We have $E=1, F=0,$ and $G=1$ so our first fundamental form is
@@ -438,7 +436,7 @@ The \EMPH{geodesic curvature} is
 \begin{example}[Circles on the Sphere]\label{eqn:circles-on-sphere}
 	We can rotate the sphere so that the circle is parallel to the $xy$-plane.
 	Then the radius of the circle $r$ is related to the height $h$ of the circle above the $xy$-plane
-	by $h^2+r^2=1$.
+	by $h^2+r^2=1$. See \figref{geodesic} for an example.
 	A parameterization by arc length is given by
 	$$\gamma(\theta)=\left(r\cos\left(\frac{\theta}{r}\right),r\sin\left(\frac{\theta}{r}\right),\sqrt{1-r^2}\right),$$
 	so
@@ -453,4 +451,9 @@ The \EMPH{geodesic curvature} is
 	Notice that if $h=0$ then $r=1$ and the geodesic curvature is zero on the equator.
 \end{example}
 
-
+\begin{figure}[htb]
+	\centering
+	\includegraphics[width=.3\textwidth]{curvature/geodesic}
+	\caption{Computing the geodesic curvature.}
+	\label{fig:geodesic}
+\end{figure}
