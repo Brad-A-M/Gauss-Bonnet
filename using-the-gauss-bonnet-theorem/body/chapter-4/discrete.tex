@@ -9,18 +9,29 @@ We then prove a discrete version of the Gauss-Bonnet theorem.
 Consider a triangulated polygonal surface $S$ with boundary $\partial(S)$.
 The boundary is a one dimensional piecewise linear curve in $\R^3.$
 As with polygons in the plane, at each vertex $v\in \partial(S)$ 
-we have an exterior angle and a complementary interior angle.
+we have an exterior angle.
 
 The interior angle might consist of many triangles.
 Let $F_v$  denote the set of faces incident to $v$ and let
 $\alpha_f$ denote the angle in face $f$ at $v$.
 The \EMPH{discrete geodesic curvature}
 of $v$  is
-$$k_{g}(v)= \pi-\sum_{f\in F_v}\alpha_f.$$
+$$k_{g}(v)= \pi-\sum_{f\in F_v}\epsilon_f.$$
+See \figref{discrete-geodesic} for an illustration.
 Notice that if $v$ lies on a straight line, then $\sum_{i}\alpha_f=\pi$
 and the curvature is zero as we would expect.
 The word geodesic is used because we are measuring how close
 a curve is to being straight with respect to the surface we are on.
+
+
+\begin{figure}[htb]
+\centering
+	\includegraphics[width=.3\textwidth]{curvature/discrete-geodesic}
+	\caption{The discrete geodesic curvature at a vertex $v$ on the boundary
+	of a surface is given by the exterior angle $\epsilon$.}
+	\label{fig:discrete-geodesic}
+\end{figure}
+
 
 
 A geometric definition of discrete Gaussian curvature is the following:
