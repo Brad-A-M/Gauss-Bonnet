@@ -18,10 +18,8 @@ The \EMPH{discrete geodesic curvature}
 of $v$  is
 $$k_{g}(v)= \pi-\sum_{f\in F_v}\epsilon_f.$$
 See \figref{discrete-geodesic} for an illustration.
-Notice that if $v$ lies on a straight line, then $\sum_{i}\alpha_f=\pi$
+Notice that if $v$ lies on a straight line, then $\sum_{i}\epsilon_f=\pi$
 and the curvature is zero as we would expect.
-The word geodesic is used because we are measuring how close
-a curve is to being straight with respect to the surface we are on.
 
 
 \begin{figure}[htb]
@@ -32,9 +30,51 @@ a curve is to being straight with respect to the surface we are on.
 	\label{fig:discrete-geodesic}
 \end{figure}
 
+How should be define discrete Gaussian curvature?
+At every non-vertex point on a polygonal surface, the continuous Gaussian curvature
+is zero and at every vertex it is undefined.
+We can use the intuitive definition of discrete geodesic curvature and the Gauss-Bonnet
+theorem to give a definition for discrete Gaussian curvature.
 
+Consider removing the neighborhood around a vertex $v$ consisting
+of the faces incident to $v$ and the edges and vertices of these faces call
+this $N(v)$.
+Using the variable names given in \figref{discrete-geodesic},
+the total geodesic cuvature
+$$=$$
 
-A geometric definition of discrete Gaussian curvature is the following:
+\begin{align}
+\int_{\partial N(v)} kg ds &=\sum_i \pi -(\tau_i+\sigma_{i+1})\nonumber  \\
+       &=\sum_i \pi -(\tau_i+\sigma_{1}) \nonumber  \\
+       &=\sum_i \alpha_i. \nonumber 
+\end{align}
+Where the second equality comes from reorganizing the sum.
+Topologically, this neighborhood is a disk and $\chi(N(v))=1$
+so the Gauss-Bonnet theorem tells us that 
+the discrete Gaussian curvature at a vertex is
+\begin{definition}[Discrete Gaussian curvature]\label{def:discrete-curvature-vertex}
+
+$$K(v)=\int_{N(v)}K da=2\pi-\sum_i \alpha_i.$$
+
+\end{definition}
+
+Recall, that when we considered the curvature at a vertex on a polygon in the plane
+in the theorem of turning tangents, \thmref{simple-bonnet}, we have two parts depending on
+weather we use the interior or the exterior angles at each vertex.
+We can do a similar thing with the discrete Gaussian curvature at a vertex on a surface,
+instead of considering the angles of the faces incident to a vertex $v$, we can consider
+the complementary angle. This idea gives us a geometric representation of discrete
+Gaussian curvature.
+The complementary angle is shown in \figref{switcheroo}.
+
+\begin{figure}[htb]
+\centering
+\includegraphics[width=.25\textwidth]{background/switch-angles}
+\caption{The relationship between the angles incident to a vertex and
+the interior angles of the area polygon on the sphere.}
+\label{fig:switcheroo}
+\end{figure}
+
 \begin{definition}[Discrete Gaussian curvature]\label{def:discrete-curvature-vertex}
 
 The discrete \EMPH{Gaussian curvature} at a vertex $v$ is the area on the unit 
@@ -43,8 +83,7 @@ the faces around $v$.
 
 \end{definition}
 
-If a vertex is on a flat surface, then the unit normals are all pointed
-in the same direction and the Gaussian curvature is zero.
+
 
 \begin{figure}[htb]
 \centering
@@ -70,13 +109,6 @@ So, the line connecting two normal vectors will intersect the edge between the v
 at right angles. See \figref{switcheroo}.
 
 
-\begin{figure}[htb]
-\centering
-\includegraphics[width=.25\textwidth]{background/switch-angles}
-\caption{The relationship between the angles incident to a vertex and
-the interior angles of the area polygon on the sphere.}
-\label{fig:switcheroo}
-\end{figure}
 
 
 
