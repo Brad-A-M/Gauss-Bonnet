@@ -67,7 +67,9 @@ instead of considering the angles of the faces incident to a vertex $v$, we can 
 the complementary angle. The complementary angle is shown in \figref{switcheroo}. 
 If we let $n$ be the number of faces
 incident to $v$, the formula for the discrete curvature then becomes
-$$K(v)=2\pi - \sum_{i=1}^n (\pi - \xi_i)=(2-n)\pi +\sum_{i=1}^n \xi_i.$$
+\begin{equation}\label{eqn:discrete-curvature-complement-angle}
+K(v)=2\pi - \sum_{i=1}^n (\pi - \xi_i)=(2-n)\pi +\sum_{i=1}^n \xi_i.
+\end{equation}
 By \eqnref{sphere-area}, this is the area of the polygon on the sphere with interior
 angles $\xi_1, \xi_2,\ldots \xi_n.$
 Geometrically, this angle be seen in \figref{switcheroo}.
@@ -111,7 +113,6 @@ Combining the above definitions  we have
 \begin{theorem}[The Discrete Gauss-Bonnet Theorem] \label{thm:g-b-d}
 
 If $S$ is a triangulated surface with  boundary $\partial S$ then
-
 $$\sum_{v\in V_{int}} K(v) + \sum_{v\in V_{\partial S}} k_g(v) = 2\pi \chi(S)$$
 where $K(v)$ is the discrete Gaussian curvature
 of a vertex, $k_g(g)$ is the discrete geodesic curvature,  and
