@@ -63,9 +63,15 @@ in the theorem of turning tangents, \thmref{simple-bonnet}, we have two parts de
 weather we use the interior or the exterior angles at each vertex.
 We can do a similar thing with the discrete Gaussian curvature at a vertex on a surface,
 instead of considering the angles of the faces incident to a vertex $v$, we can consider
-the complementary angle. This idea gives us a geometric representation of discrete
+the complementary angle. The complementary angle is shown in \figref{switcheroo}. 
+If we let $n$ be the number of faces
+incident to $v$, the formula for the discrete curvature then becomes
+$$K(v)=2\pi - \sum_{i=1}^n (\pi - \xi_i)=(2-n)\pi +\sum_{i=1}^n \xi_i.$$
+By \eqnref{sphere-area}, this is the area of the polygon on the sphere with interior
+angles $\xi_1, \xi_2,\ldots \xi_n.$
+We have a geometric representation of discrete
 Gaussian curvature.
-The complementary angle is shown in \figref{switcheroo}.
+
 
 \begin{figure}[htb]
 \centering
@@ -76,11 +82,9 @@ the interior angles of the area polygon on the sphere.}
 \end{figure}
 
 \begin{definition}[Discrete Gaussian curvature]\label{def:discrete-curvature-vertex}
-
 The discrete \EMPH{Gaussian curvature} at a vertex $v$ is the area on the unit 
 sphere bounded by a spherical polygon whose vertices are the unit normals of 
 the faces around $v$.
-
 \end{definition}
 
 
