@@ -45,14 +45,15 @@ $$=$$
 
 \begin{align}
 \int_{\partial N(v)} kg ds &=\sum_i \pi -(\tau_i+\sigma_{i+1})\nonumber  \\
-       &=\sum_i \pi -(\tau_i+\sigma_{1}) \nonumber  \\
+       &=\sum_i \pi -(\tau_i+\sigma_{I}) \nonumber  \\
        &=\sum_i \alpha_i. \nonumber 
 \end{align}
-Where the second equality comes from reorganizing the sum.
+Where the second equality comes from the boundary being a circle and reorganizing the sum.
 Topologically, this neighborhood is a disk and $\chi(N(v))=1$
 so the Gauss-Bonnet theorem tells us that 
 the discrete Gaussian curvature at a vertex is
-\begin{definition}[Discrete Gaussian curvature]\label{def:discrete-curvature-vertex}
+\begin{definition}[Discrete Gaussian curvature\footnote{Discrete Gaussian curvature
+is also called the \emph{angle defect} at a vertex}]\label{def:discrete-curvature-vertex}
 
 $$K(v)=\int_{N(v)}K da=2\pi-\sum_i \alpha_i.$$
 
@@ -69,23 +70,24 @@ incident to $v$, the formula for the discrete curvature then becomes
 $$K(v)=2\pi - \sum_{i=1}^n (\pi - \xi_i)=(2-n)\pi +\sum_{i=1}^n \xi_i.$$
 By \eqnref{sphere-area}, this is the area of the polygon on the sphere with interior
 angles $\xi_1, \xi_2,\ldots \xi_n.$
+Geometrically, this angle be seen in \figref{switcheroo}.
+If we project the normal vectors on each face onto a sphere and
+connect these points with great arcs to create a polygon on the sphere with interior angles
+$\xi_1, \xi_2,\ldots \xi_n.$
 We have a geometric representation of discrete
-Gaussian curvature.
-
+Gaussian curvature as the area on the unit 
+sphere bounded by a spherical polygon whose vertices are the unit normals of 
+the faces around $v$. An example is shown in \figref{discrete-curvature}.
 
 \begin{figure}[htb]
 \centering
 \includegraphics[width=.25\textwidth]{background/switch-angles}
 \caption{The relationship between the angles incident to a vertex and
-the interior angles of the area polygon on the sphere.}
+its complementary angle.}
 \label{fig:switcheroo}
 \end{figure}
 
-\begin{definition}[Discrete Gaussian curvature]\label{def:discrete-curvature-vertex}
-The discrete \EMPH{Gaussian curvature} at a vertex $v$ is the area on the unit 
-sphere bounded by a spherical polygon whose vertices are the unit normals of 
-the faces around $v$.
-\end{definition}
+
 
 
 
@@ -97,40 +99,6 @@ is the area on the sphere shown on the right. We rotated the sphere
 in order to see the entire polygon.}
 \label{fig:discrete-curvature}
 \end{figure}
-
-
-Let $\alpha_i$ denote the angle of a triangle incident to $v$, 
-we next show that the interior angle of the polygon $\beta_i$ on the 
-sphere is supplementary $\alpha_i$.
-
-\begin{equation} \label{eqn:switcheroo}
-\beta=\pi-\alpha.
-\end{equation}
-Notice that the edge between two faces
-on a triangulated surface
-is perpendicular to the normal vectors of the faces.
-So, the line connecting two normal vectors will intersect the edge between the vectors 
-at right angles. See \figref{switcheroo}.
-
-
-
-
-
-This gives a  formula for computing the curvature at an interior vertex.
-The \EMPH{angle defect} at a vertex $d(v)$ is the difference between $2\pi$ and
-the sum of the incident angles.  Let $F_v$ denote the faces containing $v$  
-and let $\alpha_f$  denote the interior  angle of face $f$ at $v$, then
-\begin{equation} \label{eqn:defect}
-d(v):=2\pi -\sum_{f\in F_v}\alpha_f.
-\end{equation}
-Since $\beta_i=\pi-\alpha_i$,
-we can use our formula for the area of a polygon on the sphere,
-\eqnref{sphere-area}, to compute the Gaussian curvature at $v$
-by
-$$K(v)=2\pi -n\pi+\sum_{i}^n \beta_i=2\pi-n\pi +\sum_{i}^n (\pi-\alpha_i) =2\pi-\sum_i^n\alpha_i=d(v)$$
- and the
- angle defect is equal to the discrete curvature in \defref{discrete-curvature-vertex}
- and in \eqnref{discrete-gaussian}.
 
 
 
