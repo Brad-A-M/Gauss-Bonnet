@@ -5,44 +5,65 @@ In two dimensions, a black and white image consists of an array of pixels
 where each pixel is either black or white.
 This idea can be extended to three dimensions,
 instead of square pixels we have cubes called voxels.
-For example, in medical imaging it is useful to consider
+Three dimensional images are use useful in medical images. 
+For example,  consider a
 three dimensional images of the human heart \cite{bovik_handbook_2000}.
 Given such an image, one might want to compute
 the number of holes in the image to make sure it
 matches the number of holes that are suppose to be in
-the human heart. In \cite{chen_digital_2010}, Chen and Rong 
-use the Gauss-Bonnet theorem to efficently
-compute genus and Betti numbers of a three dimensional
-digital object in $\R^3$. 
+the human heart. In this subsection, we share a result
+of Chen and Rong where they 
+use the Gauss-Bonnet theorem to 
+compute genus of a digital image in $\R^3$ \cite{chen_digital_2010}.
 
 
-We call these digital images \emph{cubical complexes},
-where each cube has side length one.
+Digital images are commonly reffered to as \emph{cubical complexes},
+where each cube has side length one \cite{kong_digital_1989}.
 An \emph{elementary cube} $Q$ is a product
 $$Q=I_1\times I_2 \times I_3$$
 where each $I_i$ is a unit interval of the form $I=[\ell,\ell+1]$
 called a \emph{coordinate}.
-We will associate each elementary cube with a lattice point.
-Given a cubical complex, we would like 
-a computer to to classify the image.
-Operations toward image classification include
-object counting, border following and computing 
-the number of holes \cite{kong_digital_1989}.
-
-
+We will often associate each elementary cube with a lattice point
+see \figref{4-square-and-dual} for an example.
+%In many cases, given a cubical complex, one is interested in having
+%a computer to to classify the image.
+%Operations toward image classification include
+%object counting, border following and computing 
+%the number of holes \cite{kong_digital_1989}.
 
 
 In two dimensions, it is not clear what it means
-for two pixels to be adjacent. See \figref{paradox}
-for an ambiguous example. 
-We now introduce different notions of adjacency.
+for two pixels to be adjacent. For example, in \figref{4-square}
+we see four black pixels. Should these pixels represent a closed
+curve? If we define the pixels adjacent to a given pixel to be the 
+pixels to the left, right, above, and below, then each black pixel isolated
+and the four pixels should not form a closed curve. However,
+with adjacency defined this way, the white pixel in the middle is completely surrounded 
+and the four black pixels should represent a closed curve because
+they separate the white pixels into an inside and an outside.
+In order to resolve this paradox introduce different notions of adjacency.
+
+
 In two dimensions, two points are \emph{eight-adjacent}
 if they are distinct and each coordinate of one differs from
 the other by at most one.
 Two points are \emph{four-adjacent} if
 they are eight-adjacent and differ in at most one of their coordinates.
+Consider four vertices adjacent to a single vertex $v$.
 
-In three dimensions, two points
+Returning to our paradox in \figref{4-square}.
+If we use eight-adjacency
+for the white vertices and four-adjacency for the black.
+Then the four black pixels do not form a closed curve 
+and the center white pixel is not enclosed, so we avoid our paradox. 
+Notice we could have chosen four adjacency
+for the white vertices and eight-adjacency for the black pixels and 
+now the four black pixels do form a closed curve and the white pixel
+is surrounded and again we do not have a paradox.
+
+
+
+We make a similar choice in three-dimensions, two points
 are \emph{26-adjacent} if they are distinct and each coordinate 
 entry differs by at most one.
 The points are \emph{18-adjacent} if they are 26-adjacent
@@ -54,31 +75,25 @@ If a set of points $S$ lattice points cannot be
 partitioned into two subsets that are not
 $n$-adjacent is \EMPH{$n$-connected}.
 
-Consider four vertices adjacent to a single vertex $v$.
-If four-adjacency is used the four black points are disconnected,
-but separate $v$ from the exterior, if eight-adjacency is used
-the back points form a Jordan curve that does not separate
-an interior. To resolve this matter, we use eight-adjacency
-for the white vertices and four-adjacency for the black.
-We make a similar choice in three-dimensions.
+
 
 \begin{figure}[htb]
         \centering
-        \begin{subfigure}[b]{0.35\textwidth}
-        \includegraphics[width=\textwidth]{digital/paradox}
+        \begin{subfigure}[b]{0.3\textwidth}
+        \includegraphics[width=\textwidth]{digital/4-square}
         \caption{}
-          \label{fig:paradox}
+          \label{fig:4-square}
         \end{subfigure}
-          \hspace{.0cm}
-         \begin{subfigure}[b]{0.40\textwidth}
-        \includegraphics[width=\textwidth]{digital/6-26}
+          \hspace{.3cm}
+         \begin{subfigure}[b]{0.3\textwidth}
+        \includegraphics[width=\textwidth]{digital/4-square-dual}
         \caption{}
-        \label{fig:6-26}
+        \label{fig:4-square-dual}
         \end{subfigure}\\
-		\caption{(a) Are the black points a closed curve? (b) In three-dimensions,
-		the six neighbors of the vertex $p$ are in pink and the 26 neighbors are in
-		blue. 
-		\label{fig:adjacency}}
+		\caption{(\subref{fig:4-square}) A two dimensional image with four black pixels.
+		Do the black pixels represent a closed curve? (\subref{fig:4-square-dual}) The same image
+		represented on the lattice.
+		\label{fig:4-square-and-dual}}
 \end{figure}
 
 A \EMPH{digital picture} is a quadruple $(V,m,n,B)$ where
