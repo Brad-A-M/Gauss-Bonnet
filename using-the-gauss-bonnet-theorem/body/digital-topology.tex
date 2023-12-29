@@ -3,10 +3,10 @@
 
 In two dimensions, a black and white image consists of an array of pixels
 where each pixel is either black or white.
-This idea can be extended to three dimensions,
+In three dimensions,
 instead of square pixels we have cubes called voxels.
 Three dimensional images are use useful in medical images. 
-For example,  consider a
+For example, consider a
 three dimensional images of the human heart \cite{bovik_handbook_2000}.
 Given such an image, one might want to compute
 the number of holes in the image to make sure it
@@ -31,7 +31,11 @@ see \figref{4-square-and-dual} for an example.
 %object counting, border following and computing 
 %the number of holes \cite{kong_digital_1989}.
 
-
+Our goal is to use the Gauss-Bonnet theorem to compute
+the genus of a three dimensional cubical complex.
+The definition of genus, \defref{genus}, is given in terms
+of simple closed curves. In order to describe a closed curve in a cubical
+complex we first need to resolve an interesting paradox.
 In two dimensions, it is not clear what it means
 for two pixels to be adjacent. For example, in \figref{4-square}
 we see four black pixels. Should these pixels represent a closed
@@ -79,13 +83,13 @@ $n$-adjacent is \EMPH{$n$-connected}.
 
 \begin{figure}[htb]
         \centering
-        \begin{subfigure}[b]{0.3\textwidth}
+        \begin{subfigure}[b]{0.25\textwidth}
         \includegraphics[width=\textwidth]{digital/4-square}
         \caption{}
           \label{fig:4-square}
         \end{subfigure}
           \hspace{.3cm}
-         \begin{subfigure}[b]{0.3\textwidth}
+         \begin{subfigure}[b]{0.25\textwidth}
         \includegraphics[width=\textwidth]{digital/4-square-dual}
         \caption{}
         \label{fig:4-square-dual}
@@ -116,7 +120,7 @@ six types of digital surface points, these are shown in \figref{surface-points}.
 
 \begin{figure}[htb]
         \centering
-        \includegraphics[width=.45\textwidth]{digital/26-neighbors}
+        \includegraphics[width=.25\textwidth]{digital/26-neighbors}
 		\caption{A vertex in a three dimensional cubical complex and its 26 neighbors.
 		\label{fig:26-neighbors}}
 \end{figure}

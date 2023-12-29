@@ -427,16 +427,29 @@ Thus, the total charge is two.
 
 \end{proof}
 
+Triangulations of the sphere are a special case of \thmref{euler}.
+The sphere will be one of two common surfaces we see in applications
+of the Gauss-Bonnet theorem. The other being the disk.
+For the disk, $\chi(D^2)=1$. This can be seen by considering
+the removal of a single face from a triangulation of the sphere.
+Once a face is removed, we can project the remaining faces of the sphere
+onto the plane to obtain a triangulation of a disk. Moreover, this projection
+is invertible and given a triangulation of a disk we can obtain a triangulation
+of the sphere with a single face omitted.
 
-For the disk, $\chi(D^2)=1$. The disk can be triangulated by
-a single solid triangle with three vertices, three edges and one face.
+The Euler characteristic of a connected, orientable surface surface is often 
+stated in terms of the genus of the surface which is defined as follows.
+\begin{definition}[Genus of a Surface]\label{def:genus}
+	The genus of a connected, orientable surface is the maximum number of
+	cuttings along non-intersecting simple closed curves without disconnecting
+	the surface \cite{munkres}.
+\end{definition}
 
-The \EMPH{genus} of a surface is the maximum number of closed simple
-non-intersecting curves that can be drawn in the surface without separating
-the surface.
-The torus in \figref{triangulated-torus} has genus one.
-By the classification of surfaces \cite{munkres}, the Euler characteristic or an orientable surface
-is determined by its genus with $\chi=2-2g$.
+The sphere has genus zero and the torus, shown in \figref{triangulated-torus}, has genus one.
+For an orientable surface, the genus and the Euler characteristic are related by
+the formula $\chi=2-2g$. To see this, we can transform a triangulation of a surface of
+genus $g$ into a surface of genus $g+1$ by removing two faces and an equal number
+of vertices and edges. \figref{genus} provides an example.
 
 
 
@@ -447,4 +460,19 @@ is determined by its genus with $\chi=2-2g$.
 \label{fig:triangulated-torus}
 \end{figure}
 
-
+\begin{figure}[htb]
+        \centering
+        \begin{subfigure}[b]{0.25\textwidth}
+        \includegraphics[width=\textwidth]{digital/4-square}
+        \caption{}
+          \label{fig:4-square}
+        \end{subfigure}
+          \hspace{.3cm}
+         \begin{subfigure}[b]{0.25\textwidth}
+        \includegraphics[width=\textwidth]{digital/4-square-dual}
+        \caption{}
+        \label{fig:4-square-dual}
+        \end{subfigure}\\
+		\caption{(\subref{fig:4-square}) A triangulated prism.
+		\label{fig:genus}}
+\end{figure}
