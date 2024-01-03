@@ -13,23 +13,48 @@ The theorem is the following:
 \end{theorem}
 
 
-We now include basic ideas and definitions from complex analysis that are used
-in the proof. A complex number can be separated into its real and imaginary parts $z=x+iy$
-A continuous function $f:\CC\to \CC$ is a map $f(z)=f(x,y)=u(x,y)+iv(x,y)$ where $u$ and $v$ are continuous.
+We now include ideas and definitions from complex analysis that are used
+in the proof. 
+A complex number represented $z=x+iy$ where $x$ and $y$ are real
+and $i^2=-1.$
+A continuous complex function is a map $f:\CC\to \CC$ we often write
+ $f(z)=f(x,y)=u(x,y)+iv(x,y)$ where $u$ and $v$ are real valued.
+The derivative of a complex function is defined similalry to the derivative of a real valued
+function via a limit. The \emph{derivative} of $f$ at $z_0$ is
+$$f'(z_0)=\lim_{h\to 0} \frac{f(z_0+h)-f(z_0)}{h}$$
+if the limit exists and is undefined if the limit does not exist.
+Many of the differentiation rules from calculus apply to complex function,
+in particular the sum and power rules apply. Thus, it is straightforward to 
+to take derivatives of polynomials.
+
+
 A function $f$ is \EMPH{analytic} at a point $z_0$ if there exists a neighborhood around $z_0$ 
 such that $f$ is differentiable at each point in the neighborhood.
-The \EMPH{Laplacian} of a function is the sum of the second order partial derivatives, denoted $\Delta f$
+We will see that the fact that $f$ has a derivative in a domain tells
+us a lot about the function. For instance, analytic functions satisfy the Cauchy-Riemann 
+equations meaning
+$$\frac{\partial u}{\partial x}=\frac{\partial v}{\partial y} \textrm{ and } \frac{\partial u}{\partial y}=- \frac{\partial v}{\partial x}.$$
+The Cauchy-Riemann equations give a way to test for analyticity, if the equations
+are satisfied then the function is analytic.
+The equations give a convenient way to compute the derivative, namely
+$$f'(z)=\frac{\partial u}{\partial x} +i \frac{\partial v}{\partial x} =\frac{\partial v}{\partial u} -i \frac{\partial u}{\partial y}.$$
+
+
+The \EMPH{Laplacian} of a function is the sum of the second order partial derivatives, denoted $\Delta f$,
 or just $\Delta$ if the function is clear,
 in our case, $\Delta f=\frac{\partial^2 f}{\partial x^2}+\frac{\partial^2 f}{\partial y^2}$.
-If $\Delta f=0$ then the function $f$ is said to be \EMPH{harmonic}.
+The equations $$\frac{\partial^2 u}{\partial x^2}+\frac{\partial^2 u}{\partial y^2}=
+\frac{\partial^2 v}{\partial x^2}+\frac{\partial^2 v}{\partial y^2}=0$$
+are call Laplace's equation and it is one of the most famous equations in applied mathematics
+\cite{zill_first_2008}.
+A function that satisfies Laplace's equation is said to be \EMPH{harmonic}.
 
-We prove a lemma
+We make use of the following lemma
 \begin{lemma}[Analytic Implies Real Part is Harmonic]\label{lem:anal-harmonic}
 	The real part of an analytic function is harmonic.
 \end{lemma}
 \begin{proof}
-	Analytic complex functions satisfy the Cauchy-Riemann equations meaning
-	$$\frac{\partial u}{\partial x}=\frac{\partial v}{\partial y} \textrm{ and } \frac{\partial u}{\partial y}=- \frac{\partial v}		{\partial x}.$$
+	Since our function is analytic, the Cauchy-Riemann equations are satisfied.
 	Differentiating again and using the fact that the mixed partial derivatives are equal,
 	we have
 	$$\frac{\partial^2 u}{\partial y^2}=-\frac{\partial}{\partial y}\left(\frac{\partial v}{\partial x}\right)
