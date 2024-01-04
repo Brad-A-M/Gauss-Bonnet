@@ -18,7 +18,7 @@ in the proof.
 A complex number represented $z=x+iy$ where $x$ and $y$ are real
 and $i^2=-1.$
 A continuous complex function is a map $f:\CC\to \CC$ we often write
- $f(z)=f(x,y)=u(x,y)+iv(x,y)$ where $u$ and $v$ are real valued.
+ $f(z)=f(x,y)=u(x,y)+iv(x,y)$ where $u$ is called the real part and $v$ is the imaginary part.
 The derivative of a complex function is defined similalry to the derivative of a real valued
 function via a limit. The \emph{derivative} of $f$ at $z_0$ is
 $$f'(z_0)=\lim_{h\to 0} \frac{f(z_0+h)-f(z_0)}{h}$$
@@ -45,12 +45,12 @@ or just $\Delta$ if the function is clear,
 in our case, $\Delta f=\frac{\partial^2 f}{\partial x^2}+\frac{\partial^2 f}{\partial y^2}$.
 The equations $$\frac{\partial^2 u}{\partial x^2}+\frac{\partial^2 u}{\partial y^2}=
 \frac{\partial^2 v}{\partial x^2}+\frac{\partial^2 v}{\partial y^2}=0$$
-are call Laplace's equation and it is one of the most famous equations in applied mathematics
+are call Laplace's equation and are one of the most famous equations in applied mathematics
 \cite{zill_first_2008}.
 A function that satisfies Laplace's equation is said to be \EMPH{harmonic}.
 
-We make use of the following lemma
-\begin{lemma}[Analytic Implies Real Part is Harmonic]\label{lem:anal-harmonic}
+We will use of the following lemma
+\begin{lemma}[Analytic Implies Real Part Harmonic]\label{lem:anal-harmonic}
 	The real part of an analytic function is harmonic.
 \end{lemma}
 \begin{proof}
@@ -59,12 +59,41 @@ We make use of the following lemma
 	we have
 	$$\frac{\partial^2 u}{\partial y^2}=-\frac{\partial}{\partial y}\left(\frac{\partial v}{\partial x}\right)
 	=-\frac{\partial}{\partial x}\left(\frac{\partial v}{\partial y}\right)=-\frac{\partial^2 u}{\partial x^2}.$$
-
-	And $\Delta \textbf{Re}f=\frac{\partial^2 u}{\partial x^2}+\frac{\partial^2 u}{\partial y^2}=0$.
+	And $$\frac{\partial^2 u}{\partial x^2}+\frac{\partial^2 u}{\partial y^2}=0.$$
 \end{proof}
 
+We will need a fact about the complex logarithm function, to this end the 
+\emph{complex exponential function} is defined to be
+$$e^z=e^x\cos(y)+ie^x\sin(y).$$
+This function has many desirable properties: it is differentiable everywhere,
+it is equal to its own derivative, it agrees with the real exponential when the
+input is restricted to the reals, and satisfies the same algebraic properties
+of the real exponential such as $$e^{z_1+z_2}=e^{z_1}e^{z_2}.$$
+When we write the function in polar form we see that
+$$|e^z|=e^x\hspace{1cm} \textrm{and} \hspace{1cm} \arg(e^z)=y+2\pi n$$
+for $n\in \ZZ.$
+The complex exponential differs from the real exponential in that 
+it is periodic with a imaginary period of $2\pi i.$ This is significant because
+we wish to define the inverse. The infinite horizontal
+strip $$-\infty<x<\infty, \hspace{1cm} -\pi< y\leq \pi$$ is the \emph{fundamental region}.
 
-
+Now to define the complex logarithm. Let $\log_e(x)$ denote the real logarithm.
+Suppose $$e^w=z,$$
+then $|e^w|=|z|$ and $\arg(e^w)=\arg(z)$. Then $u=\log_e|z|$ and $v=\arg(z)$
+and we have $$\ln(z)=\log_e|z|+i\arg(z).$$
+Notice that since there are an infinite number of arguments for $z$, the logarithm
+gives infinitely many values. And now the fact about the complex
+logarithm that we will need in the proof of \thmref{fta}.
+\begin{lemma}[Complex Logarithm Fact]\label{lem:log-fact}
+	For any complex function $f(z)$ we have
+	$$\ln(|f(z)|)=\textbf{Re}\ln(f(z)).$$
+\end{lemma}
+\begin{proof}
+	This fact follows from the definition of the complex logarithm.
+	The modulus $|f(z)|$ is a real number and so $\ln(|f(z)|)=\log_e(|f(z)|)$.
+	On the other hand, $\ln(f(z))=\log_e(|f(z)|)+i\arg(f(z))$ and so
+	$\textbf{Re}\ln(f(z))=\log_e(|f(z)|).$
+\end{proof}
 Let $f:S_1\to S$ be a differentiable map from a surface to itself.
 Such maps do not necessarily preserve geometric measurements (curvature or area), but the change
 can be accounted for. We compute geometric quantities by using the tangent plane and
