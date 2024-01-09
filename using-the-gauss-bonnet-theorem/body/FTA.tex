@@ -11,7 +11,7 @@ The theorem is the following:
 \end{theorem}
 
 
-We now include ideas and definitions from complex analysis that are used
+We now include standard ideas and definitions from complex analysis that are used
 in the proof. 
 A complex number represented $z=x+iy$ where $x$ and $y$ are real
 and $i^2=-1.$
@@ -80,7 +80,8 @@ Suppose $$e^w=z,$$
 then $|e^w|=|z|$ and $\arg(e^w)=\arg(z)$. Then $u=\log_e|z|$ and $v=\arg(z)$
 and we have $$\ln(z)=\log_e|z|+i\arg(z).$$
 Notice that since there are an infinite number of arguments for $z$, the logarithm
-gives infinitely many values. And now the fact about the complex
+gives infinitely many values but there is only one value in the fundamental region.
+ And now the fact about the complex
 logarithm that we will need in the proof of \thmref{fta}.
 \begin{lemma}[Complex Logarithm Fact]\label{lem:log-fact}
 	For any complex function $f(z)$ we have
@@ -92,11 +93,17 @@ logarithm that we will need in the proof of \thmref{fta}.
 	On the other hand, $\ln(f(z))=\log_e(|f(z)|)+i\arg(f(z))$ and so
 	$\textbf{Re}\ln(f(z))=\log_e(|f(z)|).$
 \end{proof}
-Let $f:S_1\to S$ be a differentiable map from a surface to itself.
+
+
+We now show that if we manipulate a surface with constant curvature
+by a conformal diffeomorphism we can calculate the curvature of the resulting surface.
+This result is often referred to as Liouville's equation \cite{deigard-2020,liouville1838}.
+
+Let $f:S\to S$ be a conformal differentiable map.
 Such maps do not necessarily preserve geometric measurements (curvature or area), but the change
 can be accounted for. We compute geometric quantities by using the tangent plane and
 a vector normal to the surface.
-Let $S$ be a regular manifold with tangent space at a point $p\in T_pS.$
+Let $p$ be a point in a tangent space of $S.$
 The local parameterization on charts $(u,v):U\to \R^2$ form a basis for
 $T_pS$.
 
