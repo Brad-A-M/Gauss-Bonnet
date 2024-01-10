@@ -246,14 +246,12 @@ We now consider computing the Gaussian curvature.
 A \EMPH{quadratic form} to be polynomial of degree two, of the form $p(u,v)=c_1u^2+c_2uv+c_3v^2$ 
 where $c_i\in R$.
 We define a quadratic form, the first fundamental form, using $r(u,v)$.
-The first fundamental form encodes information about arc length, angles between curves,
-and area on a surface.
 
 Let $r(u,v)$ be a parameterized surface.
 Let $E=r_u\cdot r_u, F=r_u\cdot r_v$ and  $G=r_v\cdot r_v$.
 The \EMPH{first fundamental form}
 is the quadratic form $\mathrm{I}=Edu^2+2Fdudv +Gdv^2$.
-We summerize the first fundamental form as a matrix $$\mathrm{I}=\begin{bmatrix}
+We summarize the first fundamental form as a matrix $$\mathrm{I}=\begin{bmatrix}
 E & F \\
 F & G 
 \end{bmatrix}.$$
@@ -265,16 +263,36 @@ F & G
 %\end{bmatrix}y.$$
 
 The first fundamental form enables us to  compute many interesting
-things about our surface.
+things about our surface including arc length, angles between curves,
+and area on a surface.
 For example,
 given a `small' parallelogram $M$ on $S$ with corners $r(u,v),r(u+\epsilon u, v), r(u,v+\epsilon v)$ 
 and $r(u+\epsilon u, v+\epsilon v)$ the rate of change of the area of $M$ is 
 $$dA=\sqrt{EG-F^2}dudv.$$
-In \exref{stereo}, we will use the first fundamental form to compute the arclength of some curves.
-Gauss's Egregious (remarkable) Theorem states that the Gaussian curvature only depends
-of the first fundamental form. However, the second fundamental form is convenient for 
-computations.
+In \exref{stereo}, we will use the first fundamental form to compute the arc length of some curves.
 
+
+Gauss's Egregious (remarkable) Theorem states that the Gaussian curvature only depends
+of the first fundamental form. Thus, curvature can be computed entirely by measuring angles, distance 
+and their derivatives without any reference to the way that the surface is embedded in $\R^3.$
+Because of this property we say that Gaussian curvature is an \emph{intrinsic} property of a surface.
+The Brioschi formula gives the Gaussian curvature using only the first fundamental form
+\begin{equation}\label{eq:brioschi}
+	K=\frac{\begin{vmatrix}
+\frac{-1}{2}E_{vv}+F_{uv}-\frac{1}{2}G_{uu} & \frac{1}{2}E_u & F_u-\frac{1}{2}E_v\\
+F_v-\frac{1}{2}G_u & E & F\\
+\frac{1}{2}G_v & F & G
+\end{vmatrix}-\begin{vmatrix}
+0 & \frac{1}{2}E_v & \frac{1}{2}G_u\\
+\frac{1}{2}E_v & E & F\\
+\frac{1}{2}G_u & F & G
+\end{vmatrix}}{(EG-F^2)^2}
+\end{equation}
+
+
+
+While we can compute Gaussian curvature using only the first fundamental form,
+ the second fundamental form is convenient for computations.
 To this end, the unit normal vector at $p$ is given by $$n(p)=\frac{r_u\times r_v}{|r_u\times r_v|}.$$
 Let $L=r_{uu}\cdot n, M=r_{uv}\cdot n$ and $N=r_{vv}\cdot n$ the
 \EMPH{second fundamental form} is $\mathrm{I\!I}=Ldu^2+2Mdudv+Ndv^2$,
@@ -388,6 +406,22 @@ Simplifying further using \eqnref{radius}  our arc length is
 $$2\pi\sqrt{1-c^2}.$$
 
 \end{example}
+
+Stereographic projection has the property that it preserves the angles.
+Maps with this property have a name.
+\begin{definition}[Conformal]\label{def:conformal}
+	Let $U$ and $V$ be open subsets of $\R^n$, a function $f:U\to V$ is
+	\emph{conformal} at a point $u\in U$ if it preserves angles between curves
+	through $u$ and preserves orientation.
+\end{definition}
+
+Let  be the first fundamental form.
+We will use the following without proof.
+\begin{theorem}[First Fundamental Form and Conformal Maps]\label{thm:first-conformal}
+	Let $S$ be a regular surface and $f:U\subset \R^2 \to V\subset S$ be a chart.
+	Let $f$ have first fundamental form $\mathrm{I}=Edu^2+2Fdudv +Gdv^2$.
+	Then $f$ is conformal if and only if $E=G$ and $F=0.$
+\end{theorem}
 
 
 \subsection{Geodesics Curvature}
