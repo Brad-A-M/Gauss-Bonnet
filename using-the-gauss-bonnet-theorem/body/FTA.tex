@@ -95,49 +95,44 @@ logarithm that we will need in the proof of \thmref{fta}.
 \end{proof}
 
 
-We now show that if we manipulate a surface with constant curvature
-by a conformal diffeomorphism we can calculate the curvature of the resulting surface.
-This result is often referred to as Liouville's equation \cite{deigard-2020,liouville1838}.
+The proof of \thmref{fta} requires one additional idea. We now show that if we apply a conformal diffeomorphism
+to a surface of constant curvature
+we can calculate the curvature of the resulting surface.
+This result is often referred to as Liouville's equation \cite{deigard-2020,dubrovin_modern_1984,liouville1838}.
 
-Let $f:S\to S$ be a conformal differentiable map.
+
+
+
+%We compute geometric quantities by using the tangent plane and a vector normal to the surface.
+%Let $p$ be a point in a tangent space of $S.$
+%The local parameterization on charts $(u,v):U\to \R^2$ form a basis for
+%$T_pS$.
+
+%Let $g$ be a smooth map on the charts $(U, (u,v))$ of a regular surface
+%$g(\frac{\partial}{\partial u},\frac{\partial}{\partial v}):U\to \R.$
+%A \EMPH{Riemannian metric} assigns to each $p$ a positive-definite inner product
+%$g_p:T_pS\times T_pS \to \R$ and we get a norm on $T_pS$ given by
+%$|v|_p=\sqrt{g_p(v,v)}$.
+%Since we have a Riemannian metric we get a map between the two inner products,
+%$Df_p:T_pS\to T_{f(p)}S$. Moreover, the inner product in the preimage is equal
+%to $|\det(Df_p)|$ times the inner product in the image.
+
+Let $g:S\to S$ be a conformal differentiable map with local coordinates $g(u,v)$.
 Such maps do not necessarily preserve geometric measurements (curvature or area), but the change
-can be accounted for. We compute geometric quantities by using the tangent plane and
-a vector normal to the surface.
-Let $p$ be a point in a tangent space of $S.$
-The local parameterization on charts $(u,v):U\to \R^2$ form a basis for
-$T_pS$.
-
-Let $g$ be a smooth map on the charts $(U, (u,v))$ of a regular surface
-$g(\frac{\partial}{\partial u},\frac{\partial}{\partial v}):U\to \R.$
-A \EMPH{Riemannian metric} assigns to each $p$ a positive-definite inner product
-$g_p:T_pS\times T_pS \to \R$ and we get a norm on $T_pS$ given by
-$|v|_p=\sqrt{g_p(v,v)}$.
-Since we have a Riemannian metric we get a map between the two inner products,
-$Df_p:T_pS\to T_{f(p)}S$. Moreover, the inner product in the preimage is equal
-to $|\det(Df_p)|$ times the inner product in the image.
+can be accounted for. 
+The first fundamental form tells us how the area changed by $f$
+$$d\ell^2=Edu^2+2Fdudv + Gdv^2.$$
+Since our map is conformal, we can apply \thmref{first-conformal},
+and we know $E=G$ and $F=0$ and 
+$$d\ell^2=Gdu^2+0dudv + Gdv^2=G(du^2+dv^2).$$
+We call $g(u,v)=G$ the \emph{induced metric} of $f$.
 
 
-We express the curvature using the Laplacian.
-Recall a a function is conformal if it locally preserves angles.
-We can use conformal maps to obtain a useful formula for curvature.
-We follow the derivation given in $\S$ 13.1.3 of \cite{dubrovin_modern_1984}.
-
-Let $S$ be a surface in $\R^3$ parameterized by
-$$x=x(p,q), \hspace{1cm}  y=y(p,q)  \hspace{1cm} z=z(p,q).$$
-Then, using the  first fundamental form, we have a metric on the surface in $\R^3$
-$$d\ell^2=E(du)^2+2Fdudv + G(dv)^2$$
-with $g=EG-F^2>0.$ 
-We omit the proof of the following, there exists local coordinates $u,v$ for the surface with a metric of the form
-$$d\ell^2=f(u,v)(du^2+dv^2).$$ 
-
-We can then compute the curvature using this metric
-
-
-\begin{theorem}[Gaussian Curvature]\label{thm:log-curve}
-	Let $u,v$ be conformal coordinates of a surface $S\subset \R^3$ with
+\begin{theorem}[Liouville's Theorem]\label{thm:liouville}
+	Let $f(u,v)$ be conformal coordinates of a surface with constant curvature $S\subset \R^3$ with
 	induced metric 
 	$$d\ell^2=g(u,v)(du^2+dv^2),$$
-	then Gaussian curvature,  is 
+	then Gaussian curvature of the image of $f$,  is 
 		\begin{equation}\label{eqn:log-curve}
 			K=\frac{-1}{2g(u,v)}\Delta(\log g(u,v))
 		\end{equation}
@@ -147,11 +142,12 @@ We can then compute the curvature using this metric
 \begin{proof}
 	Let the surface be given by local conformal coordinates $u,v$
 	with $r=r(u,v)$ and $r=(x,y,z)$ in $\R^3$ coordinates.
-	Our metric is given by $d\ell^2=g(u,v)(du^2+dv^2)$
+	Our metric is given by $d\ell^2=g(u,v)(du^2+dv^2)$,
+	
 	we have 
 	
 	\begin{equation}\label{eqn:log-curve-proof-inners}
-		\langle r_u,r_u\rangle = \langle r_v,r_v\rangle=g(u,v), \hspace{1cm} \langle r_u,r_v\rangle 0.
+		\langle r_u,r_u\rangle = \langle r_v,r_v\rangle=g(u,v), \hspace{1cm} \langle r_u,r_v\rangle=  0.
 	\end{equation}
 	Differentiating with respect to $u$ and $v$ we have
 	\begin{equation}\label{eqn:log-curve-proof-firsts}
