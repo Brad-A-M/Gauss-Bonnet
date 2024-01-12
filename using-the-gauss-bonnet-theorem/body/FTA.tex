@@ -117,7 +117,7 @@ This result is often referred to as Liouville's equation \cite{deigard-2020,dubr
 %$Df_p:T_pS\to T_{f(p)}S$. Moreover, the inner product in the preimage is equal
 %to $|\det(Df_p)|$ times the inner product in the image.
 
-Let $g:S\to S$ be a conformal differentiable map with local coordinates $g(u,v)$.
+Let $f:S\to S$ be a conformal differentiable map with local coordinates $f(u,v)$.
 Such maps do not necessarily preserve geometric measurements (curvature or area), but the change
 can be accounted for. 
 The first fundamental form tells us how the area changed by $f$
@@ -140,54 +140,27 @@ We call $g(u,v)=G$ the \emph{induced metric} of $f$.
 		is the Laplacian.
 \end{theorem}
 \begin{proof}
-	Let the surface be given by local conformal coordinates $u,v$
-	with $r=r(u,v)$ and $r=(x,y,z)$ in $\R^3$ coordinates.
-	Our metric is given by $d\ell^2=g(u,v)(du^2+dv^2)$,
+	Let $f$ and $g$ be as described above. 
+	By \eqref{brioschi}, we can express the curvature as
 	
-	we have 
-	
-	\begin{equation}\label{eqn:log-curve-proof-inners}
-		\langle r_u,r_u\rangle = \langle r_v,r_v\rangle=g(u,v), \hspace{1cm} \langle r_u,r_v\rangle=  0.
-	\end{equation}
-	Differentiating with respect to $u$ and $v$ we have
-	\begin{equation}\label{eqn:log-curve-proof-firsts}
-		\frac{ \partial g(u,v)}{2\partial u}=\langle r_{uu}, r_u\rangle =\langle r_{uv}, r_v\rangle,
-		\frac{ \partial g(u,v)}{2\partial v}=\langle r_{vv}, r_u\rangle =\langle r_{uv}, r_u\rangle
-		\end{equation}
-		and
-		\begin{equation}\label{eqn:log-curve-proof-firsts-1}
-		\langle r_{uu},r_v\rangle + \langle r_u, r_{uv}\rangle=0=\langle r_{uv},r_v\rangle + \langle r_u, r_{vv}\rangle.
-		\end{equation}
-	
-	
-	By \eqnref{log-curve-proof-inners} we can now define an orthonormal set of vectors
-	\begin{equation}\label{eqn:log-curve-proof-orthog}
-		e_1=\frac{r_u}{\sqrt{g(u,v}}, e_2=\frac{r_v}{\sqrt{g(u,v}}, n=[e_1,e_2].
-	\end{equation}
-	with $e_1$ and $e_2$ tangent to the surface.
-	
-	Then using the second fundamental form we have
-	$$L=\langle r_{uu},n\rangle , M=\langle r_{uv},n\rangle, N=\langle r_{vv},n\rangle.$$
-	Relative to $e_1, e_2$ and $n$ we have
-	
-	\begin{equation}\label{eqn:log-curve-proof-seconds}
-		r_{uu}=\left(\frac{1}{2\sqrt{g}}\frac{\partial g}{\partial u},\frac{-1}{2\sqrt{g}}\frac{\partial g}{\partial v},L\right),\\
-		r_{uv}=\left(\frac{1}{2\sqrt{g}}\frac{\partial g}{\partial v},\frac{1}{2\sqrt{g}}\frac{\partial g}{\partial u},M\right),\\
-		r_{uv}=\left(\frac{-1}{2\sqrt{g}}\frac{\partial g}{\partial u},\frac{1}{2\sqrt{g}}\frac{\partial g}{\partial v},N\right).
-	\end{equation}
-	Then
-	$$\langle r_{uu},r_{vv}\rangle -\langle r_{uv},r_{uv}\rangle=LN-M^2-\frac{1}{2g}\left[\left(\frac{\partial g}{\partial v}\right)^2+
-	\left(\frac{\partial g}{\partial u}\right)^2\right]$$
-	and by \eqnref{log-curve-proof-firsts-1}, we have
-	$$\frac{\partial^2 g}{2\partial u^2}=\langle r_{uuv},r_{v}\rangle+\langle r_{uv},r_{uv}\rangle$$
-	$$=\frac{\partial}{\partial v}\langle r_{uu},r_{v}\rangle - \langle r_{uu},r_{vv}\rangle+\langle r_{uv},r_{uv}\rangle$$
-	$$=-\frac{1}{2}\frac{\partial^2 g}{\partial v^2}-(LN-M^2)+\frac{1}{2g}\left[\left(\frac{\partial g}{\partial v}\right)^2+
-	\left(\frac{\partial g}{\partial u}\right)^2\right].$$
-	
-	Then using the definition of curvature in terms of the first and second fundamental, \eqnref{curve-dets},
-	we have
-	$$K=\frac{LN-M^2}{g(u,v)^2}=\frac{-1}{2g(u,v)}\Delta \ln g(u,v)$$
-	as desired.
+	$$K=\frac{\begin{vmatrix}
+\frac{-1}{2}g_{vv}-\frac{1}{2}g_{uu} & \frac{1}{2}g_u & -\frac{1}{2}g_v\\
+-\frac{1}{2}g_u & g & 0\\
+\frac{1}{2}g_v & 0 & g
+\end{vmatrix}-\begin{vmatrix}
+0 & \frac{1}{2}g_v & \frac{1}{2}g_u\\
+\frac{1}{2}g_v & g & 0\\
+\frac{1}{2}g_u & 0 & g
+\end{vmatrix}}{g^4}.$$
+Expanding by cofactors and simplifying gives
+
+\begin{align}
+	K&= \frac{-1}{2g}\left(\frac{gg_{vv}-g_v^2}{g^2}+\frac{gg_{uu}-g_u^2}{g^2}\right) \\
+       &=\frac{-1}{2g}\left(\left(\frac{g_u}{g}\right)_u+\left(\frac{g_v}{g}\right)_v\right)\\
+       &=\frac{-1}{2g}\left(\log(g)_{uu}+\log(g)_{vv}\right).
+\end{align}
+
+
 \end{proof}
 
 
@@ -202,15 +175,19 @@ And now the proof of \thmref{fta}.
  Then let $f(z)=p(z)p_*(z)$ for all $z\in \CC.$
  Then $f$ has the property that
  $$\bigg | f\left(\frac{1}{z}\right) \bigg |=\frac{1}{|z|^{2n}}|f(z)|,$$ for $z\in \CC\setminus\{0\}.$
- The above property gives a well-defined Riemannian metric $g$ on $\widehat{\CC}$
+ The above property gives a well-defined metric $g$ on $\widehat{\CC}$
  where 
  $$g=\frac{1}{|f(z)|^{\frac{2}{n}}}|dz|^2, \textrm{ for } z\in \CC \textrm{ and}$$
  $$g=\frac{1}{|f(1/z)|^{\frac{2}{n}}}|d(1/z)|^2 \textrm{ for } z\in \widehat{\CC}\setminus\{0\}.$$
  
- Now, we have the Gaussian curvature $K$ of $g$ implies that for all $z\in \widehat{\CC}$
- $$\frac{1}{|f(z)|^{\frac{2}{n}}} K =\frac{1}{n}\Delta(\log |f(z)|)=\frac{1}{n}\Delta \textbf{Re} \log(f(z))=0,$$
- for all $z\in \CC.$ 
- 
+ Now, for every $z\in \widehat{\CC}$ we have 
+\begin{equation}\label{eq:fta-proof}
+\frac{1}{|f(z)|^{\frac{2}{n}}} K =\frac{1}{n}\Delta(\log |f(z)|)=\frac{1}{n}\Delta \textbf{Re} \log(f(z))=0.
+\end{equation}
+
+ The first equality in \eqref{fta-proof} is by \thmref{liouville}, the second equality is by our complex
+ logarithm fact, \lemref{log-fact}, and the third equality is because the real part of an analytic function
+ is harmonic, \lemref{anal-harmonic}.
 Thus, the Gaussian curvature at every point is zero. However, the Gauss-Bonnet
  theorem states that the sum of the curvature over all $z\in \CC$ is $4\pi$, meaning there is at least
  one point where the curvature must be positive. This is a contradiction.
