@@ -17,12 +17,54 @@ If $M$ is a regular surface with boundary $\partial M$ then
 
 The  Gauss-Bonnet theorem is  telling us, if we add up curvature
 at each vertex the sum will be $2\pi$ times to Euler characteristic.
-If we can compute the curvature at every vertex then we can use the theorem
-to learn global topological information.
+The curvature at each vertex is computed by considering a 'local' neighborhood
+around the vertex and we learn global topological information. Thus, the Gauss-Bonnet 
+theorem is an example of a local to global principle. 
 Conversely, if we know the Euler characteristic we can learn about the curvature
-at individual points.
+at individual points. We will often use the theorem to prove the existence of
+a vertex with a desirable amount of curvature.
 
-\subsection{Two Proofs}
+
+
+\subsection{Banchoff's Proof}
 We now include a proof of a combinatorial version of the theorem due to Banchoff
-\cite{banchoff_critical_1970}
-\todo{Choose a proof}
+\cite{banchoff_critical_1970}. We will first use another local to global theorem,
+the Critical Point theorem, which we now define.
+Given a regular surface embedded in $\R^3$ consider a line $\ell$ and define a linear height function $h:M \to \R$
+to be the projection of all of $\R^3$ on to the line $\ell$. A point $p$ on $M$
+is a \emph{critical point} for $\ell$ if the tangent plane at $p$ is perpendicular to $\ell$.
+All points on $M$ that are not critical are \emph{ordinary point}.
+Critical points can be classified into three categories, maxima, minima, and saddle points.
+We define the \emph{index} of a critical point, denoted $i(p,h)$, to be 
+$i(p,h)=1$ if $p$ is a  local maximum of minimum and $i(p,h)=-1$ is $p$ is a saddle point.
+The \emph{Critical  Point theorem} states that if the number of critical points is finite
+then 
+$$\sum_{p\ \textrm{critical}} i(p,h)=\chi(M).$$
+
+
+
+ \begin{figure}[htb]
+         \centering
+        \begin{subfigure}[b]{0.35\textwidth}
+         \includegraphics[width=\textwidth]{chapter-3/torus}
+         \caption{Spherical triangle.}
+ 	 \label{fig:sphere-triangle}
+       \end{subfigure}
+         \hspace{1cm}
+         \begin{subfigure}[b]{0.35\textwidth}
+         \includegraphics[width=\textwidth]{chapter-3/torus}
+         \caption{A lune.}
+          \label{fig:lune}
+         \end{subfigure}
+		\caption{(a) A triangle on the sphere.
+ 		(b) A lune with angle $\alpha$.
+ 		\label{fig:torus}}
+ \end{figure}
+
+
+
+
+
+
+
+
