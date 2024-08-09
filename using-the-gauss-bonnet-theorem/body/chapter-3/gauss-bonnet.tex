@@ -36,29 +36,47 @@ is a \emph{critical point} for $\ell$ if the tangent plane at $p$ is perpendicul
 All points on $M$ that are not critical are \emph{ordinary point}.
 Critical points can be classified into three categories, maxima, minima, and saddle points.
 We define the \emph{index} of a critical point, denoted $i(p,h)$, to be 
-$i(p,h)=1$ if $p$ is a  local maximum of minimum and $i(p,h)=-1$ is $p$ is a saddle point.
+$i(p,h)=1$ if $p$ is a  local maximum or minimum and $i(p,h)=-1$ is $p$ is a saddle point.
+An example is shown in \figref{torus-total}.
 The \emph{Critical  Point theorem} states that if the number of critical points is finite
 then 
-$$\sum_{p\ \textrm{critical}} i(p,h)=\chi(M).$$
-
+\begin{equation} \label{eqn:critical-point-theorem}
+	\sum_{p\ \textrm{critical}} i(p,h)=\chi(M).
+\end{equation}
 
 
  \begin{figure}[htb]
          \centering
-        \begin{subfigure}[b]{0.35\textwidth}
+        \begin{subfigure}[b]{0.3\textwidth}
          \includegraphics[width=\textwidth]{chapter-3/torus}
-         \caption{Spherical triangle.}
- 	 \label{fig:sphere-triangle}
-       \end{subfigure}
-         \hspace{1cm}
-         \begin{subfigure}[b]{0.35\textwidth}
-         \includegraphics[width=\textwidth]{chapter-3/torus}
-         \caption{A lune.}
-          \label{fig:lune}
+         \subcaption{The tours a line $\ell$ with four critical points.}
+ 	 \label{fig:torus-ell}
+       \end{subfigure}\\
+         \begin{subfigure}[b]{0.21\textwidth}
+         \includegraphics[width=\textwidth]{chapter-3/torus-top}
+         \subcaption{Local to $p_1$.}
+          \label{fig:max}
          \end{subfigure}
-		\caption{(a) A triangle on the sphere.
- 		(b) A lune with angle $\alpha$.
- 		\label{fig:torus}}
+          \begin{subfigure}[b]{0.21\textwidth}
+         \includegraphics[width=\textwidth]{chapter-3/saddle1}
+         \subcaption{Local to $p_2$.}
+          \label{fig:saddle1}
+         \end{subfigure}
+         \begin{subfigure}[b]{0.21\textwidth}
+         \includegraphics[width=\textwidth]{chapter-3/saddle2}
+         \subcaption{Local to $p_3$.}
+          \label{fig:saddle2}
+         \end{subfigure}
+         \begin{subfigure}[b]{0.21\textwidth}
+         \includegraphics[width=\textwidth]{chapter-3/torus-bottom}
+         \subcaption{Local to $p_4$.}\label{fig:min}
+         \end{subfigure}
+		\caption{(\subref{fig:torus-ell}) A tours and line $\ell$. There are four critical points.
+ 		(\subref{fig:max}) The critical point $p_1$ is a maximum and $i(p_1,h)=1$.
+		(\subref{fig:saddle1}) The critical point $p_2$ is a saddle and $i(p_1,h)=-1$.
+		(\subref{fig:saddle2}) The critical point $p_3$ is also a saddle and $i(p_1,h)=-1$.
+		(\subref{fig:min}) The critical point $p_4$ is a minimum and $i(p_1,h)=1$.
+ 		\label{fig:torus-total}}
  \end{figure}
 
 
