@@ -1,0 +1,196 @@
+\subsection{The Fundamental Theorem of Algebra}
+\label{sec:fta}
+
+In this section, we share a proof due to Almira and Romero that
+the Gauss-Bonnet theorem implies the
+Fundamental Theorem of Algebra \cite{almira_yet_2007}.
+The theorem is the following:
+\begin{theorem}[Fundamental Theorem of Algebra]\label{thm:fta}
+	Let $f:\CC \to \CC$ be a non-constant single-variable polynomial with complex coefficients,
+	then $f$ has a least one complex root.
+\end{theorem}
+
+
+We now include standard ideas and definitions from complex analysis that are used
+in the proof. 
+A complex number represented $z=x+iy$ where $x$ and $y$ are real
+and $i^2=-1.$
+A continuous complex function is a map $f:\CC\to \CC$ we often write
+ $f(z)=f(x,y)=u(x,y)+iv(x,y)$ where $u$ is called the real part and $v$ is the imaginary part.
+The derivative of a complex function is defined similalry to the derivative of a real valued
+function via a limit. The \emph{derivative} of $f$ at $z_0$ is
+$$f'(z_0)=\lim_{h\to 0} \frac{f(z_0+h)-f(z_0)}{h}$$
+if the limit exists and is undefined if the limit does not exist.
+Many of the differentiation rules from calculus apply to complex function,
+in particular the sum and power rules apply. Thus, it is straightforward to 
+to take derivatives of polynomials.
+
+
+A function $f$ is \EMPH{analytic} at a point $z_0$ if there exists a neighborhood around $z_0$ 
+such that $f$ is differentiable at each point in the neighborhood.
+We will see that the fact that $f$ has a derivative in a domain tells
+us a lot about the function. For instance, analytic functions satisfy the Cauchy-Riemann 
+equations meaning
+$$\frac{\partial u}{\partial x}=\frac{\partial v}{\partial y} \textrm{ and } \frac{\partial u}{\partial y}=- \frac{\partial v}{\partial x}.$$
+The Cauchy-Riemann equations give a way to test for analyticity, if the equations
+are satisfied then the function is analytic.
+The equations give a convenient way to compute the derivative, namely
+$$f'(z)=\frac{\partial u}{\partial x} +i \frac{\partial v}{\partial x} =\frac{\partial v}{\partial u} -i \frac{\partial u}{\partial y}.$$
+
+
+The \EMPH{Laplacian} of a function is the sum of the second order partial derivatives, denoted $\Delta f$,
+or just $\Delta$ if the function is clear,
+in our case, $\Delta f=\frac{\partial^2 f}{\partial x^2}+\frac{\partial^2 f}{\partial y^2}$.
+The equations $$\frac{\partial^2 u}{\partial x^2}+\frac{\partial^2 u}{\partial y^2}=
+\frac{\partial^2 v}{\partial x^2}+\frac{\partial^2 v}{\partial y^2}=0$$
+are call Laplace's equation and are one of the most famous equations in applied mathematics
+\cite{zill_first_2008}.
+A function that satisfies Laplace's equation is said to be \EMPH{harmonic}.
+
+We will use of the following lemma
+\begin{lemma}[Analytic Implies Real Part Harmonic]\label{lem:anal-harmonic}
+	The real part of an analytic function is harmonic.
+\end{lemma}
+\begin{proof}
+	Since our function is analytic, the Cauchy-Riemann equations are satisfied.
+	Differentiating again and using the fact that the mixed partial derivatives are equal,
+	we have
+	$$\frac{\partial^2 u}{\partial y^2}=-\frac{\partial}{\partial y}\left(\frac{\partial v}{\partial x}\right)
+	=-\frac{\partial}{\partial x}\left(\frac{\partial v}{\partial y}\right)=-\frac{\partial^2 u}{\partial x^2}.$$
+	And $$\frac{\partial^2 u}{\partial x^2}+\frac{\partial^2 u}{\partial y^2}=0.$$
+\end{proof}
+
+We will need a fact about the complex logarithm function, to this end the 
+\emph{complex exponential function} is defined to be
+$$e^z=e^x\cos(y)+ie^x\sin(y).$$
+This function has many desirable properties: it is differentiable everywhere,
+it is equal to its own derivative, it agrees with the real exponential when the
+input is restricted to the reals, and satisfies the same algebraic properties
+of the real exponential such as $$e^{z_1+z_2}=e^{z_1}e^{z_2}.$$
+When we write the function in polar form we see that
+$$|e^z|=e^x\hspace{1cm} \textrm{and} \hspace{1cm} \arg(e^z)=y+2\pi n$$
+for $n\in \ZZ.$
+The complex exponential differs from the real exponential in that 
+it is periodic with a imaginary period of $2\pi i.$ This is significant because
+we wish to define the inverse. The infinite horizontal
+strip $$-\infty<x<\infty, \hspace{1cm} -\pi< y\leq \pi$$ is the \emph{fundamental region}.
+
+Now to define the complex logarithm. Let $\log_e(x)$ denote the real logarithm.
+Suppose $$e^w=z,$$
+then $|e^w|=|z|$ and $\arg(e^w)=\arg(z)$. Then $u=\log_e|z|$ and $v=\arg(z)$
+and we have $$\ln(z)=\log_e|z|+i\arg(z).$$
+Notice that since there are an infinite number of arguments for $z$, the logarithm
+gives infinitely many values but there is only one value in the fundamental region.
+ And now the fact about the complex
+logarithm that we will need in the proof of \thmref{fta}.
+\begin{lemma}[Complex Logarithm Fact]\label{lem:log-fact}
+	For any complex function $f(z)$ we have
+	$$\ln(|f(z)|)=\textbf{Re}\ln(f(z)).$$
+\end{lemma}
+\begin{proof}
+	This fact follows from the definition of the complex logarithm.
+	The modulus $|f(z)|$ is a real number and so $\ln(|f(z)|)=\log_e(|f(z)|)$.
+	On the other hand, $\ln(f(z))=\log_e(|f(z)|)+i\arg(f(z))$ and so
+	$\textbf{Re}\ln(f(z))=\log_e(|f(z)|).$
+\end{proof}
+
+
+The proof of \thmref{fta} requires one additional idea. We now show that if we apply a conformal diffeomorphism
+to a surface of constant curvature
+we can calculate the curvature of the resulting surface.
+This result is often referred to as Liouville's equation \cite{deigard-2020,dubrovin_modern_1984,liouville1838}.
+
+
+
+
+%We compute geometric quantities by using the tangent plane and a vector normal to the surface.
+%Let $p$ be a point in a tangent space of $S.$
+%The local parameterization on charts $(u,v):U\to \R^2$ form a basis for
+%$T_pS$.
+
+%Let $g$ be a smooth map on the charts $(U, (u,v))$ of a regular surface
+%$g(\frac{\partial}{\partial u},\frac{\partial}{\partial v}):U\to \R.$
+%A \EMPH{Riemannian metric} assigns to each $p$ a positive-definite inner product
+%$g_p:T_pS\times T_pS \to \R$ and we get a norm on $T_pS$ given by
+%$|v|_p=\sqrt{g_p(v,v)}$.
+%Since we have a Riemannian metric we get a map between the two inner products,
+%$Df_p:T_pS\to T_{f(p)}S$. Moreover, the inner product in the preimage is equal
+%to $|\det(Df_p)|$ times the inner product in the image.
+
+Let $f:S\to S$ be a conformal differentiable map with local coordinates $f(u,v)$.
+Such maps do not necessarily preserve geometric measurements (curvature or area), but the change
+can be accounted for. 
+The first fundamental form tells us how the area changed by $f$
+$$d\ell^2=Edu^2+2Fdudv + Gdv^2.$$
+Since our map is conformal, we can apply \thmref{first-conformal},
+and we know $E=G$ and $F=0$ and 
+$$d\ell^2=Gdu^2+0dudv + Gdv^2=G(du^2+dv^2).$$
+We call $g(u,v)=G$ the \emph{induced metric} of $f$.
+
+
+\begin{theorem}[Liouville's Theorem]\label{thm:liouville}
+	Let $f(u,v)$ be conformal coordinates of a surface with constant curvature $S\subset \R^3$ with
+	induced metric 
+	$$d\ell^2=g(u,v)(du^2+dv^2),$$
+	then Gaussian curvature of the image of $f$,  is 
+		\begin{equation}\label{eqn:log-curve}
+			K=\frac{-1}{2g(u,v)}\Delta(\log g(u,v))
+		\end{equation}
+		where $\Delta=\frac{\partial^2}{\partial u^2}+\frac{\partial^2}{\partial v^2}$
+		is the Laplacian.
+\end{theorem}
+\begin{proof}
+	Let $f$ and $g$ be as described above. 
+	By \eqref{brioschi}, we can express the curvature as
+	
+	$$K=\frac{\begin{vmatrix}
+\frac{-1}{2}g_{vv}-\frac{1}{2}g_{uu} & \frac{1}{2}g_u & -\frac{1}{2}g_v\\
+-\frac{1}{2}g_u & g & 0\\
+\frac{1}{2}g_v & 0 & g
+\end{vmatrix}-\begin{vmatrix}
+0 & \frac{1}{2}g_v & \frac{1}{2}g_u\\
+\frac{1}{2}g_v & g & 0\\
+\frac{1}{2}g_u & 0 & g
+\end{vmatrix}}{g^4}.$$
+Expanding by cofactors and simplifying gives
+
+\begin{align}
+	K&= \frac{-1}{2g}\left(\frac{gg_{vv}-g_v^2}{g^2}+\frac{gg_{uu}-g_u^2}{g^2}\right) \\
+       &=\frac{-1}{2g}\left(\left(\frac{g_u}{g}\right)_u+\left(\frac{g_v}{g}\right)_v\right)\\
+       &=\frac{-1}{2g}\left(\log(g)_{uu}+\log(g)_{vv}\right).
+\end{align}
+
+
+\end{proof}
+
+
+
+And now the proof of \thmref{fta}.
+
+\begin{proof}
+ Let $p(z)=a_0+a_1z+\ldots + a_nz^n$ and, for the sake of contradiction,
+ assume that $p(z)\neq 0$ for all $z\in \CC$ and $a_0a_n\neq 0.$
+ We can define two new functions using $p(z)$.
+ Set $p_*(z)=a_n+a_{n-1}z+\ldots + a_0z^n$ and note that $p_*(z)=z^np(1/z)$ for $z\in \CC\setminus\{0\}$.
+ Then let $f(z)=p(z)p_*(z)$ for all $z\in \CC.$
+ Then $f$ has the property that
+ $$\bigg | f\left(\frac{1}{z}\right) \bigg |=\frac{1}{|z|^{2n}}|f(z)|,$$ for $z\in \CC\setminus\{0\}.$
+ The above property gives a well-defined metric $g$ on $\widehat{\CC}$
+ where 
+ $$g=\frac{1}{|f(z)|^{\frac{2}{n}}}|dz|^2, \textrm{ for } z\in \CC \textrm{ and}$$
+ $$g=\frac{1}{|f(1/z)|^{\frac{2}{n}}}|d(1/z)|^2 \textrm{ for } z\in \widehat{\CC}\setminus\{0\}.$$
+ 
+ Now, for every $z\in \widehat{\CC}$ we have 
+\begin{equation}\label{eq:fta-proof}
+\frac{1}{|f(z)|^{\frac{2}{n}}} K =\frac{1}{n}\Delta(\log |f(z)|)=\frac{1}{n}\Delta \textbf{Re} \log(f(z))=0.
+\end{equation}
+
+ The first equality in \eqref{fta-proof} is by \thmref{liouville}, the second equality is by our complex
+ logarithm fact, \lemref{log-fact}, and the third equality is because the real part of an analytic function
+ is harmonic, \lemref{anal-harmonic}.
+Thus, the Gaussian curvature at every point is zero. However, the Gauss-Bonnet
+ theorem states that the sum of the curvature over all $z\in \CC$ is $4\pi$, meaning there is at least
+ one point where the curvature must be positive. This is a contradiction.
+\end{proof}
+
+
