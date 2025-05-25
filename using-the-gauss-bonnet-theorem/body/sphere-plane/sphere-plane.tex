@@ -2,22 +2,46 @@
 \label{sec:plane-sphere}
 
 
-The sphere and the plane are two surfaces that we will
-frequently encounter. 
-Stereographic projection, shown in \figref{stereo1}, is a map between almost all of the sphere
-and the plane.
-In order to gain intuition we first consider the one dimensional version of stereographic
-projection between almost all of the circle and the real line.
+The unit sphere and the plane are two popular surfaces. 
+We often think of the sphere and the plane as subsets of $\R^3$,
+the sphere is the set
+$$\Sp^2=\{(x,y,z)\in \R^3 | x^2+y^2+z^2=1\}$$
+and the $xy$-plane is
+$$\R^2=\{(x,y,z)\in \R^3 | z=0\}.$$
+Is it possible to continuously deform the sphere into the plane?
+The answer is no, as we will see.
+Stereographic projection is a map between almost all of the sphere
+and the plane. Given a point $p$ on the sphere, we draw a straight line
+from the north pole $N=(0,0,1)$ through $p$, then find the intersection of
+this line with the plane. Every point on the sphere is mapped
+to a unique point in the plane except of the north pole.
+See \figref{stereo1} for an illustration.
 
-\begin{example}[Stereographic Projection \cite{christian-notes}]\label{ex:stereo}
-Consider the two sphere with the north pole removed $\Sp^2 \setminus (0,0,1)$,
-stereographic projection is a bijection between the points on $\Sp^2 \setminus (0,0,1)$ to the $\R^2$.
-Consider a line from the north pole $(0,0,1)$ that intersects $(x,y,z)\in \Sp^2$ parametrized by 
-$p(t)=(1-t)(0,0,1)+t(x,y,z)$. By considering the $z$ coordinate we determine the $t$ value where this line
-intersects $\R^2$, namely $t=\frac{1}{1-z}.$
-This gives the desired map shown in  and in equation form
-$$p(x,y,z)\to \left(\frac{x}{1-z},\frac{y}{1-z}\right).$$
-\end{example}
+
+
+In order to gain intuition, we first consider the one dimensional version of stereographic
+projection between the unit circle $\Sp^1$ and and the real line. An example is shown
+in \figref{stereo1D}.
+Consider a line from the north pole of the unit circle $(0,1)$ that intersects
+the unit circle at the point $(u,v)$ parameterized by $p(t)=(1-t)(0,1)+t(u,v).$
+By considering the $y$-coordinate we determine the $t$ value were $p(t)$
+intersects the $x$-axis, namely $t=\frac{1}{1-v}.$ Then, 
+the $x$-coordinate where $p(t)$ intersects the real line is 
+$$x=\frac{u}{1-v}.$$
+
+\begin{figure}[htb]
+	\centering
+	\includegraphics[width=.3\textwidth]{curvature/stereo-1D}
+	\caption{One dimensional stereographic projection.}
+	\label{fig:stereo1D}
+\end{figure}
+
+A similar argument can be used to find the inverse map from
+the real line to the unit circle. Given an $x$-value on the real line we consider
+the parameterized line $p^{-1}(t)=(1-t)(0,1)+t(x,0)$ and compute
+the $t$ value where $p^{-1}$ is on the unit circle and $t\neq 0.$ We find
+$t=\frac{2}{1+x^2}$ and the point $(u,v)$ on the unit circle in terms of $x$ is
+$$u=\frac{2x}{1+x^2}, v=\frac{x^2-1}{1+x^2}.$$
 
 \begin{figure}[htb]
 	\centering
@@ -25,4 +49,21 @@ $$p(x,y,z)\to \left(\frac{x}{1-z},\frac{y}{1-z}\right).$$
 	\caption{A point on the sphere is mapped to a point on the plane by stereographic projection.}
 	\label{fig:stereo1}
 \end{figure}
+
+
+We can use this idea to find formulas for stereographic projection from
+the unit sphere to the plane \cite{christian-notes}.
+Consider the two sphere with the north pole $(0,0,1)$.
+The line from the north pole $(0,0,1)$ that intersects $(x,y,z)\in \Sp^2$ parametrized by 
+$p(t)=(1-t)(0,0,1)+t(x,y,z)$. By considering the $z$ coordinate we determine the $t$ value where this line
+intersects $\R^2$, namely $t=\frac{1}{1-z}.$
+This gives the desired map  and in equation form we have
+$$p(x,y,z)\to \left(\frac{x}{1-z},\frac{y}{1-z}\right).$$
+
+Many of us have more experience doing computations on $\R$ and $\R^2$ as opposed
+to other objects. Stereographic projection enables us to transform many problems on
+the circle and the sphere into problems in $\R$ and $\R^2$ respectively.
+For example, suppose we wish to compute the integral of a constant function
+$c(x,y)=1$ over the unit circle. 
+
 	
