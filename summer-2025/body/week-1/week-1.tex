@@ -1,20 +1,27 @@
 \section{Introduction}
 \label{sec:intro}
 
+In this section, we provide reasons to learn about the Gauss-Bonnet theorem. We then consider a special case of the theorem for simple polygons and we use this special case to prove Pick's theorem.
+
 \subsection{A Great Theorem}
 The Gauss-Bonnet theorem relates the curvature, a local property, of a surface
-to the Euler characteristic, a global property. In symbols 
+to the Euler characteristic, a global property. If we travel over a surface and compute the curvature
+at each point we are able to combine our computations to learn about the topology of the surface
+as a whole. Conversely, if we know the topology of a surface we are able to 
+guarantee the existence of a point on the surface with positive curvature. 
+The goal of this work is to demonstrate that both of the directions described above are useful.
+
+
+In symbols, a version of the Gauss-Bonnet theorem can be expressed as
 
 \begin{equation}\label{eqn:g-b-noboundary}
 		\int_MK dA =2\pi \chi(M)
 \end{equation}
 where $M$ is a smooth surface in $\RR^3$ without boundary, $K$ is Gaussian curvature
 and $\chi(M)$ is the Euler characteristic of $M$.
-The theorem is a bridge between many ideas that may
-seem separate at first, see \figref{bridge}. 
 
 
-
+The Gauss-Bonnet theorem is a hub between seemingly disparate ideas, see \figref{bridge}. 
 
 \begin{figure}[htb]
 \centering
@@ -23,9 +30,8 @@ seem separate at first, see \figref{bridge}.
 \label{fig:bridge}
 \end{figure}
 
-In the book \emph{Using the Borsuk-Ulam Theorem}
-\cite{jm08},
-Matou\v{s}ek states that a theorem is a great theorem if there are
+What separates a great theorem form a mediocre theorem?
+In \cite{jm08}, Matou\v{s}ek says that a theorem is a great theorem if there are
 \begin{enumerate}[(1)]
 \item several different equivalent versions,
 \item many different proofs,
@@ -34,16 +40,11 @@ Matou\v{s}ek states that a theorem is a great theorem if there are
 \end{enumerate}
 
 By this criteria, the Gauss-Bonnet theorem is a great theorem.
-For (1), six\todo{verify} different versions of the theorem are discussed
+For (1), six different versions of the theorem are discussed
 in \cite{wu_historical_2008}. 
 In addition to the version for smooth surfaces given in \eqnref{g-b-noboundary},
-we highlight
- several discrete versions for triangulated surfaces. 
-  
-
-
-
-
+we highlight several discrete versions for triangulated surfaces. 
+ 
  
  
 As for (2), several fundamentally different proofs exist.  
@@ -54,20 +55,34 @@ A second commonly seen proof is to use Stokes theorem  \cite{doc76,pressley_elem
 Many other proofs exist \cite{guillemin_differential_2010,levi-bicycle,grinfeld_introduction_2013}.
 
 
-For (3), the theorem has been generalized in many ways.
+For (3), the theorem has been generalized in the following ways.
 The two notable examples are the Chern-Gauss-Bonnet theorem\cite{chern_simple_1944} and
 the Atiyah–Singer index theorem is an example  \cite{atiyah_index_1963}.
 A generalization to higher dimensions \cite{guillemin_differential_2010}.
+The discrete versions of the theorem discussed here can be thought of as extensions
+to more computationally friendly objects.
+
 
 
 As for (4), applications, 
 seven are given in \cite{doc76}.
 For applications to physics see \cite{tirado-physics-apps,gibbons_applications_2008}.
-This work provides many examples related to the algorithms and combinatorics. 
+This work provides examples related to the algorithms and combinatorics but we include
+others.
 I hope that the number of applications continues to grow,
 please share any that you feel
 ought to be included\footnote{\text{mccoy2ba@jmu.edu}}.
 
+Thus, by Matou\v{s}ek standard, the Gauss-Bonnet theorem is a great theorem.
+We highlight classic applications of the theorem as well as more recent
+applications that illustrate that topological methods in combinatorics is an active
+area of research.
+
+Historically,  Gauss proved the special case of a geodesic triangle\cite{dombrowski-79,gauss_disquisitiones_1827}.  
+The version given in \eqnref{g-b-noboundary} is due to Pierre Bonnet
+and Jacques Binet \cite{bonnet1848memoire}. A case can be made that the theorem
+ought to be called the Bauss-Binet-Bonnet Theorem
+\cite{wu_historical_2008}.
 
 \subsection{Simple Polygons}
 \label{sec:warm-up}
