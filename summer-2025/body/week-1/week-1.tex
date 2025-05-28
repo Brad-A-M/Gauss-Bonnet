@@ -88,7 +88,7 @@ ought to be called the Bauss-Binet-Bonnet Theorem
 \label{sec:warm-up}
 
 Some of us may remember the following special case
-of the Gauss-Bonnet theorem from middle school geometry.
+of the Gauss-Bonnet theorem from geometry in secondary school.
 Consider a simple polygon $P$, an example is shown in \figref{polygon}.
 
  \begin{figure}[htb]
@@ -118,24 +118,32 @@ Consider a simple polygon $P$, an example is shown in \figref{polygon}.
  		\label{fig:simple-polygon}}
  \end{figure}
 
-If we extend one of the sides of $P$ two complementary angles appear.
+If we extend one side of $P$ at a vertex two complementary angles appear.
+An example is shown in \figref{interior-exterior}.
 The angle inside $P$ is the \EMPH{interior} angle and the complement 
-is the  \EMPH{exterior angle}. An example is shown in \figref{interior-exterior}.
-We differentiate between turning left and right.
-Vertices with interior angles  greater than $\pi$ are called \EMPH{reflex}, see \figref{exterior-angles}. 
-At reflex vertices exterior angle is negative.
-
+is the  \EMPH{exterior angle}. 
+Vertices with interior angle greater than $\pi$ are called \EMPH{reflex},
+an example is shown at $\beta_4$ in \figref{exterior-angles}.
+If we imagine walking counterclockwise around $P$, at reflex angles we turn right.
+Note that at reflex angles, the exterior angle inside of $P$, thus we define
+these exterior angles to be negative. 
 
 
 We now state a simple version of the Gauss-Bonnet theorem \cite{gottlieb_all_1996,polya_elementary_1954},
 
-\begin{theorem}[Gauss-Bonnet for Polygons in the Plane]\label{thm:simple-bonnet}
+\begin{theorem}[Gauss-Bonnet for Simple Polygons in the Plane]\label{thm:simple-bonnet}
 Let $P$ be a simple polygon in the plane with $n$  vertices,
 interior angles $\{\alpha_1,\alpha_2,\ldots,\alpha_n\}$
 and exterior angles $\{\beta_1,\beta_2,\ldots,\beta_n\}$ then
-$$\sum_{i=1}^n\beta_i=2\pi$$
+\begin{equation}\label{eqn:exterior-sum}
+		\sum_{i=1}^n\beta_i=2\pi
+\end{equation}
+
 and 
-$$\sum_{i=1}^n\alpha_i=\pi(n-2).$$
+\begin{equation}\label{eqn:interior-sum}
+		\sum_{i=1}^n\alpha_i=\pi(n-2).
+\end{equation}
+
 \end{theorem}
 
 
@@ -145,8 +153,8 @@ $$\sum_{i=1}^n\alpha_i=\pi(n-2).$$
 	when we get back to where we started we will have preformed 
 	one complete revolution so $\sum_{i=1}^n\beta_i=2\pi.$
 	The exterior angles are complementary to the interior angles
-	so for each $i$ we have $\beta_i=\pi-\alpha_i$  and using the first
-	part of the theorem,  we have
+	so for each $i$ we have $\beta_i=\pi-\alpha_i$  and, using \eqnref{exterior-sum},
+	  we have
 	$\sum_{i=1}^n(\pi-\alpha_i)=n\pi -\sum_{i=1}^n\alpha_i=2\pi$. 
 	Solving for $\sum_{i=1}^n\alpha_i$ gives the second part of the theorem.
 
@@ -156,8 +164,6 @@ if the boundary of the polygon stays closed and simple,
 the sum the exterior angles will be $2\pi$.
 Even this simple version of the Gauss-Bonnet theorem has powerful
 consequences, as we now see in our first application, a proof of Pick's Theorem.
-
-
 
 
 
@@ -188,17 +194,18 @@ See \figref{picks} for an example.
  \end{figure}
  
 \begin{proof}
-	Put a unit volume ice cube at each lattice point in the plane and let the ice melt.
+	Consider a unit volume ice cube at each lattice point in the plane and let the ice melt.
 	The water will evenly cover the plane with the amount of water inside the polygon 
 	equal to its area.
 	
-	Consider a edge on the the polygon. The amount of water that flows
+	An edge of the polygon connects two lattice points,
+	for each ice cube the contributes flow across the edge in one direction there is a symmetric
+	point that contributes an equal amount of flow in the opposite direction. Thus, 
+	the amount of water that flows
 	into to polygon across this edge equals that amount of water that flows out of the polygon
-	across this edge by symmetry. This is because the edge connects two lattice points,
-	for each point the contributes flow across the edge in one direction there is a symmetric
-	point that contributes and equal amount of flow in the opposite direction.
+	across this edge by symmetry.
 	So, the total flow across each edge is zero and
-	the  amount of water inside the polygon comes from interior cubes and the lattice vertices
+	the amount of water inside the polygon can be considered to come from ice cubes interior to the polygon and the cubes on the vertices
 	of the polygon.
 	
 	Each interior lattice point contributes one unit of water. 
@@ -209,10 +216,26 @@ See \figref{picks} for an example.
 	By the Gauss-Bonnet theorem, \thmref{simple-bonnet}, the sum of the interior
 	angles is $\pi(n-2)$. Thus, the vertex points contribute a total of 
 	$$\frac{\pi(n-2)}{2\pi}=\frac{n}{2}-1.$$
-	The theorem follows.
-
+	The number of boundary points $B$ is $n$ plus the number of lattice points interior to an edge
+	and we have
+	$$A=I+\frac{B}{2}-1.$$
 \end{proof}
 
 
+\noindent \textbf{Exercises}
 
 
+\begin{enumerate}
+	\item Use Pick's theorem to prove that you cannot draw an equilateral triangle by with its vertices
+	at grid points.
+	
+	\item Fix an integer $N$, consider all positive rational number $\frac{a}{b}$ where
+	$b\leq N$. Place them in increasing order. This is a called the \EMPH{Farey sequence}.
+	For example, when $N=3$, we have
+	$$\frac{0}{1}<\frac{1}{3}<\frac{1}{2}<\frac{2}{3}<\frac{1}{1}<\frac{4}{3}<\ldots.$$
+	For two consecutive terms in a Farey sequence $\frac{a}{b}<\frac{c}{d}$ in lowest terms,
+	prove $bc-ad=1.$
+	
+\end{enumerate}
+
+\pagebreak
