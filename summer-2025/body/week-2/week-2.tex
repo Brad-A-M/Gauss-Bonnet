@@ -7,7 +7,9 @@ work with them, and define the Euler characteristic.
 \subsection{What is a surface?}
 
  Many surfaces are made up of many vertices, edges, and
-triangles (or other polygons). An example of a triangular mesh is shown in \figref{cat}.
+triangles (or other polygons). We call such a surface a \emph{mesh}
+or triangulated mesh, if all faces are triangles.
+An example of a triangular mesh is shown in \figref{cat}.
 
 
  \begin{figure}[htb]
@@ -47,21 +49,32 @@ For the mesh in \figref{cat}, the OFF file looks is shown in
 \centering
 \begin{tabular}{|p{2cm} p{2cm} p{2cm} p{2cm}|} 
  \hline
-OFF &  & &  \\ 
-7529 & 14859 & 0 &  \\ 
--0.29196 & -0.0867173 & -0.355149  &  \\
- -0.123586   & -0.0127199 & -0.385597 &  \\
--0.138255   & -0.0985078 & -0.384018 &  \\
+\texttt{OFF} &  & &  \\ 
+\texttt{7529} & \texttt{14859} & \texttt{0} &  \\ 
+\texttt{-0.29196} & \texttt{-0.0867173} & \texttt{-0.355149}  &  \\
+ \texttt{-0.123586}   & \texttt{-0.0127199} & \texttt{-0.385597} &  \\
+\texttt{-0.138255}   & \texttt{-0.0985078} & \texttt{-0.384018} &  \\
   & &\vdots &  \\  
- 3&  97 &1893& 1895\\
- 3& 71 & 1894 & 1893 \\
- 3 & 16 & 1895 & 1894\\
+ \texttt{3}&  \texttt{97} &\texttt{1893}& \texttt{1895}\\
+ \texttt{3}& \texttt{71} & \texttt{1894} & \texttt{1893} \\
+ \texttt{3} & \texttt{16} & \texttt{1895} & \texttt{1894}\\
    & &\vdots &  \\  
  \hline
 \end{tabular}
 
 \label{tab:off}
 \end{table}
+
+Suppose we work in a machine shop and a customer has an metal object that they would like
+to duplicate.
+One way to do this, is by 3D scanning the object to capture the coordinates on the 
+surface and represent the object as a triangulated mesh, then use a machine to carve the object
+from a block of metal. 
+While scanning, errors might occur. As a result of these errors
+we might obtain a triangulation that intersects itself. If we try to reconstruct the object
+from our mesh our machines will have ambiguous information of what the surface of the object
+should be.
+This motivates developing an algorithm to determine if a mesh has self-intersections.
 
 
 \noindent \textbf{Exercises}
