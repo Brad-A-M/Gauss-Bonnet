@@ -80,6 +80,15 @@ we might obtain a triangulation that intersects itself. If we try to reconstruct
 from our mesh our machines will have ambiguous information of what the surface of the object
 should be.
 This motivates developing an algorithm to determine if a mesh has self-intersections.
+Determining if two faces intersect using the OFF representation of a surface is combersome.
+To simplify algorithms on meshes we load the OFF file into a more convenient data-structure,
+the doubly-connected edge list.
+
+The doubly-connected edge list (DCEL) consists of three separate and related structures, one each
+for the vertices, edges, and faces \cite{dutchbook3}.
+For each edge, we store two directed half-edges $(\overrightarrow{e})$, with pointers to: its origin, the twin half-edge, the incident face that it bounds, the next half-edge bounding the same face, and the previous half-edge bounding the same face.
+
+
 
 \subsection{The Euler Characteristic}
 
