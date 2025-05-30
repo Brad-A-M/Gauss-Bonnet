@@ -486,76 +486,10 @@ Each triangle in a mesh is isomorphic to a triangle in the plane and the sum
 of the interior angles is $\pi$.
 
 
-We denote the set of vertices, edges and faces in a triangulated surface as 
-$V, E$ and $F$ respectively.
-Let $\partial(V)$ denote vertices on the boundary of a surface and let $V_{int}$ 
-denote vertices that are not on the boundary.
-See \figref{triangulated-torus} for an example of a triangulated surface.
-
-
-
-The \EMPH{Euler Characteristic} of a surface $\chi$ is the 
-the number of vertices minus the number of edges plus  the number of faces, $\chi=|V|-|E|+|F|.$
-In higher dimensions, for a triangulated space $X$ the Euler characteristic is 
-$\chi(X)=k_0-k_1+k_2-k_3+\ldots$ where $k_n$ is the number of simplices of dimension $n.$
-The Euler characteristic is a topological invariant of a space
-and does not depend on the choice of triangulation.
-
-A  graph  is \EMPH{planar} if it can be drawn in the plane with intersections only occurring
-at vertices.
-Two dimensional spheres $\Sp^2$ and two dimensional disk $D^2$ 
-will be used in our applications.
-For the sphere, we have $\chi(\Sp^2)=2$ 
-several proofs of this can be found on David Eppstein's website \cite{eppstein-proofs}.
 
 
 
 
-We include the following proof Thurston \cite{thurston}. 
-For any planar graph we can map the graph on to the two sphere using stereographic projection.
- 
-
-\begin{theorem}[Euler Characteristic for Planar Graphs]\label{thm:euler}
-For any planar graph on the 2-sphere we have $V-E+F=2.$
-\end{theorem}
-
-\begin{proof}
-If needed, perturb the triangulation so that the north and south poles are 
-inside of a two faces and there are no vertical edges. At each vertex place a unit positive
-charge, at the center of each edge place a unit negative charge and put a unit positive
-charge in the middle of each face. Slam the sphere on the ground so that all charges
-on the edges and vertices are moved into the face below them. For faces that do not contain a pole
-the net charge will be zero, the northern boundary consists of an alternating sequence
-of edges and vertices  beginning  and ending with an edge.
-The face containing the north pole has a unit positive charge, and the face containing the south
-pole contains positive four units of charge and negative three units of charge.
-Thus, the total charge is two.
-
-\end{proof}
-
-Triangulations of the sphere are a special case of \thmref{euler}.
-The sphere will be one of two common surfaces we see in applications
-of the Gauss-Bonnet theorem. The other being the disk.
-For the disk, $\chi(D^2)=1$. This can be seen by considering
-the removal of a single face from a triangulation of the sphere.
-Once a face is removed, we can project the remaining faces of the sphere
-onto the plane to obtain a triangulation of a disk. Moreover, this projection
-is invertible and given a triangulation of a disk we can obtain a triangulation
-of the sphere with a single face omitted.
-
-The Euler characteristic of a connected, orientable surface surface is often 
-stated in terms of the genus of the surface which is defined as follows.
-\begin{definition}[Genus of a Surface]\label{def:genus}
-	The genus of a connected, orientable surface is the maximum number of
-	cuttings along non-intersecting simple closed curves without disconnecting
-	the surface \cite{munkres}.
-\end{definition}
-
-The sphere has genus zero and the torus, shown in \figref{triangulated-torus}, has genus one.
-For an orientable surface, the genus and the Euler characteristic are related by
-the formula $\chi=2-2g$. To see this, we can transform a triangulation of a surface of
-genus $g$ into a surface of genus $g+1$ by removing two faces and an equal number
-of vertices and edges. \figref{genus} provides an example.
 
 
 
@@ -566,29 +500,4 @@ of vertices and edges. \figref{genus} provides an example.
 \label{fig:triangulated-torus}
 \end{figure}
 
-\begin{figure}[htb]
-        \centering
-        \begin{subfigure}[b]{0.2\textwidth}
-        \includegraphics[width=\textwidth]{genus/genus-1}
-        \caption{Genus zero.}
-          \label{fig:initial-sphere}
-        \end{subfigure}
-          \hspace{.5cm}
-         \begin{subfigure}[b]{0.2\textwidth}
-        \includegraphics[width=\textwidth]{genus/genus-2}
-        \caption{Triangles nearing.}
-        \label{fig:decending-faces}
-        \end{subfigure}
-          \hspace{.5cm}
-         \begin{subfigure}[b]{0.2\textwidth}
-        \includegraphics[width=\textwidth]{genus/genus-3}
-        \caption{Triangles join.}
-        \label{fig:faces-join}
-        \end{subfigure}
-		\caption{(\subref{fig:initial-sphere}) A surface homeomorphic to the sphere with genus zero.
-		(\subref{fig:decending-faces}) The triangle on the top and the triangle on the bottom are getting
-		closer. (\subref{fig:faces-join})  A surface homeomorphic to the torus. The triangle on the top
-		and the triangle on the bottom have been removed. Three vertices and three edges have also been
-		removed. The Euler characteristic decreased by two.
-		\label{fig:genus}}
-\end{figure}
+
