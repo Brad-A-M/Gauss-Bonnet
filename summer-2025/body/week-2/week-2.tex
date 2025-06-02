@@ -1,19 +1,26 @@
 \section{Polygonal Meshes}
 \label{sec:polygonal}
 
-In this section, we introduce polygonal meshes, describe a data structure to efficiently
-work with them, and define the Euler characteristic.
+In this section, we introduce polygonal meshes, describe a data structure to 
+work with them, and introduce the Euler characteristic of a mesh.
 
 \subsection{What is a surface?}
 
- Many surfaces are made up of many vertices, edges, and
-triangles (or other polygons). We denote the set of vertices, edges and faces in a triangulated surface as 
+Most solid objects in our world have boundaries that are surfaces.
+Often, it is useful to represent a these boundary surfaces using computers.
+Examples of representing surfaces include computer graphics and modeling solids for manufacturing.
+Surfaces can be represented by connecting polygons together, we call these building blocks
+vertices, edges, and faces. We denote the set of vertices, edges and faces in a surface as 
 $V, E$ and $F$ respectively. We call such a surface a \emph{mesh}
 or triangulated mesh, if all faces are triangles.
 An example of a triangular mesh is shown in \figref{cat},
 notice that this mesh has a boundary on the collar, eyes, and mouth.
 Let $\partial(V)$ denote vertices on the boundary of a surface and let $V_{int}$ 
 denote vertices that are not on the boundary.
+One question we must face when representing smooth surfaces as a polygonal mesh is:
+how many faces do we need in order for the surface to not appear faceted?
+More small triangles we give us a better approximation but we pay a price in computational
+efficiency. 
 
 
 
@@ -37,7 +44,7 @@ denote vertices that are not on the boundary.
           \label{fig:back}
          \end{subfigure}
 		\caption{(\subref{fig:profile}) A profile view of a mesh.
- 		(\subref{fig:head-on})  A head on view of the same mesh and the view from the back (\subref{fig:back}).
+ 		(\subref{fig:head-on})  A frontal view of the same mesh and the view from the back (\subref{fig:back}).
  		\label{fig:cat}}
  \end{figure}
 
@@ -84,11 +91,48 @@ Determining if two faces intersect using the OFF representation of a surface is 
 To simplify algorithms on meshes we load the OFF file into a more convenient data-structure,
 the doubly-connected edge list.
 
+\subsection{Doubly-Connected Edge List}
+
 The doubly-connected edge list (DCEL) consists of three separate and related structures, one each
 for the vertices, edges, and faces \cite{dutchbook3}.
 For each edge, we store two directed half-edges $(\overrightarrow{e})$, with pointers to: its origin, the twin half-edge, the incident face that it bounds, the next half-edge bounding the same face, and the previous half-edge bounding the same face.
 
 
+For each vertex $v$, we store the coordinates of $v$ and a pointer to an arbitrary half-edge
+that has $v$ as its origin.
+For each face $f$, we store pointers to an arbitrary half-edge on its boundary. If a face has holes inside of it, we store a list of inner components and pointers to an arbitrary half-edge  on the boundary of each hole.
+
+For the set of vertices, edges, and faces we have iterators that enable us to begin with an arbitrary element
+and iterate over all elements. These collections of objects and pointers allow development of
+powerful algorithms to work with meshes. An example of a library of meshes algorithms
+is the Computational Geometry Library (CGAL) \cite{cgal, cgal:eb-24b}. We will use CGAL algorithms
+through out this text.
+
+
+Back to our motivating example of determining if a mesh intersects itself. 
+Assuming our mesh $M$ is given as a DCEL, we can iterate over all pairs of faces
+and determine if the faces intersect (how do you determine if two faces intersect?).
+Pseudocode for our algorithm is given in \algref{self-intersection}.
+
+
+\begin{algorithm}
+ \caption{Self-intersection}\label{alg:self-intersection}
+    \begin{algorithmic}[1]
+      \Require A DCEL of a mesh $M.$
+        \Ensure A boolean indicating if $M$ has a self-intersection.
+        
+        \State bool $b=0.$
+\For{$f_1\in F$}
+	\For{$f_2\in F$}
+	
+	\If{$f_1\neq f_2\ \&\&\ f_1\cap f_2 \neq \emptyset$} 
+		\State $b=1.$
+	\EndIf 
+	\EndFor
+\EndFor
+\Return $b$.
+\end{algorithmic}
+\end{algorithm}
 
 \subsection{The Euler Characteristic}
 
@@ -187,7 +231,11 @@ Thus, the sphere has genus zero and the torus has genus one.
 
 
 \begin{enumerate}
-	\item 
+	\item Given a mesh stored in a DCEL, give an pseudocode for an algorithm to iterate over all edges incident to a given vertex.
+	
+	\item Run a CGAL program on you local machine.
+	
+	\item How would you determine if two faces in a mesh intersect? Based on this, what is the runtime of \algref{self-intersection}?
 	
 \end{enumerate}
 
