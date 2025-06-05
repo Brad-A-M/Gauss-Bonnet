@@ -86,6 +86,46 @@ the circle and the sphere into problems in $\R$ and $\R^2$ respectively.
 For example, suppose we wish to compute the integral of a constant function
 $c(x,y)=1$ over the unit circle. 
 
+Stereographic projection has the property that it preserves angles.
+Maps with this property are called conformal. 
+\begin{definition}[Conformal]\label{def:conformal}
+	Let $U$ and $V$ be open subsets of $\R^n$, a function $f:U\to V$ is
+	\emph{conformal} at a point $u\in U$ if it preserves angles between curves
+	through $u$ and preserves orientation.
+\end{definition}
+
+Now we prove that stereographic projection is conformal \cite{hilbert-imagination}.
+
+\begin{theorem}[Stereographic projection is confromal]\label{thm:stereo-confroms}
+Stereographic projection is conformal.
+\end{theorem}
+\begin{proof}
+	Let $p\in\Sp^2$ that is not the north pole, and let $T_p$ denote the tangent
+	plane at $p$. Without loss of generality, we assume that $p$ is in the $xz$-plane
+	The triangle formed by the origin, the north pole and $p$
+	is an isosceles triangle. 
+	The line from the origin through $p$ is normal to the sphere and perpendicular
+	to $T_p$. Thus, the triangle formed by the line through $p$ and the north pole,
+	$T_p$ and the $xy$-plane is an isosceles triangle, see \figref{conforms} for an illustration.
+	
+	Let $\gamma$ be any smooth curve through $p$, and let $t$ be the tangent vector at $p$, then,
+	 provided $t$ isn't horizontal, one of $\pm t$
+	intersects the $xy$-plane. Let $t'$ denote the intersection of the plane containing the north
+	pole and $t$ with the $xy$-plane. Since $\pi$ is differentiable, $t'$ is tangent to $\pi \circ \gamma$ 
+	at $\pi(p)$. Let $\theta$ denote the angle formed by $t$ and the $xz$-plane. By the discussion
+	above, the angle between $t'$ and $\pi \circ \gamma$ is also $\theta$. 
+	In order for $\pi$ to be conformal it must preserve angle between two curves, so we repeat 
+	the same argument of a second path $\gamma'$.
+	
+	
+\end{proof}
+
+\begin{figure}[htb]
+	\centering
+	\includegraphics[width=.3\textwidth]{background/stero-conforms}
+	\caption{An illustration of the triangles discussed in proof of \thmref{stereo-confroms}.}
+	\label{fig:conforms}
+\end{figure}
 	
 \subsection{Triangles on the Sphere}
 
@@ -156,7 +196,7 @@ on the sphere with interior angles $\alpha_1,\alpha_2,\ldots, \alpha_n$.
 \begin{enumerate}
 	\item 
 	
-	\item 
+	\item Prove that stereographic projection maps circles to circles.
 	
 	\item 
 	
