@@ -1,248 +1,164 @@
-\section{Polygonal Meshes}
-\label{sec:polygonal}
+\section{Smooth Surfaces}
+\label{sec:smooth-surfaces}
 
-In this section, we introduce polygonal meshes, describe a data structure to 
-work with them, and introduce the Euler characteristic of a mesh.
+In this section, we discuss the sphere and the plane, we highlight differences and similarities,
+ and discuss maps between surfaces.
 
-\subsection{What is a surface?}
+\subsection{The plane and the sphere}
 
-Most solid objects in our world have boundaries that are surfaces.
-Often, it is useful to represent a these boundary surfaces using computers.
-Examples of representing surfaces include computer graphics and modeling solids for manufacturing.
-Surfaces can be represented by connecting polygons together, we call these building blocks
-vertices, edges, and faces. We denote the set of vertices, edges and faces in a surface as 
-$V, E$ and $F$ respectively. We call such a surface a \emph{mesh}
-or triangulated mesh, if all faces are triangles.
-An example of a triangular mesh is shown in \figref{cat},
-notice that this mesh has a boundary on the collar, eyes, and mouth.
-Let $\partial(V)$ denote vertices on the boundary of a surface and let $V_{int}$ 
-denote vertices that are not on the boundary.
-One question we must face when representing smooth surfaces as a polygonal mesh is:
-how many faces do we need in order for the surface to not appear faceted?
-More small triangles we give us a better approximation but we pay a price in computational
-efficiency. 
+Before discussing the plane and the sphere let us first strengthen our intuition in 
+one dimension with the real number line and the unit circle.
+Often, we think of the real line $\R$ and the unit circle $\Sp^1$ as subsets of $\R^2$,
+the line is the set
+$$\R^1=\{(x,y)\in \R^2 | y=0\}$$
+and the unit circle is the set
+$$\Sp^2=\{(x,y)\in \R^2 | x^2+y^2=1\}.$$
+In formally, the line and the circle are one dimensional because
+we only need one coordinate to specify any point on them.
+Is it possible to continuously deform the circle into the line?
+The answer is no, as we will see.
+There is a map, stereographic projection, between all but one point on the circle
+and the line.
 
+
+Consider a line from the north pole of the unit circle $(0,1)$ that intersects
+the unit circle at the point $(u,v)$ parameterized by $p(t)=(1-t)(0,1)+t(u,v).$
+By considering the $y$-coordinate we determine the $t$ value were $p(t)$
+intersects the $x$-axis, namely $t=\frac{1}{1-v}.$ Then, 
+the $x$-coordinate where $p(t)$ intersects the real line is 
+$$x=\frac{u}{1-v}.$$ An example is shown
+in \figref{stereo1D}.
+
+\begin{figure}[htb]
+	\centering
+	\includegraphics[width=.3\textwidth]{curvature/stereo-1D}
+	\caption{One dimensional stereographic projection.}
+	\label{fig:stereo1D}
+\end{figure}
+
+A similar argument can be used to find the inverse map from
+the real line to the unit circle. Given an $x$-value on the real line we consider
+the parameterized line $p^{-1}(t)=(1-t)(0,1)+t(x,0)$ and compute
+the $t$ value where $p^{-1}$ is on the unit circle and $t\neq 0.$ We find
+$t=\frac{2}{1+x^2}$ and the point $(u,v)$ on the unit circle in terms of $x$ is
+$$u=\frac{2x}{1+x^2}, v=\frac{x^2-1}{1+x^2}.$$
+
+We now consider the same idea in dimension two.
+We often think of the sphere and the plane as subsets of $\R^3$,
+the sphere is the set
+$$\Sp^2=\{(x,y,z)\in \R^3 | x^2+y^2+z^2=1\}$$
+and the $xy$-plane is
+$$\R^2=\{(x,y,z)\in \R^3 | z=0\}.$$
+Is it possible to continuously deform the sphere into the plane?
+Again, the answer is no, but we define stereographic projection between all but one point
+ on the sphere and the plane analogously to the one dimensional case.
+ Given a point $p$ on the sphere, we draw a straight line
+from the north pole $N=(0,0,1)$ through $p$, then find the intersection of
+this line with the plane. Every point on the sphere is mapped
+to a unique point in the plane except of the north pole.
+See \figref{stereo1} for an illustration.
+
+
+
+
+
+\begin{figure}[htb]
+	\centering
+	\includegraphics[width=.3\textwidth]{curvature/stereo}
+	\caption{A point on the sphere is mapped to a point on the plane by stereographic projection.}
+	\label{fig:stereo1}
+\end{figure}
+
+
+We are able to obtain formulas for stereographic projection from
+the unit sphere to the plane as follows \cite{christian-notes}.
+The line from the north pole $(0,0,1)$ that intersects $(x,y,z)\in \Sp^2$ parametrized by 
+$p(t)=(1-t)(0,0,1)+t(x,y,z)$. By considering the $z$ coordinate we determine the $t$ value where this line
+intersects $\R^2$, namely $t=\frac{1}{1-z}.$
+This gives the desired map  and in equation form we have
+$$p(x,y,z)\to \left(\frac{x}{1-z},\frac{y}{1-z}\right).$$
+
+
+
+Many of us have more experience doing computations on $\R$ and $\R^2$ as opposed
+to other objects. Stereographic projection enables us to transform many problems on
+the circle and the sphere into problems in $\R$ and $\R^2$ respectively.
+For example, suppose we wish to compute the integral of a constant function
+$c(x,y)=1$ over the unit circle. 
+
+	
+\subsection{Triangles on the Sphere}
+
+In the plane, if one scales a polygon, the area of the polygon changes
+but the angles of the polygon do not.
+On the unit sphere, we can relate the area of a simple polygon 
+to the angles. This is because the sphere is curved.
+A triangle on the sphere is shown in \figref{sphere-triangle}.
 
 
  \begin{figure}[htb]
          \centering
-        \begin{subfigure}[b]{0.3\textwidth}
-         \includegraphics[width=\textwidth]{polygonal-mesh/profile}
-         \caption{}
- 	 \label{fig:profile}
+        \begin{subfigure}[b]{0.35\textwidth}
+         \includegraphics[width=\textwidth]{background/sphere-triangle}
+         \caption{Spherical triangle.}
+ 	 \label{fig:sphere-triangle}
        \end{subfigure}
-         \hspace{.6cm}
-         \begin{subfigure}[b]{0.19\textwidth}
-         \includegraphics[width=\textwidth]{polygonal-mesh/head-on}
-         \caption{}
-          \label{fig:head-on}
+         \hspace{1cm}
+         \begin{subfigure}[b]{0.35\textwidth}
+         \includegraphics[width=\textwidth]{background/lune}
+         \caption{A lune.}
+          \label{fig:lune}
          \end{subfigure}
-             \hspace{.6cm}
-         \begin{subfigure}[b]{0.24\textwidth}
-         \includegraphics[width=\textwidth]{polygonal-mesh/back}
-         \caption{}
-          \label{fig:back}
-         \end{subfigure}
-		\caption{(\subref{fig:profile}) A profile view of a mesh.
- 		(\subref{fig:head-on})  A frontal view of the same mesh and the view from the back (\subref{fig:back}).
- 		\label{fig:cat}}
+		\caption{(a) A triangle on the sphere.
+ 		(b) A lune with angle $\alpha$.
+ 		\label{fig:sphere-lune}}
  \end{figure}
-
-One way to store a mesh in a computer is as a OFF file.
-The first optional line of an OFF file identifies the file as an OFF file.
-The second line lists the number of vertices, faces, and edges.
-A list of vertices in $(x,y,z)$ coordinates is then given followed
-by a list of faces indicated by the index of the vertices contained in the face.
-For the mesh in \figref{cat}, the OFF file looks is shown in 
-\tabref{off}.
-
-\begin{table}[h!]
-\caption{The OFF data for the mesh in \figref{cat}.}
-\centering
-\begin{tabular}{|p{2cm} p{2cm} p{2cm} p{2cm}|} 
- \hline
-\texttt{OFF} &  & &  \\ 
-\texttt{7529} & \texttt{14859} & \texttt{0} &  \\ 
-\texttt{-0.29196} & \texttt{-0.0867173} & \texttt{-0.355149}  &  \\
- \texttt{-0.123586}   & \texttt{-0.0127199} & \texttt{-0.385597} &  \\
-\texttt{-0.138255}   & \texttt{-0.0985078} & \texttt{-0.384018} &  \\
-  & &\vdots &  \\  
- \texttt{3}&  \texttt{97} &\texttt{1893}& \texttt{1895}\\
- \texttt{3}& \texttt{71} & \texttt{1894} & \texttt{1893} \\
- \texttt{3} & \texttt{16} & \texttt{1895} & \texttt{1894}\\
-   & &\vdots &  \\  
- \hline
-\end{tabular}
-
-\label{tab:off}
-\end{table}
-
-Suppose we work in a machine shop and a customer has an metal object that they would like
-to duplicate.
-One way to do this, is by 3D scanning the object to capture the coordinates on the 
-surface and represent the object as a triangulated mesh, then use a machine to carve the object
-from a block of metal. 
-While scanning, errors might occur. As a result of these errors
-we might obtain a triangulation that intersects itself. If we try to reconstruct the object
-from our mesh our machines will have ambiguous information of what the surface of the object
-should be.
-This motivates developing an algorithm to determine if a mesh has self-intersections.
-Determining if two faces intersect using the OFF representation of a surface is combersome.
-To simplify algorithms on meshes we load the OFF file into a more convenient data-structure,
-the doubly-connected edge list.
-
-\subsection{Doubly-Connected Edge List}
-
-The doubly-connected edge list (DCEL) consists of three separate and related structures, one each
-for the vertices, edges, and faces \cite{dutchbook3}.
-For each edge, we store two directed half-edges $(\overrightarrow{e})$, with pointers to: its origin, the twin half-edge, the incident face that it bounds, the next half-edge bounding the same face, and the previous half-edge bounding the same face.
-
-
-For each vertex $v$, we store the coordinates of $v$ and a pointer to an arbitrary half-edge
-that has $v$ as its origin.
-For each face $f$, we store pointers to an arbitrary half-edge on its boundary. If a face has holes inside of it, we store a list of inner components and pointers to an arbitrary half-edge  on the boundary of each hole.
-
-For the set of vertices, edges, and faces we have iterators that enable us to begin with an arbitrary element
-and iterate over all elements. These collections of objects and pointers allow development of
-powerful algorithms to work with meshes. An example of a library of meshes algorithms
-is the Computational Geometry Library (CGAL) \cite{cgal, cgal:eb-24b}. We will use CGAL algorithms
-through out this text.
-
-
-Back to our motivating example of determining if a mesh intersects itself. 
-Assuming our mesh $M$ is given as a DCEL, we can iterate over all pairs of faces
-and determine if the faces intersect (how do you determine if two faces intersect?).
-Pseudocode for our algorithm is given in \algref{self-intersection}.
-
-
-\begin{algorithm}
- \caption{Self-intersection}\label{alg:self-intersection}
-    \begin{algorithmic}[1]
-      \Require A DCEL of a mesh $M.$
-        \Ensure A boolean indicating if $M$ has a self-intersection.
-        
-        \State bool $b=0.$
-\For{$f_1\in F$}
-	\For{$f_2\in F$}
-	
-	\If{$f_1\neq f_2\ \&\&\ f_1\cap f_2 \neq \emptyset$} 
-		\State $b=1.$
-	\EndIf 
-	\EndFor
-\EndFor
-\Return $b$.
-\end{algorithmic}
-\end{algorithm}
-
-
-
-\subsection{The Euler Characteristic}
-
-The \EMPH{Euler characteristic} of a surface triangulated $S$ denoted by $\chi(S)$, or $\chi$
- if the surface is clear,  is the 
-the number of vertices minus the number of edges plus  the number of faces, $\chi=|V|-|E|+|F|.$
-The Euler characteristic is a topological invariant of a space meaning it
-and does not depend on the choice of triangulation.
-The Euler characteristic is defined for higher dimensional objects beyond surfaces,
- for a triangulated space $X$ the Euler characteristic is 
-$\chi(X)=k_0-k_1+k_2-k_3+\ldots$ where $k_n$ is the number of `triangles' of dimension $n.$
-
-
-
-A  graph  is \EMPH{planar} if it can be drawn in the plane with intersections only occurring
-at vertices.
-Triangulations of the two dimensional sphere $\Sp^2$ and the two dimensional disk $D^2$ 
-will be used in our applications.
-For the sphere, we have $\chi(\Sp^2)=2$ 
-several proofs of this can be found on David Eppstein's website \cite{eppstein-proofs}.
+A spherical \EMPH{lune} is the region on a sphere bounded by two half great circles
+with angle $\alpha$. The area of a lune is denoted $A(\alpha)$,
+ see \figref{lune}.
+On the unit sphere, the area of a lune is proportional to $\alpha$. 
+If $\alpha=0$ the area is zero and if $\alpha=\pi$ the area is $4\pi$.
+We can add the area of two lunes in terms of their angles, 
+$A(\alpha_1+\alpha_2)=A(\alpha_1)+A(\alpha_2)$ so $A$ is linear
+and  $A(\alpha)=4\alpha.$
 
 
 
 
-We next give a proof that $\chi(\Sp^2)=2$ due Thurston \cite{thurston}. 
-For any planar graph we imagine the graph embedded in the two sphere, by
-shrinking the graph until it fits inside of the unit circle, then project the image of the graph
-onto the southern hemisphere.  
+The following relates the area of a triangle on the sphere to the angles.
 
-\begin{theorem}[Euler Characteristic for Planar Graphs]\label{thm:euler}
-For any planar graph on the two sphere we have $V-E+F=2.$
-\end{theorem}
+\begin{lemma}[Area of Spherical Triangle]\label{lem:spherical-triangle}
+On the unit sphere, the area of a triangle with interior angles $\alpha_1, \alpha_2, \alpha_3$
+is $A=\alpha_1+\alpha_2+\alpha_3-\pi$.
+\end{lemma}
 
 \begin{proof}
-If needed, perturb the triangulation so that the north and south poles are 
-inside of  two faces and there are no vertical edges. At each vertex place a unit positive
-charge, at the center of each edge place a unit negative charge and put a unit positive
-charge in the middle of each face. Slam the sphere on the ground so that all charges
-on the edges and vertices are moved into the face below them. For faces that do not contain a pole
-the net charge will be zero, the northern boundary consists of an alternating sequence
-of edges and vertices  beginning  and ending with an edge.
-The face containing the north pole has a unit positive charge, and the face containing the south
-pole contains positive four units of charge and negative three units of charge.
-Thus, the total charge is two.
-
+	Any two edges of the the triangle form a lune. The collection of 
+	all three lunes covers the entire sphere with triangle and the antipodal triangle covered three times.
+ 	The surface area of the unit sphere is $4\pi$.
+	Thus, $4\pi=4\alpha_1+4\alpha_2+4\alpha_3-4A$
+	and $A=\alpha_1+\alpha_2+\alpha_3-\pi$.
 \end{proof}
 
-Triangulations of the sphere are a special case of \thmref{euler}.
-The sphere will be one of two common surfaces we see in applications
-of the Gauss-Bonnet theorem. The other being the disk.
-For the disk, $\chi(D^2)=1$. This can be seen by considering
-the removal of a single face from a triangulation of the sphere.
-Once a face is removed, we can `unwrap' the remaining faces of the sphere
-onto the plane to obtain a triangulation of a disk. Moreover, this projection
-is invertible and given a triangulation of a disk we can obtain a triangulation
-of the sphere with a single face omitted.
+As in the plane, any polygon on the sphere with $n$ vertices can be decomposed
+into $n-2$ triangles \cite{orourke_computational_1994}. This gives a formula for the area of a simple polygon
+on the sphere with interior angles $\alpha_1,\alpha_2,\ldots, \alpha_n$.
 
-The Euler characteristic of a connected, orientable surface surface is often 
-stated in terms of the genus of the surface which is defined as follows.
-\begin{definition}[Genus of a Surface]\label{def:genus}
-	The genus of a connected, orientable surface is the maximum number of
-	cuttings along non-intersecting simple closed curves without disconnecting
-	the surface \cite{munkres}.
-\end{definition}
+\begin{equation} \label{eqn:sphere-area}
+	A=(2-n)\pi +\sum_{i=1}^n \alpha_i.
+\end{equation}
 
-
-For an orientable surface, the genus and the Euler characteristic are related by
-the formula $\chi=2-2g$. To see this, we can transform a triangulation of a surface of
-genus $g$ into a surface of genus $g+1$ by removing two faces and an equal number
-of vertices and edges. \figref{genus} provides an example.
-Thus, the sphere has genus zero and the torus has genus one.
-
-
-\begin{figure}[htb]
-        \centering
-        \begin{subfigure}[b]{0.2\textwidth}
-        \includegraphics[width=\textwidth]{genus/genus-1}
-        \caption{Genus zero.}
-          \label{fig:initial-sphere}
-        \end{subfigure}
-          \hspace{.5cm}
-         \begin{subfigure}[b]{0.2\textwidth}
-        \includegraphics[width=\textwidth]{genus/genus-2}
-        \caption{Deform.}
-        \label{fig:decending-faces}
-        \end{subfigure}
-          \hspace{.5cm}
-         \begin{subfigure}[b]{0.2\textwidth}
-        \includegraphics[width=\textwidth]{genus/genus-3}
-        \caption{Triangles join.}
-        \label{fig:faces-join}
-        \end{subfigure}
-		\caption{(\subref{fig:initial-sphere}) A surface homeomorphic to the sphere with genus zero.
-		(\subref{fig:decending-faces}) The triangle on the top and the triangle on the bottom are getting
-		closer. (\subref{fig:faces-join})  A surface homeomorphic to the torus. The triangle on the top
-		and the triangle on the bottom have been removed. Three vertices and three edges are				removed. The Euler characteristic decreased by two.
-		\label{fig:genus}}
-\end{figure}
+\subsection{Calculus Review}
 
 \noindent \textbf{Exercises}
 
 
 \begin{enumerate}
-	\item Given a mesh stored in a DCEL, give an pseudocode for an algorithm to iterate over all edges incident to a given vertex.
+	\item 
 	
-	\item Run a CGAL program on you local machine.
+	\item 
 	
-	\item How would you determine if two faces in a mesh intersect? Based on this, what is the runtime of \algref{self-intersection}?
+	\item 
 	
 \end{enumerate}
 
