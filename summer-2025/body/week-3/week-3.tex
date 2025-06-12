@@ -84,7 +84,7 @@ Many of us have more experience doing computations on $\R$ and $\R^2$ as opposed
 to other objects. Stereographic projection enables us to transform problems on
 the circle and the sphere into problems in $\R$ and $\R^2$ respectively.
 
-\subsection{Conformal}
+\subsection{Stereographic Projection is Conformal}
 
 
 Stereographic projection has the property that it preserves angles.
@@ -172,9 +172,9 @@ Stereographic projection is conformal.
 
 
 	
-\subsection{Triangles on the Sphere}
+\subsection{Differences Between the Sphere and the Plane}
 
-Now we highlight a difference between the plane and the sphere.
+Now we highlight differences between the plane and the sphere.
 In the plane, if one scales a polygon, the area of the polygon changes
 but the angles of the polygon do not.
 On the unit sphere, we can relate the area of a simple polygon 
@@ -236,6 +236,35 @@ on the sphere with interior angles $\alpha_1,\alpha_2,\ldots, \alpha_n$.
 \end{equation}
 
 
+Next, we explore how the area of disks changes as a function 
+of the radius in the plane and on the sphere. 
+In the plane, the area of a disk of radius $r$ is, of course,
+$$A_{\R^2}(r)=\pi r^2.$$ However, this is not the case for the sphere where
+the radius of the disk curves along the surface. Such a disk on the sphere
+centered at a point $p$
+is called a geodesic disk with intrinsic radius $r$.
+
+Consider a sphere of radius $R$ and choose any point on the sphere $p.$
+Recall, the length of an arc $\ell$ on a circle of radius $R$ with central angle $\theta$
+is $\ell=\theta R.$ So, if we have a geodesic disk centered at $p$, with intrinsic radius $r$ with
+$0<r<\pi R$,
+the central angle between $p$ and a point on the boundary of the disk is 
+$\theta=\frac{r}{R}.$ We can now integrate with spherical coordinates 
+to determine the area of the geodesic disk to obtain
+
+\begin{equation} \label{eqn:sphere-disk-area}
+	A_{\Sp^2}(r)=\int_0^{2\pi}\int_0^{\frac{r}{R}}\sin(\phi)d\phi d\theta = 2\pi R^2\left(1-\cos\left(\frac{r}{R}\right)\right).
+\end{equation}
+
+If we consider the rate of change in the area of disks as a function of the radius
+we see that, as the radius increases, the area increases slower on the sphere
+than in the plane. 
+In the plane $\frac{d}{dr}A_{\R^2}(r) =2\pi r$ and in the sphere
+$$\frac{d}{dr}A_{\Sp^2}(r)=2\pi R\sin \left(\frac{r}{R}\right).$$
+Since $0<r<\pi R$ and $0<\sin\left(\frac{r}{R}\right)< \frac{r}{R}$ we have
+
+$$\frac{d}{dr}A_{\Sp^2}(r)=2\pi R\sin \left(\frac{r}{R}\right)<2\pi R \frac{r}{R}=\frac{d}{dr}A_{\R^2}(r).$$
+
 
 \noindent \textbf{Exercises}
 
@@ -245,7 +274,7 @@ on the sphere with interior angles $\alpha_1,\alpha_2,\ldots, \alpha_n$.
 	
 	\item Prove that stereographic projection maps circles to circles.
 	
-	\item 
+	\item Explain why integration using spherical coordinates includes the factor $\sin(\phi).$
 	
 \end{enumerate}
 
