@@ -1,17 +1,24 @@
 \section{Curvature}
 \label{sec:curvature}
 
-In this section, we give intuition for how to measure how much
-a curve or surface is curving. We then define Gaussian and geodesic
-curvature, two key pieces of the Gauss-Bonnet theorem.
+In this section, we discuss smooth and discrete curvature. There are several
+equivalent definitions of curvature. There are tradeoffs between them,
+some are more intuitive while others lend themselves to efficient computation.
+First, we warm up with curves in the plane, then move to curves in $\R^3$.
+Then, we consider curvature for surfaces, both smooth and polygonal.
+Finally, we define Gaussian and geodesic
+curvature, two key terms of the Gauss-Bonnet theorem.
 
-\subsection{Intuition}
+\subsection{One Dimensional Curves}
 
-What do we require of a definition of curvature of a one dimensional curve?
-At a minimum, straight line should have zero curvature and
+What do we require of a definition of curvature of a one dimensional curve
+in the plane? We would like a number the represents how 
+different a curve is from a straight line.
+A straight line should have zero curvature and
  large circles should have less curvature than smaller circles.
-Our definition should also differentiate between
+Ideally, definition should also differentiate between
 curving to the left and curving to the right.
+
 
 For any point on a smooth one dimensional curve in the plane,
 we can approximate the curve with a circle.
@@ -22,7 +29,7 @@ See \figref{osculating-circle} for an example.
 The osculating circle meets the requirements for a definition of curvature as long
 as we allow the straight line to have an osculating circle with infinite radius.
 We determine the sign of the curvature by which side of the curve the osculating circle is on.
-
+However, computing the radius of an osculating circle is some what cumbersome (Exercise 1).
 
 \begin{figure}[htb]
 	\centering
@@ -32,31 +39,55 @@ We determine the sign of the curvature by which side of the curve the osculating
 	\label{fig:osculating-circle}
 \end{figure}
 
+Often curves in the plane are parameterized, for example
+the circle of radius $r$ in the plane can be parameterized by
+$$c(t)=(r\cos(t),r\sin(t))$$
+ for $t\in [0,2\pi]$ is a curve in the plane.
+If a curve is differentiable, another interpretation of curvature 
+is the rate of change
+of the angle between the curve and its tangent vector. 
+We do not want this
+rate to depend on how fast we are traversing the curve, one way to standardize
+the speed is to parameterize by arc length, meaning the $t$ in  represents 
+the distance traveled along the curve, in this case, the arc length parameterization
+of the circle with radius $r$ is $$C(t)=\left(r\cos\left(\frac{t}{r}\right),r\sin\left(\frac{t}{r}\right)\right).$$
+
+The rate of change of the angle between a curve and its unit tangent vector $T$, is the magnitude
+of the derivative of $T$. Curvature is then
+\begin{equation} \label{eqn:kappa}
+\kappa= \pm | T'(t)|.
+\end{equation}
+where $t$ is arc length.  
+
+
+For the circle of radius $r$ we have,
+$$T(t)=\left(-\sin\left(\frac{t}{r}\right),\cos\left(\frac{t}{r}\right)\right)$$
+and 
+$$|T'(t)|=\left|\frac{1}{r}\left(-\cos\left(\frac{t}{r}\right),-\sin\left(\frac{t}{r}\right)\right)\right|$$
+so
+$$\kappa(t)=\frac{1}{r}.$$
+We see that,  at least in this case, our definition of curvature in \eqnref{kappa} agrees with the
+osculating circle definition. 
+For a plane curve $\gamma(t)$ we can summarize above computation as
+\begin{equation} \label{eqn:kappa1}
+\kappa(t)=\frac{|\gamma'(t)\times \gamma''(t)|}{|\gamma'(t)|^3}.
+\end{equation}
+
+
+
+
 A curve in $\RR^3$ is often parameterized by a function
 $\gamma(t)=(x(t),y(t),z(t))$. When we say a curve is \EMPH{smooth}, we mean there is
  an open interval $I$ where
 $\gamma'$ it is continuous and $\gamma'(t)\neq (0,0,0)$ on $I$. 
-If $\gamma$ is smooth it has a well-defined unit tangent vector $T(t)=\frac{\gamma'(t)}{|\gamma'(t)|}.$
-A second equivalent way to define the  \EMPH{curvature} at a point is as the signed magnitude of the rate of change of the unit tangent vector
 
-\begin{equation} \label{eqn:kappa}
-\kappa= \pm | T'(t)|.
-\end{equation}
-where $t$ is arc length.  The osculating circle definition provides intuition but the
-rate of change of the tangent vector definition is often easier to compute with.
 
-For example, take a circle of radius $r$, parameterized by 
-$$C(t)=\left(r\cos(t),r\sin(t),0\right).$$
-We have 
-$$\frac{dC}{dt}=C'(t)=\left(-r\sin(t),r\cos(t),0\right)$$ and $|C'(t)|=r.$
-Then $T(t)=\left(-\sin(t),\cos(t),0\right)$ and
-$T'(t)=\left(-\cos(t),-\sin(t),0\right)$.
-So, $\kappa(t)=\frac{1}{r}$ and, in this case, our definition of curvature agrees with the
-osculating circle intuition given above. 
-\eqnref{kappa} can be rewritten in the following more computational friendly form 
-\begin{equation} \label{eqn:kappa1}
-\kappa(t)=\frac{|\gamma'(t)\times \gamma''(t)|}{|\gamma'(t)|^3}.
-\end{equation}
+
+
+
+
+So, $\kappa(t)=\frac{1}{r}$ and, can be rewritten in the following more computational friendly form 
+
 
 We traverse $\gamma$
 at unit speed so that the length of the velocity vector is one, $\gamma'(t)^2=1,$ and by the chain rule, $\gamma'\cdot \gamma''=0$.
@@ -411,7 +442,8 @@ The \EMPH{geodesic curvature} is given by
 
 
 \begin{enumerate}
-	\item 
+	\item Given the curve $\gamma(t)=(t,t^2)$ for $t\in[-1,1]$ compute 
+	the radius of the osculating sphere at $t=0.$
 	
 	\item 
 	
