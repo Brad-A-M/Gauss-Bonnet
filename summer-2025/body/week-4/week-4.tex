@@ -53,7 +53,7 @@ the distance traveled along the curve, in this case, the arc length parameteriza
 of the circle with radius $r$ is $$C(t)=\left(r\cos\left(\frac{t}{r}\right),r\sin\left(\frac{t}{r}\right)\right).$$
 
 The rate of change of the angle between a curve and its unit tangent vector $T$, is the magnitude
-of the derivative of $T$. Curvature is then
+of the derivative of $T$, see \figref{smooth-tangent}. Curvature is then
 \begin{equation} \label{eqn:kappa}
 \kappa= \pm | T'(t)|.
 \end{equation}
@@ -72,6 +72,36 @@ For a plane curve $\gamma(t)$ we can summarize above computation as
 \begin{equation} \label{eqn:kappa1}
 \kappa(t)=\frac{|\gamma'(t)\times \gamma''(t)|}{|\gamma'(t)|^3}.
 \end{equation}
+
+What about discrete curves in the plane? A discrete curve is a sequence of connected
+line segments. Where two
+segments meet there is a sharp corner. The curvature of a point in the interior of a segment
+is zero. But what about the corners? Is there a well defined osculating circle? The tangent
+vector is not defined!
+Consider the exterior angle formed by extending one of the segments, as in \figref{discrete-plane}. 
+If the segments are colinear, then the exterior angle is zero. If the interior angle
+is smaller, then the curvature is greater as desired.
+
+
+
+
+\begin{figure}[htb]
+    \captionsetup[subfigure]{justification=centering}
+    \centering
+    \begin{subfigure}[b]{0.35\textwidth}
+        \includegraphics[width=\textwidth]{background/interior-angles-triangles}
+       \subcaption{}\label{fig:smooth-tangent}
+    \end{subfigure}
+        \hspace{1cm}
+        \begin{subfigure}[b]{0.35\textwidth}
+        \includegraphics[width=\textwidth]{background/discrete-plane}
+        \subcaption{}\label{fig:discrete-plane}
+        \end{subfigure}
+    \caption{(\subref{fig:smooth-tangent}) The tangent vector of a curve in the plane at a point.
+        (\subref{fig:discrete-plane}) The exterior angle on a discrete curve in the plane.
+    }
+    \label{fig:osculating-sphere}
+\end{figure}
 
 
 
@@ -426,7 +456,8 @@ The \EMPH{geodesic curvature} is given by
 	so $$n(\theta)=\left(r\cos\left(\frac{\theta}{r}\right),r\sin\left(\frac{\theta}{r}\right),\sqrt{1-r^2}\right).$$
 	Then 
 	$$k_g=\gamma''\cdot V(\theta)=\frac{\sqrt{1-r^2}}{r}.$$
-	Notice that if $h=0$ then $r=1$ and the geodesic curvature is zero on the equator.
+	Notice that if $h=0$ in \figref{geodesic}, then $r=1$ and the geodesic curvature is zero which
+	agrees with our intuition since we have a great circle.
 \end{example}
 
 \begin{figure}[htb]
@@ -445,7 +476,8 @@ The \EMPH{geodesic curvature} is given by
 	\item Given the curve $\gamma(t)=(t,t^2)$ for $t\in[-1,1]$ compute 
 	the radius of the osculating sphere at $t=0.$
 	
-	\item 
+	\item Given a curve $\gamma(t)$, if we traverse $\gamma(t)$ at unit speed,
+	show that the tangent vector is orthogonal to the second derivative vector.
 	
 	\item 
 	
