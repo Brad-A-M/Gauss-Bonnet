@@ -2,7 +2,7 @@
 
 
 
-The Gauss-Bonnet theorem for regular surfaces states
+A version of the Gauss-Bonnet theorem for smooth surfaces is the following.
 
 \begin{theorem}[The Continuous Gauss-Bonnet Theorem] \label{thm:g-b-c}
 
@@ -14,17 +14,31 @@ If $M$ is a regular surface with boundary $\partial M$ then
 	$\chi$ is the Euler characteristic.
 \end{theorem}
 
+For a discrete surface, curvature only occurs at vertices.
+A version of the Gauss-Bonnet theorem for smooth surfaces is the following.
 
-The  Gauss-Bonnet theorem tell us that, if we add up curvature
+\begin{theorem}[The Discrete Gauss-Bonnet Theorem] \label{thm:g-b-d}
+
+If $T$ is a triangulated surface with  boundary $\partial T$ then
+$$\sum_{v\in V_{int}} K(v) + \sum_{v\in V_{\partial T}} k_g(v) = 2\pi \chi(T)$$
+where $K(v)$ is the discrete Gaussian curvature
+of a vertex, $k_g(g)$ is the discrete geodesic curvature,  and
+$\chi$ is the Euler characteristic.
+\end{theorem}
+
+In both versions, the Gauss-Bonnet theorem tell us that, if we add up curvature
 at each vertex the sum will be $2\pi$ times to Euler characteristic.
-The curvature at each vertex is computed by considering a 'local' neighborhood
+The curvature at each vertex is computed by considering a `local' neighborhood
 around the vertex and we learn global topological information. Thus, the Gauss-Bonnet 
 theorem is an example of a local to global principle. 
 Conversely, if we know the Euler characteristic we can learn about the curvature
 at individual points. We will often use the theorem to prove the existence of
 a vertex with a desirable amount of curvature.
 
-
+We next give two proofs of the \thmref{g-b-d}. The first uses vectors fields (defined below)
+to relate the Euler characteristic to zeros of the vector field. The second computes
+the curvature on each triangle, then considers how the curvature of neighboring triangles
+cancel. We emphasize that these proofs are fundamentally different.
 
 \subsection{Index Theorem Proof}
 We now include a proof of a combinatorial version of the theorem due to Banchoff
@@ -52,9 +66,9 @@ $i(X,z).$
 
 \begin{theorem}[Poincar\'e Index Theorem] \label{thm:poincare-index}
 
-If $M$ is a regular triangulated surface and $X$ a vector field on $M$ with isolated zeros,
-the Euler characteristic of $M$ is 
-$$\chi(M)=\sum_{z\in \text{zeros}}i(X,z).$$
+If $T$ is a regular triangulated surface and $X$ a vector field on $T$ with isolated zeros,
+the Euler characteristic of $T$ is 
+$$\chi(T)=\sum_{z\in \text{zeros}}i(X,z).$$
 \end{theorem}
 
 \begin{proof}
@@ -70,9 +84,7 @@ of the zero.
 
 \end{proof}
 
-We proceed with the proof of \thmref{g-b-c}. 
-
-\begin{proof}
+A more geometric interpretation of \thmref{poincare-index} is the following.
 Given a surface embedded in $\R^3$ consider a line $\ell$ and define a 
 linear height function $h:M \to \R$
 to be the projection of all of $\R^3$ on to the line $\ell$. A point $p$ on $M$
@@ -121,9 +133,8 @@ Putting our pieces together, we have
        &= V-\frac{1}{2}(2E-2F), \text{by \eqnref{faces-edges}}\\ \nonumber
        &=V-E+F. \nonumber 
 \end{align}
-The above equations, together with \thmref{poincare-index}, prove the Gauss-Bonnet Theorem.
 
-\end{proof}
+
 
  \begin{figure}[htb]
          \centering
@@ -159,12 +170,47 @@ The above equations, together with \thmref{poincare-index}, prove the Gauss-Bonn
  		\label{fig:torus-total}}
  \end{figure}
 
+With the Poincar\'e Index theorem in hand, we now turn to the proof of
+the discrete version of the Gauss-Bonnet theorem, \thmref{g-b-d}.
+\begin{proof}
 
-The above proof can be extended to smooth surface and to surfaces with boundary.
+\todo{Define the Gauss map}
+
+We use the index $i(p,\xi)$ to describe the curvature of a convex open
+set on the sphere $U$. Let $d\omega$ denote the area integrand for the sphere
+then,
+$$\int_{\Sp^2} d\omega =4\pi.$$
+The area of $g(U)$ is the integral over $\Sp^2$ of the function:
+$F_{g(U)}(\xi)=1$ if $\xi$ is in $g(U)$ and $0$ otherwise.
+If $\xi$ is in $g(U)$, then the height function $\xi$ has a critical point at
+a point $p$ on $U$. We can say more, $i(p,\xi)\neq 0$ for $p\in U$ if and only if
+$\xi$ is in $g(U)$ or $-\xi$ is in $g(U).$
+
+The curvature can then be expressed as 
+$$K(U)=\int_{\Sp^2}F_{g(U)}(\xi)d\omega =\frac{1}{2}\int_{\Sp^2}\sum_{p\in U} i(p,\xi)d\omega.$$
+
+
+For a neighborhood $U$ where $g$ is not one-to-one, we write $U$ as a countable
+disjoint union of sets $U_i$ where $g$ is one-to-one with a set $V=U-\cup_{i=1}^\infty U_i$
+such that $g(V)$ has measure zero on $\Sp^2$. Then,
+$$K(U)=\sum_{i=1}^\infty K(U_i)$$ is the sum converges, this agrees with 
+$$K(U)=\frac{1}{2}\int_{\Sp^2}\sum_{p\in U} i(p,\xi)d\omega,$$
+where the integrand is well defined almost everywhere since almost every $\xi$
+has finitely many critical points.
+
+
+
+\begin{align}
+K(T) &=\frac{1}{2}\int_{\Sp^2}\sum_{p\in U} i(p,\xi)d\omega,  \\ \nonumber
+       &=\frac{1}{2}\int_{\Sp^2}\chi(T) \text{ , by the Poincar\'e Index theorem}\\ \nonumber
+       &=\frac{1}{2}\chi(T)\int_{\Sp^2}d\omega, \\ \nonumber
+       &=2\pi\chi(T). \nonumber 
+\end{align}
+This proves \thmref{g-b-d}.
+
+\end{proof}
 Next, we give a significantly different proof the Gauss-Bonnet theorem. 
 
-
-%%%%%Dump below
 
 \subsection{Triangle Cancelation Proof}
 \label{sec:proof}
@@ -238,4 +284,16 @@ as desired.
 \end{proof}
 
 
+\noindent \textbf{Exercises}
 
+
+\begin{enumerate}
+	\item 
+	
+	\item 
+	
+	\item 
+	
+\end{enumerate}
+
+\pagebreak

@@ -106,10 +106,7 @@ is smaller, then the curvature is greater as desired.
 
 
 
-A curve in $\RR^3$ is often parameterized by a function
-$\gamma(t)=(x(t),y(t),z(t))$. When we say a curve is \EMPH{smooth}, we mean there is
- an open interval $I$ where
-$\gamma'$ it is continuous and $\gamma'(t)\neq (0,0,0)$ on $I$. 
+\todo{Curvature of 1D in 3D here}
 
 
 
@@ -160,55 +157,7 @@ equally reasonable ways to approximate a saddle with a sphere.
 One dimensional curves are represented by differentiable 
 parameterized functions $\gamma:I\subset \RR\to \RR^3$,
 we would now like to parameterize a surface.
-Similarly, a \EMPH{parameterized surface} $S$ is a collection of maps such that
- for each point $p\in S$ we have a neighborhood $X\subset S$
- and a map $r:U\subset \RR^2 \to X\subset \RR^3$, $r(u,v)=(x(u,v),y(u,v),z(u,v))$
- where
- \begin{itemize}
- \item  $r$ is a homeomorphism
- \item $r$ has derivatives of all orders
- \item every point in $S$ is contained in the domain of at least one map.
-
-\end{itemize}
-The maps in the third item are called \EMPH{charts}.
-If the differential $dr_q:\RR^2\to \RR^3$ is one-to-one for all $q\in U$ then
-we say $r$ is \EMPH{regular}. In other words, let $(u,v)$ be coordinates of $U\subset \RR^2,$
-a surface is regular if $\frac{\partial r}{\partial u}$
-and $\frac{\partial r}{\partial v}$ are linearly independent for all $p\in U$.
-Once we choose a chart we define a clockwise orientation to be positive.
- If the clockwise orientation can be consistently extended to the entire surface, we say
-the surface is \EMPH{orientable}.
-
-
-\begin{example}[The Sphere]\label{ex:sphere-charts}
-
-The unit two sphere $\Sp^2\subset \RR^3$ is the set $\{(x,y,z)\in \RR^3 | x^2+y^2+z^2=1\}.$
-We can define six charts to parameterize $\Sp^2$.
-For $u,v\in[-1,1]$, we have
-$$r_{z}(u,v)=(u,v,\sqrt{1-u^2-v^2}) \hspace{.5cm}  r_{-z}(u,v)=(u,v,-\sqrt{1-u^2-v^2}) \hspace{.5cm}  r_{x}(u,v)=(\sqrt{1-u^2-v^2},u,v) $$
-$$r_{-x}(u,v)=(-\sqrt{1-u^2-v^2},u,v) \hspace{.5cm}  r_{y}(u,v)=(u,\sqrt{1-u^2-v^2},v) \hspace{.5cm}   r_{-y}(u,v)=(u,-\sqrt{1-u^2-v^2},v). $$
-
-The chart $r_{z}$ is shown in \figref{sphere-chart}
-
-\begin{figure}[htb]
-	\centering
-	\includegraphics[width=.4\textwidth]{curvature/sphere-chart}
-	\caption{A chart of $\Sp^2$.}
-	\label{fig:sphere-chart}
-\end{figure}
-
-One can verify that these parameterizations fulfill the requirements
-for the sphere to be a regular surface.
-
-\end{example}
-
-
-A \EMPH{tangent vector} to $S$ at $p$ is a map $\xi:(-\epsilon,\epsilon)\to S$ with $\xi(0)=p$.
-The set of all tangent vectors is the \EMPH{tangent plane} and it corresponds to the image
-of the differential map $d\phi_q(\RR^2)\subset \RR^3$ (prop. 1 \cite{doc76}).
-By choosing two linearly independent paths through $p\in S$ we obtain a basis 
-for the tangent
-plane and define a normal vector $N$ at $p$.
+Similarly, 
 Every plane containing the normal vector will intersect the surface.
 The intersection of the surface and each normal plane is a curve in $\RR^3$
 gives a one dimensional curve called the \EMPH{normal section}, see  \figref{normal-sections}
