@@ -106,14 +106,13 @@ is smaller, then the curvature is greater as desired.
 
 
 
-\todo{Curvature of 1D in 3D here}
 
 
 
-
-
-
-So, $\kappa(t)=\frac{1}{r}$ and, can be rewritten in the following more computational friendly form 
+What about curves in $\R^3$? Now there is another dimension, we can curve in the plane
+and `twist' vertically out of the plane.
+This additional freedom is called torsion.
+Let $\gamma(t)=(x(t),y(t),z(t))$ be a smooth curve in $\R^3$.
 
 
 We traverse $\gamma$
@@ -123,11 +122,23 @@ Thus, the
 vector $\gamma''=N$ is normal to the $\gamma$. 
 By taking the cross product of $N$ and $T$ we obtain a vector $B$ called
 the binormal vector.
-%The vectors $T,N$ and $B$ form the \EMPH{Fernet frame} of $\gamma$ a $p.$
+The vectors $T,N$ and $B$ form the \EMPH{Fernet frame} of $\gamma$ a $p.$
 
- This osculating-circle idea can be extend
-to  surfaces in $\R^3$, by considering the \EMPH{osculating sphere},
-But notice that at saddle points on a surface it is not clear which sphere
+
+The rate of change of the tangent vector is the curvature and the rate of change in
+the binormal is the torsion. If the curve is a straight line for part of the parameterization,
+then the Fernet frame is not well defined. We leave it to the reader to think about how to handle
+this case.
+
+\subsection{Curvature of Surfaces}
+
+
+Moving up a dimension, let us now consider how to measure
+the curvature at a point on a surface. As with curvature in the plane,
+there are several equivalent ways to define curvature.
+ The osculating-circle idea can be adapted
+ to  surfaces in $\R^3$ by considering the \EMPH{osculating sphere},
+But notice that at a saddle point on a surface it is not clear which sphere
 best approximates the surface. See \figref{osculating-sphere} for two
 equally reasonable ways to approximate a saddle with a sphere.
 
@@ -150,14 +161,17 @@ equally reasonable ways to approximate a saddle with a sphere.
 \end{figure}
 
 
+Since we assume that our surface $S$ is smooth, we have a well defined
+tangent plane at the point of interest and a unit vector normal to the surface.
+The \emph{Gauss map} is defined to be a map $N:S\rightarrow \Sp^2$
+where, for $p\in S$ the value $N(p)$ is a unit vector orthogonal to $S$ at $p.$
 
-\subsection{Gaussian Curvature}
+The differential of the Gauss map, the \emph{Weingarten map}, is a linear 
+transformation that maps the tangent
+space of the surface at $p$ to the tangent space of the sphere at $N(p)$.
+The determinate of the Weingarten map represents how the Gauss map
+changes the area locally around $p$. 
 
-
-One dimensional curves are represented by differentiable 
-parameterized functions $\gamma:I\subset \RR\to \RR^3$,
-we would now like to parameterize a surface.
-Similarly, 
 Every plane containing the normal vector will intersect the surface.
 The intersection of the surface and each normal plane is a curve in $\RR^3$
 gives a one dimensional curve called the \EMPH{normal section}, see  \figref{normal-sections}

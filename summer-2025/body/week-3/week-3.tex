@@ -58,13 +58,19 @@ $$u=\frac{2x}{1+x^2}, v=\frac{x^2-1}{1+x^2}.$$
 Often, it is useful to represent a one dimensional curve as a parameterization.
 For example, the circle can be parameterized as a map $C:[0,2\pi]\rightarrow \R^2$
 $$C(t)=\left(\cos(t),\sin(t)\right).$$ 
+Parameterizations are nice because we can include a velocity of the traversal.
+We usually want to traverse a curve at uniform speed but this is not always the case.
+Parameterizations also allow us to deal with points where a curve self-intersects, namely 
+restrict the parameterization to a local region where the curve does not self-intersect.
+Note that the curve is the image of the parameterization. Two different maps can result in the same
+curve but the speeds that we traverse the curve can be different.
 We will also consider one dimensional curve in $\R^3,$ in which case a parameterization
 will be a function $\gamma:[0,1]\rightarrow \R^3$ with
 $$\gamma(t)=\left(x(t),y(t),z(t)\right).$$
 
 
 
-We now consider the same idea in dimension two.
+Let us now consider the two dimensional analogs of $\R$ and $\Sp^1, \R^2$ and $\Sp^2.$
 We often think of the sphere and the plane as subsets of $\R^3$,
 the sphere is the set
 $$\Sp^2=\{(x,y,z)\in \R^3 | x^2+y^2+z^2=1\}$$
