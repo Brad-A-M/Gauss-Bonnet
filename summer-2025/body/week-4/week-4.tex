@@ -14,7 +14,8 @@ curvature, two key terms of the Gauss-Bonnet theorem.
 What do we require of a definition of curvature of a one dimensional curve
 in the plane? We would like a number the represents how 
 different a curve is from a straight line.
-A straight line should have zero curvature and
+A straight line should have zero curvature and the unit circle should have
+curvature one. Moreover,
  large circles should have less curvature than smaller circles.
 Ideally, definition should also differentiate between
 curving to the left and curving to the right.
@@ -163,8 +164,8 @@ equally reasonable ways to approximate a saddle with a sphere.
 
 Since we assume that our surface $S$ is smooth, we have a well defined
 tangent plane at the point of interest and a unit vector normal to the surface.
-The \emph{Gauss map} is defined to be a map $N:S\rightarrow \Sp^2$
-where, for $p\in S$ the value $N(p)$ is a unit vector orthogonal to $S$ at $p.$
+The \emph{Gauss map} is defined to be a map $g:S\rightarrow \Sp^2$
+where, for $p\in S$ the value $g(p)$ is a unit vector orthogonal to $S$ at $p.$
 
 The differential of the Gauss map, the \emph{Weingarten map}, is a linear 
 transformation that maps the tangent
@@ -172,6 +173,34 @@ space of the surface at $p$ to the tangent space of the sphere at $N(p)$.
 The determinate of the Weingarten map represents how the Gauss map
 changes the area locally around $p$. 
 
+Let $U_1$ be a `small' set on a convex surface $S$.
+If the Gauss map is one-to-one on $U,$ and $g$ is orientation-preserving,
+the curvature $K(U_1)$ of $U_1$ is defined to be the area of the image of $g(U_1)$
+on $\Sp^2.$
+Let $U_2$ be a nonconvex region on a surface on which $g$ is one-to-one and is orientation-reversing,
+then $K(U_2)$ is defined as the negative of the area of $g(U_2)$ on $\Sp^2.$
+
+\todo{Doesn't depend on area}
+
+\begin{figure}[htb]
+    \captionsetup[subfigure]{justification=centering}
+    \centering
+    \begin{subfigure}[b]{0.3\textwidth}
+        \includegraphics[width=\textwidth]{curvature/gauss-map-convex}
+       \subcaption{}\label{fig:gauss-map-convex}
+    \end{subfigure}
+        \hspace{1cm}
+        \begin{subfigure}[b]{0.3\textwidth}
+        \includegraphics[width=\textwidth]{curvature/gauss-map-nonconvex}
+        \subcaption{}\label{fig:gauss-map-nonconvex}
+        \end{subfigure}
+    \caption{(\subref{fig:gauss-map-convex}) The Gauss map on a convex region.
+        (\subref{fig:gauss-map-nonconvex}) The Gauss map on a nonconvex region.
+    }
+    \label{fig:normal-sections}
+\end{figure}
+
+Here is an another definition of curvature.
 Every plane containing the normal vector will intersect the surface.
 The intersection of the surface and each normal plane is a curve in $\RR^3$
 gives a one dimensional curve called the \EMPH{normal section}, see  \figref{normal-sections}
@@ -204,6 +233,7 @@ that larger circles have less curvature than smaller ones.
 \end{figure}
 
 
+\subsection{Computing Curvature}
 We now consider computing the Gaussian curvature.
 A \EMPH{quadratic form} to be polynomial of degree two, of the form $p(u,v)=c_1u^2+c_2uv+c_3v^2$ 
 where $c_i\in R$.
@@ -377,6 +407,168 @@ $$2\pi\sqrt{1-c^2}.$$
 	Let $f$ have first fundamental form $\mathrm{I}=Edu^2+2Fdudv +Gdv^2$.
 	Then $f$ is conformal if and only if $E=G$ and $F=0.$
 \end{theorem}
+
+\subsection{Discrete Gaussian Curvature}
+\label{sec:discrete}
+
+
+We use a discrete version of the Guass map to define curvature
+of a vertex of a polygonal surface.
+Recall, that when we considered the curvature at a vertex on a polygon in the plane
+in the theorem of turning tangents, \thmref{simple-bonnet}, we have two equivalent
+formulations depending on
+weather we use the interior or the exterior angles at each vertex.
+We can do a similar thing with the discrete Gaussian curvature at a vertex on a surface,
+instead of considering the angles of the faces incident to a vertex $v$, we can consider
+the complementary angle. The complementary angle is shown in \figref{switcheroo}. 
+If we let $n$ be the number of faces
+incident to $v$, the formula for the discrete curvature then becomes
+\begin{equation}\label{eqn:discrete-curvature-complement-angle}
+K(v)=2\pi - \sum_{i=1}^n (\pi - \xi_i)=(2-n)\pi +\sum_{i=1}^n \xi_i.
+\end{equation}
+By \eqnref{sphere-area}, this is the area of the polygon on the sphere with interior
+angles $\xi_1, \xi_2,\ldots \xi_n.$
+Geometrically, this angle be seen in \figref{switcheroo}.
+If we project the normal vectors on each face onto a sphere and
+connect these points with great arcs to create a polygon on the sphere with interior angles
+$\xi_1, \xi_2,\ldots \xi_n.$
+We have a geometric representation of discrete
+Gaussian curvature as the area on the unit 
+sphere bounded by a spherical polygon whose vertices are the unit normals of 
+the faces around $v$. An example is shown in \figref{discrete-curvature}.
+
+\begin{figure}[htb]
+\centering
+\includegraphics[width=.25\textwidth]{background/switch-angles}
+\caption{The relationship between the angles incident to a vertex and
+its complementary angle.}
+\label{fig:switcheroo}
+\end{figure}
+
+
+
+
+
+\begin{figure}[htb]
+\centering
+\includegraphics[width=.5\textwidth]{curvature/discrete-curvature}
+\caption{Consider the vertex $v$ in the figure on the left. The curvature of $v$
+is the area on the sphere shown on the right. We rotated the sphere
+in order to see the entire polygon.}
+\label{fig:discrete-curvature}
+\end{figure}
+
+
+
+
+
+
+
+We can use a continuous version of the Gauss-Bonnet theorem to derive
+the same expression for discrete curvature at a vertex on a polygonal surface,
+which we now describe.
+Note that we need to be cause full not to use the Gauss-Bonnet theorem to
+define curvature then use curvature to prove the theorem. 
+We already have a definition of discrete curvature above. We include this derivation
+as an application of the continuous Gauss-Bonnet theorem.
+
+Recall, in one dimension, we defined the discrete curvature of a vertex in a
+polygonal curve to be exterior angle.
+Consider a triangulated polygonal surface $T$ with boundary $\partial(T)$.
+The boundary is a one dimensional piecewise linear curve in $\R^3.$
+As with polygons in the plane, at each vertex $v\in \partial(T)$ 
+we have an exterior angle.
+
+The interior angle might consist of many triangles.
+Let $F_v$  denote the set of faces incident to $v$ and let
+$\alpha_f$ denote the angle in face $f$ at $v$.
+The \EMPH{discrete geodesic curvature}
+of $v$  is
+$$k_{g}(v)= \pi-\sum_{f\in F_v}\epsilon_f.$$
+See \figref{discrete-geodesic} for an illustration.
+Notice that if $v$ lies on a straight line, then $\sum_{i}\epsilon_f=\pi$
+and the curvature is zero as we would expect.
+
+
+\begin{figure}[htb]
+\centering
+	\includegraphics[width=.25\textwidth]{curvature/discrete-geodesic}
+	\caption{The discrete geodesic curvature at a vertex $v$ on the boundary
+	of a surface is given by the exterior angle $\epsilon$.}
+	\label{fig:discrete-geodesic}
+\end{figure}
+
+
+At every non-vertex point on a polygonal surface, the continuous Gaussian curvature
+is zero and at every vertex it is undefined.
+We can use the intuitive definition of discrete geodesic curvature and the Gauss-Bonnet
+theorem to give a definition for discrete Gaussian curvature.
+
+Consider removing the neighborhood around a vertex $v$ consisting
+of the faces incident to $v$ and the edges and vertices of these faces call
+this $N(v)$.
+Using the variable names given in \figref{discrete-geodesic},
+the total geodesic curvature
+
+\begin{align}
+\int_{\partial N(v)} kg ds &=\sum_i \pi -(\tau_i+\sigma_{i+1})\nonumber  \\
+       &=\sum_i \pi -(\tau_i+\sigma_{I}) \nonumber  \\
+       &=\sum_i \alpha_i. \nonumber 
+\end{align}
+Where the second equality comes from the boundary being a circle and reorganizing the sum.
+Topologically, this neighborhood is a disk and $\chi(N(v))=1$
+so the Gauss-Bonnet theorem tells us that 
+the discrete Gaussian curvature at a vertex is
+\begin{definition}[Discrete Gaussian curvature\footnote{Discrete Gaussian curvature
+is also called the \emph{angle defect} at a vertex}]\label{def:discrete-curvature-vertex}
+
+$$K(v)=\int_{N(v)}K da=2\pi-\sum_i \alpha_i.$$
+
+\end{definition}
+
+\subsection{Reducing the Size of a Mesh}
+\label{sec:removing}
+
+The definition of discrete Gaussian curvature that we
+derived by applying the Gauss-Bonnet theorem is used when 
+a triangulated surface is generated by scanning an object.
+In this context, a triangulated surface is called a mesh.
+
+Meshes that are obtained by scanning real objects contain noise.
+Most meshes that are generated by scanning require a complete
+remeshing \cite{remeshing-2003}.
+As a first step in remeshing, the curvature at each
+vertex needs to be estimated \cite{mmsb-2003}.
+
+
+
+
+Computing the curvature at each vertex in a mesh can allow one to reduce
+the number of vertices in the mesh without sacrificing mesh quality.
+This leads to simplification process that reduces storage space and improves the efficiency of
+ algorithms run on the mesh.
+If the curvature at a vertex is zero, then the vertex can be removed,
+along with the faces and edges incident to the vertex, without changing 
+the mesh.
+ If the curvature is small, then few points
+are sampled to be included in the re-mesh. If the curvature
+is large, then many points are sampled. See \figref{planck-mesh}
+for an illustration.
+
+\begin{figure}[htb]
+\centering
+\includegraphics[width=.7\textwidth]{meshes/planck-mesh.jpeg}
+\caption{A mesh of Max Plank. The original mesh is on the left. As we move
+from left to right more importance is placed on vertices with large curvature.
+Figure from \cite{alliez-2002}.}
+\label{fig:planck-mesh}
+\end{figure}
+
+
+The experiments in \cite{mmsb-2003} found that the average
+percent error did not exceed $1.3\%$ when using this operator.\todo{what does
+this mean?}
+
 
 
 \subsection{Geodesics Curvature}
