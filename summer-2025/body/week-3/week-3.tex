@@ -184,7 +184,6 @@ Maps with this property are called conformal.
 
 Now we prove that stereographic projection is conformal following \cite{hilbert-imagination}.
 Our secondary goal is to review ideas from calculus that will be useful later.
-
 What does it mean for a function to be differentiable? Let $g:\R\rightarrow \R$ be single variable function that is differentiable at a point $q$. Informally, being differentiable at a point means that the tangent
 line through that point gives a `good' approximation of $f$ for points near $q$. We can use a linear map to approximate $f$. 
 
@@ -194,10 +193,26 @@ For $p\in S_1$, we denote the tangent plane at $p$ by $T_pS_1.$ If we want a vec
 we can consider a smooth curve $\gamma(t)\in S_1$ with $\gamma(t_0)=p$, then $\gamma'(t_0)$ 
 is in $T_pS_1.$ Choosing another curve though $p$ with derivative linearly independent of $\gamma'(t_0)$
 gives a basis for $T_pS_1$.
+
+
 Since $\gamma(t)$ is a smooth curve on $S_1$, then $f\circ \gamma(t)$ is a smooth curve
 on $S_2$ that passes through $f(p)\in S_2.$
 We can approximate $f$ near $p$ with a linear map form $df_p:T_pS_1\rightarrow T_{f(p)}S_2.$
 The map $df_p$ tells us how vectors at $p$ are mapped to vectors at $f(p).$
+The derivative of $f$ is a linear map which is a matrix. The \emph{differential} of $f$ at a point $p$, denoted 
+$df_p$, maps tangent vectors to tangent vectors. This map is often called the pushforward
+because we push tangent vectors from $S_1$ to $S_2$. See \figref{pushforward} for an example.
+The determinant of the differential tells us how tangent vectors are scaled by the map $f$, moreover,
+if we have a small region around a point $p$, the determinate of the differential tells us how 
+the area of the region changes when mapped by $f$.
+
+
+\begin{figure}[htb]
+	\centering
+	\includegraphics[width=.4\textwidth]{background/pushforward}
+	\caption{The differential of a map from one surface to another.}
+	\label{fig:pushforward}
+\end{figure}
 
 A property we will use in our proof is that tangent vectors of $\gamma(t_0)$ are mapped
 to tangent vectors at $f(p)$. To see this, suppose $\gamma'(t_0)\in T_pS_1$ and
