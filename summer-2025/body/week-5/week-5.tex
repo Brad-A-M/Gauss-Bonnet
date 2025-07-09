@@ -1,10 +1,27 @@
 \section{Two Proofs}
 
 
+In this section, we state three versions of the Gauss-Bonnet theorem.
+We then give two different proofs, the first uses properties of vector fields
+on a surface and the the second computes the curvature on each triangle
+then considers connecting the triangles.
 
-A version of the Gauss-Bonnet theorem for smooth surfaces is the following.
 
-\begin{theorem}[The Continuous Gauss-Bonnet Theorem] \label{thm:g-b-c}
+A version of the Gauss-Bonnet theorem for smooth surfaces without boundary is the following.
+
+\begin{theorem}[Continuous Gauss-Bonnet No Boundary] \label{thm:g-b-nb}
+
+If $M$ is a regular surface with boundary $\partial M$ then
+	$$\int_{M} K dA = 2\pi \chi(M)$$
+	where  $K$ is Gaussian curvature and
+	$\chi$ is the Euler characteristic.
+\end{theorem}
+
+For smooth surfaces with boundary, even if the boundary that has corners
+the above theorem can be adapted to include the curvature on the boundary
+to obtain the following.
+
+\begin{theorem}[Continuous Gauss-Bonnet with Boundary] \label{thm:g-b-c}
 
 If $M$ is a regular surface with boundary $\partial M$ then
 	$$\int_{M} K dA+ \int_{\partial M} k_g ds + \sum_i \beta_i= 2\pi \chi(M)$$
@@ -14,8 +31,7 @@ If $M$ is a regular surface with boundary $\partial M$ then
 	$\chi$ is the Euler characteristic.
 \end{theorem}
 
-For a discrete surface, curvature only occurs at vertices.
-A version of the Gauss-Bonnet theorem for smooth surfaces is the following.
+A version of the Gauss-Bonnet theorem for discrete surfaces is the following.
 
 \begin{theorem}[The Discrete Gauss-Bonnet Theorem] \label{thm:g-b-d}
 
@@ -41,6 +57,9 @@ the curvature on each triangle, then considers how the curvature of neighboring 
 cancel. We emphasize that these proofs are fundamentally different.
 
 \subsection{Index Theorem Proof}
+
+
+
 We now include a proof of a combinatorial version of the theorem due to Banchoff
 \cite{banchoff_critical_1970}. Our proof will use another local to global theorem,
 the Poincar\'e index theorem, which we now introduce.
@@ -73,13 +92,13 @@ $$\chi(T)=\sum_{z\in \text{zeros}}i(X,z).$$
 
 \begin{proof}
 We subdivide and perturb the triangulation so that all of the zeros are inside of a unique face.
-It is not obvious that this is possible but we will not prove it here.
+This is not obvious but we will not prove it here.
 We also assume that $X$ is transverse to each edge.
 If a triangle does not contain a zero, then the sum of the charges
 contributed by the flow is zero.
 Thus, all charges that contribute to the Euler characteristic
 results from polygon's that contain a zero.
-The sum of the charges in a polygon that contains a zero is the definition of the sindex
+The sum of the charges in a polygon that contains a zero is the definition of the index
 of the zero.
 
 \end{proof}
@@ -174,21 +193,21 @@ With the Poincar\'e Index theorem in hand, we now turn to the proof of
 the discrete version of the Gauss-Bonnet theorem, \thmref{g-b-d}.
 \begin{proof}
 
-\todo{Define the Gauss map}
 
-We use the index $i(p,\xi)$ to describe the curvature of a convex open
+We use the index $i(p,\ell)$ to describe the curvature of a convex open
 set on the sphere $U$. Let $d\omega$ denote the area integrand for the sphere
 then,
 $$\int_{\Sp^2} d\omega =4\pi.$$
-The area of $g(U)$ is the integral over $\Sp^2$ of the function:
-$F_{g(U)}(\xi)=1$ if $\xi$ is in $g(U)$ and $0$ otherwise.
-If $\xi$ is in $g(U)$, then the height function $\xi$ has a critical point at
-a point $p$ on $U$. We can say more, $i(p,\xi)\neq 0$ for $p\in U$ if and only if
-$\xi$ is in $g(U)$ or $-\xi$ is in $g(U).$
+The area of $g(U)$ is the integral over all of $\Sp^2$ of the characteristic function:
+$F_{g(U)}(v)=1$ if a point $v$ is in $g(U)$ and $0$ otherwise.
+If $\ell$ is in $g(U)$, then the height function $\ell$ has a critical point at
+a point $p$ on $U$. We can say more, $i(p,\ell)\neq 0$ for $p\in U$ if and only if
+$\ell$ is in $g(U)$ of $-\ell$ is in $g(U)$. We assume that $U$ is small enough so that
+$g(U)$ does not contain a pair of antipodal points.
 
 The curvature can then be expressed as 
-$$K(U)=\int_{\Sp^2}F_{g(U)}(\xi)d\omega =\frac{1}{2}\int_{\Sp^2}\sum_{p\in U} i(p,\xi)d\omega.$$
-
+$$K(U)=\int_{\Sp^2}F_{g(U)}(\ell)d\omega =\frac{1}{2}\int_{\Sp^2}\sum_{p\in U} i(p,\ell)d\omega.$$
+The right-hand term is well defined for orientation reversing sets $W$, only a negative is needed.
 
 For a neighborhood $U$ where $g$ is not one-to-one, we write $U$ as a countable
 disjoint union of sets $U_i$ where $g$ is one-to-one with a set $V=U-\cup_{i=1}^\infty U_i$
@@ -198,7 +217,8 @@ $$K(U)=\frac{1}{2}\int_{\Sp^2}\sum_{p\in U} i(p,\xi)d\omega,$$
 where the integrand is well defined almost everywhere since almost every $\xi$
 has finitely many critical points.
 
-
+For a smooth surface, we define the point function $K(p)$ as the limit as the diameter of 
+and open set $U$ with $p\in U$ goes to zero. Thus, we have the following.
 
 \begin{align}
 K(T) &=\frac{1}{2}\int_{\Sp^2}\sum_{p\in U} i(p,\xi)d\omega,  \\ \nonumber
@@ -206,7 +226,7 @@ K(T) &=\frac{1}{2}\int_{\Sp^2}\sum_{p\in U} i(p,\xi)d\omega,  \\ \nonumber
        &=\frac{1}{2}\chi(T)\int_{\Sp^2}d\omega, \\ \nonumber
        &=2\pi\chi(T). \nonumber 
 \end{align}
-This proves \thmref{g-b-d}.
+This proves \thmref{g-b-nb}.
 
 \end{proof}
 Next, we give a significantly different proof the Gauss-Bonnet theorem. 
