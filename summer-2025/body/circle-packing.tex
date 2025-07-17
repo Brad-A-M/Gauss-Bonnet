@@ -24,4 +24,27 @@ $G$, we know we have $P(G)$ a circle packing embedding of $G$.
 Then $P(G)$ is parabolic if the image of the circle packing fills the entire plane
 and hyperbolic if the image of the circle packing fills a disk.
 
+Suppose we are presented with a graph $G$ of disk triangulation with an infinite 
+number of vertices, our task is to determine if $G$ is parabolic or hyperbolic
+We use the Gauss-Bonnet theorem to make this determination \cite{oh_criteria_2022}.
 
+For each $n\in\NN$ let $B_n$ be the combinatorial ball of radius $n$
+centered at a fixed vertex in $G.$ Let $k_n$ be the degree excess sequence
+defined above, let $a_n=\sum_{j=0}^{n-1}(k_j+6)$ for $n=1,2,\ldots$.
+Then $G$ is circle-packing parabolic if 
+
+\begin{equation}\label{eqn:cp-parabolic}
+\sum_{n=1}^{\infty}\frac{1}{a_n}=\infty,
+\end{equation}
+
+and $G$ is recurrent if
+
+\begin{equation}\label{eqn:recurrent}
+\sum_{n=1}^{\infty}\frac{1}{a_n+a_{n+1}}=\infty.
+\end{equation}
+
+As a consequence we have if
+
+$$k_n=\sum_{v\in B_n}(\deg v -6)\leq c\ln n$$
+for sufficiently large $n$, where $c$ is a fixed positive constant,
+then $G$is circle-packing parabolic and recurrent.
