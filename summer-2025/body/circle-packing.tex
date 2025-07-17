@@ -1,0 +1,27 @@
+\subsection{Circle Packing}
+\label{sec:circle-packing}
+
+In \cite{oh_criteria_2022}, Oh uses the Gauss-Bonnet theorem to classify
+circle packing types of disk triangulation graphs embedded into simply
+connected domains in $\CC$.
+
+A disk triangulation graph is a graph $G=(V,E)$ that is planar, all interior faces
+are triangles, the boundary of $G$ forms a simple closed polygonal chain, and each
+vertex has finite degree (locally finite). The graph $G$ can, and often does, have
+an infinite number of faces.
+
+Disk triangulation graphs can be classified into two types, parabolic and hyperbolic.
+This classification relates how functions and random walks on the graph behave.
+If a random walk on the graph returns to the start with probability one (recurrent),
+then the graph is \emph{parabolic}. If a random walk has a positive probability of escaping to
+infinity (transient) then the graph is \emph{hyperbolic}.
+
+The Koebe-Andreev-Thurston theorem (the circle packing theorem) states
+that any planar graph can be realized by a set of interior-disjoint disks corresponding to vertices,
+such that two disks are tangent if and only if the corresponding vertices are connected
+to each other. Thus, if we are given an infinite triangulated disk graph
+$G$, we know we have $P(G)$ a circle packing embedding of $G$.
+Then $P(G)$ is parabolic if the image of the circle packing fills the entire plane
+and hyperbolic if the image of the circle packing fills a disk.
+
+
