@@ -2,20 +2,28 @@
 \label{sec:circle-packing}
 
 
-Circle packing considers arrangements of circles on surfaces, such that
-no two circles overlap. Dense packings are often desirable \cite{chang_simple_2010}.
+Circle packing considers arrangements of circles on surfaces
+with the property that no two circles overlap. 
+Dense packings are often desirable \cite{chang_simple_2010}.
 In dense circle packings, all circles are touching other circles.
 Given a circle packing one can construct the contact graph with a vertex for each
 circle and an edge connecting tangent circles.
 
 A disk triangulation graph is a graph $G=(V,E)$ that is planar, all interior faces
 are triangles, the boundary of $G$ forms a simple closed polygonal chain, and each
-vertex has finite degree (locally finite). 
+vertex has finite degree (locally finite).  See \figref{circle-packing} for an example.
 In \todo{find citation} proved the following remarkable theorem.
 
 \begin{theorem}[Koebe-Andreev-Thurston (KAT)]\label{thm:kat}
 Every finite, simple, planar graph can be represented as a circle packing in the plane.
 \end{theorem}
+
+\begin{figure}[htb]
+        \centering
+        \includegraphics[width=.45\textwidth]{circle-packing}
+		\caption{Part of an infinite circle packing and its corresponding contact graph.
+		\label{fig:circle-packing}}
+\end{figure}
 
 
 Given disk triangulation graph the corresponding circle packing guaranteed
@@ -32,24 +40,26 @@ of graphs which are used to model many important relationships.
 
 \todo{gauss-bonnet all up in here\cite{gu_discrete_2013}}
 
-In \cite{oh_criteria_2022}, Oh uses the Gauss-Bonnet theorem to classify
-circle packing types of disk triangulation graphs embedded into simply
-connected domains in $\CC$.
 
-The graph $G$ can, and often does, have
-an infinite number of faces.
-
-Disk triangulation graphs can be classified into two types, parabolic and hyperbolic.
-This classification relates how functions and random walks on the graph behave.
-If a random walk on the graph returns to the start with probability one (recurrent),
-then the graph is \emph{parabolic}. If a random walk has a positive probability of escaping to
-infinity (transient) then the graph is \emph{hyperbolic}.
-A circle packing $P(G)$ is parabolic if the image of the circle packing fills the entire plane
-and hyperbolic if the image of the circle packing fills a disk.
+Given an infinite disk triangulation graph $G$ with no information about
+its circle packing, since $G$ is infinite, the corresponding circle packing either fills
+the entire plane or it fills the unit disk.
+The plane and the disk cannot be mapped bijectively to each other, thus
+we can define the circle packing type. A disk triangulation graph $G$ is circle packing
+ \emph{parabolic} if there exits a circle packing which fill the entire plane 
+ whose contact graph is equivalent to $G,$ and $G$ is circle packing \emph{hyperbolic}
+ if there exists a circle packing which fill the unit disk and whose contact graph
+ is equivalent to $G$.
 
 Suppose we are presented with a graph $G$ of disk triangulation with an infinite 
 number of vertices, our task is to determine if $G$ is parabolic or hyperbolic
-We use the Gauss-Bonnet theorem to make this determination \cite{oh_criteria_2022}.
+We next share an application of the Gauss-Bonnet theorem given by Oh in \cite{oh_criteria_2022},
+to make this determination.
+
+
+
+
+
 
 For each $n\in\NN$ let $B_n$ be the combinatorial ball of radius $n$
 centered at a fixed vertex in $G.$ Let $k_n$ be the degree excess sequence
