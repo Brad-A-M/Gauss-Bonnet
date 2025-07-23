@@ -57,10 +57,38 @@ We next share an application of the Gauss-Bonnet theorem given by Oh in \cite{oh
 to make this determination.
 
 
+Other criteria for determining the circle packing type of a disk triangulation graph exist.
+A graph is \emph{recurrent} if a simple random walk returns to the start with probability one
+and is \emph{transient} if there is a non-zero probability that a random walk does not return.
+In \cite{he_hyperbolic_1995}, He and Schramm showed that if $G$ is recurrent, then $G$
+is parabolic and if $G$ is transient and of bounded degree then $G$ is hyperbolic.
 
+In general they showed that a if $G$ has a `large' number of vertices with 'large' degree
+then $G$ is parabolic. More specifically
+\begin{itemize}
+\item if at at most finitely vertices in $G$ have degrees greater than six, then $G$ is parabolic.
+\item if the inequality holds
+\begin{equation}\label{eqn:He-Sch-hyper}
+\sup_{S_0}\inf_{S_0\subset S}\left(\frac{1}{|S_0|}\sum_{v\in S}\deg v \right)>6
+\end{equation}
+where $S_0$ and $S$ are nonempty connected finite subgraphs of $G$, then
+$G$ is hyperbolic.
+\end{itemize}
+The inequality in \eqnref{He-Sch-hyper} can be thought of as the average degree 
+in a `region' of $G$ being greater than six.
+Repp proved the following stronger result \cite{repp_bounded_2001}.
+If the sequence
+\begin{equation}\label{eqn:repp}
+k_n=\sum_{v\in B_n}(\deg v - 6)
+\end{equation}
+is bounded, where $B_n$ is the combinatorial ball of radius $n$ (meaning the number of edges
+between a vertex and the center vertex is at most $n$) and centered at a fixed vertex,
+then $G$ is parabolic.
+This sequence $k_n$ is the \emph{degree excess} sequence.
+The Gauss-Bonnet theorem to improve the gap between the above
+statement in the following way.
 
-
-
+\begin{theorem}\label{thm:Oh-packing}
 For each $n\in\NN$ let $B_n$ be the combinatorial ball of radius $n$
 centered at a fixed vertex in $G.$ Let $k_n$ be the degree excess sequence
 defined above, let $a_n=\sum_{j=0}^{n-1}(k_j+6)$ for $n=1,2,\ldots$.
@@ -76,8 +104,46 @@ and $G$ is recurrent if
 \sum_{n=1}^{\infty}\frac{1}{a_n+a_{n+1}}=\infty.
 \end{equation}
 
+\end{theorem}
+
 As a consequence we have if
 
 $$k_n=\sum_{v\in B_n}(\deg v -6)\leq c\ln n$$
 for sufficiently large $n$, where $c$ is a fixed positive constant,
-then $G$is circle-packing parabolic and recurrent.
+then $G$ is circle-packing parabolic and recurrent.
+
+Before providing details we sketch the general idea of the proof of \thmref{Oh-packing}.
+For the ball $B_n$ we consider the curvature $\kappa(B_n),$ 
+and check that it is a constant multiple of the degree excess sequence $k_n.$
+By considering the geodesic curvature on the boundary of $B_n,$ 
+a formula involving the number of edges connecting edges of $B_n$
+to the rest of the graph.
+The Gauss-Bonnet theorem relates the degree excess sequence to
+the number of boundary edges. For a combinatorial sphere
+$S_n$ of radius $n$ centered at a fixed vertex, and $E_n$ is the set of edges
+connecting $B_n$ to the rest of the graph, and show
+$$|S_n|\leq \sum_{j=0}^{n-1}(k_j+6)=a_n \text{ and } |E_n|\leq a_n + a_{n+1},$$
+
+
+Not all infinite planar graphs are flat, some may be negatively curved \cite{higuchi_combinatorial_2001}.
+The combinatorial curvature at $v$ is
+\begin{equation}\label{eqn:combinatorial-curvature}
+\kappa(v)=1-\frac{\deg v}{2}+\sum_{f\sim v}\frac{1}{\deg f}
+\end{equation}
+where $\deg f $ is the number of edges in a face (three here) and
+the summation is over all faces incident to $v.$ 
+If we associate each face $f$ with a regular $(\deg f)$-gon
+of side length one, and glue the faces along sides determined by $G$, then 
+we obtain a polygonal surface and 
+\eqnref{combinatorial-curvature} agrees with our notion of curvature defined earlier only
+scaled so that $2\pi$ becomes one.
+
+Our graphs also require a slight modification of our definition of geodesic curvature.
+Let $\Gamma=[v_0,v_1,\ldots, v_{n-1},v_n=v_0]$ be a cycle of length $n\geq 3.$
+For each $k=1,2,\ldots, n$ let $f_1^k,f_2^k,\ldots f_{s_k}^k$ be the faces incident to $v_k$
+lying on the right of the path $[v_{k-1},v_k,v_{k+1}],$ then the \emph{outer left turn} at $v_k$
+is defined to be
+\begin{equation}\label{eqn:outer-left}
+\tau_o(v_k)=\sum_{j=1}^{s_k}\left(\frac{1}{2}-\frac{1}{\deg f_j^k}\right)-\frac{1}{2},
+\end{equation}
+and the outer left turn of the boundary $\Gamma$ is $\tau_o(\Gamma)=\sum_{k=1}^n\tau_o(v_k)$.
