@@ -6,7 +6,7 @@ Circle packing considers arrangements of circles on surfaces
 with the property that no two circles overlap. 
 Dense packings are often desirable \cite{chang_simple_2010}.
 In dense circle packings, all circles are touching other circles.
-Given a circle packing one can construct the contact graph with a vertex for each
+Given a circle packing one can construct the \emph{contact graph} with a vertex for each
 circle and an edge connecting tangent circles.
 
 A disk triangulation graph is a graph $G=(V,E)$ that is planar, all interior faces
@@ -26,23 +26,65 @@ Every finite, simple, planar graph can be represented as a circle packing in the
 \end{figure}
 
 
-Given disk triangulation graph the corresponding circle packing guaranteed
+Given disk triangulation graph, the corresponding circle packing guaranteed
 by \thmref{kat} assigns angles around all vertices in $V$.
 Thus, for each vertex we can compute its discrete curvature given by
 the circle packing,
-$$K(v)=2\pi -\sum_{\text{angles at } v}\theta_i.$$
-But this is our definition of discrete curvature!
-The Gauss-Bonnet theorem holds using the circle packing metric on the vertices
+$$K(v)=2\pi -\sum_{\text{angles at } v}\theta_i,$$
+assigns a value to each vertex.
+The Gauss-Bonnet theorem holds using this circle packing metric on the vertices
 of graphs which are used to model many important relationships.
 
 
+Not all infinite planar graphs are flat, some may be negatively curved \cite{higuchi_combinatorial_2001}.
+The combinatorial curvature at $v$ is
+\begin{equation}\label{eqn:combinatorial-curvature}
+\kappa(v)=1-\frac{\deg v}{2}+\sum_{f\sim v}\frac{1}{\deg f}
+\end{equation}
+where $\deg f $ is the number of edges in a face (three in a triangulation graph) and
+the summation is over all faces incident to $v.$ 
+If we associate each face $f$ with a regular $(\deg f)$-gon
+of side length one, and glue the faces along sides determined by $G$, then 
+we obtain a polygonal surface and 
+\eqnref{combinatorial-curvature} agrees with our notion of curvature defined earlier only
+scaled so that $2\pi$ becomes one.
 
+If our graph has a boundary we have a notion of geodesic curvature.
+Let $\Gamma=[v_0,v_1,\ldots, v_{n-1},v_n=v_0]$ be a cycle of length $n\geq 3.$
+For each $k=1,2,\ldots, n$ let $f_1^k,f_2^k,\ldots f_{s_k}^k$ be the faces incident to $v_k$
+lying on the right of the path $[v_{k-1},v_k,v_{k+1}],$ then the \emph{outer left turn} at $v_k$
+is defined to be
+\begin{equation}\label{eqn:outer-left}
+\tau_o(v_k)=\sum_{j=1}^{s_k}\left(\frac{1}{2}-\frac{1}{\deg f_j^k}\right)-\frac{1}{2},
+\end{equation}
+and the outer left turn of the boundary $\Gamma$ is $\tau_o(\Gamma)=\sum_{k=1}^n\tau_o(v_k)$.
+
+For a subgraph $S$ of $G$ a disk triangulation graph, we have the following formulation of the Gauss-Bonnet theorem. Define $dS$ as the vertex boundary of $S$, the set of vertices with neighbors both in and not in $S$. Also define $\partial S$ to be the edge boundary of $S$, the set of edges incident to a vertex in $S$ and a vertex not in $S$. Finally, define $bS$ to be the union of the boundary walks of $S$, $bS$ is the union of cycles determined by walking along the boundary of $D(S)=S\cup \left(\cup_{f\in F(S)}f\right).$
+
+
+\begin{theorem}[Circle Packing Gauss-Bonnet]\label{thm:CPGB}
+If $G$ is an infinite disk triangulation graph and $S\subset G$ a connected finite subgraph of $G.$
+Then 
+$$\kappa(S)+\tau_o(bS)=\chi(S),$$
+where $\kappa(S)=\sum_{v\in V(S)}\kappa (v).$
+\end{theorem}
+
+\begin{proof}
+	For a small $\epsilon>0,$ let $P$ be the polygonal region in $S_G$ obtained
+	from a $\epsilon$-neighborhood of $D(S)$ with sharp corners.
+	Let $bP$ be the topological boundary of $P$ and $\tau(bP)$ be the total left turn, or the 
+	geodesic curvature, of $bP.$ Then, one can check that 
+	$$\tau(bP)=2\pi \tau_o(bS).$$
+	The polyhedral surface $S_G$ is locally Euclidean except the vertices of $G$.
+	Then $\kappa(\text{int} (P))=2\pi \kappa(S)$ and the theorem follows from the Gauss-Bonnet Theorem
+	for polyhedral surfaces.
+\end{proof}
 
 \todo{gauss-bonnet all up in here\cite{gu_discrete_2013}}
 
 
 Given an infinite disk triangulation graph $G$ with no information about
-its circle packing, since $G$ is infinite, the corresponding circle packing either fills
+its circle packing, the corresponding circle packing either fills
 the entire plane or it fills the unit disk.
 The plane and the disk cannot be mapped bijectively to each other, thus
 we can define the circle packing type. A disk triangulation graph $G$ is circle packing
@@ -125,25 +167,3 @@ connecting $B_n$ to the rest of the graph, and show
 $$|S_n|\leq \sum_{j=0}^{n-1}(k_j+6)=a_n \text{ and } |E_n|\leq a_n + a_{n+1},$$
 
 
-Not all infinite planar graphs are flat, some may be negatively curved \cite{higuchi_combinatorial_2001}.
-The combinatorial curvature at $v$ is
-\begin{equation}\label{eqn:combinatorial-curvature}
-\kappa(v)=1-\frac{\deg v}{2}+\sum_{f\sim v}\frac{1}{\deg f}
-\end{equation}
-where $\deg f $ is the number of edges in a face (three here) and
-the summation is over all faces incident to $v.$ 
-If we associate each face $f$ with a regular $(\deg f)$-gon
-of side length one, and glue the faces along sides determined by $G$, then 
-we obtain a polygonal surface and 
-\eqnref{combinatorial-curvature} agrees with our notion of curvature defined earlier only
-scaled so that $2\pi$ becomes one.
-
-Our graphs also require a slight modification of our definition of geodesic curvature.
-Let $\Gamma=[v_0,v_1,\ldots, v_{n-1},v_n=v_0]$ be a cycle of length $n\geq 3.$
-For each $k=1,2,\ldots, n$ let $f_1^k,f_2^k,\ldots f_{s_k}^k$ be the faces incident to $v_k$
-lying on the right of the path $[v_{k-1},v_k,v_{k+1}],$ then the \emph{outer left turn} at $v_k$
-is defined to be
-\begin{equation}\label{eqn:outer-left}
-\tau_o(v_k)=\sum_{j=1}^{s_k}\left(\frac{1}{2}-\frac{1}{\deg f_j^k}\right)-\frac{1}{2},
-\end{equation}
-and the outer left turn of the boundary $\Gamma$ is $\tau_o(\Gamma)=\sum_{k=1}^n\tau_o(v_k)$.
