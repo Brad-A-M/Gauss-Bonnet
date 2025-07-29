@@ -1,31 +1,143 @@
 \section{Chern-Gauss-Bonnet Theorem}
 \label{sec:chern-gauss-bonnet}
 
-In this section, we consider higher dimensional generalizations of the
-Gauss-Bonnet Theorem. 
+Generalizing the Gauss-Bonnet theorem to all even dimensions
+first posed by Hopf \cite{?}.
+In 1943 Allendoerfer and Weil gave such ageneralization \cite{},
+their proof is technical. In 1944 Chern gave a simple intrinsic proof
+that we share \cite{chern_simple_1944}. In this section, we introduce
+the necessary machinery to discuss the Gauss-Bonnet theorem in higher
+dimensions. We then include a proof of the Chern-Gauss-Bonnet theorem
+due to Li \cite{li_gauss-bonnet-chern_2011}. 
 
-Let's recall our definition of curvature at a point $p$ on a surface via the Gauss map.
-We considered a `small' neighborhood around $p$ and computed
-the area of the map of this neighborhood on the sphere. 
-
-Let $S$ be an even-dimensional compact orientable hypersurface in 
-$\R^{2n+1},$ and let
-
-$$G:S\rightarrow \Sp^{2n}$$
-be the Gauss map into the unit $2n$-sphere.
-The pull-back $G^*\omega_{2n}$ is a $2n$ form on $S$ because
- the volume form \todo{define/discuss forms} of $\Sp^{2n}$ is $\omega_{2n}.$
- We are able to compute areas on $S$ using the same method as we did 
-for $n=1.$
-
-For even-dimensional hypersurfaces, our task is to show that 
-$$\int_SG^*\omega_{2n}=2\pi \chi(S).$$
-
-The degree of $G,$ denoted $\deg G$ is the number of pre-images in 
-$G^{-1}(p)$ for a generic $p$ in $\Sp^2.$
-The $2$-sphere has volume $4\pi,$ we have
-$$\frac{1}{2\pi}\int_SKdA=\frac{1}{2\pi}(\deg G) 4\pi = 2(\deg G).$$
+For a surface, a neighborhood around each point can be mapped 
+ to a subset of $\R^2$ by a  homeomorphism. A $n$-dimensional manifold has
+the property that each point has a neighborhood that can be mapped
+to a subset of $\R^n$ by a homeomorphism.
 
 
-\cite{li_gauss-bonnet-chern_2011} Nice summary
-\cite{chern_simple_1944} Chern's original paper.
+How should we measure curvature in dimensions greater than two?
+In two dimensions we computed the Gaussian curvature as the determinant of
+a matrix, the derivative of the Gauss map. We approximated the Gauss map
+locally using two vectors in the tangent plane.
+In higher dimensions we have the Reimannian curvature tensor which we now define.
+In $d$ dimensions, we need $d$ vectors to approximate our manifold \todo{define?}.
+
+
+
+A map 
+$$f:V_1\times \ldots \times V_d\rightarrow W$$ where $V_1,\ldots, V_kd,W$ are vector spaces
+is \emph{multilinear} if, for each $i$, if all variables but $v_i$ are constant, then $f(v_1,\ldots ,v_i,\ldots
+v_d)$ is a linear function of $v_i.$
+
+A \emph{Reimannian curvature tensor } is a multilinear map from a choice of basis vectors for the tangent
+space at a point to $\R$. 
+
+
+Another way to think about curvature is by how much the second derivative fails
+to commute. In $\R^n$, Schwarz's Theorem tells us that second derivative commute
+$$\frac{\partial^2 f}{\partial x\partial y}=\frac{\partial^2 f}{\partial y\partial x}.$$
+But this is not the case on a curved space. Suppose $V$ is a vector field and $X$ and $Y$
+are coordinate vector fields, $\partial_x,\partial_y$ are
+a coordinate basis if $\nabla_X \nabla_Y V$ means differentiate $V$ along $Y$, then differentiate
+the result along $X.$
+We ask, what does 
+$$\nabla_X\nabla_YV-\nabla_Y\nabla_X V$$
+equal?
+On the sphere, consider longitude and latitude as our coordinates and consider
+a vector at a point on the equator. If we move to the north-pole, rotate our vector 90$^\circ$ east,
+travel back to the equator and return along the equator to our original point, our vector will have rotated.
+
+Some ideas of exterior algebra in \cite{Crane:2013}. $k$-dimensional volumes are described by a list of $k$-vectors.
+0-forms on a manifold $M$ is a smooth function $f:M\rightarrow \R.$
+1-forms assign to each point $p$ a map from an element of the the tangent space to $\R$.
+For example say $\omega = ydx+xdy$, then at the point $(2,1)$ we have
+$\omega_{(2,1)}=1dx+2dy,$ then $\omega_{(2,1)}$ maps a vector $v=(a,b)$ to
+$1a+2b.$
+
+The choice of the vectors is not the important part, so long as they span the same space.
+Linear subspaces and $k$-vectors are similar, except $k$-vectors have magnitude and an orientation.
+A vector has a direction and magnitude and direction, while a line does not.
+
+2-vectors $(u\land v)$ can be thought of as the parallelogram formed by vectors $v$ and $u$ in $\R^3.$
+The magnitude is the area and there are two orientations, the `top' and `bottom' of the parallelogram.
+We are able to add two 2-vectors by adding the corresponding vectors and we can scale each coordinate.
+Thus, 2-forms are multilinear.
+Switching the order of the two vectors changes the orientation.
+
+A basis for 0-forms is simply 1, for 1-forms is $\{dx^1,dx^2,dx^3\}$,
+for 2-forms is $\{dx^2\land dx^3, dx^3\land dx^1, dx^1\land dx^2\}.$
+
+The \emph{exterior derivative} is an operation that maps $k$-froms to $k+1$-forms.
+A zero from is a smooth function $f$ is $df=\frac{\partial f}{\partial x^1}dx^1+\ldots + \frac{\partial f}{\partial x^n}dx^n.$ Given a 1-form $\omega=fdx+gdy,$ the exterior derivative is
+$$d\omega=\left(\frac{\partial g}{\partial x}-\frac{\partial f}{\partial y}\right)dx\land dy.$$
+To summerize some properties of $d$ include:
+its linear $d(\alpha +\beta)=d\alpha +d\beta,$ and Leibniz rule:
+$d(\alpha \land \beta)=d\alpha \beta + (-1)^k \alpha \land d\beta,$ if $\alpha$ is a $k$-form,
+and $d^2=0.$
+
+\todo{transition here to technical differential topology}
+
+Given a smooth $n$ dimensional manifold, we are able to determine the topology of $M$ by considering
+smooth functions on $M$.
+Define the chain complex of differential forms:
+
+$$0\rightarrow \Omega^0(M) \xrightarrow{d} \Omega^1(M) \xrightarrow{d} \Omega^2(M)\xrightarrow{d}\ldots$$
+where $\Omega^k(M)$ is the space of smooth $k$-forms, and $d$ is the exterior derivative.
+Since $d\circ d=0$, we have im$(d:\Omega^{k-1}\rightarrow \Omega^k)\subseteq \ker(d:\Omega^{k}\rightarrow \Omega^{k+1}).$
+A $k$-form $\omega$ is \emph{closed} if $d\omega=0$ and \emph{exact} if there exists
+a $k+1$-form $\eta$ with $\omega=d\eta.$
+Define
+
+$$H_{dR}^k(M)=\frac{\ker(d:\Omega^{k}\rightarrow \Omega^{k+1})}{\text{im}(d:\Omega^{k-1}\rightarrow \Omega^k)}$$
+to be the \emph{$k$th de Rham cohomology group}.
+
+Let us compute $H_{dR}^2(\Sp^1).$ A $1$-form is $\omega=f(\theta)d\theta),$ since $\Sp^1$ is one
+dimensional and $d\omega$ is a 2-form, all 1-forms are closed. For a 1-form $\omega$ to be exact
+there is a smooth function $f$ on $\Sp^1$ with $\omega=f'(\theta)d\theta$.
+Thus, exact 1-forms are those whose integral around the circle is zero, there are many 1-forms
+whose integral around the circle are non-zero, say $\omega=d\theta$ where $\int_{\Sp^1}\omega=2\pi.$
+A basis for $H_{dR}^1(\Sp^1)$ is given by any 1-form whose integral on $\Sp^1$ is nonzero and
+$$H_{dR}^1(\Sp^1)\simeq \R.$$
+
+
+
+A \emph{sphere bundle} over a manifold is a map
+$$\pi:E\rightarrow M$$
+such that $\pi^{-1}(p)\simeq \Sp^n.$ 
+If we move from one point to another on $M$, a transition function
+maps between the spheres associated by the sphere bundle.
+If our bundle admits a Riemannian inner product that is preserved
+by all transition functions, then we say the bundle can be reduced to $O(d,\R).$
+
+A \emph{section}
+is a map
+$$s:M\rightarrow E$$
+with $\pi \circ s = id_M.$ In other word, for every $p\in M$,
+the map $s$ picks and element of $s(p)\in E$ in the fiber over $b$.
+If the section is defined on all of $M$, it is a \emph{global section}.
+
+Let $S$ be an oriented sphere bundle over a differentiable manifold $M$.
+In general, $S$ might not have a global section, however, there may be a section over
+the complement of an isolated set of points $I$, called the singularities of $s$.
+
+\begin{theorem}[Singularities]
+Let $\pi: S\rightarrow M$ be a $(d-1)$-sphere bundle over a closed manifold $M$ of dimension $d$.
+Assume that the structure group of $S$ can be reduced to the orthogonal group $O(d,\R)$, then there exists
+a smooth map $s:M\rightarrow s$ such that $s\in \Gamma(M\setminus I, S),$ where $I$ is discrete.
+\end{theorem}
+
+Chern's proof uses a generalized version of \thmref{poincare-index}, the Poincar\'e-Hopf Index Theorem.
+The central ideas is that the theorem localizes the global topology of a manifold using the zeros of a vector field.
+Let $f:M\rightarrow N$ be a smooth map between two closed oriented manifold of dimension $d$.
+Then $f$ defines a pullback on de Rham cohomology $f^*:H_{dR}^d(N,\R)\rightarrow H_{dR}^d(M,\R)$.
+Let $\omega$ be the generator of $H_{dR}^d(N,\R),$ then the \emph{mapping degree}
+of $f$ is defined to be $\int_Mf^*\omega.$
+
+\begin{theorem}[Gernalized Poincar\'e-Hopf]\label{thm:gph}
+Let the set $I$ be defined as above and suppose it is chosen to be discrete.
+If $M$ is a closed oriented manifold and $X$ is a vector field on $M$, then
+$$\sum_{x_i\in I} \text{ind}_X(x_i)=\chi(M).$$
+\end{theorem}
+
+
