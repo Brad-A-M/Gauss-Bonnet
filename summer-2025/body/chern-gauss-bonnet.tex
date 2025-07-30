@@ -2,7 +2,7 @@
 \label{sec:chern-gauss-bonnet}
 
 Generalizing the Gauss-Bonnet theorem to all even dimensions
-first posed by Hopf \cite{?}.
+first posed by Hopf \cite{hopf_uber_1926}.
 In 1943 Allendoerfer and Weil gave such ageneralization \cite{},
 their proof is technical. In 1944 Chern gave a simple intrinsic proof
 that we share \cite{chern_simple_1944}. In this section, we introduce
@@ -141,3 +141,66 @@ $$\sum_{x_i\in I} \text{ind}_X(x_i)=\chi(M).$$
 \end{theorem}
 
 
+Some comments from historical development Wu.
+Chern's contribution - the unit sphere bundle $\pi: S(M)\rightarrow M$
+of a Riemannian manifold $M$ can replace the Gauss map.
+
+If $\{\Omega_j^i\}$ is the locally curvature forms in a hypersurface $M$,
+then `a computation shows that'
+
+$$G^*\omega_{2n}=\frac{v(\Sp^{2n})}{2}\Omega,$$
+where $v(\Sp^{2n})$ is the volume of the unit $2n$-sphere, and $\Omega$
+is the globally defined $2n$-form on $M$,
+$$\Omega=\frac{1}{2^{2n}\pi^n n!}\sum \epsilon_{i_1\ldots i_{2n}}\Omega_{i_2}^{i_1}\ldots \Omega_{i_{2n}}^{i_{2n-1}}$$ 
+and $\epsilon_{i_1\ldots i_{2n}}$ is the sign of the permutation
+of $i_1\ldots i_{2n}$.
+
+
+The unit sphere bundle of an orientable even-dimensional Riemannian manifold 
+$M$, there is a $(2n-1)$-form $\Pi$ on $S(M)$,
+so that 
+$$\pi^*\Omega = d\Pi.$$
+When lifted to the sphere bundle, the Gauss-Bonnet integrand $\Omega$ 
+becomes exact.
+
+Let $v$ be a unit vector field on $M$ with exactly one singularity at $x_0\in M.$
+Then $v$ is a section of $S(M)$ over $M\setminus \{x_0\}.$
+Stokes' theorem tells us
+$$\int_M\Omega=\int_{S_{x_0}}v^*\Pi.$$
+
+On each fibre $S_{x_0},$ the form $\Pi$ restricts to the volume element of $S_{x_0}$
+times a constant, namely
+
+$$\frac{(n-1)!}{2\pi^n}.$$
+
+The Hopf index theorem shows that
+$$\int_{S_{x_)}}v^*\Pi=\chi(M).$$ 
+
+Cher's proof that $\pi^*\Omega=d\Pi$ is important.
+
+Let $F(M)$ be the bundle of orthonormal frames of $M$.
+The curvature form is $\Theta_j^i$ and $\Theta$ on $F(M)$
+be
+
+$$\Theta=\frac{1}{2^{2n}\pi^n n!}\sum \epsilon_{i_1\ldots i_{2n}}\Theta_{i_2}^{i_1}\ldots \Theta_{i_{2n}}^{i_{2n-1}},$$
+then, f $\pi_0:F(M)\rightarrow M$ is the natural projection, we have
+$$\pi_0^*\Omega =\Theta.$$
+
+Build two $(2n-1)$ forms on $F(M)$
+$$\Phi_k=\sum \epsilon_{i_1\ldots i_{2n}} \Theta_{i_2}^{i_1}\land \ldots\land \Theta_{i_{2k}}^{i_{2k-1}}\land \theta_{i_{2n}}^{i_{2k-1}}\land \ldots \land \theta_{i_{2n}}^{i_{2n-1}},$$
+and
+$$\Psi_k=(2k+1)\sum \epsilon_{i_1\ldots i_{2n}} \Theta_{i_2}^{i_1}\land \ldots\land \Theta_{i_{2k}}^{i_{2k-1}}\land \Theta_{i_{2n}}^{i_{2k-1}}\land \theta_{i_{2n}}^{i_{2k+2}}\land \ldots \land \theta_{i_{2n}}^{i_{2n-1}}.$$
+
+We have the relation:
+$$d\Phi_k=-\Psi_{k-1}+\frac{2n-2k-1}{2(k+1)}\Psi_k,$$
+where $k=0,\ldots, n-1,$ and $\Psi_{-1}=0.$
+Define a $(2n-1)$-form $\Pi'$ on $F(M)$ by
+$$\Pi'=\frac{1}{\pi^n}\sum_{k=0}^{n-1}\frac{1}{1\cdot 3\cdot 5\cdot \cdot \cdot (2n-2k-1)\cdot 2^{n+k}k!}\Psi_k.$$
+
+Then $\Psi_{n-1}=(2^{2n}\pi^n n!)\Theta,$ we get
+$$d\Pi'=\frac{1}{2^{2n}\pi^n n!}\Psi_{n-1}=\Theta.$$
+
+So, $\Pi'$ is form $\Pi$ on $S(M)$ and $\Theta$ `descends' to $S(M)$ as $\pi^*\Omega.$
+Thus,
+$$d\Pi=\pi^*\Omega$$
+and this completes the proof.
