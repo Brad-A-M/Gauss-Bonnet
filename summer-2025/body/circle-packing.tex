@@ -99,6 +99,31 @@ We next share an application of the Gauss-Bonnet theorem given by Oh in \cite{oh
 to make this determination.
 
 
+\begin{theorem}\label{thm:Oh-packing}
+For each $n\in\NN$ let $B_n$ be the combinatorial ball of radius $n$
+centered at a fixed vertex in $G.$ Let $k_n$ be the degree excess sequence
+defined above, let $a_n=\sum_{j=0}^{n-1}(k_j+6)$ for $n=1,2,\ldots$.
+Then $G$ is circle-packing parabolic if 
+
+\begin{equation}\label{eqn:cp-parabolic}
+\sum_{n=1}^{\infty}\frac{1}{a_n}=\infty,
+\end{equation}
+
+and $G$ is recurrent if
+
+\begin{equation}\label{eqn:recurrent}
+\sum_{n=1}^{\infty}\frac{1}{a_n+a_{n+1}}=\infty.
+\end{equation}
+
+\end{theorem}
+
+As a consequence we have if
+
+$$k_n=\sum_{v\in B_n}(\deg v -6)\leq c\ln n$$
+for sufficiently large $n$, where $c$ is a fixed positive constant,
+then $G$ is circle-packing parabolic.
+
+
 Other criteria for determining the circle packing type of a disk triangulation graph exist.
 A graph is \emph{recurrent} if a simple random walk returns to the start with probability one
 and is \emph{transient} if there is a non-zero probability that a random walk does not return.
@@ -127,32 +152,8 @@ is bounded, where $B_n$ is the combinatorial ball of radius $n$ (meaning the num
 between a vertex and the center vertex is at most $n$) and centered at a fixed vertex,
 then $G$ is parabolic.
 This sequence $k_n$ is the \emph{degree excess} sequence.
-The Gauss-Bonnet theorem to improve the gap between the above
-statement in the following way.
 
-\begin{theorem}\label{thm:Oh-packing}
-For each $n\in\NN$ let $B_n$ be the combinatorial ball of radius $n$
-centered at a fixed vertex in $G.$ Let $k_n$ be the degree excess sequence
-defined above, let $a_n=\sum_{j=0}^{n-1}(k_j+6)$ for $n=1,2,\ldots$.
-Then $G$ is circle-packing parabolic if 
 
-\begin{equation}\label{eqn:cp-parabolic}
-\sum_{n=1}^{\infty}\frac{1}{a_n}=\infty,
-\end{equation}
-
-and $G$ is recurrent if
-
-\begin{equation}\label{eqn:recurrent}
-\sum_{n=1}^{\infty}\frac{1}{a_n+a_{n+1}}=\infty.
-\end{equation}
-
-\end{theorem}
-
-As a consequence we have if
-
-$$k_n=\sum_{v\in B_n}(\deg v -6)\leq c\ln n$$
-for sufficiently large $n$, where $c$ is a fixed positive constant,
-then $G$ is circle-packing parabolic and recurrent.
 
 Before providing details we sketch the general idea of the proof of \thmref{Oh-packing}.
 For the ball $B_n$ we consider the curvature $\kappa(B_n),$ 
@@ -166,4 +167,14 @@ $S_n$ of radius $n$ centered at a fixed vertex, and $E_n$ is the set of edges
 connecting $B_n$ to the rest of the graph, and show
 $$|S_n|\leq \sum_{j=0}^{n-1}(k_j+6)=a_n \text{ and } |E_n|\leq a_n + a_{n+1},$$
 
+\noindent \textbf{Exercises}
 
+
+\begin{enumerate}
+	\item Find a circle packing that illustrates that \eqnref{He-Sch-hyper} is not tight.
+	
+	\item 
+	
+	\item 
+	
+\end{enumerate}
