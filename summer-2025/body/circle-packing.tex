@@ -124,13 +124,14 @@ for sufficiently large $n$, where $c$ is a fixed positive constant,
 then $G$ is circle-packing parabolic.
 
 
-Other criteria for determining the circle packing type of a disk triangulation graph exist.
+Related criteria for determining the circle packing type of a disk triangulation graph have been are
+given in \cite{he_hyperbolic_1995}.
 A graph is \emph{recurrent} if a simple random walk returns to the start with probability one
 and is \emph{transient} if there is a non-zero probability that a random walk does not return.
 In \cite{he_hyperbolic_1995}, He and Schramm showed that if $G$ is recurrent, then $G$
 is parabolic and if $G$ is transient and of bounded degree then $G$ is hyperbolic.
 
-In general they showed that a if $G$ has a `large' number of vertices with 'large' degree
+More generally,  they showed that a if $G$ has a `large' number of vertices with 'large' degree
 then $G$ is parabolic. More specifically
 \begin{itemize}
 \item if at at most finitely vertices in $G$ have degrees greater than six, then $G$ is parabolic.
@@ -156,16 +157,43 @@ This sequence $k_n$ is the \emph{degree excess} sequence.
 
 
 Before providing details we sketch the general idea of the proof of \thmref{Oh-packing}.
-For the ball $B_n$ we consider the curvature $\kappa(B_n),$ 
+For the combinatorial ball $B_n$ we consider the curvature $\kappa(B_n),$ 
 and check that it is a constant multiple of the degree excess sequence $k_n.$
 By considering the geodesic curvature on the boundary of $B_n,$ 
 a formula involving the number of edges connecting edges of $B_n$
 to the rest of the graph.
 The Gauss-Bonnet theorem relates the degree excess sequence to
 the number of boundary edges. For a combinatorial sphere
-$S_n$ of radius $n$ centered at a fixed vertex, and $E_n$ is the set of edges
+$S_n$ of radius $n$ centered at a fixed vertex, and $E_n$ the set of edges
 connecting $B_n$ to the rest of the graph, and show
-$$|S_n|\leq \sum_{j=0}^{n-1}(k_j+6)=a_n \text{ and } |E_n|\leq a_n + a_{n+1},$$
+$$|S_n|\leq \sum_{j=0}^{n-1}(k_j+6)=a_n \text{ and } |E_n|\leq a_n + a_{n+1}.$$
+
+We now prove \thmref{Oh-packing}.
+
+\begin{proof}
+Here, curvature is
+$$K(v)=\deg v - 6.$$
+The sum of the curvature in a ball $B_n$ is
+$$k_n=\sum_{v\in B_n}K(v).$$
+
+Then $$\sum_{j=0}^{n-1}(k_j+6)$$ is approximately
+the total combinatorial angle content up to radius $n.$
+
+Since $B_n$ is a topological disk, the version of the Gauss-Bonnet
+given in \thmref{CPGB} tells us that 
+
+$$2\pi \chi(B_n)=2\pi.$$
+
+This relates the boundary turning angle and the interior curvature.
+
+If
+$$\sum \frac{1}{\sum_{j=0}^{n-1}(k_j+6)}=\infty,$$
+boundary turning decays slowly.
+Thus, the packing `opens' outward in a linear manner.
+No conformal hyperbolic compactification is possible.
+There is `enough room' for infinitely many disjoint `rings' of combinatorial
+radius $n$.
+\end{proof}
 
 \noindent \textbf{Exercises}
 
