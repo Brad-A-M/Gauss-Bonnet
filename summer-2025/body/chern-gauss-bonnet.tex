@@ -76,7 +76,7 @@ its linear $d(\alpha +\beta)=d\alpha +d\beta,$ and Leibniz rule:
 $d(\alpha \land \beta)=d\alpha \beta + (-1)^k \alpha \land d\beta,$ if $\alpha$ is a $k$-form,
 and $d^2=0.$
 
-\todo{transition here to technical differential topology}
+\subsection{Cohomology}
 
 Given a smooth $n$ dimensional manifold, we are able to determine the topology of $M$ by considering
 smooth functions on $M$.
@@ -101,7 +101,66 @@ A basis for $H_{dR}^1(\Sp^1)$ is given by any 1-form whose integral on $\Sp^1$ i
 $$H_{dR}^1(\Sp^1)\simeq \R.$$
 
 
+The $k^{th}$ \emph{bettie number} is defined to be $b_k=\dim H^k(M).$
+The \emph{Euler characteristic} for dimensions $d>2$  is defined to be
+$$\chi(M)=\sum_{k=0}^d(-1)^kb_k.$$
+If $M$ is orientable and closed, a fundamental idea in topology is \emph{Poincar\'e duality} which says
+$$H^k(M)\simeq H^{d-k}(M).$$
+Let $d=2n+1$ for $0\leq k\leq n$ Poincar\'e duality tells us that $b_k=b_{d-k}.$
+Then
+$$\chi(M)=\sum_{k=0}^n(-1)^kb_k + \sum_{k=n+1}^{2n+1}(-1)^kb_k=0.$$
 
+This is one reason why the Chern-Gauss-Bonnet theorem is only defined
+for even dimensions, the Euler characteristic of orientable compact odd dimensional
+manifolds without boundary is zero.
+
+The Riemann curvature tensor $R^i_{jkl}$ gives a local description of curvature.
+We encode $R^i_{jkl}$ in terms of frame bundles (defined shortly) and obtain
+a curvature 2-form $\Omega$. Then we build an algebraic invariant top-degree form
+(we can only integrate on top degree forms?). called the Pfaffian $Pf(\Omega)$.
+The Pfaffian is a determinant of a skew-symmetric matrix and zero when the degree odd,
+the other half of the reason we only consider odd dimensions.
+For even dimension we have $$PF(\Omega)^2=\det(\Omega).$$
+More explicitly we have 
+
+$$PF(\Omega)=\frac{1}{2^n n!}\sum_{\sigma}sgn(\sigma)\Omega_{\sigma(1)\sigma(2)}\land \ldots \land \Omega_{\sigma(2n-1)\sigma(2n)}$$
+the wedge gives us a $2n$ form that encodes the Riemann curvature tensor.
+
+\begin{example}
+Consider the $\Sp^4$ embedded in $\R^5,$ if we assume the Chern-Gauss-Bonnet
+theorem we can use it to compute $\chi(\Sp^4).$
+
+Let $\{e_1,e_2,e_3,e_4\}$ be an orthonormal basis for the tangent space
+and let $\{\theta^1,\theta^2,\theta^3,\theta^4\}$ be the corresponding coframe
+of 1-forms.
+
+The Riemann curvature tensor with respect to this basis is
+$$R_{ijkl}=g_{ik}g_{jl}-g_{il}g_{jk}$$
+where $g_{ij}$ is the standard metric on $\Sp^4.$
+The curvature 2-form matrix $\Omega_{ij}$ is
+$$\Omega_{ij}=\sum_{k<l}R_{ijkl}\theta^k \land \theta^l=\theta^i\land \theta^j.$$
+
+Since $\Sp^4$ is four dimensional, the curvature form is a $4\times 4$ skew-symmetric
+matrix of 2-forms. 
+Explicitly
+$$\Omega = \begin{bmatrix}
+0 & \theta^1\land \theta^2 & \theta^1\land \theta^3 & \theta^1\land \theta^4\\
+- \theta^1\land \theta^2 & 0 & \theta^2\land \theta^3 & \theta^2\land \theta^4\\
+- \theta^1\land \theta^2 & - \theta^2\land \theta^3 & 0 & \theta^3\land \theta^4\\
+- \theta^1\land \theta^4 & - \theta^2\land \theta^4 & - \theta^3\land \theta^4 & 0\\
+\end{bmatrix}$$
+The Pfaffian of the matrix is
+
+
+$$Pf(\Omega)=\frac{1}{8}\sum_{\sigma\in S_4}sgn(\sigma)\Omega_{\sigma(1)\sigma(2)}\land \Omega_{\sigma(3)\sigma(4)}$$
+but since our curvature is constant, the Pfaffian is also constant and is exactly
+equal to the volume form,
+$$Pf(\Omega)= \theta^1\land \theta^2\land \theta^3\land \theta^4.$$
+
+
+\end{example}
+
+\subsection{Bundles}
 A \emph{sphere bundle} over a manifold is a map
 $$\pi:E\rightarrow M$$
 such that $\pi^{-1}(p)\simeq \Sp^n.$ 
