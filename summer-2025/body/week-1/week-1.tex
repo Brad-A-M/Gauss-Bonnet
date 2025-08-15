@@ -14,9 +14,9 @@ The goal of this work is to demonstrate that both of the directions described ab
 
 In symbols, a version of the Gauss-Bonnet theorem can be expressed as
 
-\begin{equation}\label{eqn:g-b-noboundary}
-		\int_MK dA =2\pi \chi(M)
-\end{equation}
+\begin{theorem}\label{thm:g-b-noboundary}
+		$$\int_MK dA =2\pi \chi(M)$$
+\end{theorem}
 where $M$ is a smooth surface in $\RR^3$ without boundary, $K$ is Gaussian curvature
 and $\chi(M)$ is the Euler characteristic of $M$.
 
@@ -57,15 +57,17 @@ One common approach is to first prove the theorem for simply connected domains
 with boundary, then triangulate a surface and add up the contribution from each triangle.
 However, this proof seems to lack a geometric intuition that other proofs provide. \cite{wu_historical_2008},
 A second commonly seen proof is to use Stokes theorem  \cite{doc76,pressley_elementary_2010}.
-Many other proofs exist \cite{guillemin_differential_2010,levi-bicycle,grinfeld_introduction_2013}.
+Many other proofs exist \cite{guillemin_differential_2010,levi-bicycle,grinfeld_introduction_2013,li_gauss-bonnet-chern_2011}.
 
 
-For (3), the theorem has been generalized in the following ways.
-The two notable examples are the Chern-Gauss-Bonnet theorem\cite{chern_simple_1944} and
-the Atiyah–Singer index theorem is an example  \cite{atiyah_index_1963}.
-A generalization to higher dimensions \cite{guillemin_differential_2010}.
-The discrete versions of the theorem discussed here can be thought of as extensions
-to more computationally friendly objects.
+For generalization (3), we will share versions of \thmref{g-b-noboundary} for smooth
+surfaces with boundary and discrete versions that allow us to extend the theorem to 
+polyhedral surface that are useful in computations. We will see a version that considers
+an infinite analog  in \secref{circle-packing}.
+Two  celebrated generalizing \thmref{g-b-noboundary} to higher dimensions are the Chern-Gauss-Bonnet theorem\cite{chern_simple_1944}, which we
+discuss in \secref{chern-gauss-bonnet}, and
+the Atiyah–Singer index theorem  \cite{atiyah_index_1963}.
+
 
 
 
