@@ -26,12 +26,14 @@ for an example of painting a car door.
 
 But how do we pick a start curve that meets our objectives of uniform paint coverage 
 and minimal time?
-In \cite{atkar_towards_2003,atkar_uniform_2005}, the authors
-use the Gauss-Bonnet theorem to characterize start curves that 
-meet our objects. 
-More specifically, the Gauss-Bonnet theorem is used to  select the geodesic
+In \cite{atkar_towards_2003,atkar_uniform_2005}, 
+ the Gauss-Bonnet theorem is used to  select the 
 start curve that minimizes the geodesic curvature of the
-subsequent offset curves. 
+subsequent offset curves 
+ ensuring uniform coverage.
+ This is because offset curves with high geodesic curvature may result in self-interestions
+ of subsequent offsets, even when the distances between them are small.
+
 
 Let $C_{st}$  be a segment of a smooth start curve $\gamma_0$
 with end points $\gamma_0(t_0)$ and $\gamma_0(t_1)$ and let
