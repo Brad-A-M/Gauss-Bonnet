@@ -25,11 +25,47 @@ Homeomorphisms of the torus send essential simple closed curves to essential clo
 So, every homeomorphism sends 
 $$a\mapsto pa+qb, b\mapsto ra+sb$$
 where $p,q,r,s\in \mathbb{Z}.$ These maps are organized in a matrix
-$$\begin{pmatrix} p & a \\ r & x \end{pmatrix},$$
-and since area and orientation are preserved, we have the determinant is $1$.
-Thus we have
+$$\begin{pmatrix} p & a \\ r & x \end{pmatrix}.$$
+The map must send the unit square to another unit square and preserve
+the total area of the torus
+and since the orientation is also preserved, we have the determinant is $1$.
+Thus we have the mapping class group of $S_1$ is a $2\times 2$ matrix
+with integer coefficients and determinate one. This group is called
+the special linear group denoted
 $$\Mod(S_1)\cong \text{SL}(2,\ZZ).$$
 
 For $g\geq 2$ $\Mod(S_g)$ is more difficult to describe. The Gauss-Bonnet
 theorem is implies that finite subgroups of have order at most $84(g-1).$
+The Uniformization Theorem states that every closed Riemannian surface admits
+a metric of constant curvature. In \secref{polygonal}, we showed that $$\chi(S_g)=2-2g.$$
+For $g\geq2,$ this is negative. The Gauss-Bonnet theorem implies
+$$\int_{S_g}KdA=2\pi \chi(S_g)$$
+Thus, there is a metric where $S_g$ has constant curvature equal to negative one.
+One way to see this is to consider $S_g$ as a regular $4g$-gon
+identifying edges with the genus $g$ pattern. The quotient space is $S_g,$
+the hyperbolic metric on $\mathbb{H}^2$ with constant curvature
+negative one descends to a metric on $S_g.$
+
+
+We next discuss bounding the order
+of any finite group of hyperbolic isometries of a genus $g\geq 2$ surface. 
+
+\begin{proposition}
+Let $X$ be a hyperbolic surface homeomorphic to $S_g$ with $g\geq2$.
+Then Isom$(X)$ is finite in any hyperbolic metric.
+\end{proposition}
+A proof is given in \cite{primer} and is beyond the scope of this book.
+Notice that this is not true for $g=1$ the tours!
+
+If $X$ is a closed hyperbolic surface of genus $g\geq 2,$ then we study
+$$Y=X\slash \text{Isom}^+(X).$$
+
+One can show that $Y$ is a manifold and is in fact itself a hyperbolic surface.
+Since Isom$^+(X)$ is a finite group we have
+$$\text{Area}(Y)=\text{Area}(X)\slash |\text{Isom}^+(X)|.$$
+The Gauss-Bonnet theorem tells us Area$(X)=2\pi(2g-2)$ when we use the metric
+with constant negative curvature. It can be shown that Area$(Y)\geq \pi/21$
+and thus
+$$|\text{Isom}^+(X)\leq 84(g-1).$$
+This is remarkable because the number 84 is mysterious and the bound is sharp!
 
