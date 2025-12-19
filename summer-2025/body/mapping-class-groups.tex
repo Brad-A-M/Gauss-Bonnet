@@ -1,0 +1,35 @@
+\subsection{Mapping Class Groups}
+\label{sec:mapping-class}
+
+
+Let $S_g$ be a closed, connected, orientable surface of genus $g$.
+In this section, we consider using the Gauss-Bonnet theorem
+to learn about the mapping class group of $S_g$.
+Mapping class groups our described in the book by Farb and Margalit \cite{primer}.
+
+The mapping class group of $S_g,$ denoted by
+$$\Mod(S_g),$$
+is the group of isotopy classes of orientation-preserving homeomorphisms of $S_g,$
+that is 
+$$\Mod(S_g)=\text{Homeo}^+(S_g)/\text{isotopy}.$$
+
+In $\Mod(S_g)$ two orientation-preserving homeomorphisms are equivalent if
+one can be continuously deformed into the other through orientation-preserving
+homeomorphisms.
+
+When $g=0, S_g$ is the sphere. Every orientation preserving homeomorphism $\S^2\rightarrow
+\S^2$ can be continuously deformed to the identity. Thus, $\Mod(S_0)=\{e\}$ the trivial group.
+When $g=1, S_g$ is the torus. Represent the torus as a unit square with opposite sides
+identified. Call the bottom of the square essential curve $a$ and the sides essential curve $b.$
+Homeomorphisms of the torus send essential simple closed curves to essential closed curves.
+So, every homeomorphism sends 
+$$a\mapsto pa+qb, b\mapsto ra+sb$$
+where $p,q,r,s\in \mathbb{Z}.$ These maps are organized in a matrix
+$$\begin{pmatrix} p & a \\ r & x \end{pmatrix},$$
+and since area and orientation are preserved, we have the determinant is $1$.
+Thus we have
+$$\Mod(S_1)\cong \text{SL}(2,\ZZ).$$
+
+For $g\geq 2$ $\Mod(S_g)$ is more difficult to describe. The Gauss-Bonnet
+theorem is implies that finite subgroups of have order at most $84(g-1).$
+
