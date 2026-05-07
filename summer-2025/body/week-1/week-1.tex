@@ -5,15 +5,11 @@ In this section, we provide reasons to study the Gauss-Bonnet theorem. We then c
 
 \subsection{A Great Theorem}
 The Gauss-Bonnet theorem relates the curvature, a local property, of a surface
-to the Euler characteristic, a global property. If we travel over a surface and compute the curvature
-at each point we are able to combine our computations to learn about the topology of the surface
-as a whole. Conversely, if we know the topology of a surface we are able to 
-guarantee the existence of a point on the surface with positive curvature. 
-The goal of this work is to demonstrate that both of the directions described above are useful.
+to the Euler characteristic, a global property. More specifically, if we were travel over a surface and compute the curvature at each point, the sum of all curvatures is equal to the Euler characteristic. Conversely, if we know the Euler characteristic of a surface we are able to 
+guarantee the existence of a point on the surface with a bounded curvature. 
 
 
-In symbols, a version of the Gauss-Bonnet theorem can be expressed as
-
+In symbols, one version of the Gauss-Bonnet theorem is the following
 \begin{theorem}\label{thm:g-b-noboundary}
 		$$\int_MK dA =2\pi \chi(M)$$
 \end{theorem}
@@ -35,7 +31,7 @@ ought to be called the Bauss-Binet-Bonnet Theorem
 \label{fig:bridge}
 \end{figure}
 
-What separates a great theorem form a mediocre theorem?
+
 In \cite{jm08}, Matou\v{s}ek says that a theorem is a great theorem if there are
 \begin{enumerate}[(1)]
 \item several different equivalent versions,
@@ -52,39 +48,34 @@ we highlight several discrete versions for triangulated surfaces.
  
  
  
-As for (2), several fundamentally different proofs exist.  
-One common approach is to first prove the theorem for simply connected domains
-with boundary, then triangulate a surface and add up the contribution from each triangle.
-However, this proof seems to lack a geometric intuition that other proofs provide. \cite{wu_historical_2008},
+As for (2), several fundamentally different proofs exist.
+We provide two distinct proofs. One using tangent vector fields on smooth surfaces and
+another simple proof for triangulated polyhedra.
+Commonly, the theorem is first proved for simply connected domains
+with boundary, then triangulate more complicated surfaces and sum the contribution from each triangle.
+However, this proof  lacks a geometric intuition that other proofs provide\cite{wu_historical_2008}.
 A second commonly seen proof is to use Stokes theorem  \cite{doc76,pressley_elementary_2010}.
 Many other proofs exist \cite{guillemin_differential_2010,levi-bicycle,grinfeld_introduction_2013,li_gauss-bonnet-chern_2011}.
 
 
-For generalization (3), we will share versions of \thmref{g-b-noboundary} for smooth
+For generalization (3), we will share versions for smooth
 surfaces with boundary and discrete versions that allow us to extend the theorem to 
 polyhedral surface that are useful in computations. We will see a version that considers
 an infinite analog  in \secref{circle-packing}.
-Two  celebrated generalizing \thmref{g-b-noboundary} to higher dimensions are the Chern-Gauss-Bonnet theorem\cite{chern_simple_1944}, which we
+Two  celebrated generalizations to higher dimensions are the Chern-Gauss-Bonnet theorem \cite{chern_simple_1944}, which we
 discuss in \secref{chern-gauss-bonnet}, and
 the Atiyah–Singer index theorem  \cite{atiyah_index_1963}.
 
 
 
 
-As for (4), applications, 
-seven are given in \cite{doc76}.
+As for (4), applications, this work provides several. Seven are given in \cite{doc76}.
 For applications to physics see \cite{tirado-physics-apps,gibbons_applications_2008}.
-This work provides examples related to the algorithms and combinatorics but we include
-others.
 I hope that the number of applications continues to grow,
 please share any that you feel
 ought to be included\footnote{\text{mccoy2ba@jmu.edu}}.
 
 Thus, by Matou\v{s}ek standard, the Gauss-Bonnet theorem is a great theorem.
-We highlight classic applications of the theorem as well as more recent
-applications that illustrate that topological methods in combinatorics is an active
-area of research.
-
 This work is influenced by Matou\v{s}ek's book, \emph{Using the Borsuk-Ulam Theorem}.
 We hope that what follows is as accessible as that text. In his book, the end-of-proof symbol is
 a badger because `borsuk' means badger in Polish. As tribute we use \macaque as 

@@ -1,4 +1,4 @@
-\subsection{Triangulating Noncovex Polyhedra}
+\subsection{Triangulating Nonconvex Polyhedra}
 \label{sec:triangulating}
 
 A three-dimensional solid with polygonal faces and straight edges is called a \EMPH{polyhedra}. 
@@ -37,12 +37,12 @@ in $O(n\log r +r^2\log r)$ time and $O(n+r^2)$ space.
 The algorithm first removes $n-4r$ non-reflex or flat vertices
 to create a representation of the polyhedra with $O(r)$ vertices.
 Then, vertical planes decompose the reduced polyhedra in to
-$O(r^2)$ convex cells.
+$O(r^2)$ convex cells. They also establish that this bound is tight by exhibiting a class of polyhedra which cannot be decomposed into fewer than $n^2$ parts.
 
 Chazelle and Shouraboura use the Gauss-Bonnet theorem to show any polyhedron
  of genus $g$ must have at least $g-1$ reflex edges~\cite{tetra-bounds-c-s-1994}.
  This implies that any polyhedron
-can be decomposed with $O(n+r^2)$ tetrahedra, regardless  of 
+can be decomposed with $\Theta(n+r^2)$ tetrahedra, regardless  of 
 the genus!  We present their application.
 
 In this application, to simplify computation, we scale the curvature of a vertex
