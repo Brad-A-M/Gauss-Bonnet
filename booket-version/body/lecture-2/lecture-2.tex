@@ -1,26 +1,176 @@
 \section{Surfaces}
 \label{sec:polygonal}
 
-In this section, we briefly introduce surfaces, polygonal meshes, describe a data structure to 
-work with them, and introduce the Euler characteristic.
+In this section, \todo{parameterized curves, 1-d curvature in the plane, }
 
-\subsection{Parameterizations}
+\subsection{Parameterized Curves}
+
+A \emph{parameterized curve in the plane} is the image of a map for a closed interval
+into the plane
+$$\gamma: I\rightarrow \R^2$$ where
+$$\gamma(t)=(x(t),y(t)).$$
+One can think of $t$ as time and parameterization indicating a point tracing out the image
+of the curve.
+If the point never stops moving and there are no cusps in the image then the curve
+is said to be \emph{regular}.
+An example is show in \figref{parameterized-curve}.
+It takes one number $t$ to specify the position of a point on the curve, so we say our
+curves are one dimensional.
+Parameterizations also allow us to deal with points where a curve self-intersects, namely 
+restrict the parameterization to a local region where the curve does not self-intersect.
+
+A feature of parameterizations is that the velocity of the traversal is included.
+For each $t$ we have a tangent vector $$\gamma'(t)=(x'(t),y'(t)).$$
+Two different maps can result in the same curve but the speeds that we traverse the curve can be different.
+If $\gamma$ is regular then $\gamma'(t)\neq 0$ for all $t$,
+and we can normalize the speed of our parameterization
+to obtain $$\frac{\gamma(t)}{||\gamma'(t)||},$$ parameterizations with $$\frac{\gamma(t)}{||\gamma'(t)||}=1$$ are said to be parameterized by \emph{arc length}. This means $t$ represents 
+the distance traveled along the curve.Unless otherwise specified, we assume our parameterizations are parameterized by arc length.
+
+
+
+
+\begin{figure}[htb]
+\centering
+\includegraphics[width=.5\textwidth]{images/parametric}
+\caption{The parametric curve $x=t^2-t, y=t-1$ for $0\leq t\leq 3$ and the tangent vector at 
+$t=2$.}
+\label{fig:parameterized-curve}
+\end{figure}
+
+
+Another example is the unit circle with parameterization given by the map $C:[0,2\pi]\rightarrow \R^2$
+$$C(t)=\left(\cos(t),\sin(t)\right).$$ Given a value of $t$ say $\frac{\pi}{2}$ the parameterization
+gives a point, namely $(0,1)$. Curves with the property that the initial point is equal to the 
+final point are said to be \emph{closed}.
+
+\subsection{Curvature in the Plane}
+
+What do we require of a definition of curvature for a one dimensional curve
+in the plane? We would like a number the represents how 
+different a curve is from a straight line, so, 
+a straight line should have zero curvature.
+Ideally,  the unit circle would  have
+curvature one. Moreover,
+ large circles should have less curvature than smaller circles.
+Ideally, definition should also differentiate between
+curving to the left and curving to the right.
+
+
+For any point on a smooth one dimensional curve in the plane,
+we can approximate the curve with a circle.
+The best approximating circle is called the  \EMPH{osculating circle}.
+A natural definition of the \EMPH{curvature} is the inverse of the radius of the osculating
+ circle $\kappa=\frac{1}{r}$.
+See \figref{osculating-circle} for an example.
+The osculating circle meets the requirements for a definition of curvature as long
+as we allow the straight line to have an osculating circle with infinite radius.
+We determine the sign of the curvature by which side of the curve the osculating circle is on.
+However, computing the radius of an osculating circle is somewhat cumbersome.
+
+\begin{figure}[htb]
+	\centering
+	\includegraphics[width=.3\textwidth]{curvature/osculating}
+	\caption{A curve with two osculating circles. The curvature at these points
+	have opposite sign.}
+	\label{fig:osculating-circle}
+\end{figure}
+
+The circle of radius $r$ in the plane can be parameterized by
+$$c(t)=(r\cos(t),r\sin(t))$$
+ for $t\in [0,2\pi].$
+If a curve is regular, another interpretation of curvature 
+is the rate of change
+of the angle between the curve and its tangent vector. 
+We do not want this
+rate to depend on how fast we are traversing the curve and we parameterize by arc length,  in this case, the arc length parameterization
+of the circle with radius $r$ is $$C(t)=\left(r\cos\left(\frac{t}{r}\right),r\sin\left(\frac{t}{r}\right)\right).$$
+
+The rate of change of the angle between a curve and its unit tangent vector $T$, is the magnitude
+of the derivative of $T$, see \figref{smooth-tangent}. Curvature is then
+\begin{equation} \label{eqn:kappa}
+\kappa= \pm | T'(t)|.
+\end{equation}
+where $t$ is arc length.  
+
+
+For the circle of radius $r$ we have,
+$$T(t)=\left(-\sin\left(\frac{t}{r}\right),\cos\left(\frac{t}{r}\right)\right)$$
+and 
+$$|T'(t)|=\left|\frac{1}{r}\left(-\cos\left(\frac{t}{r}\right),-\sin\left(\frac{t}{r}\right)\right)\right|$$
+so
+$$\kappa(t)=\frac{1}{r}.$$
+We see that,  at least in this case, our definition of curvature in \eqnref{kappa} agrees with the
+osculating circle definition. 
+For a plane curve $\gamma(t)$ we can summarize above computation as
+\begin{equation} \label{eqn:kappa1}
+\kappa(t)=\frac{|\gamma'(t)\times \gamma''(t)|}{|\gamma'(t)|^3}.
+\end{equation}
+
+What about discrete curves in the plane? A discrete curve is a sequence of connected
+line segments. Where two
+segments meet there is a sharp corner. The curvature of a point in the interior of a segment
+is zero. But what about the corners? Is there a well defined osculating circle? The tangent
+vector is not defined!
+Consider the exterior angle formed by extending one of the segments, as in \figref{discrete-plane}. 
+If the segments are colinear, then the exterior angle is zero. If the interior angle
+is smaller, then the curvature is greater as desired.
+
+
+
+
+\begin{figure}[htb]
+    \captionsetup[subfigure]{justification=centering}
+    \centering
+    \begin{subfigure}[b]{0.35\textwidth}
+        \includegraphics[width=\textwidth]{background/interior-angles-triangles}
+       \subcaption{}\label{fig:smooth-tangent}
+    \end{subfigure}
+        \hspace{1cm}
+        \begin{subfigure}[b]{0.35\textwidth}
+        \includegraphics[width=\textwidth]{background/discrete-plane}
+        \subcaption{}\label{fig:discrete-plane}
+        \end{subfigure}
+    \caption{(\subref{fig:smooth-tangent}) The tangent vector of a curve in the plane at a point.
+        (\subref{fig:discrete-plane}) The exterior angle on a discrete curve in the plane.
+    }
+    \label{fig:osculating-sphere}
+\end{figure}
+
+
+What about curves in $\R^3$? A curve has more wiggle room than in the plane
+and can `twist' vertically out of the plane.
+This additional freedom is called torsion.
+
+
+A parameterization now has a $z$-coordinate. Let $$\gamma(t)=(x(t),y(t),z(t))$$ be a smooth curve in $\R^3$.
+Again, we parameterize by arc length so $\gamma'(t)^2=1,$ and the chain rule implies, $\gamma'\cdot \gamma''=0$.
+So, $\gamma'$ and $\gamma''$ are orthogonal.
+Thus, the
+vector $\gamma''=N$ is normal to the $\gamma$. 
+By taking the cross product of $N$ and $T$ we obtain a vector $B$ called
+the binormal vector.
+The vectors $T,N$ and $B$ form the \EMPH{Fernet frame} of $\gamma$ a $p.$
+
+
+The rate of change of the tangent vector is the curvature and the rate of change in
+the binormal is the torsion. If the curve is a straight line for part of the parameterization,
+then the Fernet frame is not well defined. We leave it to the reader to think about how to handle
+this case.
+
+\subsection{Winding Number}
+
+I'm here.
+%%%%%%%%%%%%
+
+
 
 Most of us spend the majority of our time on the surface of the earth. Two numbers are required to describe a location, longitude and latitude. So, surfaces are two dimensional. In order to gain intuition, it is useful to consider one dimensional objects. A one dimensional `surface' is a curve.
 Given a curve, it is possible to specify our position on the curve with a single number.
 
 
-A familiar example is the unit circle with parameterization given by the map $C:[0,2\pi]\rightarrow \R^2$
-$$C(t)=\left(\cos(t),\sin(t)\right).$$ Given a value of $t$ say $\frac{\pi}{2}$ the parameterization
-gives a point, namely $(0,1)$.
-A feature of parameterizations is that we include a velocity of the traversal.
-We usually want to traverse a curve at uniform speed but this is not always the case.
-Parameterizations also allow us to deal with points where a curve self-intersects, namely 
-restrict the parameterization to a local region where the curve does not self-intersect.
-Note that the curve is the image of the parameterization. Two different maps can result in the same curve but the speeds that we traverse the curve can be different.
-We will also consider one dimensional curve in $\R^3,$ in which case a parameterization
-will be a function $\gamma:[0,1]\rightarrow \R^3$ with
-$$\gamma(t)=\left(x(t),y(t),z(t)\right).$$
+
+
 
 In two dimensions, instead of mapping from an interval, we map from a two dimensional ball.
 A \EMPH{parameterized surface} $S$ is a collection of maps such that
@@ -277,7 +427,11 @@ Thus, the sphere has genus zero and the torus has genus one.
 
 
 \begin{enumerate}
- \item How many charts are needed to cover the two sphere?
+ \item Give a parameterization of an ellipse in the plane. Compute the tangent vector and curvature at various points.
+ 
+ \item Given a parameterized curve in the plane, give a formula for the osculating circle at a fixed point.
+ 
+ \item Formulate \thmref{simple-bonnet} in terms of curvature.
 
 	\item Given a mesh stored in a DCEL, give an pseudocode for an algorithm to iterate over all edges incident to a given vertex.
 
