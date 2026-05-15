@@ -7,12 +7,12 @@ In this section, \todo{parameterized curves, 1-d curvature in the plane, }
 
 A \emph{parameterized curve in the plane} is the image of a map for a closed interval
 into the plane
-$$\gamma: I\rightarrow \R^2$$ where
-$$\gamma(t)=(x(t),y(t)).$$
+$$\gamma: I\rightarrow \R^2\hspace{1cm} \gamma(t)=(x(t),y(t)).$$ 
 One can think of $t$ as time and parameterization indicating a point tracing out the image
 of the curve.
-If the point never stops moving and there are no cusps in the image then the curve
-is said to be \emph{regular}.
+If the point never stops moving and there are no cusps in the image and there is a finite number
+of transverse crossings then the curve
+is said to be \emph{regular}\footnote{Others use the word normal or generic}.
 An example is show in \figref{parameterized-curve}.
 It takes one number $t$ to specify the position of a point on the curve, so we say our
 curves are one dimensional.
@@ -24,8 +24,12 @@ For each $t$ we have a tangent vector $$\gamma'(t)=(x'(t),y'(t)).$$
 Two different maps can result in the same curve but the speeds that we traverse the curve can be different.
 If $\gamma$ is regular then $\gamma'(t)\neq 0$ for all $t$,
 and we can normalize the speed of our parameterization
-to obtain $$\frac{\gamma(t)}{||\gamma'(t)||},$$ parameterizations with $$\frac{\gamma(t)}{||\gamma'(t)||}=1$$ are said to be parameterized by \emph{arc length}. This means $t$ represents 
-the distance traveled along the curve.Unless otherwise specified, we assume our parameterizations are parameterized by arc length.
+to obtain $$\frac{\gamma(t)}{||\gamma'(t)||},$$ parameterizations with $$\frac{\gamma(t)}{||\gamma'(t)||}=1$$ are said to be parameterized by \emph{arclength}. This means $t$ represents 
+the distance traveled along the curve. Unless otherwise specified, we assume our parameterizations are parameterized by arclength.
+
+The velocity vector is $\gamma'(t)=(x'(t),y'(t))$, and the speed is the magnitude of the velocity
+$$||\gamma'(t)||=\sqrt{(x'(t)^2)+(y'(t))^2}.$$
+Let $$ds=||\gamma'(t)||dt.$$ This number represents the infinitesimal amount of distance traveled along the curve when $t$ changes by an infinitesimal amount and is called th \emph{differential} of arclength along the curve.
 
 
 
@@ -43,6 +47,7 @@ Another example is the unit circle with parameterization given by the map $C:[0,
 $$C(t)=\left(\cos(t),\sin(t)\right).$$ Given a value of $t$ say $\frac{\pi}{2}$ the parameterization
 gives a point, namely $(0,1)$. Curves with the property that the initial point is equal to the 
 final point are said to be \emph{closed}.
+For a parameterized closed curve, instead of the codomain being an interval it is the unit circle $\Sp^1.$
 
 \subsection{Curvature in the Plane}
 
@@ -160,6 +165,37 @@ this case.
 
 \subsection{Winding Number}
 
+
+Intuitively, the \emph{rotation number} $w(\gamma)$ of a regular closed planar curve is the number
+of complete turns the tangent vector makes traversing the curve once.
+The winding number $wind(\gamma,p)$ with respect to a point $p$ is the number of times a person standing on $p$ would have to spin around if they held onto a string as the other end point traversed the curve.
+
+
+A arclength parameterized closed curve is a map $\gamma:\Sp^1\rightarrow \RR^2,$ differentiating
+gives a unit vector. This defines a map called, the tangent Gauss map
+$$T:\Sp^1\rightarrow \Sp^1,\hspace{1cm} T(t)=\gamma'(t).$$
+The \emph{degree} of this map its turning number.
+
+
+The turning number gives a special case of the Gauss-Bonnet Theorem for regular closed
+curves in the plane.
+Namely,
+\begin{theorem}[Gauss-Bonnet for Curves in the Plane]\label{thm:curves-bonnet}
+Let $\gamma$ be a closed regular curve in the plane, then
+$$\int_\gamma k ds=2\pi w(\gamma).$$
+\end{theorem}
+\begin{proof}
+Let $\theta(s)$ denote the tangent angle,
+then $$\kappa=\frac{d\theta}{ds}$$
+and
+$$\int_\gamma \kappa ds=\int_0^L\frac{d\theta}{ds}ds=\delta \theta.$$
+One full rotation contributes $2\pi,$
+$$\delta \theta=2\pi w(\gamma)$$
+combining gives the theorem.
+\end{proof}
+
+%%%%%%%%%%%%
+\vspace{3 cm}
 I'm here.
 %%%%%%%%%%%%
 
