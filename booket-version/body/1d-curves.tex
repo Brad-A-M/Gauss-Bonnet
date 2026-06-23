@@ -37,7 +37,7 @@ Let $$ds=||\gamma'(t)||dt.$$ This number represents the infinitesimal amount of 
 
 \begin{figure}[htb]
 \centering
-\includegraphics[width=.5\textwidth]{images/parametric}
+\includegraphics[width=.3\textwidth]{images/parametric}
 \caption{The parametric curve $x=t^2-t, y=t-1$ for $0\leq t\leq 3$ and the tangent vector at 
 $t=2$.}
 \label{fig:parameterized-curve}
@@ -115,7 +115,7 @@ For a plane curve $\gamma(t)$ we can summarize above computation as
 
 What about discrete curves in the plane? A discrete curve is a sequence of connected
 line segments. Where two
-segments meet there is a sharp corner. The curvature of a point in the interior of a segment
+segments meet there is a corner. The curvature of a point in the interior of a segment
 is zero. But what about the corners? Is there a well defined osculating circle? The tangent
 vector is not defined!
 Consider the exterior angle formed by extending one of the segments, as in \figref{discrete-plane}. 
@@ -144,13 +144,11 @@ is smaller, then the curvature is greater as desired.
 \end{figure}
 
 
-What about curves in $\R^3$? A curve has more wiggle room than in the plane
-and can `twist' vertically out of the plane.
+What about curves in $\R^3$? Now, a curve has more `wiggle room' in that it
+ can `twist' vertically out of the plane.
 This additional freedom is called torsion.
-
-
-A parameterization now has a $z$-coordinate. Let $$\gamma(t)=(x(t),y(t),z(t))$$ be a smooth curve in $\R^3$.
-Again, we parameterize by arc length so $\gamma'(t)^2=1,$ and the chain rule implies, $\gamma'\cdot \gamma''=0$.
+Let $$\gamma(t)=(x(t),y(t),z(t))$$ be a smooth curve in $\R^3$.
+Again, we parameterize by arc length so $|\gamma'(t)|^2=1,$ and the chain rule implies, $\gamma'\cdot \gamma''=0$.
 So, $\gamma'$ and $\gamma''$ are orthogonal.
 Thus, the
 vector $\gamma''=N$ is normal to the $\gamma$. 
@@ -178,9 +176,56 @@ $$T:\Sp^1\rightarrow \Sp^1,\hspace{1cm} T(t)=\gamma'(t).$$
 The \emph{degree} of this map its turning number.
 
 
+
+The turning number gives us a way to define a topological equivalence between curves via the Whitney-Graustein theorem. Before stating the theorem we need a few more definitions.
+A map is an \emph{immersion} if the differential is injective at every point.
+Let
+\[
+\gamma_0, \gamma_1 : \Sp^1 \to \R^2
+\]
+be smooth closed curves in the plane.
+A \emph{regular homotopy} from $\gamma_0\rightarrow \gamma_1$ is a smooth map
+\[
+H : \gamma_0 \times [0,1] \to \gamma_1
+\]
+such that:
+\begin{enumerate}
+    \item For each \(t \in [0,1]\), the map
+    \[
+    H_t :  \gamma_0 \to  \gamma_1,
+    \qquad
+    H_t(x)=H(x,t),
+    \]
+    is an immersion.
+
+    \item The endpoints satisfy
+    \[
+    H_0=\gamma_0
+    \qquad\text{and}\qquad
+    H_1=\gamma_1.
+    \]
+\end{enumerate}
+Two immersions are said to be \emph{regularly homotopic} if there exists a
+regular homotopy between them. Informally, a regular homotopy is a continuous deformation through immersions: self-intersections may appear or disappear, but the curve is never allowed to develop a cusp or stop moving, the derivative may never vanish.
+
+The Whitney-Graustein tells us that two curves are `equivalent'
+if they have the same turning number.
+\begin{theorem}[Whitney--Graustein]
+Let
+\[
+\gamma_0,\gamma_1 : \Sp^1 \to \mathbb{R}^2
+\]
+be smooth immersed closed curves. Then \(\gamma_0\) and \(\gamma_1\) are
+regularly homotopic if and only if they have the same turning number.
+\end{theorem}
+
+
+Our theme is that total rotation of a geometric frame equals a topological invariant.
 The turning number gives a special case of the Gauss-Bonnet Theorem for regular closed
-curves in the plane.
-Namely,
+curves in the plane. If we add up the curvature at every point we obtain
+the turning number and if for any two curves with the same turning number
+have the same total curvature.
+
 \begin{theorem}[Gauss-Bonnet for Curves in the Plane]\label{thm:curves-bonnet}
 Let $\gamma$ be a closed regular curve in the plane, then
 $$\int_\gamma k ds=2\pi w(\gamma).$$
@@ -197,5 +242,13 @@ combining gives the theorem.
 
 
 
+\noindent \textbf{Exercises}
 
+\begin{enumerate}
+
+	\item Draw two closed curves that are regularly homotopic. And draw two closed curves that are not regularly homotopic.
+	
+	
+
+\end{enumerate}
 
