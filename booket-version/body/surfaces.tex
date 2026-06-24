@@ -1,12 +1,27 @@
 
 \section{Surfaces}
 
-In this section, we introduce surfaces.
+In this section, we introduce surfaces. We define parameterized surfaces analogously to 
+parameterized curves in the previous section. We introduce polygonal surfaces and discuss
+the doubly connected edge list data structure. Finally, we define the Euler characteristic.
 
 
 \subsection{Parameterized Surfaces}
 
-Most of us spend the majority of our time on the surface of the earth. To describe a location, two numbers are needed, longitude and latitude. .
+Most of us spend the majority of our time on the surface of the earth. To describe a location, two numbers are needed, longitude and latitude. 
+In this sense surfaces are two dimensional.
+We will consider maps between surfaces.
+If $S_1$ and $S_2$ are two surfaces, a map
+$$f:S_1\rightarrow S_2$$
+is a \emph{homeomorphism} if it is
+\begin{enumerate}
+    \item \(f\) is continuous,
+    \item \(f\) is bijective, and
+    \item \(f^{-1}:S_2\to S_1\) is continuous.
+\end{enumerate}
+In this case, \(S_1\) and \(S_2\) are said to be \emph{topologically equivalent}.One can be continuously deformed into the other without tearing, gluing, or
+creating holes.
+
 In two dimensions, instead of mapping from an interval like we did with curves,
  we map from a two dimensional ball.
 A \EMPH{parameterized surface} $S$ is a collection of maps such that
@@ -31,6 +46,38 @@ the surface is \EMPH{orientable}.
 \label{fig:parameterization}
 \end{figure}
 
+A \EMPH{tangent vector} to $S$ at $p$ is a map $\sigma:(-\epsilon,\epsilon)\to S$ with $\sigma(0)=p$.
+The set of all tangent vectors is the \EMPH{tangent plane}.
+By choosing two linearly independent paths through $p\in S$ we obtain a basis 
+for the tangent
+plane. Using the tangent plane, we can define a normal vector $N$ at $p$.
+
+Let
+\[
+X:U\subseteq\mathbb{R}^2\to\mathbb{R}^3
+\]
+be a smooth parameterized surface. Let $X_u$ and $X_v$
+denote the partial derivatives in the directions $u$ and $v$ respectively.
+ The \emph{differential} of \(X\) at
+\((u,v)\in U\) is the linear map
+\[
+dX_{(u,v)}:T_{(u,v)}\mathbb{R}^2
+\to
+T_{X(u,v)}\mathbb{R}^3
+\]
+defined by
+\[
+dX_{(u,v)}(a,b)
+=
+aX_u(u,v)+bX_v(u,v).
+\]
+Similar to curves, the differential tells us how infinitesimal motions in the domain are transformed into
+infinitesimal motions on the surface.
+The tangent plane corresponds to the image
+of the differential map $d\phi_q(\RR^2)\subset \RR^3$ (prop. 1 \cite{doc76}).
+
+
+\subsection{Discrete Surfaces}
 
 Most solid objects in our world have boundaries that are surfaces.
 Often, it is useful to represent a these boundary surfaces using computers.
