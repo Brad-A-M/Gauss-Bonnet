@@ -178,7 +178,7 @@ Unfortunately, errors may occur during the scanning process. As a result, the re
 
 Determining whether two faces intersect directly from the OFF representation of a mesh is cumbersome. To facilitate the design of geometric algorithms, we typically convert the OFF file into a more convenient data structure known as the \emph{doubly-connected edge list} (DCEL).
 
-The DCEL consists of three interconnected collections of objects: vertices, edges, and faces \cite{dutchbook3}. Each edge is represented by a pair of directed half-edges. For each half-edge (\overrightarrow{e}), we store pointers to:
+The DCEL consists of three interconnected collections of objects: vertices, edges, and faces \cite{dutchbook3}. Each edge is represented by a pair of directed half-edges. For each half-edge $(\overrightarrow{e})$, we store pointers to:
 
 \begin{itemize}
 \item its origin vertex,
@@ -334,7 +334,6 @@ rigorously.
 	
 	\item How would you determine if two faces in a mesh intersect? Based on this, what is the runtime of \algref{self-intersection}?
 	
-	\item Use 
 	
 \end{enumerate}
 
