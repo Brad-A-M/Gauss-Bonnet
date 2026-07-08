@@ -1,7 +1,7 @@
 \section{Curvature}
 \label{sec:curvature}
 
-In this section, we introduce both smooth and discrete notions of curvature. 
+In this section, we introduce smooth and discrete notions of curvature. 
 There are many ways to define curvature, each emphasizing different geometric insights and computational advantages. 
 Some definitions are particularly intuitive and help develop geometric intuition, while others are better suited for efficient computation. 
 Using these notions of curvature, we will state a version of the Gauss-Bonnet theorem for surfaces.
@@ -13,11 +13,17 @@ Using these notions of curvature, we will state a version of the Gauss-Bonnet th
 Our goals for curvature are the following:
 \begin{enumerate}
 \item the plane has curvature zero
-\item the sphere has curvature one
+\item the unit sphere has curvature one
 \item spheres with radius greater than one have curvature less than one and
 spheres with radius less than one have curvature greater than one
 \item curvature should be a signed quantity
 \end{enumerate}
+
+If the sphere has positive curvature, what does it mean to have negative curvature?
+Consider standing on a saddle point, if we look in one direction the saddle is curving
+one direction, say upwards, if we rotate $90^\circ$, the surface is curing the opposite direction, downward.  This is negative curvature.
+
+
 For one dimensional curves in the plane, the osculating-circle is
 met our criteria.
  Let us consider the \EMPH{osculating sphere} of a surface.
@@ -25,7 +31,8 @@ met our criteria.
  but notice that at a saddle point on a surface it is not clear which sphere
 best approximates the surface. See \figref{osculating-sphere} for two
 equally reasonable ways to approximate a saddle with a sphere.
-So, the sphere approximation is not the best way to go.
+This suggests the osculating sphere is not ideal for defining the curvature
+of a surface.
 
 \begin{figure}[htb]
     \captionsetup[subfigure]{justification=centering}
@@ -45,17 +52,19 @@ So, the sphere approximation is not the best way to go.
     \label{fig:osculating-sphere}
 \end{figure}
 
+Given a point on a smooth surface, we first compute the tangent plane at that point and then determine the corresponding normal vector. Any plane containing the normal vector is called a \emph{normal plane}. The intersection of the surface with a normal plane is a planar curve known as a \emph{normal section}; see \figref{normal-sections} for an illustration.
 
-Every plane containing the normal vector will intersect the surface.
-The intersection of the surface and each normal plane 
-gives a one dimensional curve called the \EMPH{normal section}, see  \figref{normal-sections}
-for an example.
-Let $\kappa_1$ denote the maximum curvature of all normal sections 
-and let $\kappa_2$ denote the minimum. 
-The \EMPH{Gaussian curvature} of a point on a surface is
-$K=\kappa_1\kappa_2.$
-One can check that the Gaussian curvature of the plane is zero and
-that larger circles have less curvature than smaller ones.
+
+Each normal section has a curvature at the point of intersection. Among all such curvatures, let $(\kappa_1)$ denote the maximum curvature and $(\kappa_2)$ denote the minimum curvature. These quantities are called the \emph{principal curvatures} of the surface.
+\begin{definition}[Gaussian Curvature One]
+The \emph{Gaussian curvature} of a surface at \(p\) is
+
+$$K(p)=\kappa_1\kappa_2.$$
+
+\end{definition}
+This definition agrees with the intuitive properties of curvature discussed above. In particular, Gaussian curvature is zero on locally flat surfaces, positive at points that bend in the same direction along both principal directions (such as a sphere), and negative at saddle points, where the surface bends in opposite directions along the principal directions.
+Computing the normal vector is relatively simple in most cases, but
+determining the orientation to maximize and minimize is often more difficult.
 
 
 
@@ -71,16 +80,16 @@ that larger circles have less curvature than smaller ones.
         \includegraphics[width=\textwidth]{curvature/normal-section-min}
         \subcaption{}\label{fig:normal-section-min}
         \end{subfigure}
-    \caption{(\subref{fig:normal-section-max}) The osculating sphere above the saddle.
-        (\subref{fig:normal-section-min}) The osculating sphere above the saddle.
+    \caption{(\subref{fig:normal-section-max}) The normal section with maximum curvature.
+        (\subref{fig:normal-section-min}) The normal section with minimum curvature.
     }
     \label{fig:normal-sections}
 \end{figure}
 
-Here is an another definition of curvature.
+A more computationally friendly definition is the following.
 The two dimensional Gauss map provides a precise way to measure how a
-surface bends in space.
-Since we assume that our surface $S$ is smooth, we have a well defined
+surface curves in space.
+Again, our surface $S$ is smooth, we have a well defined
 tangent plane at any point $p\in S$  and a unit normal vector $N(p)$.
 The \emph{Gauss map} is defined to be a map $g:S\rightarrow \Sp^2$
 where, for $p\in S$ the value $g(p)$ is $N(p)$.
@@ -104,7 +113,7 @@ where, for $p\in S$ the value $g(p)$ is $N(p)$.
     \label{fig:normal-sections}
 \end{figure}
 
-The differential of the Gauss map, the \emph{Weingarten map}, is a linear 
+The differential of the Gauss map, called the \emph{Weingarten map}, is a linear 
 transformation that maps the tangent
 space of the surface at $p$ to the tangent space of the sphere at $N(p)$.
 $$dN_p:T_pS\rightarrow T_{N(p)}\Sp^2.$$
@@ -112,7 +121,7 @@ Since $N(p)$ is orthogonal to $T_pS,$ we naturally have
 $$T_{N(p)}\cong T_pS.$$
 The determinate of the Weingarten map represents how the normal
 changes the area locally around $p$. If the normal changes rapidly, the surface 
-bends sharply, if the normal changes slowly, the surface is nearly flat.
+curves sharply, if the normal changes slowly, the surface is nearly flat.
 
 Let $U_1$ be a `small' set on a convex surface $S$. Where small means
 contained in a disk whose intrinsic radius is approaching zero.
@@ -126,7 +135,7 @@ then $K(U_2)$ is defined as the negative of the area of $g(U_2)$ on $\Sp^2.$
 
 We have a computable definition of the curvature of a surface. Let $W_p$ denote
 the Weingarten map and let $k_1$ and $k_2$ be the eigenvalues.
-\begin{definition}[Gaussian Curvature]
+\begin{definition}[Gaussian Curvature Two]
 The \emph{Gaussian curvature} of a surface at \(p\) is
 
 $$K(p)=\det(W_p).$$
@@ -141,12 +150,13 @@ $$K(p)=\det(W_p).$$
 
 
 \subsection{Computing Curvature}
-We now consider computing the Gaussian curvature.
-A \EMPH{quadratic form} to be polynomial of degree two, of the form $p(u,v)=c_1u^2+c_2uv+c_3v^2$ 
+We now discuss computing Gaussian curvature.
+A \EMPH{quadratic form} is polynomial 
+of the form $p(u,v)=c_1u^2+c_2uv+c_3v^2$ 
 where $c_i\in R$.
-We define a quadratic form, the first fundamental form, using $r(u,v)$.
+Given a surface defined locally by $r(u,v)$,
+we compute Gaussian curvature using a quadratic form called first fundamental form.
 
-Let $r(u,v)$ be a parameterized surface.
 Let $E=r_u\cdot r_u, F=r_u\cdot r_v$ and  $G=r_v\cdot r_v$.
 The \EMPH{first fundamental form}
 is the quadratic form $\mathrm{I}=Edu^2+2Fdudv +Gdv^2$.
@@ -163,29 +173,27 @@ F & G
 
 The first fundamental form enables us to  compute many interesting
 things about our surface including arc length, angles between curves,
-and area on a surface.
+and the area of a subsurface.
 For example,
 given a `small' parallelogram $M$ on $S$ with corners $r(u,v),r(u+\epsilon u, v), r(u,v+\epsilon v)$ 
-and $r(u+\epsilon u, v+\epsilon v)$ the rate of change of the area of $M$ is 
+and $r(u+\epsilon u, v+\epsilon v)$ the rate of change of the area of $M$ in terms of $u$ and $v$ is 
 $$dA=\sqrt{EG-F^2}dudv.$$
 In \exref{stereo}, we will use the first fundamental form to compute the arc length of some curves.
 
 A property of a surface is \emph{intrinsic} if it can be determined by working without referencing
 an embedding of the surface in $\R^3.$ An intrinsic property can be computed by measuring angles,
-distances and their derivatives.
-Gauss's Egregious (remarkable) Theorem states that the Gaussian curvature, and the first fundamental form, are intrinsic properties of a surface.
+distances and their derivatives. While we will not prove it, Gauss's Egregious (remarkable) Theorem states
+\begin{theorem}[Theorem Egregious]
+ Gaussian curvature and the first fundamental form intrinsic properties of a surface.
+\end{theorem}
 
 Often, we consider a surface, say the sphere, embedded in $\R^3.$ A property of a surface is
 \emph{extrinsic} if it depends on how the surface sits in the ambient space. Extrinsic properties
 tell us what the ambient space tells us about our surface. If you imagine you are a small
-creature living on asurface, intrinsic properties are what you can compute. Extrinsic properties
-are what an outside observer in $\R^3$ can compute. You would be able to compute Guassian
-curvature!
+creature living on a surface, intrinsic properties are what you can compute. Extrinsic properties
+are what an outside observer in $\R^3$ can compute.
 
-
-
-Because of this property we say that Gaussian curvature is an \emph{intrinsic} property of a surface.
-The Brioschi formula gives the Gaussian curvature using only the first fundamental form
+The Brioschi formula, \cite{teo2024brioschi}, gives the Gaussian curvature using only the first fundamental form
 \begin{equation}\label{eq:brioschi}
 	K=\frac{\begin{vmatrix}
 -\frac{1}{2}E_{vv}+F_{uv}-\frac{1}{2}G_{uu} & \frac{1}{2}E_u & F_u-\frac{1}{2}E_v\\
@@ -197,11 +205,14 @@ F_v-\frac{1}{2}G_u & E & F\\
 \frac{1}{2}G_u & F & G
 \end{vmatrix}}{(EG-F^2)^2}
 \end{equation}
+For most parameterized surfaces in the form $r(u,v),$ the partial derivatives used in the
+first fundamental form are able to be computed relatively efficiently. Thus,
+writing a computer program to compute the Gaussian curvature of a parameterized
+surface at a point is straight forward.
 
 
-
-While we can compute Gaussian curvature using only the first fundamental form,
- the second fundamental form is convenient for computations.
+While it is possible compute Gaussian curvature using only the first fundamental form,
+ the second fundamental form makes the computation easier.
 To this end, the unit normal vector at $p$ is given by $$n(p)=\frac{r_u\times r_v}{|r_u\times r_v|}.$$
 Let $L=r_{uu}\cdot n, M=r_{uv}\cdot n$ and $N=r_{vv}\cdot n$ the
 \EMPH{second fundamental form} is $\mathrm{I\!I}=Ldu^2+2Mdudv+Ndv^2$,
@@ -219,13 +230,15 @@ the \EMPH{Gaussian curvature} of a surface is
  	K=\frac{\det(\mathrm{I\!I})}{\det(\mathrm{I})}.
 \end{equation}
 
+
+Let us look at an example to ensure that our definitions agree with our intuition.
 \begin{example}[Curvature of the Sphere]\label{ex:compute-surface-curvature}
 Consider the northern hemisphere of the unit sphere parameterized
 by $$r(u,v)=(u,v,\sqrt{1-u^2-v^2})$$ and we wish to compute the Gaussian curvature at
 the north pole $p=(0,0,1)$.
 We have $$r_u|_p=(1,0,\frac{-u}{\sqrt{1-u^2-v^2}})|_p=(1,0,0)$$ and
 $$r_v|_p=(0,1,\frac{-v}{\sqrt{1-u^2-v^2}})|_p=(0,1,0).$$
-We have $E=1, F=0,$ and $G=1$ so our first fundamental form is
+Then, $E=1, F=0,$ and $G=1$ so our first fundamental form is
 $\mathrm{I}=\begin{bmatrix}
 1 & 0 \\
 0 & 1 
@@ -243,9 +256,11 @@ and our Gaussian curvature is $K=\frac{\det(\mathrm{I\!I})}{\det(\mathrm{I})}=\f
 
 \end{example}
 
-We will use the first fundamental form to compute
-the arc length of circles on the sphere parallel to the $xy$ plane with fixed height $z=c$ for $-1<c<1$.
-Stereographic projection, described in \secref{plane-sphere},
+To further illustrate the power of the fundamental forms, let us
+compute
+the arc length of circles on the sphere parallel 
+to the $xy$ plane with fixed height $z=c$ for $-1<c<1$.
+Stereographic projection, described in \secref{sphere-plane},
 allows us map our problem to the plane and perform our computations there.
 
 \begin{example}[Stereographic Projection Revisited\cite{christian-notes}]\label{ex:stereo}
@@ -280,19 +295,14 @@ $$F=p^{-1}_v\cdot p^{-1}_v=\frac{4}{(u^2+v^2+1)^2}$$
 and
 $$M=p^{-1}_u\cdot p^{-1}_v=0.$$
 
-We can use the first fundamental form to compute
-the arc length of circles on the sphere parallel to the $xy$ plane with fixed height $z=c$ for $-1<c<1$.
-This length can be computed using
-the pythagorean theorem. We will see that using stereographic projection
-and the first fundamental form we get the same answer.
 
-
-The arc length of a parameterized curve $u=u(t), v=v(t)$ on a regular surface,
-can be computed using the first fundamental form.  Let
+Given a curve $\xi(t)=(u(t),v(t))$ on a regular surface, the arc
+length of the curve
+can be computed using the first fundamental form as follows.  Let
 $s$ denote the arc length, then 
 $$ds=\bigg | \frac{dr}{dt}\bigg | dt = \bigg | r_u\frac{du}{dt}+r_v\frac{dv}{dt}\bigg |dt
 =\sqrt{(r_u^2 du^2+2r_ur_v du dv + r_v^2dv^2)}.$$
-Next, use the map $p$ to map such a circle to the plane.
+
 Using \eqnref{stereo}, our circle on the sphere maps 
 to a circle in the plane because
 	$$p^{-1}(u,v)=\frac{u^2+v^2-1}{u^2+v^2+1}=c$$
@@ -300,8 +310,7 @@ and we can compute the radius in terms of $c$
 \begin{equation}\label{eqn:radius}
 	u^2+v^2=\frac{1+c}{1-c}=k^2.
 \end{equation}
-	
-In the plane, $u^2+v^2=k^2$ can be parameterized
+Since we are in the plane, the circle $u^2+v^2=k^2$ can be parameterized
 as $$\gamma(t)=(k\cos(t),k\sin(t))$$ with $0\leq t\leq 2\pi.$
 So our curve becomes $p^{-1}\circ \gamma(t)$ on the sphere.
 Computing the partial derivatives of $\gamma(t)$ gives
@@ -315,15 +324,21 @@ $$\int_0^{2\pi}\frac{2k}{k^2+1}dt=\frac{4\pi k}{k^2+1}.$$
 Simplifying further using \eqnref{radius}  our arc length is
 $$2\pi\sqrt{1-c^2}.$$
 
+Notice that this result agrees with the arc length determined by using
+the Pythagorean theorem!
+
 \end{example}
 
 
-
+Although we will not prove it here, another interesting feature of the first fundamental form is 
+that we can use it to determine if a map is conformal.
 \begin{theorem}[First Fundamental Form and Conformal Maps]\label{thm:first-conformal}
 	Let $S$ be a regular surface and $f:U\subset \R^2 \to V\subset S$ be a chart.
 	Let $f$ have first fundamental form $\mathrm{I}=Edu^2+2Fdudv +Gdv^2$.
 	Then $f$ is conformal if and only if $E=G$ and $F=0.$
 \end{theorem}
+
+\todo{State continuous version of GB here}
 
 \subsection{Discrete Gaussian Curvature}
 \label{sec:discrete}
