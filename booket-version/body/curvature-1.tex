@@ -45,6 +45,39 @@ So, the sphere approximation is not the best way to go.
     \label{fig:osculating-sphere}
 \end{figure}
 
+
+Every plane containing the normal vector will intersect the surface.
+The intersection of the surface and each normal plane 
+gives a one dimensional curve called the \EMPH{normal section}, see  \figref{normal-sections}
+for an example.
+Let $\kappa_1$ denote the maximum curvature of all normal sections 
+and let $\kappa_2$ denote the minimum. 
+The \EMPH{Gaussian curvature} of a point on a surface is
+$K=\kappa_1\kappa_2.$
+One can check that the Gaussian curvature of the plane is zero and
+that larger circles have less curvature than smaller ones.
+
+
+
+\begin{figure}[htb]
+    \captionsetup[subfigure]{justification=centering}
+    \centering
+    \begin{subfigure}[b]{0.25\textwidth}
+        \includegraphics[width=\textwidth]{curvature/normal-section-max}
+       \subcaption{}\label{fig:normal-section-max}
+    \end{subfigure}
+        \hspace{1cm}
+        \begin{subfigure}[b]{0.25\textwidth}
+        \includegraphics[width=\textwidth]{curvature/normal-section-min}
+        \subcaption{}\label{fig:normal-section-min}
+        \end{subfigure}
+    \caption{(\subref{fig:normal-section-max}) The osculating sphere above the saddle.
+        (\subref{fig:normal-section-min}) The osculating sphere above the saddle.
+    }
+    \label{fig:normal-sections}
+\end{figure}
+
+Here is an another definition of curvature.
 The two dimensional Gauss map provides a precise way to measure how a
 surface bends in space.
 Since we assume that our surface $S$ is smooth, we have a well defined
@@ -104,37 +137,7 @@ $$K(p)=\det(W_p).$$
 
 
 
-Here is an another definition of curvature.
-Every plane containing the normal vector will intersect the surface.
-The intersection of the surface and each normal plane is a curve in $\RR^3$
-gives a one dimensional curve called the \EMPH{normal section}, see  \figref{normal-sections}
-for an example.
-Let $\kappa_1$ denote the maximum curvature of all normal sections 
-and let $\kappa_2$ denote the minimum. 
-The \EMPH{Gaussian curvature} of a point on a surface is
-$K=\kappa_1\kappa_2.$
-One can check that the Gaussian curvature of the plane is zero and
-that larger circles have less curvature than smaller ones.
 
-
-
-\begin{figure}[htb]
-    \captionsetup[subfigure]{justification=centering}
-    \centering
-    \begin{subfigure}[b]{0.25\textwidth}
-        \includegraphics[width=\textwidth]{curvature/normal-section-max}
-       \subcaption{}\label{fig:normal-section-max}
-    \end{subfigure}
-        \hspace{1cm}
-        \begin{subfigure}[b]{0.25\textwidth}
-        \includegraphics[width=\textwidth]{curvature/normal-section-min}
-        \subcaption{}\label{fig:normal-section-min}
-        \end{subfigure}
-    \caption{(\subref{fig:normal-section-max}) The osculating sphere above the saddle.
-        (\subref{fig:normal-section-min}) The osculating sphere above the saddle.
-    }
-    \label{fig:normal-sections}
-\end{figure}
 
 
 \subsection{Computing Curvature}
