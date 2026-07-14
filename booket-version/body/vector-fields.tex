@@ -1,0 +1,264 @@
+\section{Vector Fields}
+
+In this section, we introduce vector fields on surfaces and use them to develop an alternative proof of the Gauss--Bonnet theorem. This proof relies on another remarkable local-to-global result, the Poincar'e--Hopf Index Theorem, which relates the local behavior of a vector field near its zeros to the topology of the underlying surface.
+
+
+
+\subsection{Poincar\'e Index Theorem}
+
+A \emph{tangent vector field} on a surface is an assignment of a tangent 
+vector to each point of the surface. A vector field is said to be \emph{smooth} 
+if this assignment varies smoothly from point to point. 
+See \figref{vector-field} for an example.
+
+Points where the assigned vector is the zero vector are special.
+ We assume, these zeros occur as isolated points. 
+ Remarkably, the arrangement of these zeros encodes 
+ global topological information about the surface.
+
+
+
+ \begin{figure}[htb]
+         \centering
+         \includegraphics[width=5cm]{background/vector-field}
+	\caption{An example of a vector field.
+	\label{fig:vector-field}}
+ \end{figure}
+ 
+ Let $X$ be a smooth vector field and let $z$ be an isolated zero of $X$. Choose a sufficiently small simple closed curve $\gamma$ surrounding $z$ and containing no other zeros of $X$. Since $X$ is nonzero on $\gamma$, we may normalize the vectors to obtain a map
+
+$$\widehat{X} : \gamma \to \Sp^1,
+\qquad
+\widehat{X}(p)=\frac{X(p)}{|X(p)|}.
+$$
+
+As one traverses $\gamma$ once in the counterclockwise direction, 
+the normalized vectors may rotate around the unit circle several times. 
+The number of times that $\widehat{X}$ winds around $\mathbb{S}^1$ is 
+ the \emph{index} of $X$ at $z$.
+ 
+ \begin{definition}
+Let $z$ be an isolated zero of a smooth vector field $X$. The \emph{index} of $X$ at $z$, 
+denoted $i(X,z)$, is the winding number of the map
+$$\widehat{X} : \gamma \to \Sp^1.$$
+
+Equivalently, $i(X,z)$ measures the net number of rotations made by the vectors of $X$ as one traverses a small loop enclosing $z$.
+\end{definition}
+ 
+The definition of index may seem mysterious at first, but it admits a useful interpretation
+ in terms of the Euler characteristic. Recall the proof of 
+ Euler's formula in \thmref{euler}. 
+ Recall the proof of Euler's formula in \thmref{euler}, where we assigned a positive charge to each vertex, a negative charge to each edge, and a positive charge to each face of a triangulation. The total charge was
+$$|V|-|E|+|F|=\chi(S).$$
+
+Now imagine allowing these charges to flow along the trajectories determined by a vector field $X$.
+ As the charges move, they accumulate at the zeros of the vector field. 
+ The index of a zero can be viewed as the amount of net charge that collects there. 
+ From this perspective, the Poincar'e--Hopf theorem states that the total charge accumulated at all zeros is equal to the Euler characteristic of the surface.
+ 
+
+ 
+ 
+\begin{theorem}[Poincar\'e Index Theorem] \label{thm:poincare-index}
+
+If $S$ is a regular triangulated surface and $X$ a vector field on $S$ with isolated zeros,
+the Euler characteristic of $S$ is 
+$$\chi(S)=\sum_{z\in \text{zeros}}i(X,z).$$
+\end{theorem}
+
+\begin{proof}
+
+We begin by subdividing and perturbing the triangulation, if necessary, 
+so that each zero of $X$ lies in the interior of a unique face
+We also assume that $X$ is transverse to every edge of the triangulation. 
+Establishing that these assumptions can always be achieved requires additional work,
+ which we omit.
+
+
+As in the proof of Euler's formula, assign a charge of $+1$ to each vertex, 
+a charge of $-1$ to each edge, and a charge of $+1$ to each face. 
+We then allow these charges to flow along the trajectories of the vector field $X$.
+
+
+Consider a face that does not contain a zero of $X$.
+ Since the vector field is nonvanishing on this face, the charges 
+ entering and leaving the face balance, and the net contribution 
+ of the face to the total charge is zero. Consequently, any nonzero 
+ contribution to the Euler characteristic must arise from faces containing 
+ zeros of the vector field.
+ 
+ For a face containing an isolated zero $z$, the net charge that accumulates at $z$ is precisely the index $i(X,z)$. Summing over all such faces, we find that the total charge is
+$$\sum_z i(X,z).$$
+Because the flow of charge preserves the total amount of charge, this sum must equal the initial total charge of the triangulation, namely
+$$\chi(S).$$
+Therefore,
+$$\chi(S)=\sum_z i(X,z),$$
+completing the proof.
+\end{proof}
+
+
+\subsection{Banchoff's Proof}
+Another interpretation is presented by Banchoff in \cite{banchoff_critical_1970}.
+Given a surface $S$ embedded in $\R^3$ consider a line $\ell$ and define a 
+linear height function $h:M \to \R$
+by projecting points of $\R^3$ onto  $\ell$. 
+
+A point $p$ on $S$
+is a \emph{critical point} of $h$ if the tangent plane at $p$ is perpendicular to $\ell$.
+All points on $M$ that are not critical are \emph{ordinary point}.
+Critical points can be classified into three categories, maxima, minima, and saddle points.
+
+The height function induces a vector field on $S$ by flowing in the direction
+of greatest decreasing height.
+Moreover, $i(p,h)=1$ if $p$ is a  local maximum or minimum and $i(p,h)=-1$ is $p$ is a saddle point.
+An example is shown in \figref{torus-total}.
+
+
+For an ordinary point $q$, the tangent plane at $q$ is not horizontal. 
+Now consider the plane perpendicular to $\ell$ and through $q$, this plane
+divides a `small' neighborhood $U$ of $q$ into two pieces and intersects
+a `small' circle about $q$ in two points.
+this observation leads to an alternative description of the index.
+Let $\mathcal{C}$ denote the number of points a plane through $p$ perpendicular
+to $h$ meets a `small' circle around $p$, then 
+$$i(p,h)=1-\frac{1}{2}\mathcal{C}.$$
+
+For a  polyhedral surface, every point in the interior of a face or edge
+is ordinary, since we assumed that no face or edge is perpendicular to our line $\ell.$
+
+Let $v$ be a vertex of a triangulated surface.
+The union of all triangles incident to $v$ is called the \emph{star} of $v$,
+ denoted $\mathrm{star}(v).$ A triangle in $\mathrm{star}(v)$
+ is a \emph{straddle}
+ vertex can be any of the three types of critical points.
+So, for each vertex $v$, we cut out the triangles incident to it. This collection of triangles
+is called the \emph{star}$(v)$ of $v$. 
+A triangle in $\mathrm{star}(v)$ is said to \emph{straddle} the plane through 
+$v$ perpendicular to $\ell$ if one of its vertices lies on one side of the plane 
+and another lies on the opposite side. Equivalently, among the three vertices 
+of the triangle, the height of $v$ is neither the largest nor the smallest. 
+In this case, $v$ is called the \emph{middle vertex} of the triangle with respect to $\ell$.
+
+The index of $v$ can be computed combinatorially as
+$$i(v,\ell)=1-\frac{1}{2} \left(\text{number of triangles with } v \text{ middle for } \ell\right).$$
+
+
+
+T compute the Euler characteristic, note that for a triangulated surface, 
+each face is a triangle and has three edges and each
+edge is incident to two faces, so
+\begin{equation} \label{eqn:faces-edges}
+	3F=2E.
+\end{equation}
+
+Summing the indices over all vertices yields
+\begin{align}
+\sum_{v\in M}i(v,\ell) &=\sum_{v\in M} \left(1-\frac{1}{2}(\text{number of triangles with } v \text{ middle for } \ell)\right),  \\ \nonumber
+       &=V - \frac{1}{2}\sum_{v\in M} \left(\text{number of triangles with } v \text{ middle for } \ell\right), \\ \nonumber
+       &=V-\frac{1}{2} F \text{ ,because each triangle has exactly one middle vertex for  } \ell,\\ \nonumber
+       &= V-\frac{1}{2}(2E-2F), \text{by \eqnref{faces-edges}}\\ \nonumber
+       &=V-E+F. \nonumber 
+\end{align}
+
+
+
+ \begin{figure}[htb]
+         \centering
+        \begin{subfigure}[b]{0.3\textwidth}
+         \includegraphics[width=\textwidth]{chapter-3/torus}
+         \subcaption{The tours a line $\ell$ with four critical points.}
+ 	 \label{fig:torus-ell}
+       \end{subfigure}\\
+         \begin{subfigure}[b]{0.21\textwidth}
+         \includegraphics[width=\textwidth]{chapter-3/torus-top}
+         \subcaption{Local to $p_1$.}
+          \label{fig:max}
+         \end{subfigure}
+          \begin{subfigure}[b]{0.21\textwidth}
+         \includegraphics[width=\textwidth]{chapter-3/saddle1}
+         \subcaption{Local to $p_2$.}
+          \label{fig:saddle1}
+         \end{subfigure}
+         \begin{subfigure}[b]{0.21\textwidth}
+         \includegraphics[width=\textwidth]{chapter-3/saddle2}
+         \subcaption{Local to $p_3$.}
+          \label{fig:saddle2}
+         \end{subfigure}
+         \begin{subfigure}[b]{0.21\textwidth}
+         \includegraphics[width=\textwidth]{chapter-3/torus-bottom}
+         \subcaption{Local to $p_4$.}\label{fig:min}
+         \end{subfigure}
+		\caption{(\subref{fig:torus-ell}) A tours and line $\ell$. There are four critical points.
+ 		(\subref{fig:max}) The critical point $p_1$ is a maximum and $i(p_1,h)=1$.
+		(\subref{fig:saddle1}) The critical point $p_2$ is a saddle and $i(p_1,h)=-1$.
+		(\subref{fig:saddle2}) The critical point $p_3$ is also a saddle and $i(p_1,h)=-1$.
+		(\subref{fig:min}) The critical point $p_4$ is a minimum and $i(p_1,h)=1$.
+ 		\label{fig:torus-total}}
+ \end{figure}
+
+With the Poincar'e--Hopf Index Theorem in hand, we are now ready to prove the Gauss--Bonnet theorem for closed surfaces (\thmref{g-b-nb}).
+
+
+\begin{proof}
+
+We begin by relating curvature to the index of a height function. Let $U$ be a convex open subset of a smooth surface, and let $g\to \mathbb{S}^2$ denote the Gauss map. Let $dA$ denote the area element on the unit sphere. Recall that
+$$\int_{\mathbb{S}^2} dA = 4\pi.$$
+
+The curvature of $U$ can be interpreted as the area of its image under the Gauss map. 
+If $g$ is one-to-one on $U$, then
+
+$$\int_{\mathbb{S}^2} F_{g(U)}(\ell),d\omega,$$
+
+
+where $F_{g(U)}$ is the characteristic function of $g(U)$, defined by
+
+
+$$F_{g(U)}(\ell)=
+\begin{cases}
+1, & \ell\in g(U),\\
+0, & \ell\notin g(U).
+\end{cases}$$
+
+
+A point $\ell\in \mathbb{S}^2$ determines a height function on $U$. The height function has a critical point at $p\in U$ precisely when $\ell$ is parallel to the unit normal at $p$, that is, when $\ell=g(p)$ or $\ell=-g(p)$. Furthermore, if $U$ is sufficiently small so that $g(U)$ contains no pair of antipodal points, then
+the curvature can then be expressed as 
+$$K(U)=\int_{\Sp^2}F_{g(U)}(\ell)d\omega =\frac{1}{2}\int_{\Sp^2}\sum_{p\in U} i(p,\ell)d\omega.$$
+The right-hand term is well defined for orientation reversing sets $W$, only a negative is needed.
+
+For a neighborhood $U$ where $g$ is not one-to-one, we decompose $U$ into a countable
+disjoint union of sets $U_i$ where $g$ is one-to-one with a set $V=U-\cup_{i=1}^\infty U_i$
+such that $g(V)$ has measure zero on $\Sp^2$ and therefore
+$$K(U)=\int_{U} KA$$ is the sum converges, this agrees with 
+$$K(U)=\frac{1}{2}\int_{\Sp^2}\sum_{p\in U} i(p,\xi)d\omega,$$
+where the integrand is well defined almost everywhere since almost every $\xi$
+has finitely many critical points.
+
+For a smooth surface, we define the point function $K(p)$ as the limit as the diameter of 
+and open set $U$ with $p\in U$ goes to zero. Thus, we have the following.
+
+\begin{align}
+K(S) &=\frac{1}{2}\int_{\Sp^2}\sum_{p\in U} i(p,\xi)d\omega,  \\ \nonumber
+       &=\frac{1}{2}\int_{\Sp^2}\chi(S) \text{ , by the Poincar\'e Index theorem}\\ \nonumber
+       &=\frac{1}{2}\chi(S)\int_{\Sp^2}d\omega, \\ \nonumber
+       &=2\pi\chi(S). \nonumber 
+\end{align}
+This proves the Gauss--Bonnet theorem.
+
+\end{proof}
+
+
+
+
+\noindent \textbf{Exercises}
+
+
+\begin{enumerate}
+	\item 
+	
+	\item 
+	
+	\item 
+	
+\end{enumerate}
+
+\pagebreak
