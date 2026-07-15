@@ -7,7 +7,16 @@ In this section, we introduce vector fields on surfaces and use them to develop 
 \subsection{Poincar\'e Index Theorem}
 
 A \emph{tangent vector field} on a surface is an assignment of a tangent 
-vector to each point of the surface. A vector field is said to be \emph{smooth} 
+vector to each point of the surface. 
+\begin{definition}[Vector Field]\label{def:vector-field}
+	A vector field $v$  on an open set $U\subset S$ of a regular surface $S$
+	is a correspondence which assigns a vector $w(p)\in T_p(S)$ to each $p\in U$.
+	Moreover, $v$ is differentiable at $p$ if, for some parametrization $r(u,v)$ at $p$,
+	the functions $a(u,v)$ and $b(u,v)$ given by
+		$$v(p)=a(u,v)r_u + b(u,v)r_v$$
+	are both differentiable at $p$.
+\end{definition}
+A vector field is said to be \emph{smooth} 
 if this assignment varies smoothly from point to point. 
 See \figref{vector-field} for an example.
 
@@ -247,6 +256,51 @@ This proves the Gauss--Bonnet theorem.
 \end{proof}
 
 
+\subsection{The Hairy Ball Theorem}
+
+
+The Gauss--Bonnet theorem and the Poincar\'e--Hopf Index Theorem connect geometry, vector fields, and topology. 
+This theorem immediately suggests an interesting question:
+
+\begin{quote}
+Can a surface admit a nowhere-zero tangent vector field?
+\end{quote}
+Therefore, the Poincar\'e--Hopf theorem implies that a compact surface can
+admit a nowhere-zero tangent vector field only if its Euler characteristic is
+zero.
+Consider the sphere $\mathbb{S}^2$. Since
+$$
+\chi(\mathbb{S}^2)=2,
+$$
+every tangent vector field on the sphere must have zeros. In fact, the total
+index of all zeros must be
+
+$$
+\sum_z i(X,z)=2.
+$$
+Thus, no matter how one attempts to assign a nonzero tangent vector to every
+point on the sphere, some zeros are unavoidable.
+
+This result is known as the \emph{Hairy Ball Theorem} \cite{rotskoff2010}. The name comes from the
+intuitive picture of trying to comb the hair on a spherical object such as a
+tennis ball. No matter how carefully the hairs are combed, there must always
+be at least one ``cowlick''  where the direction field breaks down.
+
+\begin{theorem}[Hairy Ball Theorem]
+Every continuous tangent vector field on $\mathbb{S}^2$ has two zero.
+\end{theorem}
+
+The Hairy Ball Theorem can therefore be viewed as a direct consequence of the
+Poincar\'e--Hopf Index Theorem. Since the sphere has Euler characteristic $2$,
+the total index of the zeros of any tangent vector field must be $2$, making a
+nowhere-zero vector field impossible.
+
+In general, any compact surface with nonzero Euler characteristic must
+contain zeros in every tangent vector field. In contrast, surfaces with Euler
+characteristic zero, such as the torus, may admit nowhere-zero tangent vector
+fields. This illustrates how a purely topological invariant, the Euler
+characteristic, constrains the behavior of vector fields on a surface.
+
 
 
 \noindent \textbf{Exercises}
@@ -257,7 +311,8 @@ This proves the Gauss--Bonnet theorem.
 	
 	\item 
 	
-	\item 
+	\item Is there a vector field on the tours that does not have a zero? Reconcile this with
+	the Hairy ball theorem.
 	
 \end{enumerate}
 
