@@ -1,0 +1,470 @@
+\section{Polygonal Mesh Prossessing}
+
+In this section, we 
+
+
+
+\subsection{Triangulating Nonconvex Polyhedra}
+\label{sec:triangulating}
+
+A three-dimensional solid with polygonal faces and straight edges is called a \EMPH{polyhedra}. 
+We often wish to decompose a polyhedra into tetrahedra much like
+we decompose polygons into triangles.
+Moreover, we would like to represent a polyhedra
+with as few tetrahedra as possible \cite{simplify-mesh-1999}.
+
+A polyhedron is \EMPH{simple} if it is homeomorphic to the sphere 
+and the faces are all polygons.
+Let $P$ be a a simple polyhedron with $n$  vertices.
+In \cite{chazelle-lower-1984}, Chazell uses the Gauss-Bonnet
+theorem to show that,
+in the worst case, decomposing the $P$
+ into tetrahedra requires $\Omega(n^2)$ tetrahedra.
+
+ An edge $e$ in $P$ is
+\EMPH{reflex} if the interior angle formed by its two incident faces
+is greater than $\pi$. See \figref{reflex} for an example.
+A vertex is reflex is it is incident to a reflex edge.
+Let $r$ denote the number of reflex edges.
+
+
+\begin{figure}[htb]
+\centering
+	\includegraphics[width=.3\textwidth]{meshes/reflex}
+	\caption{A polyhedron with one reflex edge (blue), the two vertices incident to the blue
+	edge are reflex vertices.}
+\label{fig:reflex}
+\end{figure}
+
+Chazell and Palios give an
+algorithm to triangulate a nonconvex simple polyhedra \cite{triangulating-polytope-1990}.
+ Their algorithm creates a refinement with $O(n+r^2)$ tetrahedra
+in $O(n\log r +r^2\log r)$ time and $O(n+r^2)$ space.
+The algorithm first removes $n-4r$ non-reflex or flat vertices
+to create a representation of the polyhedra with $O(r)$ vertices.
+Then, vertical planes decompose the reduced polyhedra in to
+$O(r^2)$ convex cells. They also establish that this bound is tight by exhibiting a class of polyhedra which cannot be decomposed into fewer than $n^2$ parts.
+
+Chazelle and Shouraboura use the Gauss-Bonnet theorem to show any polyhedron
+ of genus $g$ must have at least $g-1$ reflex edges~\cite{tetra-bounds-c-s-1994}.
+ This implies that any polyhedron
+can be decomposed with $\Theta(n+r^2)$ tetrahedra, regardless  of 
+the genus!  We present their application.
+
+In this application, to simplify computation, we scale the curvature of a vertex
+by $\frac{1}{2\pi}$, so $K(v)=\frac{1}{2\pi}\left(2\pi-\sum_i \alpha_i\right)$,
+We relate the number of reflex edges incident to a vertex $v$ to $K(v)$.
+
+\begin{lemma}\label{lem:reflex-edge}
+The number of reflex edges  incident to a vertex $v$  is at least $-K(v).$
+\end{lemma}
+
+\begin{proof}
+
+For each vertex, center a sphere at the vertex,
+see \figref{sphere-on-vert}.
+The intersection of the polyhedron and the sphere
+gives a `polygon' on the sphere with boundary $L$ consisting of great
+circles. 
+Scale the sphere to have unit radius. Then, the length of each arc
+in $L$ is equal the the angle incident to $v$, so the total length of $L$ is
+the sum of the angles incident to $v$, see \figref{sphere}.
+
+Let $R$ be the number of reflex edges incident to $v$.
+If $R$ is zero, then $P$ is convex at $v$ and has non-negative curvature
+so $0>-K(v).$ If $R>0,$
+reflex edges incident to $v$ correspond to reflex angles on $L$.
+For each reflex angle, bisect it and reduce the 
+number of reflex angles and obtain a decomposition
+of the sphere into at most $R+1$ convex regions,
+thus $L\leq 2\pi(R+1)$.
+
+Thus, we have $L=\sum \alpha_f$ and the curvature 
+$K(v)=1-\frac{1}{2\pi}\sum \alpha_f$ giving
+$L=2\pi(1-K(v))$. Combining this with $L\leq 2\pi(R+1)$
+gives $-K(v)\leq R.$
+
+
+\end{proof}
+
+\begin{figure}[htb]
+        \centering
+        \begin{subfigure}[b]{0.35\textwidth}
+        \includegraphics[width=\textwidth]{meshes/reflex-vert-sphere}
+        \caption{}
+          \label{fig:sphere-on-vert}
+        \end{subfigure}
+          \hspace{1cm}
+         \begin{subfigure}[b]{0.2\textwidth}
+        \includegraphics[width=\textwidth]{meshes/sphere-intersection}
+        \caption{}
+        \label{fig:sphere}
+        \end{subfigure}\\
+		\caption{(a) A sphere centered at a reflex vertex. (b) The `polygon'
+		of great circles where the polyhedron intersects the sphere. 
+		\label{fig:sphere}}
+\end{figure}
+
+
+Next, we show
+\begin{theorem}[Reflex Angles]\label{thm:reflex}
+
+Any polyhedron of genus $g$ must have 
+at least $g-1$ reflex dihedral angles. 
+
+\end{theorem}
+\begin{proof}
+Let $r$ be the total number of reflex edges in a polyhedra.
+By the classification of oriented surfaces, the Euler characteristic 
+ is determined by the genus, $\chi=2-2g$.
+By \lemref{reflex-edge}, $\sum_v -K(v)\leq 2 r$ since each
+reflex edge is incident to two vertices.
+By the Gauss-Bonnet theorem $\sum_vK(v)= 2-2g,$
+so $-2r\leq 2-2g$ and $g\leq r+1$ as desired.
+
+\end{proof}
+
+Given a polyhedron of genus $g$, we can temporally 
+duplicate the vertices around each essential cycle and insert disks,
+ creating a polyhedron of genus zero, we then apply the algorithm to
+decompose genus zero polyhedra given in \cite{triangulating-polytope-1990}.
+Then remove the added disks.
+Since we added $g$ disks the algorithm decomposes
+the polyhedron into $O(n+ (r+g)^2)$ tetrahedra.
+By \thmref{reflex}, $g\leq r+1$ showing that the upper bound
+on the number of tetrahedra in a triangulation
+of a polyhedra is $O(n+r^2)$ regardless of the genus.
+
+\subsection{Digital Topology}
+\label{sec:digital-topology}
+
+In two dimensions, a black and white image consists of an array of pixels
+where each pixel is either black or white.
+In three dimensions,
+instead of square pixels we have cubes called voxels.
+Three dimensional images are use useful in medical images. 
+For example, consider a
+three dimensional images of the human heart \cite{bovik_handbook_2000}.
+Given such an image, one might want to compute
+the number of holes in the image to make sure it
+matches the number of holes that are suppose to be in
+the human heart. In this subsection, we share a result
+of Chen and Rong where they 
+use the Gauss-Bonnet theorem to 
+compute genus of a digital image in $\R^3$ \cite{chen_digital_2010}.
+In most of our other uses of the Gauss-Bonnet theorem we begin with surface where we know
+the Euler characteristic, the sphere or the disk, and use the theorem to tell us
+about the local curvature. In this application, we are going in the opposite direction,
+we are using the local curvature to compute the genus.
+
+
+Digital images are commonly reffered to as \emph{cubical complexes},
+where each cube has side length one \cite{kong_digital_1989}.
+An \emph{elementary cube} $Q$ is a product
+$$Q=I_1\times I_2 \times I_3$$
+where each $I_i$ is a unit interval of the form $I=[\ell,\ell+1]$
+called a \emph{coordinate}.
+We will often associate each elementary cube with a lattice point
+see \figref{4-square-and-dual} for an example.
+%In many cases, given a cubical complex, one is interested in having
+%a computer to to classify the image.
+%Operations toward image classification include
+%object counting, border following and computing 
+%the number of holes \cite{kong_digital_1989}.
+
+Our goal is to use the Gauss-Bonnet theorem to compute
+the genus of a three dimensional cubical complex.
+The definition of genus, \defref{genus}, is given in terms
+of simple closed curves. In order to describe a closed curve in a cubical
+complex we first need to resolve an interesting paradox.
+In two dimensions, it is not clear what it means
+for two pixels to be adjacent. For example, in \figref{4-square}
+we see four black pixels. Should these pixels represent a closed
+curve? If we define the pixels adjacent to a given pixel to be the 
+pixels to the left, right, above, and below, then each black pixel isolated
+and the four pixels should not form a closed curve. However,
+with adjacency defined this way, the white pixel in the middle is completely surrounded 
+and the four black pixels should represent a closed curve because
+they separate the white pixels into an inside and an outside.
+In order to resolve this paradox introduce different notions of adjacency.
+
+
+In two dimensions, two points are \emph{eight-adjacent}
+if they are distinct and each coordinate of one differs from
+the other by at most one.
+Two points are \emph{four-adjacent} if
+they are eight-adjacent and differ in at most one of their coordinates.
+Consider four vertices adjacent to a single vertex $v$.
+
+Returning to our paradox in \figref{4-square}.
+If we use eight-adjacency
+for the white vertices and four-adjacency for the black.
+Then the four black pixels do not form a closed curve 
+and the center white pixel is not enclosed, so we avoid our paradox. 
+Notice we could have chosen four adjacency
+for the white vertices and eight-adjacency for the black pixels and 
+now the four black pixels do form a closed curve and the white pixel
+is surrounded and again we do not have a paradox.
+
+
+
+We make a similar choice in three dimensions, two points
+are \emph{26-adjacent} if they are distinct and each coordinate 
+entry differs by at most one.
+The points are \emph{18-adjacent} if they are 26-adjacent
+and different in  a most two of their coordinates.
+The points are \emph{6-adjacent} if they are 18-adjacent and differ 
+in at most one of their coordinates.
+If a set of points $S$ lattice points cannot be
+partitioned into two subsets that are not
+$n$-adjacent is \EMPH{$n$-connected}.
+
+
+
+\begin{figure}[htb]
+        \centering
+        \begin{subfigure}[b]{0.25\textwidth}
+        \includegraphics[width=\textwidth]{digital/4-square}
+        \caption{}
+          \label{fig:4-square}
+        \end{subfigure}
+          \hspace{.3cm}
+         \begin{subfigure}[b]{0.25\textwidth}
+        \includegraphics[width=\textwidth]{digital/4-square-dual}
+        \caption{}
+        \label{fig:4-square-dual}
+        \end{subfigure}\\
+		\caption{(\subref{fig:4-square}) A two dimensional image with four black pixels.
+		Do the black pixels represent a closed curve? (\subref{fig:4-square-dual}) The same image
+		represented on the lattice.
+		\label{fig:4-square-and-dual}}
+\end{figure}
+
+A \EMPH{digital picture} is a quadruple $(V,m,n,B)$ where
+$V=\R^2$ and $(m,n)=(4,8)$ or $V=\R^3$ and $(m,n)=(6,26)$
+and $B$ is a subset of $V$. Elements of $B$ are black vertices
+and elements not in $V$ are white.
+
+\begin{figure}[htb]
+        \centering
+        \includegraphics[width=.25\textwidth]{digital/26-neighbors}
+		\caption{A vertex in a three dimensional cubical complex and its 26 neighbors.
+		\label{fig:26-neighbors}}
+\end{figure}
+
+One may ask, why don't we triangulate the cubical complex and
+count vertices, edges, and faces to determine the genus.
+One reason against doing this is that 
+decomposing a cubical complex into a simplicial complex
+results in 24 times as many highest dimensional cells \cite{Kaczynski2003}.
+
+
+The objects we wish to compute the genus of are closed, orientable, cubical complexes in $\R^3$ with $(6,26)$-connectivity.
+If $M$ is such a complex, there are
+six types of digital surface points, these are shown in \figref{6-types}.
+
+
+\begin{figure}[htb]
+        \centering
+        \begin{subfigure}[b]{0.2\textwidth}
+        \includegraphics[width=\textwidth]{digital/3-neighbors}
+        \caption{Three neighbors.}
+          \label{fig:3-neighbors}
+        \end{subfigure}
+          \hspace{.3cm}
+         \begin{subfigure}[b]{0.25\textwidth}
+        \includegraphics[width=\textwidth]{digital/4-neighbors-flat}
+        \caption{Four neighbors.}
+        \label{fig:4-neighbors-flat}
+        \end{subfigure}
+         \hspace{.3cm}
+         \begin{subfigure}[b]{0.2\textwidth}
+        \includegraphics[width=\textwidth]{digital/4-neighbors-bent}
+        \caption{Four neighbors too.}
+        \label{fig:4-neighbors-bent}
+        \end{subfigure}\\
+         \begin{subfigure}[b]{0.25\textwidth}
+        \includegraphics[width=\textwidth]{digital/5-neighbors-a}
+        \caption{Five neighbors.}
+          \label{fig:1-neighbors}
+        \end{subfigure}
+          \hspace{.2cm}
+         \begin{subfigure}[b]{0.25\textwidth}
+        \includegraphics[width=\textwidth]{digital/5-neighbors-b}
+        \caption{Six neighbors.}
+        \label{fig:4-neighbors-flat}
+        \end{subfigure}
+         \hspace{.2cm}
+         \begin{subfigure}[b]{0.25\textwidth}
+        \includegraphics[width=\textwidth]{digital/6-neighbors}
+        \caption{Six neighbors too.}
+        \label{fig:6-neighbors}
+        \end{subfigure}
+		\caption{This six types of digital surface points.
+		\label{fig:6-types}}
+\end{figure}
+
+Let $M_i$ denote the set of digital points with $i$ neighbors and $K_i$
+the curvature.
+Then, by \defref{discrete-curvature-vertex}, we compute the discrete curvature
+at each of this points to obtain
+\begin{enumerate}[(a)]
+\item $K_3=\pi/2,$
+\item $K_4=0,$
+\item $K_5=-\pi/2,$
+\item $K_6=-\pi.$
+\end{enumerate}
+
+Then, by the Gauss-Bonnet theorem, we have
+$$\sum_{i=3}^6K_i |M_i|=2\pi (2-2g).$$
+A linear time algorithm to compute the genus is the following.
+Iterate through all points in $M$ and count the neighbors at each point
+and keep track of $M_i$. Then calculate the genus
+by rearranging the above equation to obtain
+$$g=1+(|M_5|+2|M_6|-|M_3|)/8.$$
+
+\subsection{Homotopy Testing}
+\label{sec:homotopy}
+
+Homotopy classes of curves are important  because...
+In this section, we share applications
+where the Gauss-Bonnet theorem is used to determine
+if curve on a surface is contractible.
+An explanation of this algorithm is given in a video lecture 
+by Jeff Erickson \cite{erickson-lecture}.
+
+\begin{figure}[htb]
+\centering
+\includegraphics[width=.3\textwidth]{homotopy/contractable}
+\caption{The blue curve is not contractable, the red curve is contractable.}
+\label{fig:contractable}
+\end{figure}
+
+In this application, we will use a modified version
+of the Gauss-Bonnet theorem. Given a combinatorial surface
+$S$ define the curvature of a face to be $k(f)=1-\sum \beta_f$,
+$k(v)=1-\frac{1}{2}\deg(v)+\sum_{v\in V} \alpha_v$.
+Summing over all faces and vertices in $S$ gives,
+\begin{theorem}[Modified Gauss-Bonnet]\label{thm:modify-g-b}
+For a combinatorial surface $S$,
+$\sum_{f\in F} k(f)+\sum_{v\in V}k(v)=\chi(S).$
+\end{theorem}
+
+\begin{proof}
+
+$$\sum_{f\in F} k(f)+\sum_{v\in V}k(v)=|F|-\sum_{v\in V}\alpha_v + |V|-|E|+\sum_{v\in V}\alpha_v=\chi(S).$$
+\end{proof}
+
+
+Here, a we have a combinatorial surface that we call a map denoted $S$
+with genus $g\geq 2.$ The case $g=0$ is the sphere where every curve
+is contractible and when $g=1$ contractibility can be determined by a counting
+argument\todo{explain}.
+A curve is a closed walk, given as alternating sequence of vertices
+and edges in $S$.
+A \EMPH{homotopy} between two closed curves $\gamma_1$ and $\gamma_2$ that 
+share a point $p_0$ is a continuous map $H\colon [0,1]\times \Sp^1 \to \mathbb{R}^2$ 
+such that $H(0,\cdot)=\gamma_1$, $H(1,\cdot)=\gamma_2$, and $H(s,0)=p_0=H(s,1)$.
+
+On a combinatorial surface, homotopies can be decomposed
+into discrete moves called edge spikes, edge unspikes  and face flips.
+The question we consider is: Given a closed walk $W$ in a map $\Sigma$ is there a finite
+sequence of moves that reduces the curve to a trivial walk?
+
+
+First, we transform $S$ into a simpler object called a system of loops.  
+Let $T$ be a spanning tree of $S$, let $C$ be the edges in a co-tree
+(a spanning tree of the dual), and let $L$ denote the left over edges,
+Each edge in $S$ is in one of $(T,L,C)$.
+Contract edges in $T$, delete edges in $C$ a system of loops $\Delta$.
+When we contract and delete edges in $S$ we might affect edges in our walk $W$.
+If we contract an edge in $W$, delete the edge from $W$.
+If we delete and edge $e\in W$, face flip to avoid the deleted edge.
+Get a new walk $W' \in \Delta$ homotopic to $W\in \Sigma$
+now only haveing one vertex. Then, $W'$ has one vertex
+with degree $4g$, one face with $4g$ edges, and $2g$ loops.
+The length of the walk increases by at most $2g$.
+
+
+The universal covering space of $S$ denoted $U$ is a plane
+and when $g\geq 2$ $U$ has a natural hyperbolic geometry,
+tiled by $4g$-gons.
+
+
+Big idea: a curve is contractible closed walk in $S$
+if and only if the walk is closed $U$.
+Thus, our problem is equivalent to the following: Given a walk
+in the universal cover of a system of loops, is it closed?
+
+Here the walk is given as a starting vertex then we have a list of which
+edges to take at each intermediate vertex. 
+All vertices look the same, so we must determine if we have ended where
+we began. 
+
+Look for spurs or taking and instances where we talk the long way around a face, 
+shorten the walk.
+Any nontrivial contractible cycle contains either a spur or a bracket \cite{gertsen-short-1990}.
+\begin{lemma}[Dehn's Lemma]\label{lem:dehn}
+If $g\geq 2,$ then any nontirival closed walk has either a spur
+or $4g-2$ consecutive edges on the boundary of a face.
+\end{lemma}
+\begin{proof}
+Sketch: 
+Any nontrival closed walk bounds a disk $D$ with $\chi(D)=1$, by the Gauss-Bonnet theorem
+$$\sum_v k(v)+\sum_f k(f) =1.$$
+
+Each face has $4g$ edges, each internal vertex has degree $4g$
+and each  boundary vertex  has degree less than $4g$.
+The angle of each angle on a face  is $\frac{1}{4}$,
+thus, $k(f)=1-g<0,$ for internal vertices  $k(v)=1-g<0$ and for all
+vertices on the boundary, $k(v)=\frac{3}{4}-\frac{\deg(v)}{4}$.
+Boundary vertices fall into three  categories: convex, where $k(v)=\frac{1}{4}$
+flats,  where $k(v)=0$  and concave where $k(v)<0$.
+
+By G-B, $$|F|(1-g)+|v_{convex}|\frac{1}{4}\geq 1$$
+and 
+$$|v_{convex}|\geq (4g-4)|F|+4.$$
+
+We divide by $|F|$ to determine the average number
+of convex vertices per face to be greater than $4g-4$.
+Thus, there exists some face that has $4g-3$ consecutive edges in the walk.
+\end{proof}
+
+This gives an algorithm for determining if a walk is closed in the universal
+covering space.
+Look for spurs and long boundary subpaths, the walk is closed if and  only if
+we can  shrink the curve.
+Label edges, walk is a sequence of labels
+look at intervals of $4g-2$ in a walk, $8g$ paths
+that represent long boundary paths, $4g$ spurs.
+Slide window and look for spurs or long boundary paths.
+If you find one remove it.
+
+Brute force $O(g^3\ell)$ overall.
+Can speed it up with Erickson DFA  idea
+$O(g^2+g\ell)$.
+Overall runtime $O(n+g^2+g\ell)$ time.
+
+In trouble if $g$is big. Erickson uses system of quads,
+radial map, $O(n)$ runtime  \cite{erickson-whittlesey-2013}.
+
+
+
+
+
+
+
+
+\noindent \textbf{Exercises}
+
+
+\begin{enumerate}
+	\item 
+	
+	\item 
+	
+	\item 
+	
+\end{enumerate}
+
+\pagebreak
